@@ -1,0 +1,44 @@
+@media (max-width: 1390px){
+	.top_line a.logo{
+  max-width: 236px;
+	}
+	.top_line nav ul li:first-child{
+		display: none;
+	}
+	.service_info{
+		margin-left: 0;
+	}
+	.top_line nav ul li{
+		margin: 0 15px;
+	}
+	header.front_page .header_form{
+		display: none;
+	}
+	.work_wrap{
+		justify-content: center;
+	}
+
+	.work_wrap .work_item{
+		width: calc(50% - 65px);
+		/*display: none;*/
+	}
+	.front_page .work_wrap .work_item:nth-child(-n+2){
+		/*display: block;*/
+	}
+	.price_form .form_info__main .form_title{
+		margin-right: 20px;
+	}
+	.univer_wrap .univer_item{
+		max-width: calc(50% - 64px);
+	}
+	.visor_photo{
+		right: -220px;
+	}
+	.artic_box{
+
+	}
+	.excell_txt .excell_photo{
+		right: -220px;
+		z-index: -1;
+	}
+}

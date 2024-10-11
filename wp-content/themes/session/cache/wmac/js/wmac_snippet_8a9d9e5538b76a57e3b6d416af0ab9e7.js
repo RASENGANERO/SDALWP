@@ -1,0 +1,1 @@
+(function($){'use strict';$(function(){$(document).on("click",".wbcr-clearfy-pseudo-link",function(){window.open($(this).data("uri"));});})})(jQuery);

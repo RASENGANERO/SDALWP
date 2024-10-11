@@ -1,0 +1,218 @@
+# Translation of Plugins - Cackle - Stable (latest release) in Russian
+# This file is distributed under the same license as the Plugins - Cackle - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2019-03-02 17:46:40+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : ((n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) ? 1 : 2);\n"
+"X-Generator: GlotPress/3.0.0-alpha.2\n"
+"Language: ru\n"
+"Project-Id-Version: Plugins - Cackle - Stable (latest release)\n"
+
+#: cackle_admin.php:131
+msgid "Comments counter in preview number or word"
+msgstr "Счётчик комментариев в предпросмотре, числом или словом"
+
+#: cackle_admin.php:114
+msgid "You should use php 5.3 at least for proper working"
+msgstr "Необходимо использовать хотя бы PHP 5.3 для корректной работы"
+
+#: cackle_admin.php:89
+msgid "Comments counter in post number or word"
+msgstr "Счётчик комментариев в записи, числом или словом"
+
+#: cackle_admin.php:124
+msgid "Posts prepared for import"
+msgstr "Записи подготовленные для импорту"
+
+#. Description of the plugin
+msgid "This plugin allows your website's audience communicate through social networks like Facebook, Vkontakte, Twitter, e.t.c."
+msgstr "Этот плагин позволяет аудитории вашего сайта общаться через социальные сети, как Facebook, Vk, Twitter и т.д."
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "http://cackle.me"
+msgstr "http://cackle.me"
+
+#. Plugin Name of the plugin
+#. Author of the plugin
+msgid "Cackle"
+msgstr "Cackle"
+
+#: cackle_admin.php:130
+msgid "(comments)"
+msgstr "(комментариев)"
+
+#: cackle_admin.php:129
+msgid "Last successfull synced comments was for post_id = "
+msgstr "Последние удачно синхронизованные комментарии для поста с id = "
+
+#: cackle_admin.php:128
+msgid "Last successfull exported comments was for post_id = "
+msgstr "Последние удачно экспортированные комментарии для поста с id = "
+
+#: cackle_admin.php:127
+msgid "Unable to connect with Cackle"
+msgstr "Невозможно связаться с сервером Cackle"
+
+#: cackle_admin.php:126
+msgid "Error 500. Unable to connect server. Check server or internet"
+msgstr "Ошибка 500. Невозможно соединиться с сервером. Проверьте работу сервера или интернет соединения"
+
+#: cackle_admin.php:125
+msgid "with specified error: "
+msgstr " со следующей ошибкой: "
+
+#: cackle_admin.php:123 cackle_admin.php:154
+msgid "Paid white label option"
+msgstr "Оплачена опция Без копирайта"
+
+#: cackle_admin.php:122 cackle_admin.php:156
+msgid "Paid Single Sign On option"
+msgstr "Оплачена опция Единая авторизация"
+
+#: cackle_admin.php:120
+msgid "Plugin was not activated, check keys"
+msgstr "Плагин не был активирован, проверьте ключи и активируйте снова"
+
+#: cackle_admin.php:119
+msgid "Plugin was successfully activated"
+msgstr "Плагин был успешно активирован и готов к работе!"
+
+#: cackle_admin.php:118
+msgid "The entered keys are wrong. Please check it again. Plugin was not activated"
+msgstr "Введены неверные ключи. Проверьте правильность ввода ключей. Плагин не активирован!"
+
+#: cackle_admin.php:117
+msgid "Plugin was successfully activated!"
+msgstr "Плагин был успешно активирован!"
+
+#: cackle_admin.php:116
+msgid "Success"
+msgstr "Успешная активация!"
+
+#: cackle_admin.php:115
+msgid "Warning"
+msgstr "Предупреждение"
+
+#: cackle_admin.php:113
+msgid "Safe mode is enabled and sync cannot work with it. Go to the php.ini and set safe_mode = off to disable, and then click to Activate button again."
+msgstr "Для правильной работы синхронизации параметр safe mode должен быть выключен.<br> 1. Откройте файл php.ini (по дефолту /etc/php5/cli/php.ini) <br>2. Найдите параметр  safe_mode и установите значение off, в итоге должно получиться <b> safe_mode = off</b> <br>3. Перейдите в Cackle настройки и кликните кнопку Активировать."
+
+#: cackle_admin.php:112
+msgid "Open_basedir have some value and sync cannot work with it. Go to the php.ini and set ; before it to disable, and then click to Activate button again."
+msgstr "Для правильной работы синхронизации параметр open_basedir должен быть пустым. <br> 1. Откройте файл php.ini (по дефолту /etc/php5/cli/php.ini) <br>2. Найдите параметр open_basedir и закомментируйте его, в итоге должно получиться <b>;openbase_dir</b> <br>3. Перейдите в Cackle настройки и кликните кнопку Активировать."
+
+#: cackle_admin.php:111
+msgid "You need to enable curl extension in your hosting server, and then click to Activate button again."
+msgstr "Для успешной работы синхронизации вам необходимо активировать расширение curl для php в настройках вашего сервера. <br> 1. Откройте файл php.ini (по дефолту /etc/php5/cli/php.ini) <br>2. Найдите строку с  <b>;extension=php_curl.dll </b> и разкомментируйте ее, в итоге должно получиться <b>extension=php_curl.dll</b> <br>3. Перейдите в Cackle настройки и кликните кнопку Активировать."
+
+#: cackle_admin.php:109
+msgid "All comments were synchronized successfully to Cackle!"
+msgstr "Все комментарии были успешно синхронизованы в БД Wordpress!"
+
+#: cackle_admin.php:108
+msgid "Processed sync comments was stopped for post_id = "
+msgstr "Синхронизация комментариев была прервана для поста с id = "
+
+#: cackle_admin.php:107
+msgid "Processed sync comments for post_id = "
+msgstr "Синхронизация комментариев для поста с id = "
+
+#: cackle_admin.php:105
+msgid "All comments were exported successfully to Cackle!"
+msgstr "Все комментарии были успешно экспортированы в Cackle!"
+
+#: cackle_admin.php:104
+msgid "Processed export comments was stopped for post_id = "
+msgstr "Экспорт комментариев был остановлен для поста с id = "
+
+#: cackle_admin.php:103
+msgid "Processed export comments for post_id = "
+msgstr "Экспорт комментариев для поста с id = "
+
+#: cackle_admin.php:100
+msgid "Sync process"
+msgstr "Процесс синхронизации"
+
+#: cackle_admin.php:99
+msgid "Export process"
+msgstr "Процесс экспорта"
+
+#: cackle_admin.php:98 cackle_admin.php:121 cackle_admin.php:155
+msgid "Cackle widget language"
+msgstr "Локализация виджета"
+
+#: cackle_admin.php:97 cackle_admin.php:101
+msgid "Stop"
+msgstr "Остановить"
+
+#: cackle_admin.php:96
+msgid "Continue"
+msgstr "Продолжить"
+
+#: cackle_admin.php:95
+msgid "Start"
+msgstr "Начать"
+
+#: cackle_admin.php:94
+msgid "This will download your Cackle comments and store them locally in WordPress"
+msgstr "Синхронизация комментариев с виджета Cackle в локальную БД Wordpress"
+
+#: cackle_admin.php:93
+msgid "This will export your existing WordPress comments to Cackle"
+msgstr "Экспорт существующих в БД Wordpress комментариев в виджет Cackle"
+
+#: cackle_admin.php:92
+msgid "Single sign on"
+msgstr "Единая авторизация"
+
+#: cackle_admin.php:91 cackle_admin.php:157
+msgid "Plugin activated"
+msgstr "Статус активации плагина"
+
+#: cackle_admin.php:90
+msgid "Activate"
+msgstr "Активировать"
+
+#: cackle_admin.php:88
+msgid "Enable sync(SEO)"
+msgstr "Синхронизация(вкл)"
+
+#: cackle_admin.php:87
+msgid "Enable SSO"
+msgstr "Единая авторизация(вкл)"
+
+#: cackle_admin.php:86
+msgid "Warnings and errors"
+msgstr "Ошибки, предупреждения, уведомления"
+
+#: cackle_admin.php:85
+msgid "Cackle plugin status and account availiable options"
+msgstr "Статус установки плагина и активные опции аккаунта Cackle"
+
+#: cackle_admin.php:84
+msgid "Sync comments"
+msgstr "Синхронизация комментариев"
+
+#: cackle_admin.php:83
+msgid "Export comments"
+msgstr "Экспорт комментариев"
+
+#: cackle_admin.php:82
+msgid "Check status"
+msgstr "Проверка статуса установки и акккаунта"
+
+#: cackle_admin.php:81
+msgid "Cackle plugin installation"
+msgstr "Установка плагина Cackle"
+
+#: cackle.php:47
+msgid "Cackle settings"
+msgstr "Cackle настройки"
+
+#: cackle.php:42
+msgid "Cackle moderate"
+msgstr "Cackle модерация"
