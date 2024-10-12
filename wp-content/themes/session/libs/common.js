@@ -67,7 +67,30 @@ function runSlick() {
   $('.work_wrap').slick(slickVar);
  }
  $('.univer_wrap').slick(slickVar);
- $('.team_box').slick(slickVar);
+ /*$('.team_box').slick(
+  {
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    // centerMode: true,
+    variableWidth: true,
+    arrows: true,
+    dots: true,
+    prevArrow: '<button type="button" class="slick-prev"></button>',
+    nextArrow: '<button type="button" class="slick-next"></button>',
+    responsive: [
+     {
+       breakpoint: 575,
+       settings: {
+         dots: false,
+         slidesToShow: 1,
+       slidesToScroll: 1,
+         variableWidth: false,
+         centerPadding: '10px'
+       }
+     }
+   ]
+  }
+ );*/
  $('.artic_box').slick({
   slidesToShow: 3,
   slidesToScroll: 3,
@@ -92,12 +115,12 @@ function runSlick() {
 });
 };
 runSlick();
- $(window).on('resize', function(){
+ /*$(window).on('resize', function(){
    var width = $(window).width();
    if(575 > width ) {
      runSlick();
    }
- });
+ });*/
 	
 
 	
