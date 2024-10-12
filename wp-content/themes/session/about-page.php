@@ -3,6 +3,11 @@
 Template Name: Страница о нас
 */
 ?>
+<style>
+	#menu-top li{
+		display: none;
+	}
+</style>
 <? get_header();  ?>
 <div class="rings_box">
 	<div class="container">
@@ -112,10 +117,10 @@ Template Name: Страница о нас
 		</div>
 		<div class="visible-super supervisor">
 			<div class="visible-super-container container">
-				<div class="visor_info">
-					<div class="visor_post"><?php the_field("supervisor_main",2); ?></div>
-					<div class="visor_name"><span><?php the_field("supervisor_name",2); ?></span> <?php the_field("supervisor_fname",2); ?></div>
-					<div class="visor_desc"><?php the_field("supervisor_info",2); ?></div>
+				<div class="visor-new visor_info">
+					<div class="visor-new_post visor_post"><?php the_field("supervisor_main",2); ?></div>
+					<div class="visor-new_name visor_name"><span><?php the_field("supervisor_name",2); ?></span> <?php the_field("supervisor_fname",2); ?></div>
+					<div class="visor-new_desc visor_desc"><?php the_field("supervisor_info",2); ?></div>
 				</div>
 				<img class="image-visor" src="<?php echo get_template_directory_uri(); ?>/img/visor_photo.png" alt="">
 			</div>

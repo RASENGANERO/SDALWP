@@ -67,7 +67,10 @@ function runSlick() {
   $('.work_wrap').slick(slickVar);
  }
  $('.univer_wrap').slick(slickVar);
- /*$('.team_box').slick(
+
+
+
+ $('.team_box').slick(
   {
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -83,14 +86,16 @@ function runSlick() {
        settings: {
          dots: false,
          slidesToShow: 1,
-       slidesToScroll: 1,
+         slidesToScroll: 1,
          variableWidth: false,
          centerPadding: '10px'
        }
      }
    ]
   }
- );*/
+ );
+ 
+ 
  $('.artic_box').slick({
   slidesToShow: 3,
   slidesToScroll: 3,

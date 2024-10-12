@@ -43,7 +43,7 @@
 
 			<nav>
 
-				<ul>
+				<ul id="menu-top">
 
 					<li <?php if(is_front_page()){ echo 'class="active"'; } ?> ><a href="<?php if(is_front_page()){ echo '#body'; }else{ echo "/";} ?>">ГЛАВНАЯ</a></li>
 
