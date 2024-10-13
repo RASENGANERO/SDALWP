@@ -179,14 +179,13 @@ $(window).scroll(function(){
 				mc.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cackle.me/widget.js';
 				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
 			})();
-	$('.univer_wrap').slick({
+	/*$('.univer_wrap').slick({
  dots: false,
  arrows: false,
  infinite: true,
  speed: 300,
  slidesToShow: 1,
  slidesToScroll: 1,
- mobileFirst: true,
  arrows: true,
  prevArrow: '<button type="button" class="slick-prev"></button>',
  nextArrow: '<button type="button" class="slick-next"></button>',
@@ -205,35 +204,31 @@ $(window).scroll(function(){
      settings: 'unslick'
    }
  ]
-});
-				
+});*/
+
 $('.team_box').slick({
- dots: false,
- arrows: false,
- infinite: true,
- speed: 300,
- slidesToShow: 1,
- slidesToScroll: 1,
- mobileFirst: true,
- arrows: true,
- prevArrow: '<button type="button" class="slick-prev"></button>',
- nextArrow: '<button type="button" class="slick-next"></button>',
- responsive: [
-   {
-     breakpoint: 575,
-     settings: {
-      slidesToShow: 2,
-      slidesToScroll: 1,
-      dots: false,
-      arrows: false
-     }
-   },
-   {
-     breakpoint: 1023,
-     settings: 'unslick'
-   }
- ]
+  slidesToShow: 3,
+  slidesToScroll: 3,
+  centerMode: true,
+  arrows: true,
+  dots: true,
+  infinite:true,
+  cssEase: 'linear',
+  mobileFirst:true,
+  prevArrow: '<button type="button" class="slick-prev"></button>',
+  nextArrow: '<button type="button" class="slick-next"></button>',
+  responsive: [
+    {
+      breakpoint: 1270,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+      }
+    }
+  ]
 });
+
+
 				
 	$('.artic_box').slick({
 	  slidesToShow: 3,
@@ -370,6 +365,36 @@ $('.team_box').slick({
   });
 
 });
-
+$(window).on('resize', function(){
+  var width = $(window).width();
+  if(575 > width ) {
+    $('.univer_wrap').slick({
+      dots: false,
+      arrows: false,
+      infinite: true,
+      speed: 300,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: true,
+      prevArrow: '<button type="button" class="slick-prev"></button>',
+      nextArrow: '<button type="button" class="slick-next"></button>',
+      responsive: [
+        {
+          breakpoint: 575,
+          settings: {
+           slidesToShow: 2,
+           slidesToScroll: 1,
+           dots: false,
+           arrows: false
+          }
+        },
+        {
+          breakpoint: 1023,
+          settings: 'unslick'
+        }
+      ]
+     });
+  }
+});
 
 

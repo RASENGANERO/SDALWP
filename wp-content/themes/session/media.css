@@ -77,13 +77,6 @@
 		position: relative;
 		z-index: 9;
 	}
-	.team_box{
-		margin-left: -20px;
-		margin-right: -20px;
-	}
-	.team_item{
-		margin: 0 20px 129px;
-	}
 	.form_order .header_form{
 		max-width: 50%;
 	}
@@ -954,6 +947,7 @@ font-weight: 300;
 		margin-right: -20px;
 
 		padding: 0 20px;
+		max-height: 210px;
 
 	}
 
@@ -1026,12 +1020,7 @@ font-weight: 300;
 
 
 	.team_box{
-
-		margin: 48px auto 0;
-
-		margin-left: -20px;
-
-		margin-right: -20px;
+		margin-top: 29px;
 	}
 
 	.team_item:hover .team_desc{
@@ -1042,8 +1031,21 @@ font-weight: 300;
 
 	.team_item{
 
-		margin: 0 20px 90px;
+		margin: 0 20px -3px;
 
+	}
+	.team_desc{
+		min-height: 214px;
+	}
+	.team_box .slick-arrow.slick-next{
+		right: -39px !important;
+		width: 35px;
+		height: 35px;
+	}
+	.team_box .slick-arrow.slick-prev{
+		left: -39px !important;
+		width: 35px;
+		height: 35px;
 	}
 
 
@@ -1216,4 +1218,21 @@ font-weight: 300;
 	}
 
 }
-
+@media(max-width:480px) {
+	.team_box .slick-arrow.slick-next{
+		right: 5px !important;
+		background-color: white;
+		border: 1px solid black;
+	}
+	.team_box .slick-arrow.slick-prev{
+		left: 5px !important;
+		background-color: white;
+		border: 1px solid black;
+	}
+	.team_box{
+		left: 0px;
+	}
+}
+.univer_wrap slick-initialized slick-slider{
+	max-height: 210px;
+}

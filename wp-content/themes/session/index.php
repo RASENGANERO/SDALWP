@@ -184,6 +184,25 @@ get_header();  ?>
 			<a href="#" class="show_more"><span>ПОКАЗАТЬ ЕЩЕ</span> <i></i></a>
 		</div>
 	</div>
+	<div class="our_team" id="about">
+		<div class="container">
+			<div class="section_title"><h2>О нас</h2></div>
+		</div>
+		<div class="visible-super supervisor">
+            <div class="video-container">
+                <div class="video-text-container">
+                    <span class="video-text">СЕССИЮ СДАЛ! — это центр с многолетним опытом работы, который помогает студентам всех ВУЗов и специальностей успешно справляться с учебными задачами. Мы предлагаем высококвалифицированную поддержку в сдаче сессии, благодаря нашим преподавателям высших учебных заведений и экспертам с многолетним опытом в различных научных областях.</span>
+                    <span class="video-text">Мы предлагаем сделать этот процесс проще и эффективнее, чтобы у вас было больше времени на важные дела. С нами возможна дистанционная сдача экзаменов и написание работ. Кроме того, наши специалисты готовы проконсультировать по предметам и темам.</span>
+                    <span class="video-text">Наш опыт позволяет гарантировать успешную сдачу благодаря прямому взаимодействию с исполнителями, что исключает недопонимания. Мы обеспечиваем полную конфиденциальность, высокое качество и выполнение работы в срок. С СЕССИЮ СДАЛ! сдача сессии — это просто, надежно и быстро!</span>
+                </div>
+                <div class="video-visor-container">
+                    <video class="video-visor" controls>
+                        <source src="<?php echo get_template_directory_uri(); ?>/video/about.mp4" type="video/mp4" />
+                    </video>
+                </div>
+            </div>
+		</div>
+	</div>
 	<div class="our_team" id="our-team">
 		<div class="container">
 			<div class="section_title"><h2>Наша <strong>КОМАНДА</strong></h2></div>
