@@ -67,9 +67,21 @@ get_header(); ?>
 		</div>
 	</div>
 </header>
+<?php
+	$marksArray = getMarks($post->ID);
+?>
 	<div class="article_section">
 		<div class="container">
 			<?php the_content(); ?>
+			<? if (!empty($marksArray)): ?>
+				<div class="mark-container">
+					<? foreach($marksArray as $markItem):?>
+					<div class="mark-item">
+						<span class="mark-item-text"><?php echo $markItem->name;?></span>
+					</div>
+					<? endforeach; ?>
+				</div>
+			<? endif; ?>
 		</div>
 	</div>
 	<div class="reviews" id="reviews">

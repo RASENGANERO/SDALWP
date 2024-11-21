@@ -44,10 +44,10 @@ Template Name: Страница о нас
 					</div>
 					<div class="header_box">
 						<div class="header_title">
-							<h1>“<span>СЕССИЮ</span> СДАЛ!”</h1>
-							<div><div class="hyphen"></div> СОВРЕМЕННЫЙ</div>
-							<div><span>центр</span> помощи</div>
-							<div><strong>студентам</strong></div>
+							<h1><span>Центр помощи студентам</span> «СЕССИЮ СДАЛ!»</h1>
+							<div><div class="hyphen"></div> Современное решение</div>
+							<div><span></span> для студентов</div>
+							<div><strong></strong></div>
 						</div>
 						<div class="header_desc"><?php the_content(); ?></div>
 					</div>
@@ -60,8 +60,8 @@ Template Name: Страница о нас
 								<div><img src="<?php echo get_template_directory_uri(); ?>/img/service_icon1.svg" alt=""></div>
 							</div>
 						</div>
-						<div class="service_title">Доступные цены</div>
-						<div class="service_desc">Задачи от 800 рублей, <br>рефераты от 2000 рублей,<br>курсовые от 5000 рублей</div>
+						<div class="service_title">Индивидуальный подход к каждому студенту</div>
+						<div class="service_desc"></div>
 					</div>
 					<div class="service_item">
 						<div class="service_icon">
@@ -70,8 +70,8 @@ Template Name: Страница о нас
 								<div><img src="<?php echo get_template_directory_uri(); ?>/img/service_icon2.svg" alt=""></div>
 							</div>
 						</div>
-						<div class="service_title">Сроки от 6 часов</div>
-						<div class="service_desc">Мы выполняем самые <br>срочные работы</div>
+						<div class="service_title">Экспертная помощь в любых учебных вопросах</div>
+						<div class="service_desc"></div>
 					</div>
 					<div class="service_item">
 						<div class="service_icon">
@@ -80,8 +80,8 @@ Template Name: Страница о нас
 								<div><img src="<?php echo get_template_directory_uri(); ?>/img/service_icon3.svg" alt=""></div>
 							</div>
 						</div>
-						<div class="service_title">Бесплатные правки</div>
-						<div class="service_desc">После написания работы  <br>правки могут вноситься <br>абсолютно <i>БЕСПЛАТНО</i></div>
+						<div class="service_title">Удобство и доступность на любом этапе обучения</div>
+						<div class="service_desc"></i></div>
 					</div>
 				</div>
 			</div>
@@ -100,8 +100,8 @@ Template Name: Страница о нас
             <div class="video-container">
                 <div class="video-text-container">
                     <span class="video-text">СЕССИЮ СДАЛ! — это центр с многолетним опытом работы, который помогает студентам всех ВУЗов и специальностей успешно справляться с учебными задачами. Мы предлагаем высококвалифицированную поддержку в сдаче сессии, благодаря нашим преподавателям высших учебных заведений и экспертам с многолетним опытом в различных научных областях.</span>
-                    <span class="video-text">Мы предлагаем сделать этот процесс проще и эффективнее, чтобы у вас было больше времени на важные дела. С нами возможна дистанционная сдача экзаменов и написание работ. Кроме того, наши специалисты готовы проконсультировать по предметам и темам.</span>
-                    <span class="video-text">Наш опыт позволяет гарантировать успешную сдачу благодаря прямому взаимодействию с исполнителями, что исключает недопонимания. Мы обеспечиваем полную конфиденциальность, высокое качество и выполнение работы в срок. С СЕССИЮ СДАЛ! сдача сессии — это просто, надежно и быстро!</span>
+                    <span class="video-text">Мы предлагаем сделать этот процесс проще и эффективнее, чтобы у вас было больше времени на важные дела. С нами возможна дистанционная сдача экзаменов и написание работ. Кроме того, наши специалисты готовы проконсультировать по всем предметам и темам.</span>
+                    <span class="video-text"></span>
                 </div>
                 <div class="video-visor-container">
                     <video class="video-visor" controls>
@@ -154,8 +154,9 @@ Template Name: Страница о нас
 				<?php echo apply_shortcodes( '[contact-form-7 id="106" title="Узнать стоимость"]' ); ?>
 			</div>
 			<div class="form_order__desc">
-				<div class="form_title">Мы гарантируем Вам <br><strong>УВЕРЕННОСТЬ</strong> и <br><strong>СПОКОЙСТВИЕ</strong> на сессии</div>
-				<div class="form_desc">Коллектив <strong>“СЕССИЮ СДАЛ!”</strong> - <br>это Ваша надежная поддержка <br>во время учебы.</div>
+				<div class="form_title">Мы обеспечиваем<br><strong>высокое качество </strong><br><strong>и выполнение работы в срок.</strong></div>
+				<div class="form_desc"><strong>С НАМИ</strong><br>сдача сессии — это просто, надежно и быстро!
+</div>
 			</div>
 		</div>
 	</div>		

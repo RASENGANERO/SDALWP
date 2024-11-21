@@ -55,6 +55,11 @@ add_action( 'template_redirect', function(){
 }, 1);
 
 
+/* Получение меток поста */
+function getMarks($ID){
+	return get_the_tags($ID);
+}
+
 /* Отключает чекбокс GDPR */
 function comment_form_hide_cookies_consent( $fields ) {
 	unset( $fields['cookies'] );

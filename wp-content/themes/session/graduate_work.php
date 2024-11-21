@@ -76,6 +76,9 @@ get_header();  ?>
 					
 					</div>
 					
+					<?php
+						$marksArray = getMarks($post->ID);
+					?>
 					
 					<div class="header_img header_img2">
 					<div class="img_box" style='background: url("<?php echo get_the_post_thumbnail_url(); ?>") no-repeat center; background-size: contain;'></div>
@@ -91,6 +94,15 @@ get_header();  ?>
 					<div class="article_section" style="padding-top: 93px;">
 					<div class="container">
 					<?php the_content(); ?>
+					<? if (!empty($marksArray)): ?>
+						<div class="mark-container">
+							<? foreach($marksArray as $markItem):?>
+								<div class="mark-item">
+									<span class="mark-item-text"><?php echo $markItem->name;?></span>
+								</div>
+							<? endforeach; ?>
+						</div>
+					<? endif; ?>
 					</div>
 					</div>
 					<noindex><div class="excell_txt">
