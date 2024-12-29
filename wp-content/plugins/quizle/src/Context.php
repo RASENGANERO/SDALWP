@@ -7,6 +7,7 @@ use WP_Error;
 use WP_Post;
 use WP_Term;
 use WP_User;
+use function Wpshop\PluginMyPopup\is_preview_mode;
 
 /**
  * @property bool $is_home
@@ -16,6 +17,7 @@ use WP_User;
  * @property bool $is_tax
  * @property bool $is_search
  * @property bool $is_404
+ * @property bool $is_preview
  */
 class Context implements JsonSerializable {
 
@@ -81,7 +83,7 @@ class Context implements JsonSerializable {
         $mac = $data['_mac'] ?? '';
         unset( $data['_mac'] );
         if ( ! hash_equals( self::get_mac( $data ), $mac ) ) {
-            return new WP_Error( '', __( 'Unable to get proper data', QUIZLE_TEXTDOMAIN ) );
+            return new WP_Error( 'wrong_context', __( 'Unable to get proper data', QUIZLE_TEXTDOMAIN ) );
         }
 
         $instance = new self();
@@ -100,12 +102,18 @@ class Context implements JsonSerializable {
                 'is_tax',
                 'is_search',
                 'is_404',
+                'is_preview',
             ] as $key
         ) {
             $instance->conditions[ $key ] = ! empty( $data[ $key ] );
         }
 
-        foreach ( (array) apply_filters( 'my_popup:context_conditions', [] ) as $key => $value ) {
+        /**
+         * Allows to add additional conditions for the context
+         */
+        $conditions = (array) apply_filters( 'quizle/context/conditions', [] );
+
+        foreach ( $conditions as $key => $value ) {
             if ( ! array_key_exists( $key, $instance->conditions ) ) {
                 $instance->conditions[ $key ] = ! empty( $data[ $key ] );
             }
@@ -134,6 +142,7 @@ class Context implements JsonSerializable {
         $instance->conditions['is_tax']      = is_tax();
         $instance->conditions['is_search']   = is_search();
         $instance->conditions['is_404']      = is_404();
+        $instance->conditions['is_preview']  = is_preview();
 
 
         foreach ( (array) apply_filters( 'my_popup:context_conditions', [] ) as $key => $value ) {
@@ -227,6 +236,7 @@ class Context implements JsonSerializable {
     /**
      * @return array
      */
+    #[\ReturnTypeWillChange]
     public function jsonSerialize() {
         $result = [];
         foreach ( $this->conditions as $key => $value ) {
@@ -268,6 +278,13 @@ class Context implements JsonSerializable {
             $result[] = "$key:$value";
         }
 
-        return md5( AUTH_KEY . implode( '|', $result ) );
+        /**
+         * Allows to change used salt for context mac
+         *
+         * @since 1.2.0
+         */
+        $salt = add_filter( 'quizle/context/salt', defined( 'AUTH_KEY' ) ? AUTH_KEY : '' );
+
+        return md5( $salt . implode( '|', $result ) );
     }
 }

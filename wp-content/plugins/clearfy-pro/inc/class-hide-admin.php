@@ -29,11 +29,6 @@ class Clearfy_Hide_Admin {
             return;
         }
 
-        add_filter( 'comment_moderation_text', function( $notify_message ) {
-            $notify_message = str_replace( admin_url(), $this->new_login_url(), $notify_message );
-            return $notify_message;
-        } );
-
         add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ), 1 );
         add_action( 'wp_loaded', array( $this, 'wp_loaded' ) );
 

@@ -7,9 +7,8 @@
  *
  **/
  
-// If this file is called directly, abort
-if ( ! defined( 'WPINC' ) ) {
-	die;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
 }
 
 
@@ -56,7 +55,7 @@ function pp_404page() {
     'slug'      => pathinfo( dirname( __FILE__ ) . '/404page.php', PATHINFO_FILENAME ),
     'name'      => 'Smart Custom 404 error page [404page]',
     'shortname' => '404page',
-    'version'   => '11.4.6'
+    'version'   => '11.4.8'
   ) );
     
 }
@@ -67,6 +66,3 @@ function pp_404page() {
  * Run the plugin
  */
 pp_404page();
-
-
-?>

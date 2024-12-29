@@ -1,12 +1,15 @@
 <?php
 
+/**
+ * @version 1.3.0
+ */
+
 defined( 'WPINC' ) || die;
 
-use Wpshop\Quizle\PluginContainer;
 use Wpshop\Quizle\Social;
 use function Wpshop\Quizle\build_attributes;
+use function Wpshop\Quizle\container;
 use function Wpshop\Quizle\get_quizle_result_url;
-use const Wpshop\Quizle\COOKIE_UID;
 
 /**
  * @var array $args
@@ -19,7 +22,7 @@ $result_item = $args['result_item'];
 $btn_text = $args['btn_text'] ?? apply_filters( 'quizle/result/default_btn_text', __( 'Nice', QUIZLE_TEXTDOMAIN ), $result );
 $btn_link = $args['link'] ?: '#';
 
-$social = PluginContainer::get( Social::class );
+$social = container()->get( Social::class );
 
 ?>
 <div class="<?php esc_attr_e( $args['classes'] ) ?>" style="<?php esc_attr_e( $args['style'] ); ?>">
@@ -34,7 +37,18 @@ $social = PluginContainer::get( Social::class );
             <div class="quizle-image-screen__description"><?php echo apply_filters( 'quizle/result/description', $args['description'], $result ) ?></div>
             <?php if ( $btn_text ): ?>
                 <div class="quizle-image-screen__button">
-                    <a class="quizle-button js-quizle-result-button" href="<?php esc_attr_e( $btn_link ) ?>"><?php esc_html_e( $btn_text ); ?></a>
+                    <?php if ( has_action( 'quizle/result/result_button' ) ): ?>
+                        <?php
+                        /**
+                         * Allows to change output of quizle result button
+                         *
+                         * @since 1.2
+                         */
+                        do_action( 'quizle/result/result_button', compact( 'btn_text', 'btn_link', 'result', 'result_item' ) )
+                        ?>
+                    <?php else: ?>
+                        <a class="quizle-button js-quizle-result-button" href="<?php esc_attr_e( $btn_link ) ?>"><?php esc_html_e( $btn_text ); ?></a>
+                    <?php endif ?>
                 </div>
             <?php endif ?>
 

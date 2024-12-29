@@ -3,7 +3,7 @@
  * Plugin Name: Clearfy Pro
  * Plugin URI:  https://wpshop.ru/plugins/clearfy
  * Description: Очищает код WP от лишнего мусора, улучшает SEO, убирает дубли, усиливает защиту и не только! Смотрите полное описание на странице настроек
- * Version:     3.5.3
+ * Version:     3.6.4
  * Author:      WPShop.ru
  * Author URI:  https://wpshop.ru/
  * License:     WPShop License
@@ -11,9 +11,15 @@
  * Text Domain: clearfy-pro
  * Domain Path: /languages/
  */
+
+use WPShop\ClearfyPro\ClearfyCloud;
+use WPShop\ClearfyPro\DisableFeeds;
+
 if ( ! defined( 'WPINC' ) ) {
     die;
 }
+
+require_once __DIR__ . '/vendor/autoload.php';
 
 
 if( ! class_exists( 'Clearfy_Plugin' ) ):
@@ -123,7 +129,7 @@ if( ! class_exists( 'Clearfy_Plugin' ) ):
 
             // set variables
             $this->plugin_name      = 'clearfy-pro';
-            $this->version          = '3.5.3';
+            $this->version          = '3.6.4';
             $this->api_url          = 'https://wpshop.ru/api.php';
             $this->api_update_url   = 'https://api.wpgenerator.ru/wp-update-server/?action=get_metadata&slug=' . $this->plugin_name;
             $this->check_license    = $this->check_license();
@@ -131,6 +137,7 @@ if( ! class_exists( 'Clearfy_Plugin' ) ):
 
             // set options
             $this->options = get_option($this->option_name);
+
 
             /**
              * Plugin Options
@@ -158,24 +165,6 @@ if( ! class_exists( 'Clearfy_Plugin' ) ):
 	        }
 
 
-            $default_options = apply_filters( 'clearfy_options_defaults', array(
-                'cookie_message_text'               => __( 'This website uses cookies to improve user experience. By continuing to use the site, you consent to the use of cookies.', $this->plugin_options->text_domain ),
-                'cookie_message_position'           => 'bottom',
-                'cookie_message_button_text'        => 'OK',
-                'cookie_message_color'              => '#555555',
-                'cookie_message_background'         => '#ffffff',
-                'cookie_message_button_background'  => '#4b81e8',
-
-                'login_attempts_allowed_retries'    => 5,
-                'login_attempts_allowed_lockouts'   => 3,
-                'login_attempts_lockout_duration'   => 15,
-                'login_attempts_long_duration'      => 24,
-            ) );
-            $this->plugin_options->set_default_options( $default_options );
-
-
-            // add localization
-            add_action( 'plugins_loaded', array( $this, 'load_plugin_textdomain_localization' ) );
 
             /**
              * Automatic plugin update checker
@@ -316,6 +305,18 @@ if( ! class_exists( 'Clearfy_Plugin' ) ):
              * If license is ok
              */
             if ($this->check_license) {
+
+                add_action( 'plugins_loaded', function() {
+
+                    $disable_feeds = new DisableFeeds();
+                    $disable_feeds->init();
+
+                    $clearfy_cloud = new ClearfyCloud();
+                    $clearfy_cloud->init();
+
+                });
+
+
 
 
                 /**
@@ -508,10 +509,6 @@ if( ! class_exists( 'Clearfy_Plugin' ) ):
                 }
 
 
-                if ($this->check_option('disable_feed')) {
-                    Clearfy_Plugin::disable_feed();
-                }
-
                 if ($this->check_option('remove_url_from_comment_form')) {
                     add_filter( 'comment_form_default_fields', array($this, 'remove_url_from_comment_form') );
                     add_filter( 'comment_form_fields', array($this, 'remove_url_from_comment_form') );
@@ -538,7 +535,7 @@ if( ! class_exists( 'Clearfy_Plugin' ) ):
                 }
 
                 if ($this->check_option('disable_keystrokes')) {
-                    add_action( 'wp_footer', array($this, 'disable_keystrokes') );
+                    add_action( 'wp_footer', array( $this, 'disable_keystrokes' ) );
                 }
 
                 if ( $this->check_option('disable_selection_text') ) {
@@ -870,11 +867,18 @@ if( ! class_exists( 'Clearfy_Plugin' ) ):
                 $cat_id = $cat->cat_ID;
                 return get_category_link( $cat_id );
             }
+            if ( is_tag() && is_paged() ) {
+                $wp_query = $GLOBALS['wp_the_query'];
+                $queried_object = $wp_query->get_queried_object();
+                if ( $queried_object && ! is_wp_error( $queried_object ) ) {
+                    return get_term_link( $queried_object->term_id );
+                }
+            }
             if ( is_tax() && is_paged() ) {
                 $wp_query = $GLOBALS['wp_the_query'];
                 $queried_object = $wp_query->get_queried_object();
                 if ( $queried_object && ! is_wp_error( $queried_object ) ) {
-                    return get_term_link( $queried_object->term_id, get_query_var( 'taxonomy' )  );
+                    return get_term_link( $queried_object->term_id, get_query_var( 'taxonomy' ) );
                 }
             }
             if ( is_author() && is_paged() ) {
@@ -1029,6 +1033,7 @@ if( ! class_exists( 'Clearfy_Plugin' ) ):
                     if (isset($_SERVER['HTTP_IF_MODIFIED_SINCE']) && strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE']) >= $modified_time) {
                         $protocol = (isset($_SERVER['SERVER_PROTOCOL']) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0');
                         header($protocol . ' 304 Not Modified');
+						die();
                     }
                 }
             }
@@ -1234,6 +1239,8 @@ if( ! class_exists( 'Clearfy_Plugin' ) ):
         public function content_image_auto_alt( $content ) {
             global $post;
 
+
+
             // if not singular - return
             if ( ! is_singular() ) {
                 return $content;
@@ -1357,19 +1364,19 @@ if( ! class_exists( 'Clearfy_Plugin' ) ):
          */
         public function add_message_cookie_style() {
 
-            $cookie_message_color = $this->plugin_options->get_option( 'cookie_message_color', $this->plugin_options->default_options['cookie_message_color'] );
-            $cookie_message_background = $this->plugin_options->get_option( 'cookie_message_background', $this->plugin_options->default_options['cookie_message_background'] );
-            $cookie_message_button_background = $this->plugin_options->get_option( 'cookie_message_button_background', $this->plugin_options->default_options['cookie_message_button_background'] );
+            $cookie_message_color = $this->plugin_options->get_option( 'cookie_message_color', $this->plugin_options->get_default_option('cookie_message_color') );
+            $cookie_message_background = $this->plugin_options->get_option( 'cookie_message_background', $this->plugin_options->get_default_option('cookie_message_background') );
+            $cookie_message_button_background = $this->plugin_options->get_option( 'cookie_message_button_background', $this->plugin_options->get_default_option('cookie_message_button_background') );
 
             $out = '';
 
             $out .= '<style>';
-            $out .= '.clearfy-cookie { position:fixed; left:0; right:0; bottom:0; padding:12px; color:' . $cookie_message_color . '; background:' . $cookie_message_background . '; -webkit-box-shadow:0 0 15px rgba(0,0,0,.2); -moz-box-shadow:0 0 15px rgba(0,0,0,.2); box-shadow:0 0 15px rgba(0,0,0,.2); z-index:9999; font-size: 13px; transition: .3s; }';
+            $out .= '.clearfy-cookie { position:fixed; left:0; right:0; bottom:0; padding:12px; color:' . $cookie_message_color . '; background:' . $cookie_message_background . '; box-shadow:0 3px 20px -5px rgba(41, 44, 56, 0.2); z-index:9999; font-size: 13px; border-radius: 12px; transition: .3s; }';
             $out .= '.clearfy-cookie--left { left: 20px; bottom: 20px; right: auto; max-width: 400px; margin-right: 20px; }';
             $out .= '.clearfy-cookie--right { left: auto; bottom: 20px; right: 20px; max-width: 400px; margin-left: 20px; }';
             $out .= '.clearfy-cookie.clearfy-cookie-hide { transform: translateY(150%) translateZ(0); opacity: 0; }';
             $out .= '.clearfy-cookie-container { max-width:1170px; margin:0 auto; text-align:center; }';
-            $out .= '.clearfy-cookie-accept { background:' . $cookie_message_button_background . '; color:#fff; border:0; padding:.4em .8em; margin: 0 .5em; font-size: 13px; cursor: pointer; }';
+            $out .= '.clearfy-cookie-accept { background:' . $cookie_message_button_background . '; color:#fff; border:0; padding:.2em .8em; margin: 0 0 0 .5em; font-size: 13px; border-radius: 4px; cursor: pointer; }';
             $out .= '.clearfy-cookie-accept:hover,.clearfy-cookie-accept:focus { opacity: .9; }';
             $out .= '</style>';
 
@@ -1384,8 +1391,8 @@ if( ! class_exists( 'Clearfy_Plugin' ) ):
         public function add_message_cookie() {
 
             $cookie_message_text = apply_filters( 'clearfy_cookie_message_text', $this->plugin_options->get_option( 'cookie_message_text' ) );
-            $cookie_message_position = $this->plugin_options->get_option( 'cookie_message_position', $this->plugin_options->default_options['cookie_message_position'] );
-            $cookie_message_button_text = $this->plugin_options->get_option( 'cookie_message_button_text', $this->plugin_options->default_options['cookie_message_button_text'] );
+            $cookie_message_position = $this->plugin_options->get_option( 'cookie_message_position', $this->plugin_options->get_default_option('cookie_message_position') );
+            $cookie_message_button_text = $this->plugin_options->get_option( 'cookie_message_button_text', $this->plugin_options->get_default_option('cookie_message_button_text') );
 
             $out = '';
 
@@ -1421,6 +1428,18 @@ if( ! class_exists( 'Clearfy_Plugin' ) ):
          * Disable keystrokes
          */
         public function disable_keystrokes() {
+
+            /**
+             * Enable or disable content protection.
+             *
+             * @since 3.6.0
+             * @param bool $enable
+             * @param string $type
+             */
+            if ( ! apply_filters( 'clearfy/content_protection/enable', true, 'disable_hotkeys' ) ) {
+                return;
+            }
+
             if ( is_user_logged_in() ) return;
             echo '<script>';
             echo 'function disable_keystrokes(e) {';
@@ -1446,6 +1465,18 @@ if( ! class_exists( 'Clearfy_Plugin' ) ):
          * Disable selection text
          */
         public function add_disable_selection_text_scripts() {
+
+            /**
+             * Enable or disable content protection.
+             *
+             * @since 3.6.0
+             * @param bool $enable
+             * @param string $type
+             */
+            if ( ! apply_filters( 'clearfy/content_protection/enable', true, 'text_selection' ) ) {
+                return;
+            }
+
             if ( is_user_logged_in() ) return;
             echo '<script>';
             echo 'function disableSelection(target){';
@@ -1466,6 +1497,17 @@ if( ! class_exists( 'Clearfy_Plugin' ) ):
          * Disable right click
          */
         public function disable_right_click() {
+            /**
+             * Enable or disable content protection.
+             *
+             * @since 3.6.0
+             * @param bool $enable
+             * @param string $type
+             */
+            if ( ! apply_filters( 'clearfy/content_protection/enable', true, 'context_menu' ) ) {
+                return;
+            }
+
             if ( is_user_logged_in() ) return;
             echo '<script>';
             echo 'document.oncontextmenu = function() { return false; }';
@@ -1477,6 +1519,18 @@ if( ! class_exists( 'Clearfy_Plugin' ) ):
          * Add source to link when copying text
          */
         public function add_copy_source_link_scripts() {
+            /**
+             * [en] Hook allowing to enable or disable content protection, for example, for certain pages
+             * [ru] Хук позволяющий включить или отключить защиту контента, например, для определенных страниц
+             *
+             * @since 3.6.0
+             * @param bool $enable
+             * @param string $type
+             */
+            if ( ! apply_filters( 'clearfy/content_protection/enable', true, 'source_link' ) ) {
+                return;
+            }
+
             if ( is_user_logged_in() ) return;
 
             if ( ! empty( $this->options['copy_source_link_text'] ) ) {
@@ -1576,40 +1630,6 @@ if( ! class_exists( 'Clearfy_Plugin' ) ):
 
 
 
-        /**
-         * Disable feeds
-         */
-        public function disable_feed() {
-            //Remove feed links from the <head> section
-            remove_action( 'wp_head', 'feed_links_extra', 3 );
-            remove_action( 'wp_head', 'feed_links', 2 );
-
-            //Redirect feed URLs to home page
-            add_action( 'do_feed', array( $this, 'disable_feed_redirect' ), 1 );
-            add_action( 'do_feed_rdf', array( $this, 'disable_feed_redirect' ), 1 );
-            add_action( 'do_feed_rss', array( $this, 'disable_feed_redirect' ), 1 );
-            add_action( 'do_feed_rss2', array( $this, 'disable_feed_redirect' ), 1 );
-            add_action( 'do_feed_atom', array( $this, 'disable_feed_redirect' ), 1 );
-
-        }
-
-        public function disable_feed_redirect() {
-
-            // if GET param - remove and redirect
-            if( isset( $_GET['feed'] ) ) {
-                wp_redirect( esc_url_raw( remove_query_arg( 'feed' ) ), 301 );
-                exit;
-            }
-
-            // if beauty permalink - remove and redirect
-            if( get_query_var( 'feed' ) !== 'old' ) {
-                set_query_var( 'feed', '' );
-            }
-            redirect_canonical();
-
-            wp_redirect( get_option( 'siteurl' ), 301 );
-            die();
-        }
 
 
 
@@ -1648,12 +1668,16 @@ if( ! class_exists( 'Clearfy_Plugin' ) ):
             //$output .= 'Disallow: */comments' . PHP_EOL;
             $output .= 'Disallow: /*?' . PHP_EOL;
             $output .= 'Disallow: /?s=' . PHP_EOL;
+            $output .= 'Disallow: /?customize_changeset_uuid=' . PHP_EOL;
             $output .= 'Allow: /wp-includes/*.css' . PHP_EOL;
             $output .= 'Allow: /wp-includes/*.js' . PHP_EOL;
             $output .= 'Allow: /wp-content/plugins/*.css' . PHP_EOL;
             $output .= 'Allow: /wp-content/plugins/*.js' . PHP_EOL;
             $output .= 'Allow: /*.css' . PHP_EOL;
-            $output .= 'Allow: /*.js' . PHP_EOL;
+            $output .= 'Allow: /*.js' . PHP_EOL . PHP_EOL;
+
+            $output .= 'User-agent: Yandex' . PHP_EOL;
+            $output .= 'Clean-param: customize_changeset_uuid' . PHP_EOL;
 
             /**
              * Check sitemaps
@@ -1834,16 +1858,63 @@ if( ! class_exists( 'Clearfy_Plugin' ) ):
         }
 
         private function get_ip() {
-            if ( function_exists( 'get_ip' ) ) {
-                $ip = get_ip();
-            } else {
-                $ip = $_SERVER['REMOTE_ADDR'];
+            $ipaddress = '';
+
+            // Список доверенных прокси (если ваш сервер находится за прокси)
+            $trusted_proxies = ['127.0.0.1', '::1']; // Замените на IP ваших доверенных прокси
+
+            // IP-адрес, с которого пришел текущий запрос
+            $remote_addr = $_SERVER['REMOTE_ADDR'];
+
+            // Если запрос пришел от доверенного прокси
+            if (in_array($remote_addr, $trusted_proxies)) {
+                // Проверяем заголовок X-Forwarded-For
+                if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+                    // Может содержать список IP-адресов, берем последний
+                    $forwarded_ips = array_map('trim', explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']));
+                    // Идем по списку с конца, ищем первый валидный IP, который не является доверенным прокси
+                    for ($i = count($forwarded_ips) - 1; $i >= 0; $i--) {
+                        $ip = $forwarded_ips[$i];
+                        if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) !== false && !in_array($ip, $trusted_proxies)) {
+                            $ipaddress = $ip;
+                            break;
+                        }
+                    }
+                }
+
+                // Если не нашли IP в X-Forwarded-For, проверяем другие заголовки
+                if (empty($ipaddress)) {
+                    if (isset($_SERVER['HTTP_X_REAL_IP']) && filter_var($_SERVER['HTTP_X_REAL_IP'], FILTER_VALIDATE_IP)) {
+                        $ipaddress = $_SERVER['HTTP_X_REAL_IP'];
+                    }
+                }
             }
-            return $ip;
+
+            // Если не за прокси или не удалось получить IP из заголовков
+            if (empty($ipaddress)) {
+                if (isset($remote_addr) && filter_var($remote_addr, FILTER_VALIDATE_IP)) {
+                    $ipaddress = $remote_addr;
+                } else {
+                    $ipaddress = 'UNKNOWN';
+                }
+            }
+
+            return $ipaddress;
         }
 
     }
 
-    new Clearfy_Plugin();
+	add_action( 'init', function () {
+		load_plugin_textdomain( 'clearfy-pro', false, basename( dirname(__FILE__) ) . '/languages/' );
+	});
+
+	new Clearfy_Plugin();
 
 endif;
+
+
+function clearfy_get_option( $name, $default = null ) {
+    $options = (array) get_option( 'clearfy_option', [] );
+
+    return array_key_exists( $name, $options ) ? $options[ $name ] : $default;
+}

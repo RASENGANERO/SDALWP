@@ -12,14 +12,14 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @copyright (c) 2017 Webraftic Ltd
  */
-class WbcrCmp_ConfigComments extends WBCR\Factory_Templates_128\Configurate {
+class WbcrCmp_ConfigComments extends WBCR\Factory_Templates_134\Configurate {
 
 	private $modified_types = [];
 
 	/**
-	 * @param Wbcr_Factory475_Plugin $plugin
+	 * @param Wbcr_Factory480_Plugin $plugin
 	 */
-	public function __construct( Wbcr_Factory475_Plugin $plugin ) {
+	public function __construct( Wbcr_Factory480_Plugin $plugin ) {
 		parent::__construct( $plugin );
 		$this->plugin = $plugin;
 	}

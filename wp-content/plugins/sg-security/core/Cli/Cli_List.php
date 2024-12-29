@@ -112,7 +112,7 @@ class Cli_List {
 	 *
 	 * @param  string $type The type of log we want.
 	 *
-	 * @return string       The sql query.
+	 * @return string       The SQL  query.
 	 */
 	public function get_query( $type ) {
 		// Bail if table doesn't exist.
@@ -159,7 +159,7 @@ class Cli_List {
 		// Format the data and prepare it for printing in the terminal.
 		foreach ( $visitors as $visit ) {
 			$table_data[] = array(
-				'Timestamp'    => get_date_from_gmt( date( 'Y-m-d h:i:s', $visit['ts'] ), 'Y-m-d H:i' ),
+				'Timestamp'    => get_date_from_gmt( gmdate( 'Y-m-d h:i:s', $visit['ts'] ), 'Y-m-d H:i' ),
 				'Visitor Type' => $visit['visitor_type'],
 				'IP Address'   => $visit['ip'],
 				'Page Visited' => $visit['activity'],
@@ -181,18 +181,20 @@ class Cli_List {
 		$results = $this->wpdb->get_results( $this->query, ARRAY_A ); // phpcs:ignore
 
 		// Get all user visitors from the database.
-		$visitors = $this->wpdb->get_results( // phpcs:ignore
-			'SELECT * FROM `' . $this->wpdb->sgs_visitors . '`
-				WHERE `user_id` != 0
+		$query = $this->wpdb->prepare(
+			'SELECT * FROM `' . esc_sql( $this->wpdb->sgs_visitors ) . '`
+				WHERE `user_id` != %d
 			;',
-			OBJECT_K
+			0
 		);
 
-		// Loop results and get necesary data.
+		$visitors = $this->wpdb->get_results( $query, OBJECT_K ); // phpcs:ignore
+
+		// Loop results and get necessary data.
 		$data = array();
 		foreach ( $results as $entry ) {
 			$log = array(
-				'ts'         => get_date_from_gmt( date( 'Y-m-d H:i', $entry['blocked_on'] ), 'Y-m-d H:i' ),
+				'ts'         => get_date_from_gmt( gmdate( 'Y-m-d H:i', $entry['blocked_on'] ), 'Y-m-d H:i' ),
 				'user'       => $entry['ip'],
 				'visitor_id' => $entry['id'],
 				'object_id'  => $entry['user_id'],
@@ -227,12 +229,14 @@ class Cli_List {
 		$entries = $this->wpdb->get_results( $this->query, ARRAY_A ); // phpcs:ignore
 
 		// Get visitors data.
-		$visitors = $this->wpdb->get_results( // phpcs:ignore
-			'SELECT * FROM `' . $this->wpdb->sgs_visitors . '`
-				WHERE `user_id` != 0
+		$query = $this->wpdb->prepare(
+			'SELECT * FROM `' . esc_sql( $this->wpdb->sgs_visitors ) . '`
+				WHERE `user_id` != %d
 			;',
-			OBJECT_K
+			0
 		);
+
+		$visitors = $this->wpdb->get_results( $query, OBJECT_K ); // phpcs:ignore
 
 		// Populate the data for the table.
 		$table_data = array();
@@ -242,7 +246,7 @@ class Cli_List {
 
 			// Add the data to the table array.
 			$table_data[] = array(
-				'Timestamp'  => get_date_from_gmt( date( 'Y-m-d H:i', $entry['ts'] ), 'Y-m-d H:i' ),
+				'Timestamp'  => get_date_from_gmt( gmdate( 'Y-m-d H:i', $entry['ts'] ), 'Y-m-d H:i' ),
 				'IP Address' => $entry['ip'],
 				'Activity'   => $entry['description'],
 				'Hostname'   => $entry['hostname'],

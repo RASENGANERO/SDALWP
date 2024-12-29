@@ -7,6 +7,12 @@ use SG_Security\Helper\Helper;
  * Class that manages User's block related actions.
  */
 class Block_Service {
+
+	/**
+	 * The Database placeholder.
+	 */
+	public $wpdb;
+
 	/**
 	 * Block user if IP has a block flag set in the visitors table.
 	 *
@@ -28,7 +34,7 @@ class Block_Service {
 			;'
 		);
 
-		// Continue if ip is not blocked.
+		// Continue if IP is not blocked.
 		if ( is_null( $result ) ) {
 			return;
 		}
@@ -163,7 +169,7 @@ class Block_Service {
 	}
 
 	/**
-	 * Get visitor ip by visitor id.
+	 * Get visitor IP by visitor id.
 	 *
 	 * @since  1.0.0
 	 *
@@ -263,9 +269,10 @@ class Block_Service {
 	 */
 	public function unblock_user( $id ) {
 		global $wpdb;
+		$this->wpdb = $wpdb;
 
-		$wpdb->update(
-			$wpdb->sgs_visitors,
+		$this->wpdb->update(
+			$this->wpdb->sgs_visitors,
 			array(
 				'block'      => 0,
 				'blocked_on' => null,

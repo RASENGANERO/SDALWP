@@ -4,7 +4,7 @@
  * @package GOTMLS
 */
 
-define("GOTMLS_Version", '4.23.69');
+define("GOTMLS_Version", '4.23.73');
 define("GOTMLS_SAFELOAD_DIR", dirname(__FILE__)."/");
 define("GOTMLS_CHMOD_FILE", 0644);
 define("GOTMLS_CHMOD_DIR", 0755);
@@ -16,7 +16,7 @@ function GOTMLS_define($DEF, $val) {
 }
 
 function GOTMLS_safe_ip($ip) {
-	return substr(preg_replace('/[^0-9\.\:a-f]/i', "", $ip), 0, 40);
+	return substr(preg_replace('/[^\d\.\:a-f]/i', "", $ip), 0, 40);
 }
 
 function GOTMLS_get_current_user_id($return = 0) {
@@ -99,7 +99,7 @@ function GOTMLS_get_version($which = "") {
 		$match = array("GOTMLS_wp_version", "c", preg_replace( '#[+-].*$#', '', $cp_version));
 	elseif (isset($wp_version) && ($wp_version))
 		$match = array("GOTMLS_wp_version", "w", "$wp_version");
-	elseif (!(is_file($file = ABSPATH."wp-includes/version.php") && ($contents = @file_get_contents($file)) && preg_match('/\n\$(c|w)p_version\s*=\s*[\'"]([0-9\.]+)/i', $contents, $match)))
+	elseif (!(is_file($file = ABSPATH."wp-includes/version.php") && ($contents = @file_get_contents($file)) && preg_match('/\n\$(c|w)p_version\s*+=\s*+[\'"]([\d\.]++)/i', $contents, $match)))
 		$match = array("GOTMLS_wp_version", "w", "Unknown");
 	GOTMLS_define("GOTMLS_wp_version", $match[2]);
 	if ($which == "URL")

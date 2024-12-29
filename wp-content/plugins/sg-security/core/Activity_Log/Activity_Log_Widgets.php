@@ -17,7 +17,7 @@ class Activity_Log_Widgets extends Activity_Log_Helper {
 	 */
 	public function log_widget_update( $instance, $new_instance, $old_instance, $widget ) {
 		// Check if we are deleting a widget.
-		if ( ! empty( $_POST['sidebar'] ) ) {
+		if ( ! empty( $_POST['sidebar'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 			$activity = __( 'Updated Widget', 'sg-security' );
 			$this->log_event(
 				array(
@@ -40,14 +40,14 @@ class Activity_Log_Widgets extends Activity_Log_Helper {
 	 */
 	public function log_widget_delete() {
 		// Bail.
-		if ( ! isset( $_REQUEST['delete_widget'] ) ) {
+		if ( ! isset( $_REQUEST['delete_widget'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			return;
 		}
 
 		// Bail.
 		if (
 			'post' !== strtolower( $_SERVER['REQUEST_METHOD'] ) || //phpcs:ignore
-			empty( $_REQUEST['widget-id'] )
+			empty( $_REQUEST['widget-id'] ) // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		) {
 			return;
 		}

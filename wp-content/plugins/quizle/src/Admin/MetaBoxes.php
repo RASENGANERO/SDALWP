@@ -6,10 +6,12 @@ use WP_Post;
 use Wpshop\Quizle\PluginContainer;
 use Wpshop\Quizle\Quizle;
 use Wpshop\Quizle\Social;
+use function Wpshop\Quizle\container;
 use function Wpshop\Quizle\esc_json;
 use function Wpshop\Quizle\get_adjusted_colors;
 use function Wpshop\Quizle\get_yiq;
 use function Wpshop\Quizle\json_decode;
+use function Wpshop\Quizle\quizle_editor_wrap;
 
 class MetaBoxes {
 
@@ -69,7 +71,7 @@ class MetaBoxes {
 
         $this->post = $post;
 
-        $this->quizle_types = PluginContainer::get( Quizle::class )->get_types();
+        $this->quizle_types = container()->get( Quizle::class )->get_types();
 
         $this->question_types = [
             [
@@ -91,6 +93,10 @@ class MetaBoxes {
             [
                 'label' => __( 'Image Vertical', QUIZLE_TEXTDOMAIN ),
                 'value' => 'image_vertical',
+            ],
+            [
+                'label' => __( 'File Upload', QUIZLE_TEXTDOMAIN ),
+                'value' => 'file',
             ],
         ];
 
@@ -165,17 +171,19 @@ class MetaBoxes {
                 return wp_slash( wp_json_encode( $result, JSON_UNESCAPED_UNICODE ) );
             },
 
-            'contact-enabled'         => 'absint',
-            'contact-with-name'       => 'absint',
-            'contact-with-email'      => 'absint',
-            'contact-with-phone'      => 'absint',
-            'contact-with-messengers' => 'absint',
-            'contact-title'           => 'sanitize_text_field',
+            'contact-enabled'          => 'absint',
+            'contact-with-name'        => 'absint',
+            'contact-with-email'       => 'absint',
+            'contact-with-phone'       => 'absint',
+            'contact-with-messengers'  => 'absint',
+            'contact-title'            => 'sanitize_text_field',
             'contact-description',
             //'contact-description'  => 'Wpshop\Quizle\sanitize_textarea',
-            'contact-btn-text'        => 'sanitize_text_field',
-            'contact-privacy-text'    => 'wp_kses_post',
+            'contact-btn-text'         => 'sanitize_text_field',
+            'contact-privacy-text'     => 'wp_kses_post',
             'contact-message',
+            'contact-redirect-link',
+            'contact-redirect-timeout' => 'absint',
             //'contact-message'      => 'Wpshop\Quizle\sanitize_textarea',
             'contact-form-order',
 
@@ -199,6 +207,7 @@ class MetaBoxes {
             'random-questions'                 => 'absint',
             'random-answers'                   => 'absint',
             'test-instant-answer'              => 'absint',
+            'can-change-answer'                => 'absint',
             'view-type'                        => function ( $val ) {
                 if ( ! array_key_exists( $val, $this->quizle_view_type ) ) {
                     $val = array_key_first( $this->quizle_view_type );
@@ -219,6 +228,7 @@ class MetaBoxes {
 
                 return implode( ', ', $val );
             },
+            'all-slides-text',
 
             'quizle-color-primary'      => 'sanitize_hex_color',
             'quizle-color-text-primary' => 'sanitize_hex_color',
@@ -246,10 +256,47 @@ class MetaBoxes {
                     update_post_meta( $this->post->ID, 'quizle-color-background-1', $color_1 );
                     update_post_meta( $this->post->ID, 'quizle-color-background-2', $color_2 );
                 },
+                'export'   => [
+                    'quizle-color-background',
+                    'quizle-color-background-1',
+                    'quizle-color-background-2',
+                ],
             ],
             'quizle-color-text'         => 'sanitize_hex_color',
             'quizle-height'             => 'sanitize_text_field',
+
+            'finish-enabled' => 'absint',
+            'finish-title'   => 'sanitize_text_field',
+            'finish-img'     => 'sanitize_url',
+            'finish-img-position',
+
+            'quizle-completion-time' => 'absint',
         ];
+    }
+
+    /**
+     * @return array
+     */
+    protected function get_wp_editor_settings() {
+        /**
+         * @since 1.4
+         */
+        $settings = apply_filters( 'quizle/edit_metabox/wp_editor_settings', [
+            'wpautop'          => 1,
+            'textarea_rows'    => 5,
+            'teeny'            => 0,
+            'drag_drop_upload' => 1,
+            //'wp_skip_init'     => true,
+        ] );
+
+        return $settings;
+    }
+
+    /**
+     * @return array|array[]
+     */
+    public function get_fields() {
+        return $this->fields;
     }
 
     /**
@@ -267,6 +314,12 @@ class MetaBoxes {
      * @return void
      */
     public function update_metadata() {
+        // set default values for switch groups without selected items
+        $post_data = wp_parse_args( $_POST, [
+            'messenger-providers'    => [],
+            'social-share-providers' => [],
+        ] );
+
         foreach ( $this->fields as $key => $config ) {
             if ( is_numeric( $key ) ) {
                 $key    = $config;
@@ -277,7 +330,7 @@ class MetaBoxes {
                 }
             }
 
-            $value = $_POST[ $key ] ?? null;
+            $value = $post_data[ $key ] ?? null;
             if ( null === $value ) {
                 continue;
             }
@@ -390,7 +443,19 @@ class MetaBoxes {
                         <?php $this->render_text_input( __( 'Title', QUIZLE_TEXTDOMAIN ), 'welcome-title', '', __( 'Take a short quiz and find the right answer for you', QUIZLE_TEXTDOMAIN ) ); ?>
                     </div>
                     <div class="quizle-form-row">
-                        <?php $this->render_textarea( __( 'Description', QUIZLE_TEXTDOMAIN ), 'welcome-description', sprintf( __( 'After you pass we give you a 20%% discount on all our products and a personal consultation with our manager', QUIZLE_TEXTDOMAIN ) ) ); ?>
+                        <?php quizle_editor_wrap(
+                            $this->get_value( 'welcome-description' ),
+                            'welcome-description',
+                            $this->get_wp_editor_settings()
+                        )( function () {
+                            $this->render_textarea(
+                                __( 'Description', QUIZLE_TEXTDOMAIN ),
+                                'welcome-description',
+                                sprintf( __( 'After you pass we give you a 20%% discount on all our products and a personal consultation with our manager', QUIZLE_TEXTDOMAIN ) )
+                            );
+                        } ) ?>
+
+
                     </div>
                     <div class="quizle-form-row">
                         <div class="quizle-form-cols">
@@ -547,7 +612,11 @@ class MetaBoxes {
 
                     <div class="quizle-form-row">
                         <label for="" class="quizle-form-label"><?php echo __( 'Description', QUIZLE_TEXTDOMAIN ) ?></label>
-                        <textarea name="contact-description" rows="3" class="quizle-text"><?php echo esc_textarea( $this->get_value( 'contact-description' ) ) ?></textarea>
+                        <?php if ( $this->settings->get_value( 'enable_wp_editor' ) ): ?>
+                            <?php wp_editor( $this->get_value( 'contact-description' ), 'contact-description', $this->get_wp_editor_settings() ); ?>
+                        <?php else: ?>
+                            <textarea name="contact-description" rows="3" class="quizle-text"><?php echo esc_textarea( (string) $this->get_value( 'contact-description' ) ) ?></textarea>
+                        <?php endif ?>
                     </div>
 
                     <div class="quizle-form-cols">
@@ -567,13 +636,81 @@ class MetaBoxes {
 
                     <div class="quizle-form-row">
                         <label class="quizle-form-label"><?php echo __( 'Message after submitting the form', QUIZLE_TEXTDOMAIN ) ?></label>
-                        <textarea name="contact-message" rows="3" class="quizle-text"><?php echo esc_textarea( $this->get_value( 'contact-message', __( 'Thank you, we will get back to you soon.', QUIZLE_TEXTDOMAIN ) ) ) ?></textarea>
+                        <p><i>(<?php echo __( 'Moved to Finish Screen Block', 'quizle' ) ?>)</i></p>
+                    </div>
+
+                    <div class="quizle-form-cols">
+                        <div class="quizle-form-col">
+                            <div class="quizle-form-row">
+                                <label class="quizle-form-label"><?php echo __( 'Redirect Link', QUIZLE_TEXTDOMAIN ) ?></label>
+                                <input name="contact-redirect-link" type="text" class="quizle-text" value="<?php echo esc_attr( $this->get_value( 'contact-redirect-link' ) ) ?>">
+                                <p class="description">(укажите ссылку, если нужно сделать переадресацию после показа
+                                    "Сообщения после отправки формы")</p>
+                            </div>
+                        </div>
+                        <div class="quizle-form-col">
+                            <div class="quizle-form-row">
+                                <label class="quizle-form-label"><?php echo __( 'Redirect Timeout', QUIZLE_TEXTDOMAIN ) ?></label>
+                                <input name="contact-redirect-timeout" type="number" min="0" step="1" class="quizle-text" value="<?php echo esc_attr( $this->get_value( 'contact-redirect-timeout', 3000 ) ) ?>" title="<?php echo __( 'value in milliseconds', QUIZLE_TEXTDOMAIN ) ?>">
+                            </div>
+                        </div>
                     </div>
 
                     <div class="quizle-form-row">
                         <?php $this->render_select( __( 'Show contact form', QUIZLE_TEXTDOMAIN ), 'contact-form-order', $this->contact_form_order ); ?>
+                        <p class="description">(если в результатах задана переадресация по ссылке, то показ после
+                            результатов не сработает, т.к. будет сделана переадресация)</p>
                     </div>
 
+                </div>
+            </div>
+        </div>
+
+        <div class="quizle-box">
+            <div class="quizle-box__header">
+                <div class="quizle-box-header__title js-quizle-box-header-action-expand"><?php echo __( 'Finish screen', QUIZLE_TEXTDOMAIN ); ?></div>
+                <div class="quizle-box-header__actions">
+                    <?php /*
+                    <div class="quizle-box-header-action quizle-box-header-action--enable">
+                        <input type="hidden" name="finish-enabled" value="0">
+                        <input type="checkbox" name="finish-enabled" value="1" class="quizle-switch-box"<?php checked( $this->get_value( 'finish-enabled' ), '1' ) ?>>
+                    </div>
+                    */ ?>
+                    <div class="quizle-box-header-action quizle-box-header-action--expand js-quizle-box-header-action-expand"></div>
+                    <div class="quizle-box-header-action quizle-box-header-action--doc">
+                        <a href="<?php echo $this->doc_link( 'finish-screen' ) ?>" target="_blank" rel="noopener">?</a>
+                    </div>
+                </div>
+            </div>
+            <div class="quizle-box__body" data-show_state="1" data-identity="finish-screen">
+                <div class="quizle-box__form">
+                    <div class="quizle-form-row">
+                        <?php $this->render_text_input( __( 'Title', QUIZLE_TEXTDOMAIN ), 'finish-title', '' ); ?>
+                    </div>
+                    <div class="quizle-form-row">
+                        <?php if ( $this->settings->get_value( 'enable_wp_editor' ) ): ?>
+                            <label class="quizle-form-label"><?php echo __( 'Message after submitting the form', QUIZLE_TEXTDOMAIN ) ?></label>
+                            <?php wp_editor( $this->get_value( 'contact-message' ), 'contact-message', $this->get_wp_editor_settings() ); ?>
+                        <?php else: ?>
+                            <?php $this->render_textarea( __( 'Message after submitting the form', QUIZLE_TEXTDOMAIN ), 'contact-message' ); ?>
+                        <?php endif ?>
+                    </div>
+                    <div class="quizle-form-row">
+                        <div class="quizle-form-cols">
+                            <div class="quizle-form-col">
+                                <?php $this->render_media_upload( __( 'Image', QUIZLE_TEXTDOMAIN ), 'finish-img' ); ?>
+                            </div>
+                            <div class="quizle-form-col">
+                                <?php $this->render_select( __( 'Image Position' ), 'finish-img-position', [
+                                    'background' => _x( 'Background', 'img_pos_options', QUIZLE_TEXTDOMAIN ),
+                                    'left'       => _x( 'Left', 'img_pos_options', QUIZLE_TEXTDOMAIN ),
+                                    'top'        => _x( 'Top', 'img_pos_options', QUIZLE_TEXTDOMAIN ),
+                                    'right'      => _x( 'Right', 'img_pos_options', QUIZLE_TEXTDOMAIN ),
+                                    'bottom'     => _x( 'Bottom', 'img_pos_options', QUIZLE_TEXTDOMAIN ),
+                                ], true, 'left' ); ?>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -644,7 +781,14 @@ class MetaBoxes {
                         <label class="quizle-form-label">
                             <input type="hidden" name="test-instant-answer" value="0">
                             <input type="checkbox" class="quizle-switch-box" name="test-instant-answer" value="1"<?php checked( $this->get_value( 'test-instant-answer' ), '1' ) ?>>
-                            <?php echo __( 'Show test results immediately after selecting an option (only for Testing)', QUIZLE_TEXTDOMAIN ) ?>
+                            <?php echo __( 'Show the correct or incorrect answer immediately after selecting an option (for Tests only)', QUIZLE_TEXTDOMAIN ) ?>
+                        </label>
+                    </div>
+                    <div class="quizle-form-row">
+                        <label class="quizle-form-label">
+                            <input type="hidden" name="can-change-answer" value="0">
+                            <input type="checkbox" class="quizle-switch-box" name="can-change-answer" value="1"<?php checked( $this->get_value( 'can-change-answer' ), '1' ) ?>>
+                            <?php echo __( 'Allow to change preview answers', QUIZLE_TEXTDOMAIN ) ?>
                         </label>
                     </div>
                     <div class="quizle-form-row">
@@ -657,8 +801,23 @@ class MetaBoxes {
                         <?php $this->render_text_input( __( 'Last step button text', QUIZLE_TEXTDOMAIN ), 'last-step-btn-text', __( 'Show Results', QUIZLE_TEXTDOMAIN ) ); ?>
                     </div>
                     <div class="quizle-form-row">
-                        <?php $this->render_text_input( __( 'Emails to get contacts', QUIZLE_TEXTDOMAIN ), 'emails-for-contacts' ); ?>
+                        <?php $this->render_text_input(
+                            __( 'Emails to get contacts (comma separated values)', QUIZLE_TEXTDOMAIN ),
+                            'emails-for-contacts',
+                            $this->settings->get_value( 'integrations.emails' )
+                        ); ?>
                     </div>
+
+                    <div class="quizle-form-row">
+                        <?php $this->render_text_input( __( 'Quiz Completion Time (in seconds)', QUIZLE_TEXTDOMAIN ), 'quizle-completion-time', 0 ); ?>
+                    </div>
+
+                    <?php /*
+                    <div class="quizle-form-row">
+                        <label for="" class="quizle-form-label"><?php echo __( 'Text for All Slides', QUIZLE_TEXTDOMAIN ) ?></label>
+                        <textarea name="all-slides-text" rows="3" class="quizle-text"><?php echo esc_textarea( (string) $this->get_value( 'all-slides-text' ) ) ?></textarea>
+                    </div>
+                    */ ?>
 
                 </div>
             </div>
@@ -794,12 +953,24 @@ class MetaBoxes {
 
                     <div class="quizle-form-row">
                         <label for="" class="quizle-form-label"><?php echo __( 'Description', QUIZLE_TEXTDOMAIN ) ?></label>
-                        <textarea name="" id="" rows="3" class="quizle-text" data-name="description">{{data.description}}</textarea>
+                        <?php
+                        $this->wrap_for_editor( 'quizle-question-{{data.question_id}}', function () {
+                            ?>
+                            <textarea name="" id="quizle-question-{{data.question_id}}" rows="3" class="quizle-text" data-name="description">{{data.description}}</textarea>
+                            <?php
+                        } );
+                        ?>
                     </div>
 
                     <div class="quizle-form-row js-question-right-answer-description">
                         <label for="" class="quizle-form-label"><?php echo __( 'Right Answer Description', QUIZLE_TEXTDOMAIN ) ?></label>
-                        <textarea name="" id="" rows="3" class="quizle-text" data-name="right_answer_description">{{data.right_answer_description}}</textarea>
+                        <?php
+                        $this->wrap_for_editor( 'quizle-right-answer-description-{{data.question_id}}', function () {
+                            ?>
+                            <textarea name="" id="quizle-right-answer-description-{{data.question_id}}" rows="3" class="quizle-text" data-name="right_answer_description">{{data.right_answer_description}}</textarea>
+                            <?php
+                        } );
+                        ?>
                     </div>
 
                     <div class="quizle-form-row">
@@ -810,7 +981,9 @@ class MetaBoxes {
                         <div class="js-quizle-answers-container"></div>
                         <input type="hidden" name="">
                         <span class="button js-add-quizle-answer"><?php echo __( 'Add Answer', QUIZLE_TEXTDOMAIN ) ?></span>
-                        <span class="button js-add-quizle-custom-answer"{{{ !data.can_add_custom_answer ? '' : ' style="display: none"' }}}><?php echo __( 'Add Custom Answer', QUIZLE_TEXTDOMAIN ) ?></span>
+                        <span class="button js-add-quizle-custom-answer"
+                              {{{ !data.can_add_custom_answer ? '' : 'style="display: none"' }}}>
+                        <?php echo __( 'Add Custom Answer', QUIZLE_TEXTDOMAIN ) ?></span>
                     </div>
 
                     <div class="quizle-question-settings">
@@ -865,86 +1038,12 @@ class MetaBoxes {
                 <input type="hidden" class="js-quizle-answer-type" data-name="type" value="{{data.type ? data.type : 'general' }}">
             </div>
         </script>
-        <script type="text/html" id="tmpl-quizle-result">
-            <div class="quizle-result js-quizle-result-item">
-                <input type="hidden" data-name="id" value="{{data.id}}">
 
-                <div class="quizle-result-header quizle-result__header">
-                    <div class="quizle-result-header__move"></div>
-                    <div class="quizle-result-header__title js-quizle-result-action-expand">
-                        <?php echo __( 'Result', QUIZLE_TEXTDOMAIN ) ?> -
-                        <span class="quizle-result-header__title-additional">{{data.title}}</span>
-                    </div>
-                    <div class="quizle-result-header__actions">
-                        <div class="quizle-result-action quizle-result-action--copy" title="<?php echo __( 'Duplicate Result', QUIZLE_TEXTDOMAIN ) ?>"></div>
-                        <div class="quizle-result-action quizle-result-action--delete" title="<?php echo __( 'Remove Result', QUIZLE_TEXTDOMAIN ) ?>" data-confirm="<?php echo __( 'Are you sure you want to remove the result?', QUIZLE_TEXTDOMAIN ) ?>"></div>
-                        <div class="quizle-result-action quizle-result-action--expand js-quizle-result-action-expand"></div>
-                    </div>
-                </div>
-                <div class="quizle-result__body">
-
-                    <div class="quizle-form-row">
-                        <label for="result-title" class="quizle-form-label"><?php echo __( 'Title', QUIZLE_TEXTDOMAIN ) ?></label>
-                        <input type="text" class="quizle-text js-quizle-result-title" data-name="title" value="{{data.title}}">
-                    </div>
-                    <div class="quizle-form-row">
-                        <label for="result-description" class="quizle-form-label"><?php echo __( 'Description', QUIZLE_TEXTDOMAIN ) ?></label>
-                        <textarea class="quizle-text" data-name="description">{{data.description}}</textarea>
-                    </div>
-
-                    <div class="quizle-form-row">
-                        <div class="quizle-form-cols">
-                            <div class="quizle-form-col">
-                                <div class="js-image-upload-placeholder"></div>
-                            </div>
-                            <div class="quizle-form-col">
-                                <label class="quizle-form-label"><?php echo __( 'Image Position', QUIZLE_TEXTDOMAIN ) ?></label>
-                                <select data-name="image_position" class="quizle-select">
-                                    <?php $options = [
-                                        'background' => _x( 'Background', 'img_pos_options', QUIZLE_TEXTDOMAIN ),
-                                        'left'       => _x( 'Left', 'img_pos_options', QUIZLE_TEXTDOMAIN ),
-                                        'top'        => _x( 'Top', 'img_pos_options', QUIZLE_TEXTDOMAIN ),
-                                        'right'      => _x( 'Right', 'img_pos_options', QUIZLE_TEXTDOMAIN ),
-                                        'bottom'     => _x( 'Bottom', 'img_pos_options', QUIZLE_TEXTDOMAIN ),
-                                    ] ?>
-                                    <?php foreach ( $options as $key => $option ): ?>
-                                        <option value="<?php echo $key ?>" {{data.image_position=== "<?php echo esc_js( $key ) ?>" ? "selected" : ""}}><?php echo $option ?></option>
-                                    <?php endforeach ?>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="quizle-form-row">
-                        <div class="quizle-form-cols">
-                            <div class="quizle-form-col">
-                                <label class="quizle-form-label"><?php echo __( 'Button Text', QUIZLE_TEXTDOMAIN ) ?></label>
-                                <input type="text" class="quizle-text" data-name="btn_text" value="{{quizleFunctions.getResultBtnText(data)}}" placeholder="<?php echo __( 'fill to output the button', QUIZLE_TEXTDOMAIN ) ?>">
-                            </div>
-                            <div class="quizle-form-col">
-                                <label class="quizle-form-label"><?php echo __( 'Link', QUIZLE_TEXTDOMAIN ) ?></label>
-                                <input type="text" class="quizle-text" data-name="link" value="{{data.link}}" placeholder="<?php echo __( 'fill to output the button', QUIZLE_TEXTDOMAIN ) ?>">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="quizle-form-row js-result-min-max-value" style="display: none">
-                        <div class="quizle-form-cols">
-                            <div class="quizle-form-col">
-                                <label class="quizle-form-label"><?php echo __( 'Value Min', QUIZLE_TEXTDOMAIN ) ?></label>
-                                <input type="number" class="quizle-text" data-name="value_min" value="{{data.value_min}}">
-                                <span><?php esc_html_e( 'current minimal available', QUIZLE_TEXTDOMAIN ); ?>: <span class="js-result-min-value">0</span></span>
-                            </div>
-                            <div class="quizle-form-col">
-                                <label class="quizle-form-label"><?php echo __( 'Value Max', QUIZLE_TEXTDOMAIN ) ?></label>
-                                <input type="number" class="quizle-text" data-name="value_max" value="{{data.value_max}}">
-                                <span><?php esc_html_e( 'current maximum available', QUIZLE_TEXTDOMAIN ); ?>: <span class="js-result-max-value">0</span></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </script>
-
+        <?php \Wpshop\Quizle\get_template_part(
+            'admin/text-html-templates/quizle-result-item',
+            null,
+            [ 'metaboxes' => $this ] )
+        ?>
         <?php \Wpshop\Quizle\get_template_part( 'admin/text-html-templates/quizle-image-uploader' ) ?>
         <?php \Wpshop\Quizle\get_template_part( 'admin/text-html-templates/quizle-media-uploader' ) ?>
         <?php \Wpshop\Quizle\get_template_part( 'admin/text-html-templates/quizle-conditions-group' ) ?>
@@ -963,6 +1062,24 @@ class MetaBoxes {
         <?php
     }
 
+    /**
+     * @param string   $prefix
+     * @param callable $cb
+     *
+     * @return void
+     */
+    public function wrap_for_editor( $id_prefix, $cb ) {
+        if ( ! $this->settings->get_value( 'enable_wp_editor' ) ) {
+            $cb();
+
+            return;
+        }
+        ?>
+        <div class="wp-editor-wrap" id="<?php echo $id_prefix ?>-wrap">
+            <?php $cb() ?>
+        </div>
+        <?php
+    }
 
     /**
      * @param string $label
@@ -983,7 +1100,7 @@ class MetaBoxes {
      */
     protected function render_textarea( $label, $name, $placeholder = '' ) {
         echo '<label for="' . $this->get_id( $name ) . '" class="quizle-form-label">' . $label . '</label>';
-        echo '<textarea class="quizle-text" name="' . $name . '" id="' . $this->get_id( $name ) . '" placeholder="' . esc_attr( $placeholder ) . '">' . esc_textarea( $this->get_value( $name ) ) . '</textarea>';
+        echo '<textarea class="quizle-text" name="' . $name . '" id="' . $this->get_id( $name ) . '" placeholder="' . esc_attr( $placeholder ) . '">' . esc_textarea( (string) $this->get_value( $name ) ) . '</textarea>';
     }
 
     /**

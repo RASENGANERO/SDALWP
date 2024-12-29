@@ -66,8 +66,8 @@ class Admin {
 
 		// Hide all error in our page.
 		if (
-			isset( $_GET['page'] ) &&
-			'sg-security' === $_GET['page']
+			isset( $_GET['page'] ) && // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			'sg-security' === $_GET['page'] // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		) {
 			remove_all_actions( 'network_admin_notices' );
 			remove_all_actions( 'user_admin_notices' );
@@ -236,7 +236,7 @@ class Admin {
 			'assets_path'         => SG_Security\URL . '/assets',
 		);
 
-		echo '<script>window.addEventListener("load", function(){ SGSecurity.init({page: SGSecurity.PAGE.' . $id . ',config:' . json_encode( $data ) . '})});</script>';
+		echo '<script>window.addEventListener("load", function(){ SGSecurity.init({page: SGSecurity.PAGE.' . esc_html( $id ) . ',config:' . wp_json_encode( $data ) . '})});</script>';
 		echo '<style>.toplevel_page_sg-security.menu-top .wp-menu-image img { width:20px; } </style>';
 	}
 

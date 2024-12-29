@@ -17,7 +17,7 @@ class WCL_HideLoginPage extends WCL_Page {
 	 * The id of the page in the admin menu.
 	 *
 	 * Mainly used to navigate between pages.
-	 * @see FactoryPages475_AdminPage
+	 * @see FactoryPages480_AdminPage
 	 *
 	 * @since 1.0.0
 	 * @var string
@@ -78,7 +78,7 @@ class WCL_HideLoginPage extends WCL_Page {
 		?>
 		<script>
 			jQuery(document).ready(function($) {
-				$.wfactory_475.hooks.add('core/components/updated', function(button, component_name) {
+				$.wfactory_480.hooks.add('core/components/updated', function(button, component_name) {
 					if( component_name.plugin_action === 'install' ) {
 						button.removeClass('wbcr-factory-purchase-premium');
 						button.addClass('wbcr-factory-activate-premium');
@@ -91,7 +91,7 @@ class WCL_HideLoginPage extends WCL_Page {
 				});
 			});
 		</script>
-		<div class="wbcr-factory-templates-128-multisite-suggetion">
+		<div class="wbcr-factory-templates-134-multisite-suggetion">
 			<div class="wbcr-factory-inner-contanier">
 				<h3><?php _e('Install Hide login page component', 'clearfy') ?></h3>
 

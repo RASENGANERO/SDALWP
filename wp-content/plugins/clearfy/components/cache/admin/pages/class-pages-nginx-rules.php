@@ -6,18 +6,22 @@
  */
 
 // Exit if accessed directly
-if( !defined('ABSPATH') ) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class WCL_CacheProNginxRulesPage extends WBCR\Factory_Templates_128\Pages\PageBase {
+if ( ! class_exists( 'WBCR\Factory_Templates_134\Pages\PageBase' ) ) {
+	return;
+}
+
+class WCL_CacheProNginxRulesPage extends WBCR\Factory_Templates_134\Pages\PageBase {
 
 	/**
 	 * The id of the page in the admin menu.
 	 *
 	 * Mainly used to navigate between pages.
 	 *
-	 * @see   FactoryPages475_AdminPage
+	 * @see   FactoryPages480_AdminPage
 	 *
 	 * @since 1.0.0
 	 * @var string

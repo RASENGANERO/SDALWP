@@ -66,9 +66,9 @@ class WDN_Settings_Page extends WDN_Page {
 
 
 	/**
-	 * @param Wbcr_Factory475_Plugin $plugin
+	 * @param Wbcr_Factory480_Plugin $plugin
 	 */
-	public function __construct( Wbcr_Factory475_Plugin $plugin ) {
+	public function __construct( Wbcr_Factory480_Plugin $plugin ) {
 		$this->menu_title                  = __( 'Hide admin notices', 'disable-admin-notices' );
 		$this->page_menu_short_description = __( 'General settings', 'disable-admin-notices' );
 
@@ -88,11 +88,11 @@ class WDN_Settings_Page extends WDN_Page {
 	/**
 	 * Requests assets (js and css) for the page.
 	 *
-	 * @param Wbcr_Factory475_ScriptList $scripts
-	 * @param Wbcr_Factory475_StyleList $styles
+	 * @param Wbcr_Factory480_ScriptList $scripts
+	 * @param Wbcr_Factory480_StyleList $styles
 	 *
 	 * @return void
-	 * @see Wbcr_FactoryPages475_AdminPage
+	 * @see Wbcr_FactoryPages480_AdminPage
 	 *
 	 */
 	public function assets( $scripts, $styles ) {
@@ -122,7 +122,7 @@ class WDN_Settings_Page extends WDN_Page {
 				'wbcr_dan_code' => 'interal_error'
 			),
 			'type' => 'danger',
-			'message' => __('An error occurred while trying to delete comments. Internal error occured. Please try again later.', 'factory_pages_475')
+			'message' => __('An error occurred while trying to delete comments. Internal error occured. Please try again later.', 'factory_pages_480')
 		);*/
 
 		return $notices;

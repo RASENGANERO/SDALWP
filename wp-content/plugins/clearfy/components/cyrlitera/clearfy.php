@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'WCTR_PLUGIN_ACTIVE' ) ) {
-	define( 'WCTR_PLUGIN_VERSION', '1.1.9' );
+	define( 'WCTR_PLUGIN_VERSION', '1.2.0' );
 	define( 'WCTR_TEXT_DOMAIN', 'cyrlitera' );
 	define( 'WCTR_PLUGIN_ACTIVE', true );
 

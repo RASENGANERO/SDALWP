@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+<?php the_tags( 'Метки: ', ', ' ); ?>
 <?php
 	$marksArray = getMarks($post->ID);
 ?>

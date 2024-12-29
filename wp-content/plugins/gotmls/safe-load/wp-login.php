@@ -2,7 +2,7 @@
 /**
  * GOTMLS wp-login protection
  * @package GOTMLS
- * @since 4.23.69
+ * @since 4.23.73
 */
 
 require_once(dirname(__FILE__)."/trace.php");
@@ -82,10 +82,10 @@ if (defined("GOTMLS_LOGIN_PROTECTION")) {
 			if (!(isset($_SESSION["GOTMLS_server_time"]["time_START"]) && is_numeric($_SESSION["GOTMLS_server_time"]["time_START"])))
 				define("GOTMLS_SESS_ERROR", "Login Session Lost! ");
 			else {
-				define("GOTMLS_logintime_JS", "if (GOTMLS_field = document.getElementById('GOTMLS_sess_id_".GOTMLS_FORMID."')) {\n\tGOTMLS_field.value = '".GOTMLS_SESS."';\n\tGOTMLS_field.name = 'GOTMLS_sess_id';\n}\nif (GOTMLS_field = document.getElementById('GOTMLS_offset_id_".GOTMLS_FORMID."'))\n\tGOTMLS_field.name = 'GOTMLS_sess_".GOTMLS_SESS."';\nif (GOTMLS_loading_gif = document.getElementById('loading_BRUTEFORCE_".GOTMLS_FORMID."')) GOTMLS_loading_gif.style.display = 'none';");
 				if (floor($_SESSION["GOTMLS_server_time"]["time_START"]) <= GOTMLS_SESSION_TIME) {
 					$_SESSION["GOTMLS_server_time"]["sess_".GOTMLS_SESS]["JS_time"] = GOTMLS_TIME;
 					$_SESSION["GOTMLS_server_time"]["sess_".GOTMLS_SESS]["PHP_time"] = GOTMLS_SESSION_TIME;
+					define("GOTMLS_logintime_JS", "if (GOTMLS_field = document.getElementById('GOTMLS_sess_id_".GOTMLS_FORMID."')) {\n\tGOTMLS_field.value = '".GOTMLS_SESS."';\n\tGOTMLS_field.name = 'GOTMLS_sess_id';\n}\nif (GOTMLS_field = document.getElementById('GOTMLS_offset_id_".GOTMLS_FORMID."')) {\n\tGOTMLS_field.name = 'GOTMLS_sess_".GOTMLS_SESS."';\n\tGOTMLS_field.value = '".GOTMLS_TIME."';\n}\nif (GOTMLS_loading_gif = document.getElementById('loading_BRUTEFORCE_".GOTMLS_FORMID."'))\n\tGOTMLS_loading_gif.style.display = 'none';");
 				} else
 					define("GOTMLS_SESS_ERROR", "Login Session Not Found! ");
 			}

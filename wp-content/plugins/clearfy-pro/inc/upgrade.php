@@ -40,6 +40,10 @@ class Wpshop_Clearfy_Upgrade {
 			$this->upgrade_333();
 		}
 
+		if ( version_compare( $this->db_version, '3.6.0', '<' ) ) {
+			$this->upgrade_360();
+		}
+
 	}
 
 
@@ -59,6 +63,16 @@ class Wpshop_Clearfy_Upgrade {
 			update_option( $this->plugin_options->option_name, $options );
 		}
 	}
+
+    /**
+     * Для 3.6.0 включаем по умолчанию cloud_protection
+     * @return void
+     */
+    private function upgrade_360() {
+        $options = $this->plugin_options->options;
+        $options['cloud_protection'] = 'on';
+        update_option( $this->plugin_options->option_name, $options );
+    }
 
 
 	/**

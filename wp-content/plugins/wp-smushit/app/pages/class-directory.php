@@ -47,7 +47,21 @@ class Directory extends Abstract_Summary_Page implements Interface_Page {
 	 * Directory Smush meta box.
 	 */
 	public function directory_smush_meta_box() {
+		// Reset the bulk limit transient.
+		if ( ! WP_Smush::is_pro() ) {
+			Core::check_bulk_limit( true, 'dir_sent_count' );
+		}
+
 		$core = WP_Smush::get_instance()->core();
+
+		$upgrade_url = add_query_arg(
+			array(
+				'utm_source'   => 'smush',
+				'utm_medium'   => 'plugin',
+				'utm_campaign' => 'smush_directory_smush_paused_50_limit',
+			),
+			$this->upgrade_url
+		);
 
 		$errors = 0;
 		$images = array();
@@ -63,6 +77,7 @@ class Directory extends Abstract_Summary_Page implements Interface_Page {
 			array(
 				'errors'      => $errors,
 				'images'      => $images,
+				'upgrade_url' => $upgrade_url,
 			)
 		);
 	}
@@ -109,7 +124,7 @@ class Directory extends Abstract_Summary_Page implements Interface_Page {
 			$notice_message .= sprintf(
 			/* translators: %1$d - number of skipped images, %2$d - total number of images */
 				_n(
-					'%d image was skipped because it was already optimized',
+					'%1$d/%2$d image was skipped because it was already optimized',
 					'%1$d/%2$d images were skipped because they were already optimized',
 					$skipped_items,
 					'wp-smushit'
@@ -122,7 +137,7 @@ class Directory extends Abstract_Summary_Page implements Interface_Page {
 			$notice_message .= sprintf(
 			/* translators: %1$d - number of failed images, %2$d - total number of images */
 				_n(
-					'%d resulted in an error',
+					'%1$d/%2$d image resulted in an error',
 					'%1$d/%2$d images resulted in an error, check the logs for more information',
 					$failed_items,
 					'wp-smushit'

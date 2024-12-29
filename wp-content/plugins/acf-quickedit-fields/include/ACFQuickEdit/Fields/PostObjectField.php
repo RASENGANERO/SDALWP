@@ -14,7 +14,7 @@ class PostObjectField extends SelectField {
 	/**
 	 *	@inheritdoc
 	 */
-	public function render_column( $object_id ) {
+	protected function _render_column( $object_id ) {
 
 		return $this->render_list_column(
 			$object_id,
@@ -55,6 +55,20 @@ class PostObjectField extends SelectField {
 			$is_quickedit
 		);
 
+	}
+
+	/**
+	 *	@return mixed Unsanitized value of acf field.
+	 */
+	public function get_value( $object_id, $format_value = true ) {
+
+		$value = parent::get_value( $object_id, $format_value );
+
+		if ( is_scalar( $value ) && ! empty( $value ) && ( $post = get_post($value ) ) ) {
+			$value = ['id' => $value, 'text' => $post->post_title ];
+		}
+
+		return $value;
 	}
 
 	/**

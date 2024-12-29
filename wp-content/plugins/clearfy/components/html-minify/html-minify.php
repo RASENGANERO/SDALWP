@@ -4,11 +4,11 @@
  * Plugin URI: https://webcraftic.com
  * Description: Ever look at the HTML markup of your website and notice how sloppy and amateurish it looks? The HTML Мinify options cleans up sloppy looking markup and minifies, which also speeds up download.
  * Author: Webcraftic <wordpress.webraftic@gmail.com>
- * Version: 1.1.2
+ * Version: 1.1.3
  * Text Domain: html-minify
  * Domain Path: /languages/
  * Author URI: https://webcraftic.com
- * Framework Version: FACTORY_475_VERSION
+ * Framework Version: FACTORY_480_VERSION
  */
 
 /*
@@ -59,15 +59,15 @@ $whtml_plugin_info = array(
 
 	// FRAMEWORK MODULES
 	'load_factory_modules' => array(
-		array( 'libs/factory/bootstrap', 'factory_bootstrap_477', 'admin' ),
-		array( 'libs/factory/forms', 'factory_forms_475', 'admin' ),
-		array( 'libs/factory/pages', 'factory_pages_475', 'admin' ),
-		array( 'libs/factory/clearfy', 'factory_templates_128', 'all' ),
-		array( 'libs/factory/adverts', 'factory_adverts_153', 'admin')
+		array( 'libs/factory/bootstrap', 'factory_bootstrap_482', 'admin' ),
+		array( 'libs/factory/forms', 'factory_forms_480', 'admin' ),
+		array( 'libs/factory/pages', 'factory_pages_480', 'admin' ),
+		array( 'libs/factory/clearfy', 'factory_templates_134', 'all' ),
+		array( 'libs/factory/adverts', 'factory_adverts_159', 'admin')
 	)
 );
 
-$whtml_compatibility = new Wbcr_Factory475_Requirements( __FILE__, array_merge( $whtml_plugin_info, array(
+$whtml_compatibility = new Wbcr_Factory480_Requirements( __FILE__, array_merge( $whtml_plugin_info, array(
 	'plugin_already_activate'          => defined( 'WHTM_PLUGIN_ACTIVE' ),
 	'required_php_version'             => '5.4',
 	'required_wp_version'              => '4.2.0',

@@ -8,5 +8,5 @@ if (empty($text)) {
 }
 ?>
 
-<a class="info_helper info_restricked" data-balloon-length="medium" data-balloon-pos="<?php esc_html_e($direction) ?>" data-balloon="<?php esc_html_e($text) ?>"><img src="<?php echo WPBE_ASSETS_LINK . 'images/restricted.png' ?>" width="25" alt="" /></a>
+<a class="info_helper info_restricked" data-balloon-length="medium" data-balloon-pos="<?php esc_html_e($direction) ?>" data-balloon="<?php esc_html_e($text) ?>"><img src="<?php echo esc_attr(WPBE_ASSETS_LINK) . 'images/restricted.png' ?>" width="25" alt="" /></a>
 

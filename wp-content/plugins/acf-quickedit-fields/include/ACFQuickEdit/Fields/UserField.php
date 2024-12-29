@@ -14,7 +14,7 @@ class UserField extends SelectField {
 	/**
 	 *	@inheritdoc
 	 */
-	public function render_column( $object_id ) {
+	protected function _render_column( $object_id ) {
 
 		if ( ! current_user_can( 'list_users' ) ) {
 			return '';
@@ -41,9 +41,7 @@ class UserField extends SelectField {
 		$users = get_users($get_users_args);
 
 		return $this->render_select_input(
-			[
-				'data-query-nonce' => wp_create_nonce( 'acf/fields/user/query' . $this->acf_field['key'] ),
-			] + $input_atts,
+			$input_atts,
 			[
 				'ui' => 1,
 				'ajax' => 1,

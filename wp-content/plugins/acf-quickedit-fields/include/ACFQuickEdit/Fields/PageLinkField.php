@@ -10,7 +10,7 @@ class PageLinkField extends Field {
 	/**
 	 *	@inheritdoc
 	 */
-	public function render_column( $object_id ) {
+	protected function _render_column( $object_id ) {
 
 		/*
 		$value = get_field( $this->acf_field['key'], $object_id );
@@ -27,7 +27,7 @@ class PageLinkField extends Field {
 		}
 
 		$output	= '';
-		$output .= '<ol>';
+		$output .= '<ol class="qef-list">';
 		foreach ( $value as $link ) {
 			$output .= sprintf( '<li><a href="%s">%s</a></li>', esc_url( $link ), esc_html( $link ) );
 		}

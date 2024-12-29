@@ -10,6 +10,9 @@
  * @license    GPL2+
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
  
 if ( !class_exists( 'PPF09_Plugin' ) ) {
   
@@ -540,5 +543,3 @@ if ( !class_exists( 'PPF09_Plugin' ) ) {
   }
   
 }
-
-?>

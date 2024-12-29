@@ -1,17 +1,17 @@
 <?php
 
 /**
- * @version 1.0.0
+ * @version 1.3.0
  */
 
 use Wpshop\Quizle\Admin\Settings;
-use Wpshop\Quizle\PluginContainer;
+use function Wpshop\Quizle\container;
 
 if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
-$settings = PluginContainer::get( Settings::class );
+$settings = container()->get( Settings::class );
 
 ?>
 

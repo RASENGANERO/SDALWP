@@ -7,14 +7,14 @@
  * @version       1.0
  */
 
-class WCL_Page extends WBCR\Factory_Templates_128\Pages\PageBase {
+class WCL_Page extends WBCR\Factory_Templates_134\Pages\PageBase {
 
 	/**
 	 * Requests assets (js and css) for the page.
 	 *
 	 * @return void
 	 * @since 1.0.0
-	 * @see FactoryPages475_AdminPage
+	 * @see FactoryPages480_AdminPage
 	 *
 	 */
 	public function assets($scripts, $styles)
@@ -58,15 +58,15 @@ class WCL_Page extends WBCR\Factory_Templates_128\Pages\PageBase {
 			$license_page_url = $this->getBaseUrl('clearfy_license');
 			$upgrade_url = $this->plugin->get_support()->get_pricing_url(true, 'multisite_save_settings');
 
-			$html = '<div class="wbcr-factory-templates-128-multisite-suggetion">';
+			$html = '<div class="wbcr-factory-templates-134-multisite-suggetion">';
 			$html .= '<div class="wbcr-factory-inner-contanier">';
-			$html .= '<h3>' . __('Upgrade to Clearfy Business', 'wbcr_factory_templates_128') . '</h3>';
-			$html .= '<p>' . __('Oops... Sorry for the inconvenience caused!', 'wbcr_factory_templates_128') . '</p>';
-			$html .= '<p>' . __('Complete multisite support is available in Clearfy Business and Clearfy Business Revolution packages only!', 'wbcr_factory_templates_128') . '</p>';
-			$html .= '<p>' . __('You can activate the plugin on each website and use it with zero limitations. But you can’t save the plugin’s settings under the Super Administrator role!', 'wbcr_factory_templates_128') . '</p>';
+			$html .= '<h3>' . __('Upgrade to Clearfy Business', 'wbcr_factory_templates_134') . '</h3>';
+			$html .= '<p>' . __('Oops... Sorry for the inconvenience caused!', 'wbcr_factory_templates_134') . '</p>';
+			$html .= '<p>' . __('Complete multisite support is available in Clearfy Business and Clearfy Business Revolution packages only!', 'wbcr_factory_templates_134') . '</p>';
+			$html .= '<p>' . __('You can activate the plugin on each website and use it with zero limitations. But you can’t save the plugin’s settings under the Super Administrator role!', 'wbcr_factory_templates_134') . '</p>';
 			$html .= '<p style="margin-top:20px">';
-			$html .= '<a href="' . $license_page_url . '" class="wbcr-factory-activate-premium" rel="noopener">' . __('Activate license ', 'wbcr_factory_templates_128') . '</a> ';
-			$html .= '<a href="' . $upgrade_url . '" class="wbcr-factory-purchase-premium" target="_blank" rel="noopener">' . __('Upgrade to Clearfy Business', 'wbcr_factory_templates_128') . '</a>';
+			$html .= '<a href="' . $license_page_url . '" class="wbcr-factory-activate-premium" rel="noopener">' . __('Activate license ', 'wbcr_factory_templates_134') . '</a> ';
+			$html .= '<a href="' . $upgrade_url . '" class="wbcr-factory-purchase-premium" target="_blank" rel="noopener">' . __('Upgrade to Clearfy Business', 'wbcr_factory_templates_134') . '</a>';
 			$html .= '</p>';
 			$html .= '</div>';
 			$html .= '</div>';

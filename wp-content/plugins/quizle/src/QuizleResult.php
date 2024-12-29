@@ -116,13 +116,22 @@ class QuizleResult {
      * @return $this
      */
     public function populate( $data ) {
-        $quizle_type = ! empty( $data['quiz_id'] ) ? get_quizle_type( $data['quiz_id'] ) : 'none';
-        $this->data  = wp_parse_args( $data, [
+        $quizle_type  = 'none';
+        $quizle_title = '';
+
+        if ( ! empty( $data['quiz_id'] ) ) {
+            $quizle       = get_post( $data['quiz_id'] );
+            $quizle_type  = get_quizle_type( $data['quiz_id'] );
+            $quizle_title = $quizle->post_title;
+        }
+
+        $this->data = wp_parse_args( $data, [
             'quiz_id'         => 0,
             'user_id'         => 0,
             'user_cookie'     => '',
             'result_data'     => [
-                'data_version'     => '1.1',
+                'data_version'     => '1.4',
+                'quizle_title'     => $quizle_title,
                 'questions'        => [],
                 'total_score'      => 0, // used for test
                 'max_result_match' => null, // used for variable
@@ -139,12 +148,12 @@ class QuizleResult {
     }
 
     /**
-     * @param array    $data
+     * @param array    $answer_data
      * @param int|null $quizle_id
      *
      * @return $this
      */
-    public function prepare_result_data( array $data, $quizle_id = null ) {
+    public function prepare_result_data( array $answer_data, $quizle_id = null ) {
         if ( null === $quizle_id ) {
             $quizle_id = $this->quiz_id;
         }
@@ -189,8 +198,8 @@ class QuizleResult {
             ];
 
             if ( in_array( $question['type'], [ 'text', 'textarea' ] ) ) {
-                if ( array_key_exists( $question['question_id'], $data ) ) {
-                    foreach ( (array) $data[ $question['question_id'] ] as $user_answer ) {
+                if ( array_key_exists( $question['question_id'], $answer_data ) ) {
+                    foreach ( (array) $answer_data[ $question['question_id'] ] as $user_answer ) {
                         $user_answer_value = trim( $user_answer['val'] );
                         $to_store_answer   = [
                             'name'      => '',
@@ -199,7 +208,44 @@ class QuizleResult {
                             '_checked'  => $user_answer_value ? 1 : 0,
                         ];
 
-                        if ( apply_filters( 'quizle/result/count_tests_text_inputs', false ) ) {
+                        /**
+                         * @since 1.0
+                         */
+                        $count_text_input = apply_filters( 'quizle/result/count_tests_text_inputs', false );
+                        if ( $count_text_input ) {
+                            if ( $user_answer_value ) {
+                                $result_data['total_score'] ++;
+                            }
+                        }
+
+                        $to_store_question['answers'][] = $to_store_answer;
+                    }
+                }
+            } else if ( $question['type'] == 'file' ) {
+                if ( array_key_exists( $question['question_id'], $answer_data ) ) {
+                    foreach ( (array) $answer_data[ $question['question_id'] ] as $user_answer ) {
+                        $user_answer_value = [];
+                        /**
+                         * @see \Wpshop\Quizle\FileUploadHandler::handle()
+                         */
+                        foreach ( (array) $user_answer['val'] as $file_data ) {
+                            $file_data = wp_parse_args( $file_data, [ 'url' => '' ] );
+                            if ( $file_data['url'] ) {
+                                $user_answer_value[] = trim( $file_data['url'] );
+                            }
+                        }
+                        $to_store_answer = [
+                            'name'      => '',
+                            'answer_id' => '__file__',
+                            'value'     => $user_answer_value,
+                            '_checked'  => 1,
+                        ];
+
+                        /**
+                         * @since 1.4
+                         */
+                        $count_file_inputs = apply_filters( 'quizle/result/count_tests_file_inputs', false );
+                        if ( $count_file_inputs ) {
                             if ( $user_answer_value ) {
                                 $result_data['total_score'] ++;
                             }
@@ -217,8 +263,8 @@ class QuizleResult {
                         'value'     => $defined_answer['value'],
                         'type'      => $defined_answer['type'] ?? 'general',
                     ];
-                    if ( array_key_exists( $question['question_id'], $data ) ) {
-                        foreach ( (array) $data[ $question['question_id'] ] as $user_answer ) {
+                    if ( array_key_exists( $question['question_id'], $answer_data ) ) {
+                        foreach ( (array) $answer_data[ $question['question_id'] ] as $user_answer ) {
                             if ( $user_answer['answer'] === $defined_answer['answer_id'] ) {
                                 $to_store_answer['_checked'] = 1;
                                 if ( array_key_exists( 'custom_answer', $user_answer ) ) {
@@ -352,15 +398,19 @@ class QuizleResult {
     }
 
     /**
-     * @return string|null
+     * @return array [$content, $redirect_link]
      * @throws \Exception
      */
     public function get_result_content() {
         if ( ! ( $result = $this->get_result_item() ) ) {
-            return null;
+            return [ null, null ];
         }
 
-        return ob_get_content( function () use ( $result ) {
+        if ( ! empty( $result['redirect_link'] ) ) {
+            return [ '', $result['redirect_link'] ];
+        }
+
+        $content = ob_get_content( function () use ( $result ) {
 
             $classes = [ 'quizle-image-screen' ];
             if ( ! empty( $result['image'] ) ) {
@@ -385,7 +435,9 @@ class QuizleResult {
             }
 
             return get_template_part( '_result', null, $args );
-        } ) ?: null;
+        } );
+
+        return [ $content, null ];
     }
 
     /**
@@ -416,6 +468,11 @@ class QuizleResult {
             $total_score = $params['total_score'];
 
             $defined_results = array_filter( $defined_results, function ( $result ) use ( $total_score ) {
+                $result = wp_parse_args( $result, [
+                    'value_min' => '',
+                    'value_max' => '',
+                ] );
+
                 $min = $result['value_min'];
                 $max = $result['value_max'];
                 if ( '' === $min && '' === $max ) {

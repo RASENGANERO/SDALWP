@@ -57,7 +57,7 @@ class Form_Entity {
 
 	protected static function is_control(array $item)
 	{
-		return isset($item['type']) && isset(\Wbcr_FactoryForms475_Manager::$registered_controls[$item['type']]);
+		return isset($item['type']) && isset(\Wbcr_FactoryForms480_Manager::$registered_controls[$item['type']]);
 	}
 
 	/**
@@ -69,7 +69,7 @@ class Form_Entity {
 	 */
 	protected static function is_control_holder(array $item)
 	{
-		return isset($item['type']) && isset(\Wbcr_FactoryForms475_Manager::$registered_holders[$item['type']]);
+		return isset($item['type']) && isset(\Wbcr_FactoryForms480_Manager::$registered_holders[$item['type']]);
 	}
 
 	/**
@@ -81,7 +81,7 @@ class Form_Entity {
 	 */
 	protected static function is_custom_element(array $item)
 	{
-		return isset($item['type']) && isset(\Wbcr_FactoryForms475_Manager::$registered_custom_elements[$item['type']]);
+		return isset($item['type']) && isset(\Wbcr_FactoryForms480_Manager::$registered_custom_elements[$item['type']]);
 	}
 
 	public function make_control_disabled()

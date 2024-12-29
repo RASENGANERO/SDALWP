@@ -11,13 +11,9 @@
  */
  
  
-// No need to check this in all files
- if ( ! defined( 'WPINC' ) ) {
-  
-	die;
-  
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
 }
-
  
 if ( !class_exists( 'PPF09_Class' ) ) {
   
@@ -155,5 +151,3 @@ if ( !class_exists( 'PPF09_Class' ) ) {
   }
   
 }
-
-?>

@@ -14,6 +14,7 @@ return array(
     'CyrToLat\\BackgroundProcesses\\TermConversionProcess' => $baseDir . '/src/php/BackgroundProcesses/TermConversionProcess.php',
     'CyrToLat\\ConversionTables' => $baseDir . '/src/php/ConversionTables.php',
     'CyrToLat\\Converter' => $baseDir . '/src/php/Converter.php',
+    'CyrToLat\\ErrorHandler' => $baseDir . '/src/php/ErrorHandler.php',
     'CyrToLat\\Main' => $baseDir . '/src/php/Main.php',
     'CyrToLat\\Request' => $baseDir . '/src/php/Request.php',
     'CyrToLat\\Requirements' => $baseDir . '/src/php/Requirements.php',

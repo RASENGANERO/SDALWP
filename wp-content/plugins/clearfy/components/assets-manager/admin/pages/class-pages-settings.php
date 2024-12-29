@@ -16,7 +16,7 @@ if( !defined('ABSPATH') ) {
  *
  * @copyright (c) 2018 Webraftic Ltd
  */
-class WGZ_AssetsManagerPage extends WBCR\Factory_Templates_128\Pages\PageBase {
+class WGZ_AssetsManagerPage extends WBCR\Factory_Templates_134\Pages\PageBase {
 
 	/**
 	 * The id of the page in the admin menu.
@@ -24,7 +24,7 @@ class WGZ_AssetsManagerPage extends WBCR\Factory_Templates_128\Pages\PageBase {
 	 * Mainly used to navigate between pages.
 	 *
 	 * @since 1.0.0
-	 * @see   FactoryPages475_AdminPage
+	 * @see   FactoryPages480_AdminPage
 	 *
 	 * @var string
 	 */
@@ -48,9 +48,9 @@ class WGZ_AssetsManagerPage extends WBCR\Factory_Templates_128\Pages\PageBase {
 	public $available_for_multisite = true;
 
 	/**
-	 * @param Wbcr_Factory475_Plugin $plugin
+	 * @param Wbcr_Factory480_Plugin $plugin
 	 */
-	public function __construct(Wbcr_Factory475_Plugin $plugin)
+	public function __construct(Wbcr_Factory480_Plugin $plugin)
 	{
 		$this->menu_title = __('Assets manager', 'gonzales');
 

@@ -2,7 +2,7 @@
 /**
  * GOTMLS SESSION Start
  * @package GOTMLS
- * @since 4.23.67
+ * @since 4.23.73
 */
 
 require_once(dirname(__FILE__)."/trace.php");
@@ -25,7 +25,7 @@ if (!defined("GOTMLS_SESSION_TIME")) {
 
 	function GOTMLS_session_close() {
 		if (defined("SESS_FILE"))
-			GOTMLS_session_file();
+			GOTMLS_session_file($_SESSION["GOTMLS_server_time"]);
 		if (session_id())
 			session_write_close();
 	}
@@ -53,17 +53,23 @@ if (!defined("GOTMLS_SESSION_TIME")) {
 			GOTMLS_session_init();
 			$GOTMLS_server_times["GOTMLS_LOGIN_ARRAY"] = array("ADDR" => GOTMLS_REMOTEADDR, "AGENT" => (isset($_SERVER["HTTP_USER_AGENT"])?$_SERVER["HTTP_USER_AGENT"]:"HTTP_USER_AGENT"), "TIME"=>GOTMLS_INSTALL_TIME);
 			$GOTMLS_LOGIN_KEY = md5(serialize($GOTMLS_server_times["GOTMLS_LOGIN_ARRAY"]));
+			$LAST_HOUR = GOTMLS_encode_njG(intval(GOTMLS_SESSION_TIME) - 3600);
+			$THIS_HOUR = GOTMLS_encode_njG(intval(GOTMLS_SESSION_TIME));
 			if (!defined("GOTMLS_LOG_FILE"))
-				define("GOTMLS_LOG_FILE", dirname(GOTMLS_SESSION_FILE)."/gotmls_".GOTMLS_encode_njG(intval(GOTMLS_SESSION_TIME)).".$GOTMLS_LOGIN_KEY.php");
+				define("GOTMLS_LOG_FILE", dirname(GOTMLS_SESSION_FILE)."/gotmls_$THIS_HOUR.$GOTMLS_LOGIN_KEY.php");
 			if (is_file(GOTMLS_LOG_FILE))
 				include(GOTMLS_LOG_FILE);
-			elseif (is_file($LOG_FILE = dirname(GOTMLS_SESSION_FILE)."/gotmls_".GOTMLS_encode_njG(intval(GOTMLS_SESSION_TIME) - 3600).".$GOTMLS_LOGIN_KEY.php"))
+			elseif (is_file($LOG_FILE = dirname(GOTMLS_SESSION_FILE)."/gotmls_$LAST_HOUR.$GOTMLS_LOGIN_KEY.php"))
 				include($LOG_FILE);
 			if (is_array($GOTMLS_server_times) && count($GOTMLS_server_times))
 				$_SESSION["GOTMLS_server_time"] = array_replace_recursive($_SESSION["GOTMLS_server_time"], $GOTMLS_server_times);
-			if (GOTMLS_save_contents(GOTMLS_LOG_FILE, '<?php $_SESSION["GOTMLS_server_time"] = array_replace_recursive($_SESSION["GOTMLS_server_time"], GOTMLS_uckserialize(GOTMLS_decode("'.GOTMLS_encode(serialize($_SESSION["GOTMLS_server_time"]), "D").'")));'))
+			if (GOTMLS_save_contents(GOTMLS_LOG_FILE, '<?php $_SESSION["GOTMLS_server_time"] = array_replace_recursive($_SESSION["GOTMLS_server_time"], GOTMLS_uckserialize(GOTMLS_decode("'.GOTMLS_encode(serialize($_SESSION["GOTMLS_server_time"]), "D").'")));')) {
+				if (is_array($sess_files = scandir(dirname(GOTMLS_SESSION_FILE))))
+					foreach ($sess_files as $sess_file)
+						if (is_file(dirname(GOTMLS_SESSION_FILE)."/$sess_file") && preg_match('/^gotmls_(?!'.$LAST_HOUR.')(?!'.$THIS_HOUR.')\w{3}\.[a-f\d]{32}\.php$/i', $sess_file))
+							@unlink(dirname(GOTMLS_SESSION_FILE)."/$sess_file");
 				return $GOTMLS_LOGIN_KEY;
-			else
+			} else
 				return 0;
 		} else
 			return false;

@@ -2,7 +2,7 @@
 namespace SG_Security\Install_Service;
 
 /**
- * The instalation package version class.
+ * The installation package version class.
  */
 class Install_1_2_0 extends Install {
 
@@ -18,16 +18,22 @@ class Install_1_2_0 extends Install {
 	protected static $version = '1.2.0';
 
 	/**
+	 * The Database placeholder.
+	 */
+	public $wpdb;
+
+	/**
 	 * Run the install procedure.
 	 *
 	 * @since 1.2.0
 	 */
 	public function install() {
 		global $wpdb;
+		$this->wpdb = $wpdb;
 
 		// Change the the events and visitors tables charset.
-		$wpdb->query( "ALTER TABLE `{$wpdb->prefix}sgs_log_events` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci;" );
-		$wpdb->query( "ALTER TABLE `{$wpdb->prefix}sgs_log_visitors` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci;" );
+		$this->wpdb->query( 'ALTER TABLE `' . esc_sql( $this->wpdb->prefix . 'sgs_log_events' ) . '` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci;' );
+		$this->wpdb->query( 'ALTER TABLE `' . esc_sql( $this->wpdb->prefix . 'sgs_log_visitors' ) . '` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci;' );
 
 		// Setting the notification email option for Weekly emails.
 		add_option( 'sg_security_notification_emails', array( get_bloginfo( 'admin_email' ) ) );

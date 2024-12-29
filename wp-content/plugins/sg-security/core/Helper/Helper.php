@@ -12,11 +12,16 @@ use \WP_Session_Tokens;
 class Helper {
 
 	/**
+	 * The Database placeholder.
+	 */
+	public static $wpdb;
+
+	/**
 	 * Get the current user's IP address.
 	 *
 	 * @since  1.0.0
 	 *
-	 * @return string The users's IP.
+	 * @return string The user's IP.
 	 */
 	public static function get_current_user_ip() {
 		$keys = array( 'REMOTE_ADDR' );
@@ -37,7 +42,7 @@ class Helper {
 		   if ( ! filter_var( $_SERVER[ $key ], FILTER_VALIDATE_IP ) ) { //phpcs:ignore
 			  continue;
 		   }
-		   // Return the users's IP Address.
+		   // Return the user's IP Address.
 		   return preg_replace( '/^::1$/', '127.0.0.1', $_SERVER[ $key ] ); //phpcs:ignore
 		}
 		// Return the local IP by default.
@@ -54,7 +59,7 @@ class Helper {
 	}
 
 	/**
-	 * Get the path without home url path.
+	 * Get the path without home URL path.
 	 *
 	 * @since  1.0.0
 	 *
@@ -63,15 +68,15 @@ class Helper {
 	 * @return string      The URL path.
 	 */
 	public static function get_url_path( $url ) {
-		// Get the site url parts.
-		$url_parts = parse_url( Helper_Service::get_site_url() );
+		// Get the site URL parts.
+		$url_parts = wp_parse_url( Helper_Service::get_site_url() );
 		// Get the home path.
 		$home_path = ! empty( $url_parts['path'] ) ? trailingslashit( $url_parts['path'] ) : '/';
 
-		// Remove the query args from the url.
+		// Remove the query args from the URL.
 		$url = explode( '?', preg_replace( '|//+|', '/', $url ) );
-		// Get the url path.
-		$path = parse_url( $url[0], PHP_URL_PATH );
+		// Get the URL path.
+		$path = wp_parse_url( $url[0], PHP_URL_PATH );
 		// Return the path without home path.
 		return str_replace( $home_path, '', $path );
 
@@ -120,9 +125,10 @@ class Helper {
 	 */
 	public static function table_exists( $table_name ) {
 		global $wpdb;
+		self::$wpdb = $wpdb;
 
 		// Bail if table doesn't exist.
-		if ( $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $table_name ) ) !== $table_name ) {
+		if ( self::$wpdb->get_var( self::$wpdb->prepare( 'SHOW TABLES LIKE %s', $table_name ) ) !== $table_name ) { //phpcs:ignore
 			return false;
 		}
 

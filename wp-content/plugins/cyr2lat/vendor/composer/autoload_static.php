@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitac01469c9215f9a135d2576ebe728a1d
+class ComposerStaticInitc5b7344a4117fb2177a762f1895475b0
 {
     public static $files = array (
         '08eca214f4d3690babeee667e1bd7ede' => __DIR__ . '/../..' . '/src/php/includes/deprecated.php',
@@ -33,6 +33,7 @@ class ComposerStaticInitac01469c9215f9a135d2576ebe728a1d
         'CyrToLat\\BackgroundProcesses\\TermConversionProcess' => __DIR__ . '/../..' . '/src/php/BackgroundProcesses/TermConversionProcess.php',
         'CyrToLat\\ConversionTables' => __DIR__ . '/../..' . '/src/php/ConversionTables.php',
         'CyrToLat\\Converter' => __DIR__ . '/../..' . '/src/php/Converter.php',
+        'CyrToLat\\ErrorHandler' => __DIR__ . '/../..' . '/src/php/ErrorHandler.php',
         'CyrToLat\\Main' => __DIR__ . '/../..' . '/src/php/Main.php',
         'CyrToLat\\Request' => __DIR__ . '/../..' . '/src/php/Request.php',
         'CyrToLat\\Requirements' => __DIR__ . '/../..' . '/src/php/Requirements.php',
@@ -52,9 +53,9 @@ class ComposerStaticInitac01469c9215f9a135d2576ebe728a1d
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitac01469c9215f9a135d2576ebe728a1d::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitac01469c9215f9a135d2576ebe728a1d::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitac01469c9215f9a135d2576ebe728a1d::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitc5b7344a4117fb2177a762f1895475b0::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitc5b7344a4117fb2177a762f1895475b0::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitc5b7344a4117fb2177a762f1895475b0::$classMap;
 
         }, null, ClassLoader::class);
     }

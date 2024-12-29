@@ -3,9 +3,9 @@ Author: Webliberty
 Contributors: Webliberty
 Tags: spoiler
 Requires at least: 4.6
-Tested up to: 5.7
+Tested up to: 6.6
 Requires PHP: 5.6
-Stable tag: 1.2
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,6 +45,12 @@ To change color layout of a spoiler, please, go to options page.
 
 == Changelog ==
 
+= 1.4 =
+* Fixed Unauthenticated Arbitrary Shortcode Execution vulnerability in comments.
+
+= 1.3 =
+* Fixed Cross Site Scripting (XSS) vulnerability.
+
 = 1.2 =
 * Added support spoiler shortcode for comments.
 * Added settings for change spoiler border color.
@@ -56,6 +62,12 @@ To change color layout of a spoiler, please, go to options page.
 * Initial release.
 
 == Upgrade Notice ==
+
+= 1.4 =
+* Fixed Unauthenticated Arbitrary Shortcode Execution vulnerability in comments.
+
+= 1.3 =
+* Fixed Cross Site Scripting (XSS) vulnerability.
 
 = 1.2 =
 Tested up to WordPress 5.0. Color settings improvements.

@@ -32,7 +32,7 @@ class WPBE_PROFILES {
         add_action('wpbe_page_end', function() {
             ?>
             <script>
-                var wpbe_non_deletable_profiles = ['<?php echo implode("','", $this->non_deletable_profiles) ?>'];
+                var wpbe_non_deletable_profiles = ['<?php echo esc_html(implode("','", $this->non_deletable_profiles)) ?>'];
             </script>
             <?php
         }, 1);
@@ -178,7 +178,7 @@ class WPBE_PROFILES {
                 }
             }
 
-            echo $this->create($columns, $profile_title);
+            echo esc_attr($this->create($columns, $profile_title));
         }
 
         exit;

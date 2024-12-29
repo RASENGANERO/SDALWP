@@ -1,15 +1,71 @@
-# Translation of Plugins - Clearfy Cache – WordPress optimization plugin, Minify HTML, CSS &amp; JS, Defer - Development (trunk) in Russian
-# This file is distributed under the same license as the Plugins - Clearfy Cache – WordPress optimization plugin, Minify HTML, CSS &amp; JS, Defer - Development (trunk) package.
+# Translation of Plugins - Clearfy Cache – WordPress optimization plugin, Minify HTML, CSS &amp; JS, Defer - Stable (latest release) in Russian
+# This file is distributed under the same license as the Plugins - Clearfy Cache – WordPress optimization plugin, Minify HTML, CSS &amp; JS, Defer - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-10-04 07:58:39+0000\n"
+"PO-Revision-Date: 2024-12-10 01:46:00+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : ((n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) ? 1 : 2);\n"
 "X-Generator: GlotPress/4.0.1\n"
 "Language: ru\n"
-"Project-Id-Version: Plugins - Clearfy Cache – WordPress optimization plugin, Minify HTML, CSS &amp; JS, Defer - Development (trunk)\n"
+"Project-Id-Version: Plugins - Clearfy Cache – WordPress optimization plugin, Minify HTML, CSS &amp; JS, Defer - Stable (latest release)\n"
+
+#: libs/factory/templates/pages/templates/impressive/class-pages.php:552
+msgid "Enter the option name to search..."
+msgstr "Введите название опции для поиска..."
+
+#: libs/factory/templates/pages/templates/impressive/class-pages.php:513
+msgid "Subscribe"
+msgstr "Подписаться"
+
+#: libs/factory/templates/pages/templates/impressive/class-pages.php:509
+msgid "I confirm to subscribe to the CreativeMotion newsletter to receive the latest news. You can find how we use your information on our %s Privacy Policy %s"
+msgstr "Я подтверждаю подписку на новостную рассылку CreativeMotion, чтобы получать последние новости. Вы можете узнать, как мы используем вашу информацию, в нашей %s Политике конфиденциальности %s"
+
+#: libs/factory/templates/pages/templates/impressive/class-pages.php:506
+msgid "Enter your email address"
+msgstr "Введите свой адрес электронной почты"
+
+#: libs/factory/templates/pages/templates/impressive/class-pages.php:501
+msgid "Thank you for your subscription, a confirmation email has been sent to you. You need to confirm your subscription to complete this process."
+msgstr "Спасибо за подписку, вам было отправлено письмо с подтверждением. Вам необходимо подтвердить подписку, чтобы завершить этот процесс."
+
+#: libs/factory/templates/pages/templates/impressive/class-pages.php:498
+msgid "Thank you, you have successfully subscribed!"
+msgstr "Спасибо, вы успешно подписались!"
+
+#: libs/factory/templates/pages/templates/impressive/class-pages.php:493
+msgid "Subscribe to plugin’s newsletter"
+msgstr "Подпишитесь на новостную рассылку плагина"
+
+#: libs/factory/templates/pages/templates/impressive/class-pages.php:550
+msgid "Can't find the settings you need? Use the search by the plugin options:"
+msgstr "Не можете найти нужные настройки? Воспользуйтесь поиском по настройкам плагина:"
+
+#: libs/factory/templates/pages/templates/impressive/class-pages.php:433
+msgid "Donation for plugin development"
+msgstr "Пожертвование на развитие плагина"
+
+#: libs/factory/templates/pages/templates/impressive/class-pages.php:415
+msgid "Go rate us and push ideas"
+msgstr "Оставить отзыв или поделиться идеей"
+
+#: libs/factory/templates/pages/templates/impressive/class-pages.php:411
+msgid "And also write your ideas on how to extend or improve the plugin."
+msgstr "А также напишите свои идеи о том, как расширить или улучшить плагин."
+
+#: libs/factory/templates/pages/templates/impressive/class-pages.php:410
+msgid "Help the author, leave a review on wordpress.org. Thanks to feedback, I will know that the plugin is really useful to you and is needed."
+msgstr "Помогите автору, оставьте отзыв на wordpress.org. Благодаря отзывам, я буду знать, что плагин действительно полезен для вас и необходим."
+
+#: libs/factory/templates/pages/templates/impressive/class-pages.php:408
+msgid "Do you want the plugin to improved and update?"
+msgstr "Вы хотите, чтобы плагин улучшался и обновлялся?"
+
+#: libs/factory/templates/pages/templates/impressive/class-pages.php:381
+msgid "Hover to the icon to get help for the feature you selected."
+msgstr "Наведите указатель мыши на значок, чтобы получить справку по выбранной функции."
 
 #: components/disable-admin-notices/admin/boot.php:23
 msgid "Get premium plugin"
@@ -23,18 +79,18 @@ msgstr "Не кэшировать этот виджет"
 msgid "Reason:"
 msgstr "Причина:"
 
-#: components/cache/admin/pages/class-pages-nginx-rules.php:79
+#: components/cache/admin/pages/class-pages-nginx-rules.php:83
 msgid "Nginx Configuration Rules"
 msgstr "Правила конфигурации Nginx"
 
-#: components/cache/admin/pages/class-pages-nginx-rules.php:62
-#: components/cache/admin/pages/class-pages-nginx-rules.php:71
+#: components/cache/admin/pages/class-pages-nginx-rules.php:66
+#: components/cache/admin/pages/class-pages-nginx-rules.php:75
 msgid "Nginx Rules"
 msgstr "Правила Nginx"
 
 #: components/cache/admin/boot.php:13
-#: components/cache/includes/3rd-party/class-clearfy-plugin.php:117
-#: components/cache/includes/class-plugin.php:113
+#: components/cache/includes/3rd-party/class-clearfy-plugin.php:123
+#: components/cache/includes/class-plugin.php:119
 msgid "Clear all cache"
 msgstr "Очистить весь кэш"
 
@@ -90,10 +146,6 @@ msgstr "Сжатие HTML-кода (Minify)."
 msgid "Advanced options"
 msgstr "Расширенные настройки"
 
-#: libs/factory/templates/pages/templates/impressive/class-pages.php:552
-msgid "Enter the option name to search..."
-msgstr "Введите название опции для поиска..."
-
 #: libs/factory/logger/pages/class-logger-admin-page.php:97
 msgid "Logs of the"
 msgstr "Журналы"
@@ -103,37 +155,37 @@ msgid "Plugin log"
 msgstr "Журнал плагина"
 
 #: libs/factory/logger/pages/class-logger-admin-page.php:127
-#: libs/factory/logger/pages/class-logger-impressive-lite.php:115
+#: libs/factory/logger/pages/class-logger-impressive-lite.php:118
 #: libs/factory/logger/pages/class-logger-impressive-page.php:121
 msgid "Logs clean-up successfully"
 msgstr "Журнал успешно очищен"
 
 #: libs/factory/logger/pages/class-logger-admin-page.php:121
-#: libs/factory/logger/pages/class-logger-impressive-lite.php:109
+#: libs/factory/logger/pages/class-logger-impressive-lite.php:112
 #: libs/factory/logger/pages/class-logger-impressive-page.php:115
 msgid "Failed to clean-up logs. Please try again later."
 msgstr "Ошибка очистки журнала. Попробуйте ещё раз"
 
 #: libs/factory/logger/pages/class-logger-admin-page.php:100
-#: libs/factory/logger/pages/class-logger-impressive-lite.php:87
+#: libs/factory/logger/pages/class-logger-impressive-lite.php:90
 #: libs/factory/logger/pages/class-logger-impressive-page.php:92
 msgid "In this section, you can track how the plugin works. Sending this log to the developer will help you resolve possible issues."
 msgstr "В этом разделе вы можете отслеживать, как работает плагин. Отправка этого журнала разработчику поможет вам решить возможные проблемы."
 
 #: libs/factory/logger/pages/class-logger-admin-page.php:90
-#: libs/factory/logger/pages/class-logger-impressive-lite.php:80
+#: libs/factory/logger/pages/class-logger-impressive-lite.php:83
 #: libs/factory/logger/pages/class-logger-impressive-page.php:85
 msgid "Clean-up Logs (<span id=\"wbcr-log-size\">%s</span>)"
 msgstr "Очистка журналов (<span id=\"wbcr-log-size\">%s</span>)"
 
 #: libs/factory/logger/pages/class-logger-admin-page.php:89
-#: libs/factory/logger/pages/class-logger-impressive-lite.php:80
+#: libs/factory/logger/pages/class-logger-impressive-lite.php:83
 #: libs/factory/logger/pages/class-logger-impressive-page.php:85
 msgid "Working..."
 msgstr "Работа ..."
 
 #: libs/factory/logger/pages/class-logger-admin-page.php:85
-#: libs/factory/logger/pages/class-logger-impressive-lite.php:76
+#: libs/factory/logger/pages/class-logger-impressive-lite.php:79
 #: libs/factory/logger/pages/class-logger-impressive-page.php:81
 msgid "Export Debug Information"
 msgstr "Экспорт информации об отладке"
@@ -145,8 +197,8 @@ msgstr "Отладочная информация"
 
 #: libs/factory/logger/pages/class-logger-admin-page.php:38
 #: libs/factory/logger/pages/class-logger-admin-page.php:68
-#: libs/factory/logger/pages/class-logger-impressive-lite.php:66
-#: libs/factory/logger/pages/class-logger-impressive-lite.php:85
+#: libs/factory/logger/pages/class-logger-impressive-lite.php:69
+#: libs/factory/logger/pages/class-logger-impressive-lite.php:88
 #: libs/factory/logger/pages/class-logger-impressive-page.php:39
 #: libs/factory/logger/pages/class-logger-impressive-page.php:70
 #: libs/factory/logger/pages/class-logger-impressive-page.php:90
@@ -268,30 +320,6 @@ msgstr "ID группы пуст!"
 #: libs/factory/templates/includes/ajax-handlers.php:37
 msgid "You did not send your email address or it is incorrect!"
 msgstr "Вы не отправили свой адрес электронной почты или он неверный!"
-
-#: libs/factory/templates/pages/templates/impressive/class-pages.php:513
-msgid "Subscribe"
-msgstr "Подписаться"
-
-#: libs/factory/templates/pages/templates/impressive/class-pages.php:509
-msgid "I confirm to subscribe to the CreativeMotion newsletter to receive the latest news. You can find how we use your information on our %s Privacy Policy %s"
-msgstr "Я подтверждаю подписку на новостную рассылку CreativeMotion, чтобы получать последние новости. Вы можете узнать, как мы используем вашу информацию, в нашей %s Политике конфиденциальности %s"
-
-#: libs/factory/templates/pages/templates/impressive/class-pages.php:506
-msgid "Enter your email address"
-msgstr "Введите свой адрес электронной почты"
-
-#: libs/factory/templates/pages/templates/impressive/class-pages.php:501
-msgid "Thank you for your subscription, a confirmation email has been sent to you. You need to confirm your subscription to complete this process."
-msgstr "Спасибо за подписку, вам было отправлено письмо с подтверждением. Вам необходимо подтвердить подписку, чтобы завершить этот процесс."
-
-#: libs/factory/templates/pages/templates/impressive/class-pages.php:498
-msgid "Thank you, you have successfully subscribed!"
-msgstr "Спасибо, вы успешно подписались!"
-
-#: libs/factory/templates/pages/templates/impressive/class-pages.php:493
-msgid "Subscribe to plugin’s newsletter"
-msgstr "Подпишитесь на новостную рассылку плагина"
 
 #: admin/pages/class-pages-components.php:26
 #: components/cache/admin/pages/class-pages-performance-cache.php:74
@@ -450,10 +478,6 @@ msgstr "Посмотрите <a href=\"%s\" target=\"_blank\">видео</a> о 
 #: components/disable-admin-notices/admin/boot.php:105
 msgid "Thanks for using the Disable admin notices plugin! If you need support or all the features of the plugin, please buy the pro version <a class=\"button\" href=\"%s\">Get PRO</a>"
 msgstr "Спасибо за использование плагина Disable admin notices! Если вам нужна поддержка или все возможности плагина, пожалуйста, купите pro версию <a class=\"button\" href=\"%s\">Получить Pro</a>"
-
-#: libs/factory/templates/pages/templates/impressive/class-pages.php:550
-msgid "Can't find the settings you need? Use the search by the plugin options:"
-msgstr "Не можете найти нужные настройки? Воспользуйтесь поиском по настройкам плагина:"
 
 #: libs/factory/core/ajax/install-addons.php:199
 msgid "Unable to connect to the filesystem. Please confirm your credentials."
@@ -1056,22 +1080,22 @@ msgstr "<b>Используйте эту опцию с осторожность�
 msgid "<b>Use this option carefully!</b><br> Plugins like jetpack may have problems using this option."
 msgstr "<b>Используйте эту опцию с осторожностью!</b><br> Плагинам типа Jetpack'а может не понравиться."
 
-#: admin/includes/sidebar-widgets.php:72
+#: admin/includes/sidebar-widgets.php:70
 #: libs/factory/templates/pages/templates/impressive/class-pages.php:478
 msgid "If you find a php error or a vulnerability in plugin, you can <a href=\"%s\" target=\"_blank\" rel=\"noopener\">create ticket</a> in hot support that we responded instantly."
 msgstr "Если вы обнаружили PHP-ошибку или уязвимость плагина, срочно <a href=\"%s\" target=\"_blank\" rel=\"noopener\">создайте тикет</a>, на который мы ответим в срочном порядке."
 
-#: admin/includes/sidebar-widgets.php:68
+#: admin/includes/sidebar-widgets.php:66
 #: libs/factory/templates/pages/templates/impressive/class-pages.php:474
 msgid "Get starting free support"
 msgstr "Получить бесплатную поддержку"
 
-#: admin/includes/sidebar-widgets.php:63
+#: admin/includes/sidebar-widgets.php:61
 #: libs/factory/templates/pages/templates/impressive/class-pages.php:469
 msgid "We provide free support for this plugin. If you are pushed with a problem, just create a new ticket. We will definitely help you!"
 msgstr "Мы обеспечиваем бесплатную поддержку пользователям этого плагина. Если вы столкнулись с проблемами, просто создайте соответствующий тикет. Мы обязательно вам поможем!"
 
-#: admin/includes/sidebar-widgets.php:60
+#: admin/includes/sidebar-widgets.php:58
 #: libs/factory/templates/pages/templates/impressive/class-pages.php:466
 msgid "Having Issues?"
 msgstr "Проблемы?"
@@ -1153,7 +1177,7 @@ msgstr "Полная поддержка мультисайтов доступн�
 msgid "Oops... Sorry for the inconvenience caused!"
 msgstr "Упс... Простите за доставленные неудобства!"
 
-#: admin/includes/sidebar-widgets.php:31 admin/pages/class-page.php:63
+#: admin/includes/sidebar-widgets.php:30 admin/pages/class-page.php:63
 #: admin/pages/class-page.php:69
 msgid "Upgrade to Clearfy Business"
 msgstr "Обновится до Clearfy Бизнес"
@@ -1331,10 +1355,6 @@ msgstr "текущий пользователь"
 msgid "This will make persistent changes to your database &mdash; comments will remain closed even if you later disable the plugin! You should not use it if you only want to disable comments temporarily."
 msgstr "Это приведет к постоянным изменениям базы данных & mdash; Комментарии останутся закрытыми, даже если вы позже отключите подключаемый модуль! Не следует использовать его, если требуется временно отключить комментарии."
 
-#: components/comments-plus/admin/pages/class-page-comments.php:171
-msgid "Only the built-in post types appear above. If you want to disable comments on other custom post types on the entire network, you can supply a comma-separated list of post types below (use the slug that identifies the post type)."
-msgstr "Только встроенные типы записей отображаются выше. Если вы хотите отключить комментарии к другим пользовательским типам записей во всей сети, вы можете предоставить список типов сообщений, разделенных запятыми (используйте имя, которое идентифицирует тип записей)."
-
 #: components/comments-plus/admin/pages/class-page-comments.php:59
 msgid "Manage site comments"
 msgstr "Упр. комментариями"
@@ -1348,6 +1368,10 @@ msgstr "Использовать постоянный режим"
 #: components/comments-plus/admin/pages/class-page-comments.php:168
 msgid "Custom post types"
 msgstr "Пользовательские типы записей"
+
+#: components/comments-plus/admin/pages/class-page-comments.php:171
+msgid "Only the built-in post types appear above. If you want to disable comments on other custom post types on the entire network, you can supply a comma-separated list of post types below (use the slug that identifies the post type)."
+msgstr "Только встроенные типы записей отображаются выше. Если вы хотите отключить комментарии к другим пользовательским типам записей во всей сети, вы можете предоставить список типов сообщений, разделенных запятыми (используйте имя, которое идентифицирует тип записей)."
 
 #: components/assets-manager/views/part-tab-content-assets-plugins-settings.php:90
 msgid "You’ve enabled the &#34;Optimize js scripts?&#34; and &#34;Optimize CSS options&#34; in the &#34;Minify & Combine plugin&#34;. These settings exclude scripts and styles that you don’t want to optimize. Press No to add a file to the excluded list."
@@ -1615,7 +1639,7 @@ msgstr "Документация"
 msgid "Automatic renewal, every %s"
 msgstr "Автоматическое продление, каждые %s"
 
-#: admin/boot.php:117
+#: admin/boot.php:118
 msgid "Business"
 msgstr "Бизнес"
 
@@ -1684,13 +1708,13 @@ msgstr "Webcraftic минимизировать и объединить"
 msgid "Мinify And Combine cannot write to the cache directory (%s), please fix to enable CSS/ JS optimization!"
 msgstr "Мinify And Combine не может выполнить запись в каталог кэша (%s), пожалуйста, исправьте, чтобы включить оптимизацию CSS/JS!"
 
-#: components/minify-and-combine/includes/classes/class-cache-checker.php:101
-msgid "<strong>Мinify And Combine's cache size is getting big</strong>, consider purging the cache. Have a look at <a href=\"https://wordpress.org/plugins/\" target=\"_blank\" rel=\"noopener noreferrer\">the Мinify And Combine FAQ</a> to see how you can keep the cache size under control."
-msgstr "<strong> Уменьшите размер кэша Combine и Combine </strong>, рассмотрите возможность его очистки. Просмотрите <a href=\"https://wordpress.org/plugins/\" target=\"_blank\" rel=\"noopener noreferrer\"> часто задаваемые вопросы по минимизации и объединению </a>, чтобы узнать, как сохранить размер кэша под контролем."
-
 #: components/minify-and-combine/includes/classes/class-cache-checker.php:80
 msgid "Мinify And Combine's cache size is getting big, consider purging the cache. Have a look at https://wordpress.org/plugins/ to see how you can keep the cache size under control."
 msgstr "Уменьшите размер кеша Minify And Combine, подумайте о его очистке. Загляните на https://wordpress.org/plugins/, чтобы узнать, как вы можете контролировать размер кэша."
+
+#: components/minify-and-combine/includes/classes/class-cache-checker.php:101
+msgid "<strong>Мinify And Combine's cache size is getting big</strong>, consider purging the cache. Have a look at <a href=\"https://wordpress.org/plugins/\" target=\"_blank\" rel=\"noopener noreferrer\">the Мinify And Combine FAQ</a> to see how you can keep the cache size under control."
+msgstr "<strong> Уменьшите размер кэша Combine и Combine </strong>, рассмотрите возможность его очистки. Просмотрите <a href=\"https://wordpress.org/plugins/\" target=\"_blank\" rel=\"noopener noreferrer\"> часто задаваемые вопросы по минимизации и объединению </a>, чтобы узнать, как сохранить размер кэша под контролем."
 
 #: components/minify-and-combine/includes/classes/class-cache-checker.php:79
 msgid "Мinify And Combine cache size warning"
@@ -1739,11 +1763,6 @@ msgstr "Объединить все связанные CSS-файлы? Если 
 msgid "If your scripts break because of a JS-error, you might want to try this."
 msgstr "Если ваши сценарии прерываются из-за ошибки JS, вы можете попробовать это."
 
-#: components/minify-and-combine/admin/pages/class-pages-settings.php:386
-#: components/minify-and-combine/admin/pages/class-pages-settings.php:434
-msgid "A comma-separated list of scripts you want to exclude from being optimized, for example 'whatever.js, another.js' (without the quotes) to exclude those scripts from being aggregated and minimized by Мinify And Combine."
-msgstr "Список сценариев, которые вы хотите исключить из оптимизации, например, «whatever.js, another.js» (без кавычек), чтобы исключить агрегирование и минимизацию этих сценариев с помощью Мinify And Combine."
-
 #: components/minify-and-combine/admin/pages/class-pages-settings.php:443
 msgid "Load JavaScript early, this can potentially fix some JS-errors, but makes the JS render blocking."
 msgstr "Загрузить JavaScript раньше, это может исправить некоторые потенциальные JS-ошибки, но JS блокирует отрисовку."
@@ -1756,6 +1775,11 @@ msgstr "Пусть Minify And Combine также извлекает JS из HTML
 #: components/minify-and-combine/admin/pages/class-pages-settings.php:355
 msgid "Aggregate all linked JS-files to have them loaded non-render blocking? If this option is off, the individual JS-files will remain in place but will be minified."
 msgstr "Объединить все связанные JS-файлы для их неблокируемой загрузки? Если эта опция отключена, отдельные JS-файлы не будут перемещены, но будут минифицированы."
+
+#: components/minify-and-combine/admin/pages/class-pages-settings.php:386
+#: components/minify-and-combine/admin/pages/class-pages-settings.php:434
+msgid "A comma-separated list of scripts you want to exclude from being optimized, for example 'whatever.js, another.js' (without the quotes) to exclude those scripts from being aggregated and minimized by Мinify And Combine."
+msgstr "Список сценариев, которые вы хотите исключить из оптимизации, например, «whatever.js, another.js» (без кавычек), чтобы исключить агрегирование и минимизацию этих сценариев с помощью Мinify And Combine."
 
 #: components/minify-and-combine/admin/pages/class-pages-settings.php:116
 msgid "The cache has been successfully cleaned."
@@ -1942,11 +1966,6 @@ msgstr "Срок действия вашей лицензии истек, пож
 msgid "You use a paid subscription for the plugin updates. In case you don’t want to receive paid updates, please, click <a data-action=\"unsubscribe\" class=\"wcl-control-btn\" href=\"#\">cancel subscription</a>"
 msgstr "Вы используете платную подписку на обновления плагина, нажмите <a data-action=\"unsubscribe\" class=\"wcl-control-btn\" href=\"#\">отменить подписку</a>, если вы не хотите больше получать платные обновления"
 
-#: admin/pages/class-pages-license.php:82
-#: libs/factory/templates/pages/class-page-license.php:335
-msgid "Public License is a GPLv3 compatible license allowing you to change and use this version of the plugin for free. Please keep in mind this license covers only free edition of the plugin. Premium versions are distributed with other type of a license."
-msgstr "Общественная лицензия - это лицензия, совместимая с GPLv3, которая позволяет вам изменять и использовать эту версию плагина бесплатно. Имейте в виду, что эта лицензия распространяется только на бесплатную версию плагина. Премиум версии распространяются с другим типом лицензии."
-
 #: libs/factory/templates/pages/class-page-license.php:316
 msgid "Synchronization"
 msgstr "Синхронизация"
@@ -1964,6 +1983,11 @@ msgstr "Ваша текущая лицензия для %1$s:"
 #: components/disable-admin-notices/admin/pages/class-pages-license.php:45
 msgid "License"
 msgstr "Лицензия"
+
+#: admin/pages/class-pages-license.php:82
+#: libs/factory/templates/pages/class-page-license.php:335
+msgid "Public License is a GPLv3 compatible license allowing you to change and use this version of the plugin for free. Please keep in mind this license covers only free edition of the plugin. Premium versions are distributed with other type of a license."
+msgstr "Общественная лицензия - это лицензия, совместимая с GPLv3, которая позволяет вам изменять и использовать эту версию плагина бесплатно. Имейте в виду, что эта лицензия распространяется только на бесплатную версию плагина. Премиум версии распространяются с другим типом лицензии."
 
 #: admin/pages/class-pages-defence.php:104
 msgid "<strong>Hide WordPress versions</strong>"
@@ -2016,15 +2040,15 @@ msgstr "Удалить"
 msgid "Install"
 msgstr "Установить"
 
-#: admin/includes/sidebar-widgets.php:28 admin/pages/class-pages-license.php:99
+#: admin/includes/sidebar-widgets.php:27 admin/pages/class-pages-license.php:99
 msgid "Paid license guarantees that you can download and update existing and future paid components of the plugin."
 msgstr "После покупки лицензии, вы имеете возможность скачивать и обновлять все платные компоненты плагина, которые существуют на момент покупки и которые будут выпущены в будущем. "
 
-#: admin/includes/sidebar-widgets.php:27 admin/pages/class-pages-license.php:98
+#: admin/includes/sidebar-widgets.php:26 admin/pages/class-pages-license.php:98
 msgid "<b>Clearfy Business</b> is a paid package of components for the popular free WordPress plugin named Clearfy. You get access to all paid components at one price."
 msgstr "<b>Clearfy Bussines</b> это платный пакет компонентов для популярного WordPress плагина Clearfy, который поставляется бесплатно. Вы покупаете доступ ко всем платным компонентам плагина по одной цене."
 
-#: admin/includes/sidebar-widgets.php:24
+#: admin/includes/sidebar-widgets.php:23
 msgid "Activation Clearfy Business"
 msgstr "Активировать Clearfy Бизнес"
 
@@ -2047,10 +2071,6 @@ msgstr "Вы пытаетесь выполнить недопустимое де
 #: libs/factory/core/ajax/install-addons.php:31
 msgid "Required attributes are not passed or empty."
 msgstr "Обязательные атрибуты не переданы и не пусты."
-
-#: components/cyrlitera/cyrlitera.php:46
-msgid "Webcraftic Cyrlitera"
-msgstr "Webcraftic Cyrlitera"
 
 #: components/cyrlitera/admin/pages/class-page-cyrlitera.php:277
 msgid "The rollback of new changes was successful!"
@@ -2166,10 +2186,6 @@ msgid "This option works only for new media library files. All Cyrillic names of
 msgstr "Эта опция работает только для новых файлов медиа библиотеки. Все кириллические имена загружаемых файлов, будут преобразованы в имена с латинскими символами."
 
 #: components/cyrlitera/admin/pages/class-page-cyrlitera.php:120
-msgid "Converts Cyrillic permalinks of post, pages, taxonomies and media files to the Latin alphabet. Supports Russian, Ukrainian, Georgian, Bulgarian languages. Example: http://site.dev/последние-новости -> http://site.dev/poslednie-novosti"
-msgstr "Конвертирует кириллические постоянные ссылки записей, страниц, таксономий и медиафайлов в латиницу. Поддерживает Русский, Украинский, Грузинский, Болгарский языки. Пример: http://site.dev/последние-новости -> http://site.dev/poslednie-novosti"
-
-#: components/cyrlitera/admin/pages/class-page-cyrlitera.php:120
 msgid "Transliteration of Cyrillic alphabet."
 msgstr "Транслитерация кириллицы."
 
@@ -2194,6 +2210,10 @@ msgstr "Комментарии очищающие инструменты"
 #: components/comments-plus/admin/pages/class-page-comments.php:191
 msgid "These settings will help you improve SEO and reduce the amount of spam."
 msgstr "Эти настройки помогут вам улучшить SEO и уменьшить количество спама."
+
+#: components/cyrlitera/admin/pages/class-page-cyrlitera.php:120
+msgid "Converts Cyrillic permalinks of post, pages, taxonomies and media files to the Latin alphabet. Supports Russian, Ukrainian, Georgian, Bulgarian languages. Example: http://site.dev/последние-новости -> http://site.dev/poslednie-novosti"
+msgstr "Конвертирует кириллические постоянные ссылки записей, страниц, таксономий и медиафайлов в латиницу. Поддерживает Русский, Украинский, Грузинский, Болгарский языки. Пример: http://site.dev/последние-новости -> http://site.dev/poslednie-novosti"
 
 #: components/comments-plus/admin/pages/class-page-comments.php:191
 msgid "General settings for comments"
@@ -2233,12 +2253,16 @@ msgid "<strong>Basic SEO optimization settings</strong>."
 msgstr "<strong>Базовые настройки SEO оптимизации</strong>."
 
 #: admin/pages/class-pages-seo-double-pages.php:74
-msgid "Search engines perceive these pages as website separate pages, therefore their content ceases to be unique because of duplication. In addition, page reference weight is reduced if it has a duplicate. A small number of duplicated pages will not be a serious problem, but if there are more than 50 percents of them - you urgently need to correct the situation."
-msgstr "Поисковые системы воспринимают эти страницы, как отдельные страницы сайта, поэтому их наполнение из-за дублирования информации перестает быть уникальным. Кроме того, понижается ссылочный вес страницы, если она имеет дубль. Небольшое количество дублированных страниц не станет серьёзной проблемой, однако если их более 50 процентов - вам срочно нужно исправлять ситуацию."
-
-#: admin/pages/class-pages-seo-double-pages.php:74
 msgid "<strong>Delete duplicate pages.</strong>."
 msgstr "<strong>Удалите дубли страниц</strong>."
+
+#: admin/pages/class-pages-advanced.php:87
+msgid "Forward all requests to page 404 or to the main page through 301 redirects."
+msgstr "Переслать все запросы на страницу 404 или на главную страницу через 301 переадресацию."
+
+#: admin/pages/class-pages-seo-double-pages.php:74
+msgid "Search engines perceive these pages as website separate pages, therefore their content ceases to be unique because of duplication. In addition, page reference weight is reduced if it has a duplicate. A small number of duplicated pages will not be a serious problem, but if there are more than 50 percents of them - you urgently need to correct the situation."
+msgstr "Поисковые системы воспринимают эти страницы, как отдельные страницы сайта, поэтому их наполнение из-за дублирования информации перестает быть уникальным. Кроме того, понижается ссылочный вес страницы, если она имеет дубль. Небольшое количество дублированных страниц не станет серьёзной проблемой, однако если их более 50 процентов - вам срочно нужно исправлять ситуацию."
 
 #: admin/pages/class-pages-performance.php:226
 msgid ""
@@ -2254,10 +2278,6 @@ msgstr "Dashicons является официальным шрифтом в па
 #: admin/pages/class-pages-performance.php:243
 msgid "By default, WordPress loads Font Awesome icons synchronously, that is, your page will not be fully loaded until Font Awesome icons are loaded. This algorithm slows down the loading of your page and leads to errors when checking the site in Google Page Speed. Using this option, your Font Awesome icons will be loaded after your page is fully loaded. This method has a negative — you and visitors of your site will see changes while loading a page, from the placeholders to icons."
 msgstr "По умолчанию WordPress загружает иконки Font Awesome синхронно, то есть, ваша страница не будет полностью загружена, пока не будут загружены иконки Font Awesome. Такой алгоритм работы замедляет загрузку вашей страницы и приводит к появлению ошибок при проверке сайта в Google Page Speed. Используя эту опцию, ваши иконки Font Awesome, будут загружаться после полной загрузки вашей страницы. У этого метода есть и минус — вы и посетители сайта будете видеть изменения в процессе загрузки страницы с «кракозябр» вместо иконок на иконки."
-
-#: admin/pages/class-pages-advanced.php:87
-msgid "Forward all requests to page 404 or to the main page through 301 redirects."
-msgstr "Переслать все запросы на страницу 404 или на главную страницу через 301 переадресацию."
 
 #: admin/pages/class-pages-advanced.php:86
 msgid "Redirect feed requests"
@@ -2323,14 +2343,6 @@ msgstr "Установите код отслеживания Google Analytics."
 msgid "ATTENTION! Before using this option, remove the previously installed Google Analytics code inside your theme or plugins associated with this feature!"
 msgstr "ВНИМАНИЕ! Перед использованием этой опции, удалите ранее установленный код Google Analytics в вашей теме или плагины, связанные с этой функцией!"
 
-#: components/ga-cache/admin/options.php:64
-msgid "If you enable this option, the plugin will begin to save a local copy of Google Analytics to speed up the loading of your website and improve Google Page Speed."
-msgstr "Если включить эту опцию, плагин начнет сохранять локальную копию Google Analytics, чтобы ускорить загрузку вашего сайта и улучшить показатели Google Page speed. ВНИМАНИЕ! Перед использованием этой опции, удалите ранее установленный код Google Analytics в вашей теме или плагины, связанные с этой функцией!"
-
-#: components/ga-cache/admin/options.php:24
-msgid "To improve Google Page Speed indicators Analytics caching is needed. However, it can also slightly increase your website loading speed, because Analytics js files will load locally. The second case that you might need these settings is the usual Google Analytics connection to your website. You do not need to do this with other plugins or insert the tracking code into your theme."
-msgstr "Кеширование Analytics нужно для улучшения показателей Google Page Speed, но это также может незначительно повысить скорость загрузки вашего сайта, потому что js файлы Analytics будут подгружаться локально. Второй случай, когда вам могут понадобиться эти настройки — обычное подключение Google Analytics к сайту. Вам не нужно делать это с помощью других плагинов или просто вставлять код отслеживания в вашу тему."
-
 #: admin/pages/class-pages-performance.php:310
 msgid "Posts or Pages IDs separated by a ,"
 msgstr "ID записей или страниц, разделенные запятой ,"
@@ -2338,6 +2350,30 @@ msgstr "ID записей или страниц, разделенные запя
 #: admin/pages/class-pages-performance.php:301
 msgid "By default, the \"Disable Google Maps\" option removes maps inserted with the SCRIPT tag from the page source code. However, you can also cut out all maps inserted via the iframe by enabling this option."
 msgstr "По умолчанию, опция \"Отключить карты Google \" удаляет карты с тегом script из исходного кода страницы. Однако, вы также можете вырезать все карты, вставленные через iframe, включив эту опцию."
+
+#: admin/pages/class-pages-performance.php:234
+msgid "Google Fonts and Maps strongly affect your website loading speed. Use settings below to disable or optimize Google fonts and Maps."
+msgstr "Google шрифты и карты сильно влияют на скорость загрузки вашего сайта. Используйте настройки ниже, чтобы отключить или оптимизировать Google шрифты и карты."
+
+#: admin/pages/class-pages-performance.php:234
+msgid "<strong>Fonts and Maps</strong>."
+msgstr "<strong>Карты и шрифты</strong>."
+
+#: admin/pages/class-pages-performance-google.php:48
+msgid "Google services"
+msgstr "Google"
+
+#: admin/pages/class-pages-defence.php:54
+msgid "Basic recommended security settings."
+msgstr "Основные рекомендуемые параметры безопасности."
+
+#: components/ga-cache/admin/options.php:64
+msgid "If you enable this option, the plugin will begin to save a local copy of Google Analytics to speed up the loading of your website and improve Google Page Speed."
+msgstr "Если включить эту опцию, плагин начнет сохранять локальную копию Google Analytics, чтобы ускорить загрузку вашего сайта и улучшить показатели Google Page speed. ВНИМАНИЕ! Перед использованием этой опции, удалите ранее установленный код Google Analytics в вашей теме или плагины, связанные с этой функцией!"
+
+#: components/ga-cache/admin/options.php:24
+msgid "To improve Google Page Speed indicators Analytics caching is needed. However, it can also slightly increase your website loading speed, because Analytics js files will load locally. The second case that you might need these settings is the usual Google Analytics connection to your website. You do not need to do this with other plugins or insert the tracking code into your theme."
+msgstr "Кеширование Analytics нужно для улучшения показателей Google Page Speed, но это также может незначительно повысить скорость загрузки вашего сайта, потому что js файлы Analytics будут подгружаться локально. Второй случай, когда вам могут понадобиться эти настройки — обычное подключение Google Analytics к сайту. Вам не нужно делать это с помощью других плагинов или просто вставлять код отслеживания в вашу тему."
 
 #: admin/pages/class-pages-performance.php:284
 msgid ""
@@ -2358,22 +2394,6 @@ msgstr ""
 #: admin/pages/class-pages-performance.php:263
 msgid "By default, WordPress loads Google fonts synchronously, that is, your page will not be fully loaded until Google Fonts are loaded. This algorithm slows down the loading of your page and leads to errors when checking the site in Google Page Speed. Using this option, your Google Fonts will be loaded after your page is fully loaded. This method has a negative — you and visitors of your site will see how the font changes while loading a page, from the system to the downloadable one."
 msgstr "По умолчанию WordPress загружает шрифты Google синхронно, то есть, ваша страница не будет полностью загружена, пока не будут загружены шрифты Google. Такой алгоритм работы замедляет загрузку вашей страницы и приводит к появлению ошибок при проверке сайта в Google Page Speed. Используя эту опцию, ваши шрифты Google будут загружаться после полной загрузки вашей страницы. У этого метода есть и минус — вы и посетители сайта будете видеть, как меняется шрифт в процессе загрузки страницы с системного на загружаемый."
-
-#: admin/pages/class-pages-performance.php:234
-msgid "Google Fonts and Maps strongly affect your website loading speed. Use settings below to disable or optimize Google fonts and Maps."
-msgstr "Google шрифты и карты сильно влияют на скорость загрузки вашего сайта. Используйте настройки ниже, чтобы отключить или оптимизировать Google шрифты и карты."
-
-#: admin/pages/class-pages-performance.php:234
-msgid "<strong>Fonts and Maps</strong>."
-msgstr "<strong>Карты и шрифты</strong>."
-
-#: admin/pages/class-pages-performance-google.php:48
-msgid "Google services"
-msgstr "Google"
-
-#: admin/pages/class-pages-defence.php:54
-msgid "Basic recommended security settings."
-msgstr "Основные рекомендуемые параметры безопасности."
 
 #: admin/pages/class-pages-defence.php:54
 msgid "<strong>Base settings</strong>."
@@ -2474,7 +2494,7 @@ msgstr "Мы обнаружили, что у вас установлен пла�
 #. Plugin Name of the plugin
 #: clearfy.php
 msgid "Webcraftic Clearfy – WordPress optimization plugin"
-msgstr "Webcraftic Clearfy - плагин оптимизации для Wordpress"
+msgstr "Webcraftic Clearfy - плагин оптимизации для WordPress"
 
 #: components/disable-admin-notices/includes/classes/class-configurate-notices.php:105
 msgid "Restore notice"
@@ -2688,10 +2708,6 @@ msgstr "Фильтры плагинов"
 msgid "Notifications %s"
 msgstr "Уведомления %s"
 
-#: components/disable-admin-notices/disable-admin-notices.php:54
-msgid "Webcraftic disable admin notices"
-msgstr "Webcraftic отключить уведомления администратора"
-
 #: components/disable-admin-notices/admin/options.php:261
 #: components/disable-admin-notices/admin/pages/class-pages-settings.php:116
 msgid "Hidden notices are successfully reset, now you can see them again!"
@@ -2738,12 +2754,8 @@ msgid "All notices"
 msgstr "Все уведомления"
 
 #: components/disable-admin-notices/admin/options.php:33
-msgid "Do you know the situation, when some plugin offers you to update to premium, to collect technical data and shows many annoying notices? You are close these notices every now and again but they newly appears and interfere your work with WordPress. Even worse, some plugin’s authors delete “close” button from notices and they shows in your admin panel forever."
-msgstr "Вам знакома ситуация, когда какой-то плагин просит вас обновиться до премиум-версии, получить права на сбор данных о вашем сайте и создает много раздражающих уведомлений? Вы закрываете эти уведомления раз за разом, но они вновь появляются и мешают вашей работе с WordPress. Хуже того, некоторые авторы и вовсе удаляют кнопку “закрыть” из уведомлений, и они висят в шапке вашей панели администратора целую вечность."
-
-#: components/disable-admin-notices/admin/options.php:33
 msgid "Admin notifications, Update nags"
-msgstr "Уведомления администратора, уведомления об обновлении Wordpress"
+msgstr "Уведомления администратора, уведомления об обновлении WordPress"
 
 #: components/disable-admin-notices/admin/pages/class-pages-notices.php:51
 msgid "Hidden notices"
@@ -2759,6 +2771,10 @@ msgstr "Включить уведомления в админбаре"
 #: components/disable-admin-notices/admin/pages/class-pages-settings.php:72
 msgid "Hide admin notices"
 msgstr "Скрыть уведомления"
+
+#: components/disable-admin-notices/admin/options.php:33
+msgid "Do you know the situation, when some plugin offers you to update to premium, to collect technical data and shows many annoying notices? You are close these notices every now and again but they newly appears and interfere your work with WordPress. Even worse, some plugin’s authors delete “close” button from notices and they shows in your admin panel forever."
+msgstr "Вам знакома ситуация, когда какой-то плагин просит вас обновиться до премиум-версии, получить права на сбор данных о вашем сайте и создает много раздражающих уведомлений? Вы закрываете эти уведомления раз за разом, но они вновь появляются и мешают вашей работе с WordPress. Хуже того, некоторые авторы и вовсе удаляют кнопку “закрыть” из уведомлений, и они висят в шапке вашей панели администратора целую вечность."
 
 #: components/disable-admin-notices/admin/ajax/hide-notice.php:27
 #: components/disable-admin-notices/admin/ajax/restore-notice.php:24
@@ -2816,7 +2832,7 @@ msgstr "Другое"
 
 #: admin/pages/class-pages-performance.php:424
 msgid "Select the heartbeat frequency wordpress. We recommend you 60 seconds, default is 20 seconds."
-msgstr "Установите частоту пульсации Wordpress. Мы рекомендуем вам 60 секунд, значение по умолчанию — 20 секунд."
+msgstr "Установите частоту пульсации WordPress. Мы рекомендуем вам 60 секунд, значение по умолчанию — 20 секунд."
 
 #: components/assets-manager/includes/classes/class-assets-manager-global.php:1214
 msgid "Current URL"
@@ -2836,10 +2852,6 @@ msgstr "Отключить"
 #: components/assets-manager/views/tab-content-assets.php:22
 msgid "Size"
 msgstr "Размер"
-
-#: components/assets-manager/gonzales.php:46
-msgid "Webcraftic assets manager"
-msgstr "Webcraftic менеджер скриптов"
 
 #: components/assets-manager/admin/pages/class-pages-settings.php:149
 msgid "Disables assets manager initialization for backend."
@@ -2903,12 +2915,7 @@ msgstr "Удаляет ссылку application/ld+json, содержащую с
 #: admin/pages/class-pages-seo.php:193
 #: admin/pages/setup/steps/class-step-setting-seo-optimize.php:94
 msgid "Disable JSON-LD sitelinks searchbox using WordPress in plugin Yoast SEO."
-msgstr "Отключает JSON-LD ссылки используемые Wordpress в плагине Yoast SEO."
-
-#: admin/pages/class-pages-seo.php:193
-#: admin/pages/setup/steps/class-step-setting-seo-optimize.php:94
-msgid "If you’re not familiar with Search Action it’s the mark-up that helps search engines add a shiny Sitelinks Search Box below your search engine results. For the majority of webmasters the extra search box is an absolutely fantastic feature but for many it’s not required or wanted, especially if a site only has a few pages or if the site uses a customised search platform that only searches blog posts and not pages."
-msgstr "Эта функция позволяет поисковым системам добавлять дополнительные ссылки и поле поиска в поисковый блок (сниппет) в поисковой выдаче. Для многих вебмастеров — это просто находка, но в то же время, многим эта функция не нужна. Особенно, если на сайте всего несколько страниц или есть собственный поиск, который ищет только записи блога, но не страницы."
+msgstr "Отключает JSON-LD ссылки используемые WordPress в плагине Yoast SEO."
 
 #: admin/includes/classes/class.install-plugins-button.php:335
 #: libs/factory/core/includes/components/class-install-component-button.php:431
@@ -2939,6 +2946,11 @@ msgstr "Страница"
 #: libs/factory/templates/pages/templates/impressive/class-page-template-impressive.php:350
 msgid "It seems that a caching/performance plugin is active on this site. Please manually invalidate that plugin's cache after making any changes to the settings below."
 msgstr "Похоже, что Вы используете плагин кэширования или ускорения блога. Не забудьте после изменения любых настроек, очистить кэш вручную!"
+
+#: admin/pages/class-pages-seo.php:193
+#: admin/pages/setup/steps/class-step-setting-seo-optimize.php:94
+msgid "If you’re not familiar with Search Action it’s the mark-up that helps search engines add a shiny Sitelinks Search Box below your search engine results. For the majority of webmasters the extra search box is an absolutely fantastic feature but for many it’s not required or wanted, especially if a site only has a few pages or if the site uses a customised search platform that only searches blog posts and not pages."
+msgstr "Эта функция позволяет поисковым системам добавлять дополнительные ссылки и поле поиска в поисковый блок (сниппет) в поисковой выдаче. Для многих вебмастеров — это просто находка, но в то же время, многим эта функция не нужна. Особенно, если на сайте всего несколько страниц или есть собственный поиск, который ищет только записи блога, но не страницы."
 
 #: libs/factory/core/includes/functions.php:152
 msgid "%1$s is <strong>deprecated</strong> since version %2$s with no alternative available."
@@ -3032,10 +3044,6 @@ msgstr "Больше функций (<b>бесплатно</b>)"
 msgid "Welcome"
 msgstr "Добро пожаловать"
 
-#: components/updates-manager/webcraftic-updates-manager.php:46
-msgid "Webcraftic Updates Manager"
-msgstr "Webcraftic менеджер обновлений"
-
 #: components/updates-manager/admin/pages/class-page-updates.php:81
 msgid "Updates"
 msgstr "Обновления"
@@ -3053,10 +3061,6 @@ msgstr "Примечание. Плагин <em>%s</em> в настоящий м�
 #: components/comments-plus/includes/classes/class-configurate-comments.php:220
 msgid "Comments are closed."
 msgstr "Комментарии Закрыты."
-
-#: components/comments-plus/comments-plus.php:46
-msgid "Webcraftic Disable comments"
-msgstr "Webcraftic отключить комментарии"
 
 #: components/comments-plus/admin/pages/class-page-comments.php:160
 msgid "Select the post types for which comments will be disabled"
@@ -3241,11 +3245,11 @@ msgstr "Удалить html комментарии"
 
 #: admin/includes/options.php:365 admin/pages/class-pages-performance.php:402
 msgid "Heartbeat frequency"
-msgstr "Интервал пульсации Wordpress"
+msgstr "Интервал пульсации WordPress"
 
 #: admin/includes/options.php:360 admin/pages/class-pages-performance.php:373
 msgid "Disable Heartbeat"
-msgstr "Отключить пульсацию Wordpress"
+msgstr "Отключить пульсацию WordPress"
 
 #: admin/includes/options.php:355
 msgid "Disable auto inserted paragraphs (i.e. p tags)"
@@ -3269,7 +3273,7 @@ msgstr "Заменить текст \"Привет\", на \"Добро пожа
 
 #: admin/includes/options.php:320
 msgid "Remove admin bar WP logo"
-msgstr "Удалить логотип Wordpress из админбара"
+msgstr "Удалить логотип WordPress из админбара"
 
 #: admin/includes/options.php:315 admin/pages/class-pages-advanced.php:106
 msgid "Disable admin top bar"
@@ -3277,12 +3281,12 @@ msgstr "Скрыть верхнюю панель администратора"
 
 #: admin/includes/options.php:310
 msgid "Enable Sanitization of WordPress"
-msgstr "Включить Wordpress Sanitization"
+msgstr "Включить WordPress Sanitization"
 
 #. Description of the plugin
 #: clearfy.php
 msgid "Disables unused Wordpress features, improves performance and increases SEO rankings, using Clearfy, which makes WordPress very easy."
-msgstr "Отключает неиспользуемые функции Wordpress, повышает производительность и повышает SEO рейтинг, с помощью Clearfy вы делаете WordPress очень легким и простым."
+msgstr "Отключает неиспользуемые функции WordPress, повышает производительность и повышает SEO рейтинг, с помощью Clearfy вы делаете WordPress очень легким и простым."
 
 #: libs/factory/forms/controls/pattern.php:117
 msgid "Changing the color may takes a minute or more. Please be patient."
@@ -3432,7 +3436,7 @@ msgstr "Отключить автоматические обновления"
 
 #: components/updates-manager/admin/pages/class-page-updates.php:159
 msgid "WordPress Core Updates"
-msgstr "Базовые обновления Wordpress"
+msgstr "Базовые обновления WordPress"
 
 #: components/updates-manager/admin/pages/class-page-updates.php:142
 msgid "You can disable all themes updates or choose manual or automatic update mode."
@@ -3540,7 +3544,7 @@ msgstr "После установки WP не содержит файл robots.t
 
 #: components/comments-plus/admin/pages/class-page-comments.php:217
 msgid "In some Wordpress topics this may not work."
-msgstr "В некоторых темах Wordpress это может не сработать."
+msgstr "В некоторых темах WordPress это может не сработать."
 
 #: components/comments-plus/admin/pages/class-page-comments.php:217
 msgid "Replaces the links of the authors of comments on the JavaScript code, it is impossible to distinguish it from usual links."
@@ -3655,7 +3659,7 @@ msgstr "Удаляет мета-тег из раздел %s"
 
 #: admin/pages/class-pages-defence.php:123
 msgid "Allows attacker to learn the version of WP installed on the site. This meta tag has no useful function."
-msgstr "Позволяет злоумышленнику узнать версию Wordpress, установленую на вашем сайте. Этот мета-тег не несет никакой пользы."
+msgstr "Позволяет злоумышленнику узнать версию WordPress, установленую на вашем сайте. Этот мета-тег не несет никакой пользы."
 
 #: admin/pages/class-pages-seo-double-pages.php:133
 #: admin/pages/setup/steps/class-step-setting-seo-optimize.php:157
@@ -3719,10 +3723,6 @@ msgstr "Огромное количество дублей в архивах д�
 msgid "Removes the server responses a reference to the xmlrpc file."
 msgstr "Удаляет ссылку на xmlrpc-файл и ответ сервера."
 
-#: admin/pages/class-pages-defence.php:83
-msgid "A pingback is basically an automated comment that gets created when another blog links to you. A self-pingback is created when you link to an article within your own blog. Pingbacks are essentially nothing more than spam and simply waste resources."
-msgstr "Pingback по-существу автоматизированных комментарий, который создается, когда другой блог ссылается на вас. Self-pingback создается, когда вы оставили ссылку на статью в своем блоге. Pingbacks по существу являются не более чем спам и пустая трата ресурсов вашего сайта."
-
 #: admin/pages/class-pages-defence.php:81
 msgid "Disable XML-RPC"
 msgstr "Отключить XML-RPC"
@@ -3738,6 +3738,10 @@ msgstr "Wordpress по умолчанию показывает, ввели ли 
 #: admin/pages/class-pages-defence.php:63
 msgid "Sets the redirect to exclude the possibility of obtaining a login."
 msgstr "Предотвращает возможность узнать логин автора, устанавливая перенаправление."
+
+#: admin/pages/class-pages-defence.php:83
+msgid "A pingback is basically an automated comment that gets created when another blog links to you. A self-pingback is created when you link to an article within your own blog. Pingbacks are essentially nothing more than spam and simply waste resources."
+msgstr "Pingback по-существу автоматизированных комментарий, который создается, когда другой блог ссылается на вас. Self-pingback создается, когда вы оставили ссылку на статью в своем блоге. Pingbacks по существу являются не более чем спам и пустая трата ресурсов вашего сайта."
 
 #: admin/pages/class-pages-defence.php:63
 msgid "An attacker can find out the author's login, using a similar request to get your site. mysite.com/?author=1"
@@ -3757,7 +3761,7 @@ msgstr "Удаляет ссылки предидущая и следующая �
 
 #: admin/pages/setup/steps/class-step-setting-speed-optimize.php:187
 msgid "If you use Wordpress as a CMS, then you can delete these links, they can only come in handy for a blog."
-msgstr "Если вы используете Wordpress как CMS (а не блог), то вы можете удалить эти ссылки, но для блога они могут быть полезны."
+msgstr "Если вы используете WordPress как CMS (а не блог), то вы можете удалить эти ссылки, но для блога они могут быть полезны."
 
 #: admin/pages/setup/steps/class-step-setting-speed-optimize.php:177
 msgid "Remove Shortlink link tag."
@@ -3780,27 +3784,14 @@ msgstr "Эта ссылка используется фактически Window
 msgid "Remove RSD (Real Simple Discovery) link tag."
 msgstr "Удаляет RSD link тег"
 
-#: admin/pages/setup/steps/class-step-setting-speed-optimize.php:157
-msgid "The above link is used by blog clients. If you edit your site from your browser then you don’t need this. It is also used by some 3rd party applications that utilize XML-RPC requests. In most cases, this is just unnecessary code."
-msgstr "Эта ссылка используется клиентами блога. Если вы редактируете сайт из вашего браузера, то вам не нужно это. Она также используется в некоторых приложениях, которые используют XML-RPC-запросы. В большинстве случаев это только ненужный код."
-
 #: admin/pages/class-pages-performance.php:136
 msgid "Removes WordPress Embed JavaScript file (wp-embed.min.js)"
 msgstr "Удаляет JavaScript код отвечающий за встраиваемые объекты (wp-embed.min.js)"
-
-#: admin/pages/class-pages-performance.php:136
-msgid "Embeds were released with WordPress 4.4. This is basically the magic that auto converts your YouTube videos, Tweets, and URLs into pretty previews while you are editing. However, this actually loads a JavaScript file (wp-embed.min.js) on every page of your website. If you don’t care about the auto converting preview (which we don’t), you can disable this across your site."
-msgstr "Встраиваемые объекты были добавлены в WordPress 4.4. Эта функция автоматически преобразуют YouTube, Tweets, и URL-адреса в объекты для удобного просмотра (плеер, картинки и т.д.). Для того, чтобы объекты автоматически преобразовывались на вашем сайте, на каждой странице подключается код JavaScript (wp-embed.min.js). Если вы не используете функции автоматического преобразования встраиваемых объектов, то можете отключить эту функцию."
 
 #: admin/pages/class-pages-performance.php:116
 #: admin/pages/setup/steps/class-step-setting-speed-optimize.php:147
 msgid "Removes WordPress Emojis JavaScript file (wp-emoji-release.min.js)."
 msgstr "Удаляет код Emojis из исходного кода страницы."
-
-#: admin/pages/class-pages-performance.php:116
-#: admin/pages/setup/steps/class-step-setting-speed-optimize.php:147
-msgid "Emojis are fun and all, but if you are aren’t using them they actually load a JavaScript file (wp-emoji-release.min.js) on every page of your website. For a lot of businesses, this is not needed and simply adds load time to your site. So we recommend disabling this."
-msgstr "Emojis это смайлы (эмоции), если вы не используете их на своем сайте, в исходном коде страницы будет загружаться JavaScript  файл (wp-emoji-release.min.js), на каждой странице вашего веб-сайта. Для многих сайтов это не требуется и просто увеличивает время загрузки страницы. Поэтому мы рекомендуем отключить это."
 
 #: admin/pages/class-pages-defence.php:121 admin/pages/class-pages-seo.php:79
 #: admin/pages/class-pages-seo.php:118 admin/pages/class-pages-seo.php:132
@@ -3818,6 +3809,19 @@ msgstr "Удаляет ссылку на RSS-канал из раздела %s, 
 #: admin/pages/class-pages-advanced.php:68
 msgid "By default, WordPress generates all types of different RSS feeds for your site. While RSS feeds can be useful if you are running a blog, businesses might not always utilize these. Not every site out there has a blog."
 msgstr "По умолчанию WordPress генерирует различные виды RSS-каналов для вашего сайта. Иногда RSS-каналы могут быть полезны, если вы используете блог например, но если у вас обычный одностаничник, то RSS для вас будет бесполезен. "
+
+#: admin/pages/setup/steps/class-step-setting-speed-optimize.php:157
+msgid "The above link is used by blog clients. If you edit your site from your browser then you don’t need this. It is also used by some 3rd party applications that utilize XML-RPC requests. In most cases, this is just unnecessary code."
+msgstr "Эта ссылка используется клиентами блога. Если вы редактируете сайт из вашего браузера, то вам не нужно это. Она также используется в некоторых приложениях, которые используют XML-RPC-запросы. В большинстве случаев это только ненужный код."
+
+#: admin/pages/class-pages-performance.php:136
+msgid "Embeds were released with WordPress 4.4. This is basically the magic that auto converts your YouTube videos, Tweets, and URLs into pretty previews while you are editing. However, this actually loads a JavaScript file (wp-embed.min.js) on every page of your website. If you don’t care about the auto converting preview (which we don’t), you can disable this across your site."
+msgstr "Встраиваемые объекты были добавлены в WordPress 4.4. Эта функция автоматически преобразуют YouTube, Tweets, и URL-адреса в объекты для удобного просмотра (плеер, картинки и т.д.). Для того, чтобы объекты автоматически преобразовывались на вашем сайте, на каждой странице подключается код JavaScript (wp-embed.min.js). Если вы не используете функции автоматического преобразования встраиваемых объектов, то можете отключить эту функцию."
+
+#: admin/pages/class-pages-performance.php:116
+#: admin/pages/setup/steps/class-step-setting-speed-optimize.php:147
+msgid "Emojis are fun and all, but if you are aren’t using them they actually load a JavaScript file (wp-emoji-release.min.js) on every page of your website. For a lot of businesses, this is not needed and simply adds load time to your site. So we recommend disabling this."
+msgstr "Emojis это смайлы (эмоции), если вы не используете их на своем сайте, в исходном коде страницы будет загружаться JavaScript  файл (wp-emoji-release.min.js), на каждой странице вашего веб-сайта. Для многих сайтов это не требуется и просто увеличивает время загрузки страницы. Поэтому мы рекомендуем отключить это."
 
 #: admin/pages/class-pages-performance.php:70
 msgid "Warning! In the wp-config.php file, a constant WP_POST_REVISIONS is found, it determines the number of revisions. Delete it so you can change this value through the admin panel."
@@ -3919,7 +3923,7 @@ msgstr "Включить обновления для установок VCS"
 
 #: components/updates-manager/admin/boot.php:90
 msgid "Disable wordPress core updates"
-msgstr "Отключить обновления ядра Wordpress"
+msgstr "Отключить обновления ядра WordPress"
 
 #: components/updates-manager/admin/boot.php:85
 #: components/updates-manager/admin/pages/class-page-updates.php:150
@@ -4122,30 +4126,6 @@ msgstr "Настройки были успешно обновлены!"
 msgid "You do not have permission to edit page."
 msgstr "У вас недостаточно прав, для редактирования этой страницы."
 
-#: libs/factory/templates/pages/templates/impressive/class-pages.php:433
-msgid "Donation for plugin development"
-msgstr "Пожертвование на развитие плагина"
-
-#: libs/factory/templates/pages/templates/impressive/class-pages.php:415
-msgid "Go rate us and push ideas"
-msgstr "Оставить отзыв или поделиться идеей"
-
-#: libs/factory/templates/pages/templates/impressive/class-pages.php:411
-msgid "And also write your ideas on how to extend or improve the plugin."
-msgstr "А также напишите свои идеи о том, как расширить или улучшить плагин."
-
-#: libs/factory/templates/pages/templates/impressive/class-pages.php:410
-msgid "Help the author, leave a review on wordpress.org. Thanks to feedback, I will know that the plugin is really useful to you and is needed."
-msgstr "Помогите автору, оставьте отзыв на wordpress.org. Благодаря отзывам, я буду знать, что плагин действительно полезен для вас и необходим."
-
-#: libs/factory/templates/pages/templates/impressive/class-pages.php:408
-msgid "Do you want the plugin to improved and update?"
-msgstr "Вы хотите, чтобы плагин улучшался и обновлялся?"
-
-#: libs/factory/templates/pages/templates/impressive/class-pages.php:381
-msgid "Hover to the icon to get help for the feature you selected."
-msgstr "Наведите указатель мыши на значок, чтобы получить справку по выбранной функции."
-
 #: libs/factory/templates/pages/templates/impressive/class-pages.php:377
 msgid "Absolutely safe setting, We recommend to use."
 msgstr "Абсолютно безопасная настройка, рекомендуем использовать."
@@ -4159,8 +4139,7 @@ msgid "A neutral setting that can not harm your site, but you must be sure that 
 msgstr "Нейтральная настройка, которая не может нанести вред вашему сайту, но вы должны быть уверены, что вам нужно ее использовать."
 
 #: admin/includes/compatibility.php:90 admin/includes/compatibility.php:119
-#: admin/pages/class-pages-quick-start.php:74 clearfy.php:32
-#: includes/boot.php:127
+#: admin/pages/class-pages-quick-start.php:74 includes/boot.php:127
 msgid "Clearfy"
 msgstr "Clearfy"
 

@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'WCM_PLUGIN_ACTIVE' ) ) {
-	define( 'WCM_PLUGIN_VERSION', '1.1.9' );
+	define( 'WCM_PLUGIN_VERSION', '1.2.0' );
 	define( 'WCM_TEXT_DOMAIN', 'comments-plus' );
 	define( 'WCM_PLUGIN_ACTIVE', true );
 

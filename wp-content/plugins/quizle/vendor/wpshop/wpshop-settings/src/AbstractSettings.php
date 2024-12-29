@@ -2,11 +2,31 @@
 
 namespace Wpshop\Settings;
 
+/**
+ *
+ * @method void render_reg_input()
+ * @method void render_header( $title, $description = '', $doc_link = '' )
+ * @method void render_subheader( $title, $description = '', $doc_link = '' )
+ * @method void render_input( $name, $title, array $args = [], $description = '' )
+ * @method void render_input_field( $name, array $args = [] )
+ * @method void render_password_input( $name, $title, array $args = [], $description = '' )
+ * @method void render_password_input_field( $name, array $args = [] )
+ * @method void render_select( $name, $title, array $options, array $args = [], $description = '' )
+ * @method void render_select_field( $name, array $options, array $args = [] )
+ * @method void render_checkbox( $name, $label = '', array $args = [], $description = '' )
+ * @method void render_checkbox_field( $name, $label = '', array $args = [] )
+ * @method void render_textarea( $name, $title, $args = [], $description = '' )
+ * @method void render_textarea_field( $name, array $args = [] )
+ * @method void render_color_picker( $name, $label, array $args = [], $description = '' )
+ * @method void render_color_picker_field( $name, array $args = [] )
+ * @method void wrap_form( $cb )
+ * @method void wp_dropdown_languages( array $args = [] )
+ */
 abstract class AbstractSettings {
 
-    const VERSION = '0.1.0';
+    const VERSION = '1.4.0';
 
-    const ASSETS_VERSION = '0.1.0';
+    const ASSETS_VERSION = '0.3.3';
 
     const TEXT_DOMAIN = '{{text-domain}}';
 
@@ -53,12 +73,22 @@ abstract class AbstractSettings {
     /**
      * @var array
      */
-    protected $defaults = [];
+    protected $_defaults = [];
+
+    /**
+     * @var bool
+     */
+    protected $_defaults_init = false;
+
+    /**
+     * @var callable[]
+     */
+    protected $sanitizers = [];
 
     /**
      * @var array
      */
-    protected $sanitizers = [];
+    protected $password_fields = [];
 
     /**
      * @var array|null
@@ -69,6 +99,11 @@ abstract class AbstractSettings {
      * @var array|null
      */
     protected $_options_with_defaults;
+
+    /**
+     * @var SettingsRenderer|null
+     */
+    protected $renderer;
 
     /**
      * @param MaintenanceInterface $maintenance
@@ -86,6 +121,34 @@ abstract class AbstractSettings {
     }
 
     /**
+     * @param $renderer
+     *
+     * @return $this
+     */
+    public function set_renderer( SettingsRenderer $renderer ) {
+        $this->renderer = $renderer;
+
+        return $this;
+    }
+
+    /**
+     * @param string $name
+     * @param array  $arguments
+     *
+     * @return mixed
+     */
+    public function __call( string $name, array $arguments ) {
+        if ( ! $this->renderer ) {
+            $this->renderer = new SettingsRenderer( $this, static::TEXT_DOMAIN );
+        }
+
+        if ( method_exists( $this->renderer, $name ) ) {
+            return call_user_func_array( [ $this->renderer, $name ], $arguments );
+        }
+        throw new \RuntimeException( sprintf( 'Unable to call method %s', $name ) );
+    }
+
+    /**
      * @return void
      */
     public function init() {
@@ -94,7 +157,7 @@ abstract class AbstractSettings {
         } );
 
         add_action( 'init', function () {
-            if ( strtoupper( $_SERVER['REQUEST_METHOD'] ) !== 'POST' ||
+            if ( strtoupper( $_SERVER['REQUEST_METHOD'] ?? '' ) !== 'POST' ||
                  ! current_user_can( $this->capability )
             ) {
                 return;
@@ -157,6 +220,27 @@ abstract class AbstractSettings {
             $this->setup_tabs();
         } );
 
+        // prepare data structure of the option
+        add_action( "pre_update_option_{$this->option}", function ( $value ) {
+
+            $options   = (array) get_option( $this->option, [] );
+            $localized = $options['_localized'] ?? [];
+
+            if ( $locale = $this->get_locale() ) {
+                $localized[ $locale ] = wp_parse_args( $value, $this->get_defaults() );
+                unset( $options['_localized'] );
+                $value = $options;
+            } else {
+                $value = wp_parse_args( $value, $this->get_defaults() );
+            }
+
+            if ( $localized ) {
+                $value['_localized'] = $localized;
+            }
+
+            return $value;
+        } );
+
         add_action( 'updated_option', function ( $option ) {
             if ( $option === $this->option ) {
                 $this->_options = null;
@@ -164,6 +248,12 @@ abstract class AbstractSettings {
         } );
 
         add_filter( "sanitize_option_{$this->option}", function ( $value ) {
+            foreach ( $this->password_fields as $password_field ) {
+                if ( array_key_exists( $password_field, $value ) && 0 === strlen( $value[ $password_field ] ) ) {
+                    $value[ $password_field ] = $this->get_value( $password_field );
+                }
+            }
+
             foreach ( $this->sanitizers as $key => $fn ) {
                 if ( array_key_exists( $key, $value ) && is_callable( $fn ) ) {
                     $value[ $key ] = call_user_func( $fn, $value[ $key ] );
@@ -173,20 +263,30 @@ abstract class AbstractSettings {
             return $value;
         } );
 
-        $action = 'wpshop_settings_hide_welcome';
+        $action = static::ajax_actions()['hide_welcome'];
         add_action( "wp_ajax_{$action}", function () {
             update_option( $this->welcome_option, 1 );
             wp_send_json_success();
         } );
 
-        $action = 'wpshop_settings_remove_license';
+        $action = static::ajax_actions()['remove_license'];
         add_action( "wp_ajax_{$action}", function () {
             if ( ! current_user_can( 'administrator' ) ) {
-                wp_send_json_error();
+                wp_send_json_error( new \WP_Error( 'remove_license', __( 'You are not allowed to remove the license', self::TEXT_DOMAIN ) ) );
             }
             delete_option( $this->reg_option );
             wp_send_json_success();
         } );
+    }
+
+    /**
+     * @return string[]
+     */
+    public static function ajax_actions() {
+        return [
+            'hide_welcome'   => static::product_prefix() . 'settings_hide_welcome',
+            'remove_license' => static::product_prefix() . 'settings_remove_license',
+        ];
     }
 
     /**
@@ -274,27 +374,104 @@ abstract class AbstractSettings {
     }
 
     /**
-     * @param string $key
-     * @param bool   $null_default get null if value is same as default
+     * @return $this
+     */
+    public function register_reg_settings() {
+        settings_fields( $this->reg_option_group );
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function register_settings() {
+        settings_fields( $this->option_group );
+
+        return $this;
+    }
+
+    /**
+     * Example of structure of _options_with_defaults:
+     * <pre>
+     * $this->_options_with_defaults = [
+     *     'page.join' => 1,
+     *     'page.subs' => 2,
+     *     '_localized' => [
+     *       'ru_RU' => [
+     *         'page.join' => 111,
+     *         'page.subs' => 112,
+     *       ],
+     *     ]
+     * ];
+     * </pre>
+     *
+     * @param string      $key
+     * @param bool        $null_default get null if value is same as default
+     * @param string|null $locale
      *
      * @return mixed|null
      */
-    public function get_value( $key, $null_default = false ) {
+    public function get_value( $key, $null_default = false, $locale = null ) {
+        if ( null === $locale ) {
+            $locale = $this->get_locale();
+        }
+
         if ( null === $this->_options ) {
             $this->_options               = (array) get_option( $this->option, [] );
-            $this->_options_with_defaults = wp_parse_args( $this->_options, $this->defaults );
+            $this->_options_with_defaults = wp_parse_args( $this->_options, $this->get_defaults() );
         }
 
         if ( $null_default ) {
+            // check localized first
+            if ( $locale &&
+                 isset( $this->_options['_localized'][ $locale ] ) &&
+                 array_key_exists( $key, $this->_options['_localized'][ $locale ] ) &&
+                 array_key_exists( $key, $this->get_defaults() ) &&
+                 $this->_options['_localized'][ $locale ][ $key ] === $this->get_default( $key )
+            ) {
+                return null;
+            }
+
             if ( array_key_exists( $key, $this->_options ) &&
-                 array_key_exists( $key, $this->defaults ) &&
-                 $this->_options[ $key ] === $this->defaults[ $key ]
+                 array_key_exists( $key, $this->get_defaults() ) &&
+                 $this->_options[ $key ] === $this->get_default( $key )
             ) {
                 return null;
             }
         }
 
+        if ( $locale &&
+             isset( $this->_options_with_defaults['_localized'][ $locale ] ) &&
+             array_key_exists( $key, $this->_options_with_defaults['_localized'][ $locale ] )
+        ) {
+            return $this->_options_with_defaults['_localized'][ $locale ][ $key ];
+        }
+
         return $this->_options_with_defaults[ $key ] ?? null;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function get_locale() {
+        if ( is_admin() ) {
+            return $_REQUEST['locale'] ?? null;
+        }
+
+        return get_locale();
+    }
+
+    /**
+     * @return bool
+     */
+    public function use_localized_settings() {
+        /**
+         * @since 1.4
+         */
+        $use_localized_settings = apply_filters( 'wpsc/settings/use_localized_settings', false );
+
+        return $use_localized_settings;
     }
 
     /**
@@ -303,14 +480,31 @@ abstract class AbstractSettings {
      * @return string|null
      */
     public function get_default( $key ) {
-        return array_key_exists( $key, $this->defaults ) ? $this->defaults[ $key ] : null;
+        if ( ! $this->_defaults_init ) {
+            $this->init_defaults();
+            $this->_defaults_init = true;
+        }
+
+        return array_key_exists( $key, $this->_defaults ) ? $this->_defaults[ $key ] : null;
     }
 
     /**
      * @return array
      */
     public function get_defaults() {
-        return $this->defaults;
+        if ( ! $this->_defaults_init ) {
+            $this->init_defaults();
+            $this->_defaults_init = true;
+        }
+
+        return $this->_defaults;
+    }
+
+    /**
+     * @return void
+     */
+    protected function init_defaults() {
+
     }
 
     /**
@@ -322,328 +516,6 @@ abstract class AbstractSettings {
         delete_option( "{$this->option}--welcome" );
 
         return $this;
-    }
-
-    /**
-     * @return void
-     */
-    public function render_reg_input() {
-        settings_fields( $this->reg_option_group );
-        ?>
-        <input name="<?php echo "{$this->reg_option}[license]" ?>" type="text" value="" placeholder="XX0000-000000-000000000000000000-0000" class="wpshop-settings-text">
-        <button type="submit" class="wpshop-settings-button"><?php echo __( 'Activate', static::TEXT_DOMAIN ) ?></button>
-        <?php
-    }
-
-    /**
-     * @param string $title
-     * @param string $description
-     * @param string $doc_link
-     *
-     * @return void
-     */
-    public function render_header( $title, $description = '', $doc_link = '' ) {
-        ?>
-        <div class="wpshop-settings-header__title">
-            <span><?php echo $title ?></span>
-            <?php if ( $doc_link ): ?>
-                <a href="<?php echo esc_attr( $doc_link ) ?>" target="_blank" rel="noopener" class="wpshop-settings-help-ico">?</a>
-            <?php endif ?>
-        </div>
-        <?php if ( $description ): ?>
-            <div class="wpshop-settings-header__description">
-                <?php echo $description ?>
-            </div>
-        <?php endif;
-    }
-
-    /**
-     * @param string $title
-     * @param string $description
-     * @param string $doc_link
-     *
-     * @return void
-     */
-    public function render_subheader( $title, $description = '', $doc_link = '' ) {
-        ?>
-        <div class="wpshop-settings-subheader">
-            <div class="wpshop-settings-subheader__title">
-                <span><?php echo $title ?></span>
-                <?php if ( $doc_link ): ?>
-                    <a href="<?php echo esc_attr( $doc_link ) ?>" target="_blank" rel="noopener" class="wpshop-settings-help-ico">?</a>
-                <?php endif ?>
-            </div>
-            <?php if ( $description ): ?>
-                <div class="wpshop-settings-subheader__description">
-                    <?php echo $description ?>
-                </div>
-            <?php endif; ?>
-        </div>
-        <?php
-    }
-
-    /**
-     * @param string $name input name
-     * @param string $title
-     * @param array  $args
-     *
-     * @return void
-     */
-    public function render_input( $name, $title, array $args = [] ) {
-        $args = wp_parse_args( $args, [
-            'id' => uniqid( "{$name}." ),
-        ] );
-        ?>
-        <div class="wpshop-settings-form-row__label">
-            <label for="<?php echo esc_attr( $args['id'] ) ?>"><?php echo $title ?></label>
-        </div>
-        <div class="wpshop-settings-form-row__body">
-            <?php $this->render_input_field( $name, $args ); ?>
-        </div>
-        <?php
-    }
-
-    /**
-     * @param string $name
-     * @param array  $args
-     *
-     * @return void
-     */
-    public function render_input_field( $name, array $args = [] ) {
-        $args = wp_parse_args( $args, [
-            'type' => 'text',
-            'id'   => uniqid( "{$name}." ),
-        ] );
-
-        $input_name = $this->get_input_name( $name );
-        $attributes = [];
-        foreach ( [ 'type', 'min', 'max', 'step' ] as $attr ) {
-            if ( array_key_exists( $attr, $args ) ) {
-                $attributes[] = "$attr=\"{$args[$attr]}\"";
-            }
-        }
-        $attributes = implode( ' ', $attributes );
-        $attributes = $attributes ? " $attributes" : '';
-        ?>
-        <input id="<?php echo esc_attr( $args['id'] ) ?>"
-               name="<?php echo esc_attr( $input_name ) ?>"
-               value="<?php echo $this->get_value( $name ) ?>"<?php echo $attributes ?>>
-        <?php
-    }
-
-    /**
-     * @param string $name input name
-     * @param string $title
-     * @param array  $options
-     * @param array  $args
-     *
-     * @return void
-     */
-    public function render_select( $name, $title, array $options, array $args = [] ) {
-        $args = wp_parse_args( $args, [
-            'id' => uniqid( "{$name}." ),
-        ] );
-        ?>
-        <div for="<?php echo esc_attr( $args['id'] ) ?>" class="wpshop-settings-form-row__label">
-            <label><?php echo $title ?></label>
-        </div>
-        <div class="wpshop-settings-form-row__body">
-            <?php $this->render_select_field( $name, $options, $args ); ?>
-        </div>
-        <?php
-    }
-
-    /**
-     * @param string $name
-     * @param array  $options
-     * @param array  $args
-     *
-     * @return void
-     */
-    public function render_select_field( $name, array $options, array $args = [] ) {
-        $args = wp_parse_args( $args, [
-            'id' => uniqid( "{$name}." ),
-        ] );
-
-        $input_name = $this->get_input_name( $name );
-        $classes    = implode( ' ', (array) ( $args['classes'] ?? [] ) );
-        $classes    = $classes ? " $classes" : '';
-        ?>
-        <select id="<?php echo esc_attr( $args['id'] ) ?>"
-                name="<?php echo esc_attr( $input_name ) ?>"
-                class="<?php echo $classes ?>">
-            <?php foreach ( $options as $value => $label ): ?>
-                <option value="<?php echo $value ?>"<?php selected( $this->get_value( $name ), $value ) ?>><?php echo $label ?></option>
-            <?php endforeach ?>
-        </select>
-        <?php
-    }
-
-    /**
-     * @param string $name input name
-     * @param string $label
-     * @param array  $args
-     *
-     * @return void
-     */
-    public function render_checkbox( $name, $label = '', array $args = [] ) {
-        $args = wp_parse_args( $args, [
-            'id' => uniqid( "{$name}." ),
-        ] );
-        ?>
-        <label for="<?php echo esc_attr( $args['id'] ) ?>" class="wpshop-settings-form-label">
-            <?php $this->render_checkbox_field( $name, $label, $args ); ?>
-        </label>
-        <?php
-    }
-
-    /**
-     * @param string $name
-     * @param string $label
-     * @param array  $args
-     *
-     * @return void
-     */
-    public function render_checkbox_field( $name, $label = '', array $args = [] ) {
-        $args = wp_parse_args( $args, [
-            'id' => uniqid( "{$name}." ),
-        ] );
-
-        $input_name = $this->get_input_name( $name );
-        $classes    = implode( ' ', (array) ( $args['classes'] ?? [] ) );
-        $classes    = $classes ? " $classes" : '';
-
-        $data_attributes = [];
-        foreach ( $args as $key => $value ) {
-            if ( substr( $key, 0, 5 ) === 'data-' ) {
-                $data_attributes[] = "$key=\"$value\"";
-            }
-        }
-        $data_attributes = implode( ' ', $data_attributes );
-        $data_attributes = $data_attributes ? " $data_attributes" : '';
-        ?>
-        <input type="hidden" name="<?php echo $input_name ?>" value="0">
-        <input type="checkbox"
-               class="wpshop-settings-switch-box<?php echo $classes ?>"
-               name="<?php echo esc_attr( $input_name ) ?>"
-               id="<?php echo esc_attr( $args['id'] ) ?>"
-            <?php echo $data_attributes ?>
-               value="1"<?php checked( $this->get_value( $name ) ) ?>>
-        <?php echo esc_html( $label ) ?>
-        <?php
-    }
-
-    /**
-     * @param string $name
-     * @param string $title
-     * @param array  $args
-     *
-     * @return void
-     */
-    public function render_textarea( $name, $title, $args = [] ) {
-        $args = wp_parse_args( $args, [
-            'id' => uniqid( "{$name}." ),
-        ] );
-        ?>
-        <div class="wpshop-settings-form-row__label">
-            <label for="<?php echo esc_attr( $args['id'] ) ?>"><?php echo $title ?></label>
-        </div>
-        <div class="wpshop-settings-form-row__body">
-            <?php $this->render_textarea_field( $name, $args ) ?>
-        </div>
-        <?php
-    }
-
-    /**
-     * @param string $name
-     * @param array  $args
-     *
-     * @return void
-     */
-    public function render_textarea_field( $name, array $args = [] ) {
-        $args = wp_parse_args( $args, [
-            'cols' => '',
-            'rows' => 5,
-            'id'   => uniqid( "{$name}." ),
-        ] );
-
-        $input_name = $this->get_input_name( $name );
-        ?>
-        <textarea name="<?php echo esc_attr( $input_name ) ?>"
-                  id="<?php echo esc_attr( $args['id'] ) ?>"
-                  cols="<?php echo esc_attr( $args['cols'] ) ?>"
-                  rows="<?php echo esc_attr( $args['rows'] ) ?>"><?php echo esc_textarea( $this->get_value( $name ) ) ?></textarea>
-        <?php
-    }
-
-    /**
-     * @param string $name input name
-     * @param string $label
-     * @param array  $args
-     *
-     * @return void
-     */
-    public function render_color_picker( $name, $label, array $args = [] ) {
-        $args = wp_parse_args( $args, [
-            'id' => uniqid( "{$name}." ),
-        ] );
-        ?>
-        <div class="wpshop-settings-form-row__label">
-            <label for="<?php echo $args['id'] ?>"><?php echo $label ?></label>
-        </div>
-        <div class="wpshop-settings-form-row__body">
-            <?php $this->render_color_picker_field( $name, $args ); ?>
-        </div>
-        <?php
-    }
-
-    /**
-     * @param string $name
-     * @param array  $args
-     *
-     * @return void
-     */
-    public function render_color_picker_field( $name, array $args = [] ) {
-        $args = wp_parse_args( $args, [
-            'id' => uniqid( "{$name}." ),
-        ] );
-
-        $input_name = $this->get_input_name( $name );
-        ?>
-        <input type="text"
-               id="<?php echo esc_attr( $args['id'] ) ?>"
-               name="<?php echo $input_name ?>"
-               value="<?php echo $this->get_value( $name ) ?>"
-               data-default-color="<?php echo esc_attr( $args['default'] ?? '' ) ?>"
-               class="js-wpshop-settings-color-picker">
-        <?php
-    }
-
-    /**
-     * @param callable $cb
-     *
-     * @return void
-     */
-    public function wrap_form( $cb ) {
-        $has_cap = current_user_can( 'manage_options' );
-
-        if ( $has_cap && $this->verify() ) {
-            ?>
-            <form action="options.php" method="post">
-            <?php
-        }
-
-        $cb( $this );
-
-        if ( $has_cap && $this->verify() ) {
-            ?>
-            <div class="wpshop-settings-container__save js-wpshop-settings-container-save">
-                <?php settings_fields( $this->option_group ); ?>
-                <button type="submit" class="wpshop-settings-button"><?php echo __( 'Save', static::TEXT_DOMAIN ) ?></button>
-            </div>
-            </form>
-            <?php
-        }
     }
 
     /**
@@ -705,7 +577,7 @@ abstract class AbstractSettings {
         }
 
         if ( ! file_exists( $located ) ) {
-            trigger_error( 'Unable to locate template file ' . $located );
+            trigger_error( 'Unable to locate template file ' . $template_name );
 
             return null;
         }
@@ -722,6 +594,13 @@ abstract class AbstractSettings {
      * @return string
      */
     protected static function get_template_parts_root() {
-        throw new \RuntimeException( "Unimplemented" );
+        throw new \RuntimeException( __METHOD__ . " is unimplemented" );
+    }
+
+    /**
+     * @return string
+     */
+    public static function product_prefix() {
+        throw new \RuntimeException( __METHOD__ . " is unimplemented" );
     }
 }

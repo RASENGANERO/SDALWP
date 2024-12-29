@@ -330,7 +330,7 @@ class Rest_Helper_Activity extends Rest_Helper {
 		foreach ( $entries as $entry ) {
 			$data[] = array(
 				'id'           => $entry['id'],
-				'ts'           => get_date_from_gmt( date( 'Y-m-d H:i', $entry['ts'] ), 'Y-m-d H:i' ),
+				'ts'           => get_date_from_gmt( gmdate( 'Y-m-d H:i', $entry['ts'] ), 'Y-m-d H:i' ),
 				'ip'           => $entry['ip'],
 				'page_visited' => $entry['description'],
 				'type'         => $entry['visitor_type'],
@@ -397,7 +397,7 @@ class Rest_Helper_Activity extends Rest_Helper {
 			$user_data = $this->get_user_data( $entry, $visitors );
 			$data[] = array(
 				'id'           => $entry['id'],
-				'ts'           => get_date_from_gmt( date( 'Y-m-d H:i', $entry['ts'] ), 'Y-m-d H:i' ),
+				'ts'           => get_date_from_gmt( gmdate( 'Y-m-d H:i', $entry['ts'] ), 'Y-m-d H:i' ),
 				'ip'           => $entry['ip'],
 				'activity'     => $entry['description'],
 				'hostname'     => $entry['hostname'],
@@ -719,7 +719,7 @@ class Rest_Helper_Activity extends Rest_Helper {
 
 		foreach ( $results as $entry ) {
 			$log = array(
-				'ts'         => get_date_from_gmt( date( 'Y-m-d H:i', $entry['blocked_on'] ), 'Y-m-d H:i' ),
+				'ts'         => get_date_from_gmt( gmdate( 'Y-m-d H:i', $entry['blocked_on'] ), 'Y-m-d H:i' ),
 				'user'       => $entry['ip'],
 				'visitor_id' => $entry['id'],
 				'object_id'  => $entry['user_id'],
@@ -741,7 +741,7 @@ class Rest_Helper_Activity extends Rest_Helper {
 			}
 
 			$log = array(
-				'ts'         => get_date_from_gmt( date( 'Y-m-d H:i', $attempt['timestamp'] ), 'Y-m-d H:i' ),
+				'ts'         => get_date_from_gmt( gmdate( 'Y-m-d H:i', $attempt['timestamp'] ), 'Y-m-d H:i' ),
 				'user'       => $ip,
 				'visitor_id' => 0,
 				'object_id'  => $ip,

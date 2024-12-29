@@ -6,4 +6,6 @@
  * It is only included in the setup to override the file when upgrading from an earlier version
  */
  
- ?>
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}

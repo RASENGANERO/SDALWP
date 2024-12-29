@@ -1,6 +1,13 @@
 <?php
 
+/** @noinspection PhpIllegalPsrClassPathInspection */
+/** @noinspection PhpMultipleClassesDeclarationsInOneFile */
+/** @noinspection PhpUnused */
+/** @noinspection AccessModifierPresentedInspection */
+
 // phpcs:ignoreFile Generic.Files.OneObjectStructurePerFile.MultipleFound
+
+// @codeCoverageIgnoreStart
 
 namespace CyrToLat {
 	/**
@@ -103,7 +110,7 @@ namespace CyrToLat {
 		 *
 		 * @param string $element_name Property or method name.
 		 */
-		private static function trigger_error( string $element_name = '' ) {
+		private static function trigger_error( string $element_name = '' ): void {
 
 			$current_class   = static::class;
 			$removed_element = $current_class;
@@ -211,3 +218,5 @@ namespace Cyr_To_Lat\Settings\Abstracts {
 		const DEPRECATED = '6.0.0';
 	}
 }
+
+// @codeCoverageIgnoreEnd

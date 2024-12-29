@@ -41,4 +41,11 @@ class ResultData {
     public function __get( $name ) {
         return $this->data[ $name ] ?? null;
     }
+
+    /**
+     * @return array
+     */
+    public function get_keys() {
+        return array_keys( $this->data );
+    }
 }

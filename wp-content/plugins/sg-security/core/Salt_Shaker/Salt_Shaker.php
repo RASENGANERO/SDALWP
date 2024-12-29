@@ -1,6 +1,8 @@
 <?php
 namespace SG_Security\Salt_Shaker;
 
+use SiteGround_Helper\Helper_Service;
+
 /**
  * Class that manages User's Log-out services.
  */
@@ -51,6 +53,15 @@ class Salt_Shaker {
 	public $wp_salt_api = 'https://api.wordpress.org/secret-key/1.1/salt/';
 
 	/**
+	 * The WordPress filesystem.
+	 */
+	public $wp_filesystem;
+
+	public function __construct() {
+		$this->wp_filesystem = Helper_Service::setup_wp_filesystem();
+	}
+
+	/**
 	 * Check if the config exists.
 	 *
 	 * @since  1.0.0
@@ -58,10 +69,12 @@ class Salt_Shaker {
 	 * @return string|bool The path to the config file if exists. False otherwise.
 	 */
 	public function config_exist() {
+
 		if ( file_exists( $this->config_file ) &&
-			is_writable( $this->config_file )
+			$this->wp_filesystem->is_writable( $this->config_file )
 		) {
 			return $this->config_file;
+
 		}
 
 		return false;
@@ -72,7 +85,7 @@ class Salt_Shaker {
 	 *
 	 * @since  1.0.0
 	 *
-	 * @return bool|string False if we dont get a response, the fresh salts otherwise.
+	 * @return bool|string False if we don't get a response, the fresh salts otherwise.
 	 */
 	public function get_fresh_salts() {
 		// Get the salts from the salts generator.
@@ -105,7 +118,7 @@ class Salt_Shaker {
 		// Get the fresh salts.
 		$new_salts = $this->get_fresh_salts();
 
-		// Bail if we dont get a response from the api.
+		// Bail if we don't get a response from the API.
 		if ( false === $new_salts ) {
 			return false;
 		}
@@ -148,16 +161,16 @@ class Salt_Shaker {
 		fclose( $writing_config );
 
 		// Rename the file.
-		rename( $this->tmp_config_file, $this->config_file );
+		$this->wp_filesystem->move( $this->tmp_config_file, $this->config_file, true );
 
 		// Keep the original permissions of wp-config.php.
-		chmod( $this->config_file, $config_permissions );
+		$this->wp_filesystem->chmod( $this->config_file, $config_permissions );
 
 		return true;
 	}
 
 	/**
-	 * Loop the salts, find them in the config file and replace them with the newly genereated ones.
+	 * Loop the salts, find them in the config file and replace them with the newly generated ones.
 	 *
 	 * @since  1.0.0
 	 *

@@ -7,6 +7,11 @@ namespace SG_Security\Options_Service;
 class Options_Service {
 
 	/**
+	 * The Database placeholder.
+	 */
+	public $wpdb;
+
+	/**
 	 * Check if a single boolean setting is enabled.
 	 *
 	 * @since 1.0.0
@@ -108,7 +113,7 @@ class Options_Service {
 	}
 
 	/**
-	 * Checks if the `option_key` paramether exists in rest data.
+	 * Checks if the `option_key` parameter exists in rest data.
 	 *
 	 * @since  1.0.0
 	 *
@@ -135,18 +140,21 @@ class Options_Service {
 	public function fetch_options() {
 		global $wpdb;
 		global $blog_id;
+		$this->wpdb = $wpdb;
 
-		$prefix = $wpdb->get_blog_prefix( $blog_id );
+		$prefix = $this->wpdb->get_blog_prefix( $blog_id );
 
 		$options = array();
 
-		$site_options = $wpdb->get_results(
-			"
-			SELECT REPLACE( option_name, 'sg_security_', '' ) AS name, option_value AS value
-			FROM {$prefix}options
-			WHERE option_name LIKE '%sg_security_%'
-		"
+		$query = $this->wpdb->prepare(
+			"SELECT REPLACE( option_name, 'sg_security_', '' ) AS name, option_value AS value
+				FROM " . esc_sql( $prefix . 'options' ) . "
+				WHERE option_name LIKE %s
+			 ",
+			'%' . $this->wpdb->esc_like( 'sg_security_' ) . '%'
 		);
+
+		$site_options = $this->wpdb->get_results( $query ); //phpcs:ignore
 
 		foreach ( $site_options as $option ) {
 			// Try to unserialize the value.

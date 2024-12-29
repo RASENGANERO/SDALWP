@@ -6,6 +6,7 @@ use DateTimeInterface;
 use Wpshop\Quizle\Data\QuizleStatData;
 use Wpshop\Quizle\Data\ResultData;
 use Wpshop\Quizle\QuizleResult;
+use const Wpshop\Quizle\CACHE_GROUP;
 
 class Database {
 
@@ -141,13 +142,34 @@ class Database {
     }
 
     /**
-     * @param int|null $limit
-     * @param int|null $offset
+     * @param int|null    $quizle_id
+     * @param int|null    $limit
+     * @param int|null    $offset
+     * @param string|null $orderby
+     * @param string      $order
+     * @param bool        $finished
      *
      * @return ResultData[]
      */
-    public function get_quizle_results_for_list_table( $limit = null, $offset = null, $orderby = null, $order = 'ASC' ) {
+    public function get_quizle_results_for_list_table( $quizle_id = null, $limit = null, $offset = null, $orderby = null, $order = 'ASC', $finished = false ) {
         $sql = "SELECT r.*, pm.meta_value as questions FROM {$this->get_results_table_name()} r LEFT JOIN {$this->wpdb->postmeta} pm on r.quiz_id = pm.post_id AND pm.meta_key = 'quizle-questions'";
+
+        $conditions = [];
+        if ( $quizle_id ) {
+            $conditions[] = 'r.quiz_id = ' . intval( $quizle_id );
+        }
+        if ( $finished ) {
+            $conditions[] = 'r.finished_at IS NOT NULL';
+        }
+
+        $where = $conditions ? ' WHERE ' . implode( ' AND ', $conditions ) : '';
+
+        $sql = <<<SQL
+SELECT r.*, pm.meta_value as questions FROM {$this->get_results_table_name()} r 
+    LEFT JOIN {$this->wpdb->postmeta} pm on r.quiz_id = pm.post_id AND pm.meta_key = 'quizle-questions'
+$where
+SQL;
+
 
         if ( $orderby && in_array( $orderby, $this->results_order_by_columns ) ) {
             $order = strtolower( $order ) === 'desc' ? 'DESC' : 'ASC';
@@ -167,10 +189,118 @@ class Database {
     }
 
     /**
+     * @param int|null $quizle_id
+     * @param bool     $finished
+     *
      * @return int
      */
-    public function get_quizle_total_count() {
-        return (int) $this->wpdb->get_var( "SELECT count(result_id) FROM {$this->get_results_table_name()}" );
+    public function get_quizle_total_count( $quizle_id = null, $finished = false ) {
+        $quizle_id = intval( $quizle_id );
+
+        $conditions = [];
+        if ( $quizle_id ) {
+            $conditions[] = 'quiz_id = ' . intval( $quizle_id );
+        }
+        if ( $finished ) {
+            $conditions[] = 'finished_at IS NOT NULL';
+        }
+        $where = $conditions ? ' WHERE ' . implode( ' AND ', $conditions ) : '';
+
+        return (int) $this->wpdb->get_var( "SELECT count(result_id) FROM {$this->get_results_table_name()}{$where}" );
+    }
+
+    /**
+     * @param array    $in_ids
+     * @param int|null $quizle_id
+     * @param bool     $only_finished
+     * @param int      $limit
+     * @param int      $offset
+     *
+     * @return array
+     */
+    public function get_quizle_results(
+        array $in_ids = [],
+        $quizle_id = null,
+        $only_finished = true,
+        $limit = 1000,
+        $offset = 0,
+        $order_by = 'created_at',
+        $order = 'DESC'
+    ) {
+        $conditions = [];
+
+        if ( $in_ids ) {
+            $in_ids = array_map( 'intval', $in_ids );
+            $in_ids = implode( ',', $in_ids );
+
+            $conditions[] = "r.result_id IN ({$in_ids})";
+        } else {
+            if ( $only_finished ) {
+                $conditions[] = 'r.finished_at IS NOT NULL';
+            }
+            if ( $quizle_id ) {
+                $conditions[] = 'r.quiz_id = ' . intval( $quizle_id );
+            }
+        }
+
+        $where = $conditions ? 'WHERE ' . implode( ' AND ', $conditions ) : '';
+
+        $order = strtoupper( $order );
+        $order = $order === 'DESC' ? $order : 'ASC';
+
+        $order_by = in_array( $order_by, [
+            'quizle_title',
+            'quizle_name',
+            'created_at',
+            'finished_at',
+        ] ) ? $order_by : 'created_at';
+
+        $sql = <<<SQL
+SELECT p.post_title AS quizle_title,
+       p.post_name as quizle_name,
+       r.name as username,
+       r.email,
+       r.phone,
+       r.result_data,
+       r.additional_data,
+       r.created_at,
+       r.finished_at
+FROM {$this->get_results_table_name()} r
+    LEFT JOIN {$this->wpdb->posts} p ON r.quiz_id = p.ID
+$where
+ORDER BY $order_by $order
+LIMIT $limit OFFSET $offset
+SQL;
+
+        return (array) $this->wpdb->get_results( $sql, ARRAY_A );
+    }
+
+    /**
+     * @param array    $in_ids
+     * @param int|null $quizle_id
+     * @param bool     $only_finished
+     *
+     * @return int
+     */
+    public function get_quizle_results_count( $in_ids = [], $quizle_id = null, $only_finished = true ) {
+        $conditions = [];
+        if ( $in_ids ) {
+            $in_ids = array_map( 'intval', $in_ids );
+            $in_ids = implode( ',', $in_ids );
+
+            $conditions[] = "result_id IN ({$in_ids})";
+        } else {
+            if ( $only_finished ) {
+                $conditions[] = 'finished_at IS NOT NULL';
+            }
+            if ( $quizle_id ) {
+                $conditions[] = 'quiz_id = ' . intval( $quizle_id );
+            }
+        }
+
+        $where = $conditions ? ' WHERE ' . implode( ' AND ', $conditions ) : '';
+
+        return (int) $this->wpdb->get_var( "SELECT count(result_id) FROM {$this->get_results_table_name()}{$where}" );
     }
 
     /**
@@ -222,6 +352,13 @@ SQL;
         return $result;
     }
 
+    /**
+     * @param int               $quizle_id
+     * @param DateTimeInterface $from
+     * @param DateTimeInterface $to
+     *
+     * @return array
+     */
     public function get_quizle_finished_stat( $quizle_id, DateTimeInterface $from, DateTimeInterface $to ) {
         $sql = <<<"SQL"
 SELECT count(result_id) as count, DATE_FORMAT(finished_at, "%%Y-%%m-%%d") as date
@@ -278,10 +415,6 @@ SQL;
             }
             $offset += $limit;
         } while ( $offset < $total );
-    }
-
-    protected function walk_quizle_results( $total ) {
-
     }
 
     /**

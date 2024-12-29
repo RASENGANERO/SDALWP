@@ -158,7 +158,7 @@ class Loader {
 
 			// Check if class exists.
 			if ( ! class_exists( $class ) ) {
-				throw new \Exception( 'Unknown library type "' . $library . '".' );
+				throw new \Exception( 'Unknown library type "' . esc_html( $library ) . '".' );
 			}
 
 			// Lowercase the classsname we are going to use in the object context.
@@ -200,7 +200,7 @@ class Loader {
 		$class = 'SG_Security\\' . $type . '\\' . $type;
 
 		if ( ! class_exists( $class ) ) {
-			throw new \Exception( 'Unknown dependency type "' . $type . '".' );
+			throw new \Exception( 'Unknown dependency type "' . esc_html( $type ) . '".' );
 		}
 
 		$this->$dependency = new $class();

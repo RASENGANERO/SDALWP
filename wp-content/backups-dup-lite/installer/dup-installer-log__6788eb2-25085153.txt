@@ -1,0 +1,2799 @@
+********************************************************************************
+* DUPLICATOR LITE: Install-Log
+* STEP-0 START @ 12:40:29
+* NOTICE: Do NOT post to public sites or forums!!
+********************************************************************************
+PACKAGE INFO________ ORIGINAL SERVER                        |CURRENT SERVER
+OS__________________: Linux                                 |WINNT
+PHP VERSION_________: 8.0.30                                |7.4.30
+********************************************************************************
+CURRENT SERVER INFO
+PHP_________________: 7.4.30 | SAPI: apache2handler
+PHP MEMORY__________: 4294967296 | SUHOSIN: disabled
+ARCHITECTURE________: 64-bit
+SERVER______________: Apache
+DOC ROOT____________: "D:/OPENSERVER/domains/SDALWP"
+REQUEST URL_________: "http://sdalwp"
+********************************************************************************
+OVERWRITE PARAMS
+ *** FROM PACKAGE
+PARAM SET KEY[blogname]
+********************************************************************************
+MAINTENANCE MODE DISABLE
+INSTALLER INFO
+
+TEMPLATE____________: "base"
+SECURE MODE_________: "none"
+URL PLUGINS_________: https://sessiusdal.ru/wp-content/plugins
+VALIDATE ON START___: "normal"
+PATH_NEW____________: "D:/OPENSERVER/domains/SDALWP"
+URL_NEW_____________: "http://sdalwp"
+********************************************************************************
+ARCHIVE INFO
+
+ARCHIVE NAME________: "D:/OPENSERVER/domains/SDALWP/20241010_sessiyusdal_[HASH]_20241225085153_archive.zip"
+ARCHIVE SIZE________: 1017.3MB
+CREATED_____________: 2024-12-25 08:51:53
+WP VERSION__________: 6.7.1
+DUP VERSION_________: 1.5.11.2
+LICENSE_____________: Free version
+DB VERSION__________: 5.7.44
+DB FILE SIZE________: 89.11MB
+DB TABLES___________: 34
+DB ROWS_____________: 230912
+URL HOME____________: https://sessiusdal.ru
+URL CORE____________: https://sessiusdal.ru
+URL CONTENT_________: https://sessiusdal.ru/wp-content
+URL UPLOAD__________: https://sessiusdal.ru/wp-content/uploads
+URL PLUGINS_________: https://sessiusdal.ru/wp-content/plugins
+URL MU PLUGINS______: https://sessiusdal.ru/wp-content/mu-plugins
+URL THEMES__________: https://sessiusdal.ru/wp-content/themes
+PATH HOME___________: /var/www/u0956841/data/www/sessiusdal.ru
+PATH ABS____________: /var/www/u0956841/data/www/sessiusdal.ru
+PATH WPCONFIG_______: /var/www/u0956841/data/www/sessiusdal.ru
+PATH WPCONTENT______: /var/www/u0956841/data/www/sessiusdal.ru/wp-content
+PATH UPLOADS________: /var/www/u0956841/data/www/sessiusdal.ru/wp-content/uploads
+PATH PLUGINS________: /var/www/u0956841/data/www/sessiusdal.ru/wp-content/plugins
+PATH MUPLUGINS______: /var/www/u0956841/data/www/sessiusdal.ru/wp-content/mu-plugins
+PATH THEMES_________: /var/www/u0956841/data/www/sessiusdal.ru/wp-content/themes
+
+SUBSITES
+SUBSITE [ID:   1] "sessiusdal.ru/"
+
+PLUGINS
+PLUGIN [SLUG:a3-lazy-load/a3-lazy-load.php                     ][ON:false]  a3 Lazy Load
+PLUGIN [SLUG:acf-quickedit-fields/index.php                    ][ON:true ]  ACF QuickEdit Fields
+PLUGIN [SLUG:ad-inserter/ad-inserter.php                       ][ON:true ]  Ad Inserter
+PLUGIN [SLUG:admin-columns-pro/admin-columns-pro.php           ][ON:true ]  Admin Columns Pro
+PLUGIN [SLUG:ac-addon-acf/ac-addon-acf.php                     ][ON:false]  Admin Columns Pro - Advanced Custom Fields (ACF)
+PLUGIN [SLUG:advanced-custom-fields/acf.php                    ][ON:true ]  Advanced Custom Fields
+PLUGIN [SLUG:advanced-custom-fields-pro/acf.php                ][ON:true ]  Advanced Custom Fields PRO
+PLUGIN [SLUG:akismet/akismet.php                               ][ON:false]  Akismet Anti-spam: Spam Protection
+PLUGIN [SLUG:all-in-one-wp-migration/all-in-one-wp-migration.php][ON:false]  All-in-One WP Migration
+PLUGIN [SLUG:gotmls/index.php                                  ][ON:true ]  Anti-Malware Security and Brute-Force Firewall
+PLUGIN [SLUG:cackle/cackle.php                                 ][ON:false]  Cackle
+PLUGIN [SLUG:classic-editor/classic-editor.php                 ][ON:true ]  Classic Editor
+PLUGIN [SLUG:clearfy-pro/clearfy-pro.php                       ][ON:true ]  Clearfy Pro
+PLUGIN [SLUG:contact-form-7/wp-contact-form-7.php              ][ON:true ]  Contact Form 7
+PLUGIN [SLUG:cyr2lat/cyr-to-lat.php                            ][ON:true ]  Cyr-To-Lat
+PLUGIN [SLUG:duplicator/duplicator.php                         ][ON:true ]  Duplicator
+PLUGIN [SLUG:expert-review/expert-review.php                   ][ON:true ]  Expert Review
+PLUGIN [SLUG:flamingo/flamingo.php                             ][ON:true ]  Flamingo
+PLUGIN [SLUG:intuitive-custom-post-order/intuitive-custom-post-order.php][ON:false]  Intuitive Custom Post Order
+PLUGIN [SLUG:my-popup/my-popup.php                             ][ON:true ]  My Popup
+PLUGIN [SLUG:post-types-order/post-types-order.php             ][ON:true ]  Post Types Order
+PLUGIN [SLUG:quizle/quizle.php                                 ][ON:true ]  Quizle
+PLUGIN [SLUG:robin-image-optimizer/robin-image-optimizer.php   ][ON:true ]  Robin image optimizer
+PLUGIN [SLUG:rss-for-yandex-turbo/rss-for-yandex-turbo.php     ][ON:true ]  RSS for Yandex Turbo
+PLUGIN [SLUG:sg-security/sg-security.php                       ][ON:true ]  Security Optimizer
+PLUGIN [SLUG:simple-spoiler/simple-spoiler.php                 ][ON:true ]  Simple Spoiler
+PLUGIN [SLUG:404page/404page.php                               ][ON:true ]  Smart Custom 404 Error Page
+PLUGIN [SLUG:wp-smushit/wp-smush.php                           ][ON:false]  Smush
+PLUGIN [SLUG:tac/tac.php                                       ][ON:true ]  Theme Authenticity Checker (TAC)
+PLUGIN [SLUG:clearfy/clearfy.php                               ][ON:true ]  Webcraftic Clearfy – WordPress optimization plugin
+PLUGIN [SLUG:webp-express/webp-express.php                     ][ON:true ]  WebP Express
+PLUGIN [SLUG:bulk-editor/index.php                             ][ON:true ]  WOLF - WordPress Posts Bulk Editor and Manager Professional
+PLUGIN [SLUG:wp-fastest-cache/wpFastestCache.php               ][ON:true ]  WP Fastest Cache
+PLUGIN [SLUG:wp-mail-smtp/wp_mail_smtp.php                     ][ON:true ]  WP Mail SMTP
+PLUGIN [SLUG:wp-sheet-editor-bulk-spreadsheet-editor-for-posts-and-pages/wp-sheet-editor.php][ON:false]  WP Sheet Editor - Post Types
+PLUGIN [SLUG:wordpress-seo/wp-seo.php                          ][ON:true ]  Yoast SEO
+
+********************************************************************************
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\ctrls\ctrl.base.php:227][DELTA:   2.36669]  MESSAGE:END RENDER PAGE
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [sparam_s1] START
+AJAX ACTION [sparam_s1] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+STEP ACTION: "on-validate"
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\ctrls\ctrl.base.php:227][DELTA:   2.37503]  MESSAGE:END RENDER PAGE
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [validate] START
+START TEST "Archive Check" [CLASS: DUPX_Validation_test_archive_check]
+LOG-TIME[DELTA:   0.00010]  MESSAGE:TEST "Archive Check" RESULT: passed
+
+START TEST "Duplicator importer version" [CLASS: DUPX_Validation_test_importer_version]
+LOG-TIME[DELTA:   0.00001]  MESSAGE:TEST "Duplicator importer version" RESULT: skip
+
+START TEST "Overwrite Install" [CLASS: DUPX_Validation_test_owrinstall]
+LOG-TIME[DELTA:   0.00001]  MESSAGE:TEST "Overwrite Install" RESULT: skip
+
+START TEST "Recovery Point" [CLASS: DUPX_Validation_test_recovery]
+LOG-TIME[DELTA:   0.00001]  MESSAGE:TEST "Recovery Point" RESULT: skip
+
+START TEST "Package is Importable" [CLASS: DUPX_Validation_test_importable]
+LOG-TIME[DELTA:   0.00001]  MESSAGE:TEST "Package is Importable" RESULT: skip
+
+START TEST "REST API test" [CLASS: DUPX_Validation_test_rest_api]
+LOG-TIME[DELTA:   0.00001]  MESSAGE:TEST "REST API test" RESULT: skip
+
+START TEST "Manual extraction detected" [CLASS: DUPX_Validation_test_manual_extraction]
+LOG-TIME[DELTA:   0.00001]  MESSAGE:TEST "Manual extraction detected" RESULT: good
+
+START TEST "Database Only" [CLASS: DUPX_Validation_test_dbonly_iswordpress]
+LOG-TIME[DELTA:   0.00002]  MESSAGE:TEST "Database Only" RESULT: skip
+
+START TEST "Package Age" [CLASS: DUPX_Validation_test_package_age]
+LOG-TIME[DELTA:   0.00003]  MESSAGE:TEST "Package Age" RESULT: good
+
+START TEST "Package Size" [CLASS: DUPX_Validation_test_package_size]
+LOG-TIME[DELTA:   0.00010]  MESSAGE:TEST "Package Size" RESULT: soft warning
+
+START TEST "Replace PATHs in database" [CLASS: DUPX_Validation_test_replace_paths]
+LOG-TIME[DELTA:   0.00002]  MESSAGE:TEST "Replace PATHs in database" RESULT: skip
+
+START TEST "Managed hosting supported" [CLASS: DUPX_Validation_test_managed_supported]
+LOG-TIME[DELTA:   0.00018]  MESSAGE:TEST "Managed hosting supported" RESULT: skip
+
+START TEST "Siteground" [CLASS: DUPX_Validation_test_siteground]
+LOG-TIME[DELTA:   0.00011]  MESSAGE:TEST "Siteground" RESULT: skip
+
+START TEST "Addon Sites" [CLASS: DUPX_Validation_test_addon_sites]
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+LOG-TIME[DELTA:   2.79195]  MESSAGE:TEST "Addon Sites" RESULT: good
+
+START TEST "Wordfence" [CLASS: DUPX_Validation_test_wordfence]
+LOG-TIME[DELTA:   0.00069]  MESSAGE:TEST "Wordfence" RESULT: good
+
+START TEST "Table prefix of managed hosting" [CLASS: DUPX_Validation_test_managed_tprefix]
+LOG-TIME[DELTA:   0.00015]  MESSAGE:TEST "Table prefix of managed hosting" RESULT: skip
+
+START TEST "PHP Version Mismatch" [CLASS: DUPX_Validation_test_php_version]
+LOG-TIME[DELTA:   0.00002]  MESSAGE:TEST "PHP Version Mismatch" RESULT: soft warning
+
+START TEST "PHP Open Base" [CLASS: DUPX_Validation_test_open_basedir]
+LOG-TIME[DELTA:   0.00001]  MESSAGE:TEST "PHP Open Base" RESULT: good
+
+START TEST "PHP Memory Limit" [CLASS: DUPX_Validation_test_memory_limit]
+LOG-TIME[DELTA:   0.00002]  MESSAGE:TEST "PHP Memory Limit" RESULT: good
+
+START TEST "PHP Extensions" [CLASS: DUPX_Validation_test_extensions]
+LOG-TIME[DELTA:   0.00001]  MESSAGE:TEST "PHP Extensions" RESULT: good
+
+START TEST "PHP Mysqli" [CLASS: DUPX_Validation_test_mysql_connect]
+LOG-TIME[DELTA:   0.00001]  MESSAGE:TEST "PHP Mysqli" RESULT: passed
+
+START TEST "PHP Tokenizer" [CLASS: DUPX_Validation_test_tokenizer]
+LOG-TIME[DELTA:   0.00001]  MESSAGE:TEST "PHP Tokenizer" RESULT: passed
+
+START TEST "PHP Timeout" [CLASS: DUPX_Validation_test_timeout]
+LOG-TIME[DELTA:   0.00001]  MESSAGE:TEST "PHP Timeout" RESULT: good
+
+START TEST "Disk Space" [CLASS: DUPX_Validation_test_disk_space]
+LOG-TIME[DELTA:   0.01898]  MESSAGE:TEST "Disk Space" RESULT: good
+
+START TEST "Permissions: General" [CLASS: DUPX_Validation_test_iswritable]
+LOG-TIME[DELTA:   0.10817]  MESSAGE:TEST "Permissions: General" RESULT: passed
+
+START TEST "Permissions: Configs Files " [CLASS: DUPX_Validation_test_iswritable_configs]
+LOG-TIME[DELTA:   0.00049]  MESSAGE:TEST "Permissions: Configs Files " RESULT: passed
+
+START TEST "Host Name" [CLASS: DUPX_Validation_test_db_host_name]
+LOG-TIME[DELTA:   0.00002]  MESSAGE:TEST "Host Name" RESULT: passed
+
+START TEST "Host Connection" [CLASS: DUPX_Validation_test_db_connection]
+LOG-TIME[DELTA:   0.01204]  MESSAGE:TEST "Host Connection" RESULT: passed
+
+START TEST "Database Version" [CLASS: DUPX_Validation_test_db_version]
+LOG-TIME[DELTA:   0.00289]  MESSAGE:TEST "Database Version" RESULT: soft warning
+
+START TEST "Create New Database" [CLASS: DUPX_Validation_test_db_create]
+LOG-TIME[DELTA:   0.00002]  MESSAGE:TEST "Create New Database" RESULT: skip
+
+START TEST "Database Engine Support" [CLASS: DUPX_Validation_test_db_supported_engine]
+LOG-TIME[DELTA:   0.00023]  MESSAGE:TEST "Database Engine Support" RESULT: passed
+
+START TEST "Database GTID Mode" [CLASS: DUPX_Validation_test_db_gtid_mode]
+LOG-TIME[DELTA:   0.00017]  MESSAGE:TEST "Database GTID Mode" RESULT: passed
+
+START TEST "Privileges: User Visibility" [CLASS: DUPX_Validation_test_db_visibility]
+LOG-TIME[DELTA:   0.00019]  MESSAGE:TEST "Privileges: User Visibility" RESULT: passed
+
+START TEST "Manual Table Check" [CLASS: DUPX_Validation_test_db_manual_tabels_count]
+LOG-TIME[DELTA:   0.00007]  MESSAGE:TEST "Manual Table Check" RESULT: skip
+
+START TEST "Multiple WordPress Installs" [CLASS: DUPX_Validation_test_db_multiple_wp_installs]
+LOG-TIME[DELTA:   0.00118]  MESSAGE:TEST "Multiple WordPress Installs" RESULT: passed
+
+START TEST "Privileges: User Resources" [CLASS: DUPX_Validation_test_db_user_resources]
+LOG-TIME[DELTA:   0.00022]  MESSAGE:TEST "Privileges: User Resources" RESULT: passed
+
+START TEST "Privileges: User Table Access" [CLASS: DUPX_Validation_test_db_user_perms]
+LOG-TIME[DELTA:   0.14510]  MESSAGE:TEST "Privileges: User Table Access" RESULT: passed
+
+START TEST "Privileges: 'Show Variables' Query" [CLASS: DUPX_Validation_test_db_custom_queries]
+LOG-TIME[DELTA:   0.00120]  MESSAGE:TEST "Privileges: 'Show Variables' Query" RESULT: passed
+
+START TEST "Source Database Triggers" [CLASS: DUPX_Validation_test_db_triggers]
+LOG-TIME[DELTA:   0.00001]  MESSAGE:TEST "Source Database Triggers" RESULT: passed
+
+START TEST "Character Set and Collation Support" [CLASS: DUPX_Validation_test_db_supported_default_charset]
+LOG-TIME[DELTA:   0.00220]  MESSAGE:TEST "Character Set and Collation Support" RESULT: passed
+
+START TEST "Character Set and  Collation Capability" [CLASS: DUPX_Validation_test_db_supported_charset]
+LOG-TIME[DELTA:   0.00005]  MESSAGE:TEST "Character Set and  Collation Capability" RESULT: hard warning
+
+START TEST "Tables Case Sensitivity" [CLASS: DUPX_Validation_test_db_case_sensitive_tables]
+LOG-TIME[DELTA:   0.00003]  MESSAGE:TEST "Tables Case Sensitivity" RESULT: skip
+
+START TEST "Tables Flagged for Removal or Backup" [CLASS: DUPX_Validation_test_db_affected_tables]
+LOG-TIME[DELTA:   0.00124]  MESSAGE:TEST "Tables Flagged for Removal or Backup" RESULT: passed
+
+START TEST "Prefix too long" [CLASS: DUPX_Validation_test_db_prefix_too_long]
+LOG-TIME[DELTA:   0.00006]  MESSAGE:TEST "Prefix too long" RESULT: passed
+
+START TEST "Database cleanup" [CLASS: DUPX_Validation_test_db_cleanup]
+LOG-TIME[DELTA:   0.00001]  MESSAGE:TEST "Database cleanup" RESULT: skip
+
+
+CTRL PARAMS AFTER VALIDATION
+AJAX ACTION [validate] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [proceed_confirm_dialog] START
+AJAX ACTION [proceed_confirm_dialog] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [sparam_s1] START
+AJAX ACTION [sparam_s1] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+INITIALIZE FILTERS
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+********************************************************************************
+* DUPLICATOR LITE: Install-Log
+* STEP-1 START @ 12:41:11
+* NOTICE: Do NOT post to public sites or forums!!
+********************************************************************************
+USER INPUTS
+INSTALL TYPE________: single site
+BLOG NAME___________: "Сессию сдал!"
+HOME URL NEW________: "http://sdalwp"
+SITE URL NEW________: "http://sdalwp"
+CONTENT URL NEW_____: "http://sdalwp/wp-content"
+UPLOAD URL NEW______: "http://sdalwp/wp-content/uploads"
+PLUGINS URL NEW_____: "http://sdalwp/wp-content/plugins"
+MUPLUGINS URL NEW___: "http://sdalwp/wp-content/mu-plugins"
+HOME PATH NEW_______: "D:/OPENSERVER/domains/SDALWP"
+SITE PATH NEW_______: "D:/OPENSERVER/domains/SDALWP"
+CONTENT PATH NEW____: "D:/OPENSERVER/domains/SDALWP/wp-content"
+UPLOAD PATH NEW_____: "D:/OPENSERVER/domains/SDALWP/wp-content/uploads"
+PLUGINS PATH NEW____: "D:/OPENSERVER/domains/SDALWP/wp-content/plugins"
+MUPLUGINS PATH NEW__: "D:/OPENSERVER/domains/SDALWP/wp-content/mu-plugins"
+ARCHIVE ACTION______: "donothing"
+SKIP WP FILES_______: "none"
+ARCHIVE ENGINE______: "ziparchivechunking"
+SET DIR PERMS_______: false
+DIR PERMS VALUE_____: 0755
+SET FILE PERMS______: false
+FILE PERMS VALUE____: 0644
+SAFE MODE___________: 0
+LOGGING_____________: 1
+ZIP THROTTLING______: false
+WP CONFIG___________: "modify"
+HTACCESS CONFIG_____: "new"
+OTHER CONFIG________: "new"
+FILE TIME___________: "current"
+********************************************************************************
+
+REMOVE FILTERS
+	DIR : "D:/OPENSERVER/domains/SDALWP/dup-installer"
+	FILE: "D:/OPENSERVER/domains/SDALWP/20241010_sessiyusdal_[HASH]_20241225085153_installer-backup.php"
+	FILE: "D:/OPENSERVER/domains/SDALWP/20241010_sessiyusdal_[HASH]_20241225085153_archive.zip"
+	FILE: "D:/OPENSERVER/domains/SDALWP/installer.php"
+	FILE: "D:/OPENSERVER/domains/SDALWP/dup-installer-bootlog__6788eb2-25085153.txt"
+EXTRACTION FILTERS
+	DIR : "dup-installer"
+	FILE: "20241010_sessiyusdal_[HASH]_20241225085153_installer-backup.php"
+--------------------------------------
+
+
+EXTRACTION: ZIP CHUNKING >>> START
+MAINTENANCE MODE ENABLE
+BEFORE EXTRACION ACTIONS
+
+*** RESET CONFIG FILES IN CURRENT HOSTING >>> START
+
+*** RESET CONFIG FILES IN CURRENT HOSTING >>> END
+MAINTENANCE MODE ENABLE
+
+*** CREATE FOLDER AND PERMISSION PREPARE
+FOLDER PREPARE DONE
+ARCHIVE OFFSET 0
+CHUNK COMPLETE - RUNTIME: 5.0118 sec. - Files processed: 279 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 279
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0086 sec. - Files processed: 6,378 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 6378
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0703 sec. - Files processed: 8,286 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 8286
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 17.9350 sec. - Files processed: 9,162 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 9162
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.1553 sec. - Files processed: 9,246 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 9246
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0325 sec. - Files processed: 9,438 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 9438
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 10.2005 sec. - Files processed: 9,562 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 9562
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0682 sec. - Files processed: 9,631 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 9631
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.1559 sec. - Files processed: 9,794 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 9794
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.3962 sec. - Files processed: 10,015 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 10015
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 6.6380 sec. - Files processed: 10,043 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 10043
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 6.9206 sec. - Files processed: 10,242 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 10242
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.6155 sec. - Files processed: 10,382 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 10382
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.3188 sec. - Files processed: 10,831 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 10831
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 8.6351 sec. - Files processed: 11,087 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 11087
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.1700 sec. - Files processed: 11,663 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 11663
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.1491 sec. - Files processed: 12,087 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 12087
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0609 sec. - Files processed: 12,427 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 12427
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0392 sec. - Files processed: 12,899 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 12899
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0160 sec. - Files processed: 13,471 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 13471
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.2054 sec. - Files processed: 14,211 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 14211
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0781 sec. - Files processed: 14,833 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 14833
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.5559 sec. - Files processed: 15,183 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 15183
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 11.0848 sec. - Files processed: 15,599 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 15599
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.2567 sec. - Files processed: 16,207 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 16207
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.1367 sec. - Files processed: 16,679 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 16679
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0198 sec. - Files processed: 16,915 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 16915
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 7.7644 sec. - Files processed: 17,483 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 17483
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0336 sec. - Files processed: 17,910 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 17910
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 9.9597 sec. - Files processed: 18,255 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 18255
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0134 sec. - Files processed: 19,238 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 19238
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0170 sec. - Files processed: 19,711 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 19711
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.1632 sec. - Files processed: 19,791 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 19791
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.1397 sec. - Files processed: 20,583 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 20583
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0217 sec. - Files processed: 20,988 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 20988
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.2199 sec. - Files processed: 21,459 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 21459
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0169 sec. - Files processed: 21,915 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 21915
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.7628 sec. - Files processed: 22,007 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 22007
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.1218 sec. - Files processed: 22,778 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 22778
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0379 sec. - Files processed: 22,974 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 22974
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.2914 sec. - Files processed: 23,363 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 23363
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.1356 sec. - Files processed: 24,403 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 24403
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 6.1040 sec. - Files processed: 24,430 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 24430
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.7507 sec. - Files processed: 24,469 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 24469
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0320 sec. - Files processed: 24,823 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 24823
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0974 sec. - Files processed: 25,400 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 25400
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.8014 sec. - Files processed: 25,889 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 25889
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.1329 sec. - Files processed: 26,040 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 26040
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0201 sec. - Files processed: 26,464 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 26464
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 7.9711 sec. - Files processed: 26,885 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 26885
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0108 sec. - Files processed: 31,147 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 31147
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+CHUNK COMPLETE - RUNTIME: 5.0095 sec. - Files processed: 34,055 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [extract] START
+MAINTENANCE MODE ENABLE
+ARCHIVE OFFSET 34055
+--------------------------------------
+PATHS MAPPING : "D:/OPENSERVER/domains/SDALWP"
+--------------------------------------
+FILE EXTRACTION: done processing last file in list of 36827
+
+EXTRACTION: ZIP CHUNKING >>> DONE
+
+EXTRACTION COMPLETE @ 12:46:40 - RUNTIME: 328.8547 sec. - Files processed: 36,220 of 36,220
+AJAX ACTION [extract] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+ADD PREFIX META MAP ID 0 wp_
+
+
+
+********************************************************************************
+* DUPLICATOR LITE: INSTALL-LOG
+* STEP-2 START @ 12:46:40
+* NOTICE: Do NOT post to public sites or forums!!
+********************************************************************************
+USER INPUTS
+DB ENGINE___________: "chunk"
+VIEW MODE___________: "basic"
+DB ACTION___________: "empty"
+DB HOST_____________: "**OBSCURED**"
+DB NAME_____________: "**OBSCURED**"
+DB PASS_____________: "**OBSCURED**"
+DB PORT_____________: "**OBSCURED**"
+USER MODE___________: "overwrite"
+TABLE PREFIX________: "wp_"
+MYSQL MODE__________: "DEFAULT"
+MYSQL MODE OPTS_____: ""
+CHARSET_____________: "utf8mb4"
+COLLATE_____________: ""
+CUNKING_____________: true
+VIEW CREATION_______: true
+STORED PROCEDURE____: true
+FUNCTIONS___________: true
+REMOVE DEFINER______: false
+SPLIT CREATES_______: true
+--------------------------------------
+TABLES
+--------------------------------------
+TABLE "wp_actionscheduler_actions"______________________[ROWS:      34] [EXTRACT|REPLACE] [INST NAME: wp_actionscheduler_actions]
+TABLE "wp_actionscheduler_claims"_______________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_actionscheduler_claims]
+TABLE "wp_actionscheduler_groups"_______________________[ROWS:       2] [EXTRACT|REPLACE] [INST NAME: wp_actionscheduler_groups]
+TABLE "wp_actionscheduler_logs"_________________________[ROWS:      98] [EXTRACT|REPLACE] [INST NAME: wp_actionscheduler_logs]
+TABLE "wp_ac_segments"__________________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_ac_segments]
+TABLE "wp_admin_columns"________________________________[ROWS:       1] [EXTRACT|REPLACE] [INST NAME: wp_admin_columns]
+TABLE "wp_cackle_channel"_______________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_cackle_channel]
+TABLE "wp_commentmeta"__________________________________[ROWS:     724] [EXTRACT|REPLACE] [INST NAME: wp_commentmeta]
+TABLE "wp_comments"_____________________________________[ROWS:    2945] [EXTRACT|REPLACE] [INST NAME: wp_comments]
+TABLE "wp_duplicator_packages"__________________________[ROWS:       2] [EXTRACT|REPLACE] [INST NAME: wp_duplicator_packages]
+TABLE "wp_links"________________________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_links]
+TABLE "wp_options"______________________________________[ROWS:     800] [EXTRACT|REPLACE] [INST NAME: wp_options]
+TABLE "wp_postmeta"_____________________________________[ROWS:  214079] [EXTRACT|REPLACE] [INST NAME: wp_postmeta]
+TABLE "wp_posts"________________________________________[ROWS:   13997] [EXTRACT|REPLACE] [INST NAME: wp_posts]
+TABLE "wp_quizle_results"_______________________________[ROWS:      19] [EXTRACT|REPLACE] [INST NAME: wp_quizle_results]
+TABLE "wp_rio_process_queue"____________________________[ROWS:     145] [EXTRACT|REPLACE] [INST NAME: wp_rio_process_queue]
+TABLE "wp_sgs_log_events"_______________________________[ROWS:   67412] [EXTRACT|REPLACE] [INST NAME: wp_sgs_log_events]
+TABLE "wp_sgs_log_visitors"_____________________________[ROWS:    8749] [EXTRACT|REPLACE] [INST NAME: wp_sgs_log_visitors]
+TABLE "wp_smush_dir_images"_____________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_smush_dir_images]
+TABLE "wp_termmeta"_____________________________________[ROWS:       6] [EXTRACT|REPLACE] [INST NAME: wp_termmeta]
+TABLE "wp_terms"________________________________________[ROWS:     296] [EXTRACT|REPLACE] [INST NAME: wp_terms]
+TABLE "wp_term_relationships"___________________________[ROWS:   12711] [EXTRACT|REPLACE] [INST NAME: wp_term_relationships]
+TABLE "wp_term_taxonomy"________________________________[ROWS:     296] [EXTRACT|REPLACE] [INST NAME: wp_term_taxonomy]
+TABLE "wp_usermeta"_____________________________________[ROWS:     261] [EXTRACT|REPLACE] [INST NAME: wp_usermeta]
+TABLE "wp_users"________________________________________[ROWS:      10] [EXTRACT|REPLACE] [INST NAME: wp_users]
+TABLE "wp_wpbe_history"_________________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_wpbe_history]
+TABLE "wp_wpbe_history_bulk"____________________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_wpbe_history_bulk]
+TABLE "wp_wpmailsmtp_debug_events"______________________[ROWS:       0] [EXTRACT|REPLACE] [INST NAME: wp_wpmailsmtp_debug_events]
+TABLE "wp_wpmailsmtp_tasks_meta"________________________[ROWS:       1] [EXTRACT|REPLACE] [INST NAME: wp_wpmailsmtp_tasks_meta]
+TABLE "wp_yoast_indexable"______________________________[ROWS:     476] [EXTRACT|REPLACE] [INST NAME: wp_yoast_indexable]
+TABLE "wp_yoast_indexable_hierarchy"____________________[ROWS:     473] [EXTRACT|REPLACE] [INST NAME: wp_yoast_indexable_hierarchy]
+TABLE "wp_yoast_migrations"_____________________________[ROWS:      24] [EXTRACT|REPLACE] [INST NAME: wp_yoast_migrations]
+TABLE "wp_yoast_primary_term"___________________________[ROWS:     163] [EXTRACT|REPLACE] [INST NAME: wp_yoast_primary_term]
+TABLE "wp_yoast_seo_links"______________________________[ROWS:     397] [EXTRACT|REPLACE] [INST NAME: wp_yoast_seo_links]
+********************************************************************************
+
+--------------------------------------
+DATABASE-ENVIRONMENT
+--------------------------------------
+MYSQL VERSION:	This Server: 8.0.30 -- Build Server: 5.7.44
+FILE SIZE:	dup-database__[HASH].sql (82.25MB)
+TIMEOUT:	5000
+MAXPACK:	268435456
+SQLMODE-GLOBAL:	ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
+SQLMODE-SESSION:NO_AUTO_VALUE_ON_ZERO
+DROP ALL TABLES
+--------------------------------------
+DATABASE RESULTS
+--------------------------------------
+QUERY FIXES
+GLOBAL RULES ADDED: PROC AND VIEWS
+GLOBAL RULES ADDED: INVALID CHARSETS
+GLOBAL RULES ADDED: INVALID COLLATIONS
+
+QUERY FIXES GLOBAL RULES
+	SEARCH  => /^(\s*(?:\/\*!\d+\s)?\s*(?:CREATE.+)?DEFINER\s*=)([^\*\s]+)(.*)$/m
+	REPLACE => $1`root`@`localhost`$3
+
+	SEARCH  => /^(\s*CREATE.+(?:PROCEDURE|FUNCTION)[\s\S]*)(BEGIN)([\s\S]*)$/
+	REPLACE => $1SQL SECURITY INVOKER
+$2$3
+
+	SEARCH  => /(^.*(?:CHARSET|CHARACTER SET)\s*[\s=]\s*[`'"]?)((?:utf8))([`'"]?\s.*COLLATE\s*[\s=]\s*[`'"]?)([^`'"\s;,]+)([`'"]?.*$)/m
+	REPLACE => $1utf8mb4$3utf8mb4_0900_ai_ci$5
+
+	SEARCH  => /(^.*COLLATE\s*[\s=]\s*[`'"]?)([^`'"\s;,]+)([`'"]?\s.*(?:CHARSET|CHARACTER SET)\s*[\s=]\s*[`'"]?)((?:utf8))([`'"]?[\s;,].*$)/m
+	REPLACE => $1utf8mb4_0900_ai_ci$3utf8mb4$5
+
+	SEARCH  => /(^.*(?:CHARSET|CHARACTER SET)\s*[\s=]\s*[`'"]?)((?:utf8))([`'"]?[\s;,].*$)/m
+	REPLACE => $1utf8mb4$3
+
+	SEARCH  => /(^.*(?:CHARSET|CHARACTER SET)\s*[\s=]\s*[`'"]?)([^`'"\s;,]+)([`'"]?\s.*COLLATE\s*[\s=]\s*[`'"]?)((?:utf8_general_ci))([`'"]?[\s;,].*$)/m
+	REPLACE => $1utf8mb4$3utf8mb4_0900_ai_ci$5
+
+	SEARCH  => /(^.*COLLATE\s*[\s=]\s*[`'"]?)((?:utf8_general_ci))([`'"]?\s.*(?:CHARSET|CHARACTER SET)\s*[\s=]\s*[`'"]?)([^`'"\s;,]+)([`'"]?.*$)/m
+	REPLACE => $1utf8mb4_0900_ai_ci$3utf8mb4$5
+
+	SEARCH  => /(^.*COLLATE\s*[\s=]\s*[`'"]?)((?:utf8_general_ci))([`'"]?[\s;,].*$)/m
+	REPLACE => $1utf8mb4_0900_ai_ci$3
+
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 0
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+DATABASE CHUNK: CREATION TABLE MARKER FOUND
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 26929
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 1876943
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 5246287
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 5387170
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 5493944
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 5791502
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 6758763
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 8366880
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 9776540
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 10740295
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 11968964
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 13671948
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 14573053
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 15918454
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 17680182
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 18888628
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 20064343
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 21649128
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 22874219
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 23961821
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 25200331
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 26469640
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 27586262
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 28814897
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 30051736
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 31374085
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 32536692
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 33583762
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 34873288
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 35899969
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 37163545
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 38032654
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 44257147
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 53905089
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 56302814
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 61420240
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 67338428
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 68079339
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 70358177
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 71938534
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 73839866
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 75899456
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 79109633
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 81170976
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 83023296
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 84072115
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 84442921
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 84906303
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 85247699
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [dbinstall] START
+--------------------------------------
+** DATABASE CHUNK install start
+--------------------------------------
+DATABASE CHUNK SEEK POSITION: 85511522
+Auto Commit set to false successfully
+NO TABLE TO SKIP
+Auto Commit set to true successfully
+--------------------------------------
+** DATABASE CHUNK install end
+--------------------------------------
+ERRORS FOUND:	0
+DROPPED TABLES:	0
+RENAMED TABLES:	0
+QUERIES RAN:	324206
+
+TABLES ROWS IN DATABASE AFTER EXTRACTION
+
+TABLE "wp_ac_segments"__________________________________[ROWS:     0]
+TABLE "wp_actionscheduler_actions"______________________[ROWS:    34]
+TABLE "wp_actionscheduler_claims"_______________________[ROWS:     0]
+TABLE "wp_actionscheduler_groups"_______________________[ROWS:     2]
+TABLE "wp_actionscheduler_logs"_________________________[ROWS:    98]
+TABLE "wp_admin_columns"________________________________[ROWS:     1]
+TABLE "wp_cackle_channel"_______________________________[ROWS:     0]
+TABLE "wp_commentmeta"__________________________________[ROWS:   724]
+TABLE "wp_comments"_____________________________________[ROWS:  2945]
+TABLE "wp_duplicator_packages"__________________________[ROWS:     2]
+TABLE "wp_links"________________________________________[ROWS:     0]
+TABLE "wp_options"______________________________________[ROWS:   800]
+TABLE "wp_postmeta"_____________________________________[ROWS:214079]
+TABLE "wp_posts"________________________________________[ROWS: 13997]
+TABLE "wp_quizle_results"_______________________________[ROWS:    19]
+TABLE "wp_rio_process_queue"____________________________[ROWS:   145]
+TABLE "wp_sgs_log_events"_______________________________[ROWS: 67411]
+TABLE "wp_sgs_log_visitors"_____________________________[ROWS:  8748]
+TABLE "wp_smush_dir_images"_____________________________[ROWS:     0]
+TABLE "wp_term_relationships"___________________________[ROWS: 12711]
+TABLE "wp_term_taxonomy"________________________________[ROWS:   296]
+TABLE "wp_termmeta"_____________________________________[ROWS:     6]
+TABLE "wp_terms"________________________________________[ROWS:   296]
+TABLE "wp_usermeta"_____________________________________[ROWS:   261]
+TABLE "wp_users"________________________________________[ROWS:    10]
+TABLE "wp_wpbe_history"_________________________________[ROWS:     0]
+TABLE "wp_wpbe_history_bulk"____________________________[ROWS:     0]
+TABLE "wp_wpmailsmtp_debug_events"______________________[ROWS:     0]
+TABLE "wp_wpmailsmtp_tasks_meta"________________________[ROWS:     1]
+TABLE "wp_yoast_indexable"______________________________[ROWS:   476]
+TABLE "wp_yoast_indexable_hierarchy"____________________[ROWS:   473]
+TABLE "wp_yoast_migrations"_____________________________[ROWS:    24]
+TABLE "wp_yoast_primary_term"___________________________[ROWS:   163]
+TABLE "wp_yoast_seo_links"______________________________[ROWS:   397]
+
+INSERT DATA RUNTIME: 275.2275 sec.
+STEP-2 COMPLETE @ 12:51:15 - RUNTIME: 275.2276 sec.
+AJAX ACTION [dbinstall] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [webupdate] START
+
+====================================
+SET SEARCH AND REPLACE LIST INSTALL TYPE single site
+====================================
+SEARCH ITEM[T:path |P:12] SEARCH: /var/www/u0956841/data/www/sessiusdal.ru REPLACE: D:/OPENSERVER/domains/SDALWP [SCOPE: ALL]
+SEARCH ITEM[T:urlnd|P:12] SEARCH: https://sessiusdal.ru REPLACE: http://sdalwp [SCOPE: ALL]
+CHUNK LOAD DATA: IS NULL 
+CHUNK ACTION: CURRENT [start][][]
+
+
+********************************************************************************
+DUPLICATOR LITE: INSTALL-LOG
+STEP-3 START @ 12:51:16
+NOTICE: Do NOT post to public sites or forums
+********************************************************************************
+CHARSET SERVER:	"utf8mb4"
+CHARSET CLIENT:	"utf8mb4"
+********************************************************************************
+OPTIONS:
+SKIP PATH REPLACE_____: false
+DISALLOW_FILE_EDIT____: [value = ], [inWpConfig = ]
+DISALLOW_FILE_MODS____: [value = ], [inWpConfig = ]
+AUTOSAVE_INTERVAL_____: [value = 60], [inWpConfig = ]
+WP_POST_REVISIONS_____: [value = 1], [inWpConfig = ]
+FORCE_SSL_ADMIN_______: [value = 1], [inWpConfig = ]
+WP_AUTO_UPDATE_CORE___: [value = false], [inWpConfig = ]
+WP_CACHE______________: [value = ], [inWpConfig = ]
+WPCACHEHOME___________: [value = /], [inWpConfig = ]
+WP_DEBUG______________: [value = ], [inWpConfig = 1]
+WP_DEBUG_LOG__________: [value = ], [inWpConfig = ]
+WP_DEBUG_DISPLAY______: [value = 1], [inWpConfig = ]
+WP_DISABLE_FATAL_ERROR_HANDLER: [value = ], [inWpConfig = ]
+SCRIPT_DEBUG__________: [value = ], [inWpConfig = ]
+CONCATENATE_SCRIPTS___: [value = ], [inWpConfig = ]
+SAVEQUERIES___________: [value = ], [inWpConfig = ]
+ALTERNATE_WP_CRON_____: [value = ], [inWpConfig = ]
+DISABLE_WP_CRON_______: [value = 1], [inWpConfig = 1]
+WP_CRON_LOCK_TIMEOUT__: [value = 60], [inWpConfig = ]
+COOKIE_DOMAIN_________: [value = ], [inWpConfig = ]
+WP_MEMORY_LIMIT_______: [value = 40M], [inWpConfig = ]
+WP_MAX_MEMORY_LIMIT___: [value = 1024M], [inWpConfig = ]
+WP_TEMP_DIR___________: [value = ], [inWpConfig = ]
+********************************************************************************
+
+********************************************************************************
+CHUNK PARAMS:
+maxIteration__________: 0
+timeOut_______________: 5000
+throttling____________: 2
+rowsPerPage___________: 1000
+********************************************************************************
+
+CHUNK ACTION: CURRENT [cleanup_trans][][]
+[PHP ERR][E_WARNING] MSG:Invalid argument supplied for foreach() [CODE:2|FILE:D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Deploy\Database\DbCleanup.php|LINE:95]
+CLEAN OPTIONS [wp_options]
+	`option_name` = "duplicator_plugin_data_stats"
+	`option_name` LIKE "\_transient%"
+	`option_name` LIKE "\_site\_transient%"
+DATABASE OPTIONS DELETED [ROWS:   323]
+CHUNK ACTION: CURRENT [cleanup_extra][][]
+CLEANUP EXTRA
+	- SKIP DROP VIEWS
+	- SKIP DROP PROCS
+	- SKIP DROP FUNCS
+CHUNK ACTION: CURRENT [cleanup_packages][][]
+EMPTY PACKAGES TABLE
+CLEAN PACKAGES
+DATABASE PACKAGE DELETED [ROWS:     2]
+CHUNK ACTION: CURRENT [init][][]
+
+EVALUATE TABLE: "wp_actionscheduler_actions"______________________[ROWS:    34][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/var/www/u0956841/data/www/sessiusdal.ru" ========> "D:/OPENSERVER/domains/SDALWP"
+	SEARCH[urlnd]  2:"https://sessiusdal.ru" ===========================> "http://sdalwp"
+	CHUNK ACTION: CURRENT [search_replace][wp_actionscheduler_actions][0]
+
+EVALUATE TABLE: "wp_actionscheduler_claims"_______________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_actionscheduler_groups"_______________________[ROWS:     2][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/var/www/u0956841/data/www/sessiusdal.ru" ========> "D:/OPENSERVER/domains/SDALWP"
+	SEARCH[urlnd]  2:"https://sessiusdal.ru" ===========================> "http://sdalwp"
+	CHUNK ACTION: CURRENT [search_replace][wp_actionscheduler_groups][0]
+
+EVALUATE TABLE: "wp_actionscheduler_logs"_________________________[ROWS:    98][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/var/www/u0956841/data/www/sessiusdal.ru" ========> "D:/OPENSERVER/domains/SDALWP"
+	SEARCH[urlnd]  2:"https://sessiusdal.ru" ===========================> "http://sdalwp"
+	CHUNK ACTION: CURRENT [search_replace][wp_actionscheduler_logs][0]
+
+EVALUATE TABLE: "wp_ac_segments"__________________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_admin_columns"________________________________[ROWS:     1][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/var/www/u0956841/data/www/sessiusdal.ru" ========> "D:/OPENSERVER/domains/SDALWP"
+	SEARCH[urlnd]  2:"https://sessiusdal.ru" ===========================> "http://sdalwp"
+	CHUNK ACTION: CURRENT [search_replace][wp_admin_columns][0]
+
+EVALUATE TABLE: "wp_cackle_channel"_______________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_commentmeta"__________________________________[ROWS:   724][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/var/www/u0956841/data/www/sessiusdal.ru" ========> "D:/OPENSERVER/domains/SDALWP"
+	SEARCH[urlnd]  2:"https://sessiusdal.ru" ===========================> "http://sdalwp"
+	CHUNK ACTION: CURRENT [search_replace][wp_commentmeta][0]
+
+EVALUATE TABLE: "wp_comments"_____________________________________[ROWS:  2945][PG:   3][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/var/www/u0956841/data/www/sessiusdal.ru" ========> "D:/OPENSERVER/domains/SDALWP"
+	SEARCH[urlnd]  2:"https://sessiusdal.ru" ===========================> "http://sdalwp"
+	CHUNK ACTION: CURRENT [search_replace][wp_comments][0]
+	CHUNK ACTION: CURRENT [search_replace][wp_comments][1]
+	CHUNK ACTION: CURRENT [search_replace][wp_comments][2]
+
+EVALUATE TABLE: "wp_duplicator_packages"__________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_links"________________________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_options"______________________________________[ROWS:   477][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/var/www/u0956841/data/www/sessiusdal.ru" ========> "D:/OPENSERVER/domains/SDALWP"
+	SEARCH[urlnd]  2:"https://sessiusdal.ru" ===========================> "http://sdalwp"
+	CHUNK ACTION: CURRENT [search_replace][wp_options][0]
+
+EVALUATE TABLE: "wp_postmeta"_____________________________________[ROWS:214079][PG: 215][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/var/www/u0956841/data/www/sessiusdal.ru" ========> "D:/OPENSERVER/domains/SDALWP"
+	SEARCH[urlnd]  2:"https://sessiusdal.ru" ===========================> "http://sdalwp"
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][0]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][1]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][2]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][3]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][4]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][5]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][6]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][7]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][8]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][9]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][10]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][11]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][12]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][13]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][14]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][15]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][16]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][17]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][18]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][19]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][20]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][21]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][22]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][23]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][24]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][25]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][26]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][27]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][28]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][29]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][30]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][31]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][32]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][33]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][34]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][35]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][36]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][37]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][38]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][39]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][40]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][41]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][42]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][43]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][44]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][45]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][46]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][47]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][48]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][49]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][50]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][51]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][52]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][53]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][54]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][55]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][56]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][57]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][58]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][59]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][60]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][61]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][62]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][63]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][64]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][65]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][66]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][67]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][68]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][69]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][70]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][71]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][72]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][73]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][74]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][75]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][76]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][77]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][78]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][79]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][80]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][81]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][82]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][83]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][84]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][85]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][86]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][87]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][88]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][89]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][90]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][91]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][92]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][93]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][94]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][95]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][96]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][97]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][98]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][99]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][100]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][101]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][102]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][103]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][104]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][105]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][106]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][107]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][108]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][109]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][110]
+	CHUNK ACTION: CURRENT [search_replace][wp_postmeta][111]
+	
+STEP-3 CHUNK STOP @ 12:51:21 - RUNTIME: 5.0433 sec. 
+
+
+	AJAX ACTION [webupdate] SUCCESS
+	-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [webupdate] START
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][112]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][113]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][114]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][115]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][116]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][117]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][118]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][119]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][120]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][121]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][122]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][123]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][124]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][125]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][126]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][127]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][128]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][129]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][130]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][131]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][132]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][133]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][134]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][135]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][136]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][137]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][138]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][139]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][140]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][141]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][142]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][143]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][144]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][145]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][146]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][147]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][148]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][149]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][150]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][151]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][152]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][153]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][154]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][155]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][156]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][157]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][158]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][159]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][160]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][161]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][162]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][163]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][164]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][165]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][166]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][167]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][168]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][169]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][170]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][171]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][172]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][173]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][174]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][175]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][176]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][177]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][178]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][179]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][180]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][181]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][182]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][183]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][184]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][185]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][186]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][187]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][188]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][189]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][190]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][191]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][192]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][193]
+
+STEP-3 CHUNK STOP @ 12:51:26 - RUNTIME: 5.0084 sec. 
+
+
+AJAX ACTION [webupdate] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [webupdate] START
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][194]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][195]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][196]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][197]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][198]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][199]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][200]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][201]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][202]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][203]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][204]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][205]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][206]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][207]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][208]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][209]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][210]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][211]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][212]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][213]
+CHUNK ACTION: CURRENT [search_replace][wp_postmeta][214]
+
+EVALUATE TABLE: "wp_posts"________________________________________[ROWS: 13997][PG:  14][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/var/www/u0956841/data/www/sessiusdal.ru" ========> "D:/OPENSERVER/domains/SDALWP"
+	SEARCH[urlnd]  2:"https://sessiusdal.ru" ===========================> "http://sdalwp"
+	CHUNK ACTION: CURRENT [search_replace][wp_posts][0]
+	CHUNK ACTION: CURRENT [search_replace][wp_posts][1]
+	
+STEP-3 CHUNK STOP @ 12:51:36 - RUNTIME: 10.2294 sec. 
+
+
+	AJAX ACTION [webupdate] SUCCESS
+	-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [webupdate] START
+CHUNK ACTION: CURRENT [search_replace][wp_posts][2]
+CHUNK ACTION: CURRENT [search_replace][wp_posts][3]
+
+STEP-3 CHUNK STOP @ 12:51:43 - RUNTIME: 6.1860 sec. 
+
+
+AJAX ACTION [webupdate] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [webupdate] START
+CHUNK ACTION: CURRENT [search_replace][wp_posts][4]
+CHUNK ACTION: CURRENT [search_replace][wp_posts][5]
+CHUNK ACTION: CURRENT [search_replace][wp_posts][6]
+CHUNK ACTION: CURRENT [search_replace][wp_posts][7]
+CHUNK ACTION: CURRENT [search_replace][wp_posts][8]
+CHUNK ACTION: CURRENT [search_replace][wp_posts][9]
+
+STEP-3 CHUNK STOP @ 12:51:49 - RUNTIME: 6.1209 sec. 
+
+
+AJAX ACTION [webupdate] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [webupdate] START
+CHUNK ACTION: CURRENT [search_replace][wp_posts][10]
+CHUNK ACTION: CURRENT [search_replace][wp_posts][11]
+CHUNK ACTION: CURRENT [search_replace][wp_posts][12]
+CHUNK ACTION: CURRENT [search_replace][wp_posts][13]
+
+STEP-3 CHUNK STOP @ 12:51:55 - RUNTIME: 6.1676 sec. 
+
+
+AJAX ACTION [webupdate] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [webupdate] START
+
+EVALUATE TABLE: "wp_quizle_results"_______________________________[ROWS:    19][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/var/www/u0956841/data/www/sessiusdal.ru" ========> "D:/OPENSERVER/domains/SDALWP"
+	SEARCH[urlnd]  2:"https://sessiusdal.ru" ===========================> "http://sdalwp"
+	CHUNK ACTION: CURRENT [search_replace][wp_quizle_results][0]
+
+EVALUATE TABLE: "wp_rio_process_queue"____________________________[ROWS:   145][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/var/www/u0956841/data/www/sessiusdal.ru" ========> "D:/OPENSERVER/domains/SDALWP"
+	SEARCH[urlnd]  2:"https://sessiusdal.ru" ===========================> "http://sdalwp"
+	CHUNK ACTION: CURRENT [search_replace][wp_rio_process_queue][0]
+
+EVALUATE TABLE: "wp_sgs_log_events"_______________________________[ROWS: 67411][PG:  68][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/var/www/u0956841/data/www/sessiusdal.ru" ========> "D:/OPENSERVER/domains/SDALWP"
+	SEARCH[urlnd]  2:"https://sessiusdal.ru" ===========================> "http://sdalwp"
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][0]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][1]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][2]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][3]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][4]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][5]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][6]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][7]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][8]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][9]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][10]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][11]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][12]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][13]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][14]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][15]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][16]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][17]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][18]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][19]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][20]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][21]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][22]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][23]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][24]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][25]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][26]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][27]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][28]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][29]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][30]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][31]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][32]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][33]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][34]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][35]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][36]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][37]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][38]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][39]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][40]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][41]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][42]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][43]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][44]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][45]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][46]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][47]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][48]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][49]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][50]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][51]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][52]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][53]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][54]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][55]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][56]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][57]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][58]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][59]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][60]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][61]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][62]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][63]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][64]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][65]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][66]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_events][67]
+
+EVALUATE TABLE: "wp_sgs_log_visitors"_____________________________[ROWS:  8748][PG:   9][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/var/www/u0956841/data/www/sessiusdal.ru" ========> "D:/OPENSERVER/domains/SDALWP"
+	SEARCH[urlnd]  2:"https://sessiusdal.ru" ===========================> "http://sdalwp"
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_visitors][0]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_visitors][1]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_visitors][2]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_visitors][3]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_visitors][4]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_visitors][5]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_visitors][6]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_visitors][7]
+	CHUNK ACTION: CURRENT [search_replace][wp_sgs_log_visitors][8]
+
+EVALUATE TABLE: "wp_smush_dir_images"_____________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_termmeta"_____________________________________[ROWS:     6][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/var/www/u0956841/data/www/sessiusdal.ru" ========> "D:/OPENSERVER/domains/SDALWP"
+	SEARCH[urlnd]  2:"https://sessiusdal.ru" ===========================> "http://sdalwp"
+	CHUNK ACTION: CURRENT [search_replace][wp_termmeta][0]
+
+EVALUATE TABLE: "wp_terms"________________________________________[ROWS:   296][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/var/www/u0956841/data/www/sessiusdal.ru" ========> "D:/OPENSERVER/domains/SDALWP"
+	SEARCH[urlnd]  2:"https://sessiusdal.ru" ===========================> "http://sdalwp"
+	CHUNK ACTION: CURRENT [search_replace][wp_terms][0]
+
+EVALUATE TABLE: "wp_term_relationships"___________________________[ROWS: 12711][PG:  13][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_term_taxonomy"________________________________[ROWS:   296][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/var/www/u0956841/data/www/sessiusdal.ru" ========> "D:/OPENSERVER/domains/SDALWP"
+	SEARCH[urlnd]  2:"https://sessiusdal.ru" ===========================> "http://sdalwp"
+	CHUNK ACTION: CURRENT [search_replace][wp_term_taxonomy][0]
+
+EVALUATE TABLE: "wp_usermeta"_____________________________________[ROWS:   261][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/var/www/u0956841/data/www/sessiusdal.ru" ========> "D:/OPENSERVER/domains/SDALWP"
+	SEARCH[urlnd]  2:"https://sessiusdal.ru" ===========================> "http://sdalwp"
+	CHUNK ACTION: CURRENT [search_replace][wp_usermeta][0]
+
+EVALUATE TABLE: "wp_users"________________________________________[ROWS:    10][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/var/www/u0956841/data/www/sessiusdal.ru" ========> "D:/OPENSERVER/domains/SDALWP"
+	SEARCH[urlnd]  2:"https://sessiusdal.ru" ===========================> "http://sdalwp"
+	CHUNK ACTION: CURRENT [search_replace][wp_users][0]
+
+EVALUATE TABLE: "wp_wpbe_history"_________________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_wpbe_history_bulk"____________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_wpmailsmtp_debug_events"______________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_wpmailsmtp_tasks_meta"________________________[ROWS:     1][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/var/www/u0956841/data/www/sessiusdal.ru" ========> "D:/OPENSERVER/domains/SDALWP"
+	SEARCH[urlnd]  2:"https://sessiusdal.ru" ===========================> "http://sdalwp"
+	CHUNK ACTION: CURRENT [search_replace][wp_wpmailsmtp_tasks_meta][0]
+
+EVALUATE TABLE: "wp_yoast_indexable"______________________________[ROWS:   476][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/var/www/u0956841/data/www/sessiusdal.ru" ========> "D:/OPENSERVER/domains/SDALWP"
+	SEARCH[urlnd]  2:"https://sessiusdal.ru" ===========================> "http://sdalwp"
+	CHUNK ACTION: CURRENT [search_replace][wp_yoast_indexable][0]
+
+EVALUATE TABLE: "wp_yoast_indexable_hierarchy"____________________[ROWS:   473][PG:   1][SCAN:no columns  ]
+
+EVALUATE TABLE: "wp_yoast_migrations"_____________________________[ROWS:    24][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/var/www/u0956841/data/www/sessiusdal.ru" ========> "D:/OPENSERVER/domains/SDALWP"
+	SEARCH[urlnd]  2:"https://sessiusdal.ru" ===========================> "http://sdalwp"
+	CHUNK ACTION: CURRENT [search_replace][wp_yoast_migrations][0]
+
+EVALUATE TABLE: "wp_yoast_primary_term"___________________________[ROWS:   163][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/var/www/u0956841/data/www/sessiusdal.ru" ========> "D:/OPENSERVER/domains/SDALWP"
+	SEARCH[urlnd]  2:"https://sessiusdal.ru" ===========================> "http://sdalwp"
+	CHUNK ACTION: CURRENT [search_replace][wp_yoast_primary_term][0]
+
+EVALUATE TABLE: "wp_yoast_seo_links"______________________________[ROWS:   397][PG:   1][SCAN:text columns]
+	--- BASE STRINGS ---
+	SEARCH[path ]  1:"/var/www/u0956841/data/www/sessiusdal.ru" ========> "D:/OPENSERVER/domains/SDALWP"
+	SEARCH[urlnd]  2:"https://sessiusdal.ru" ===========================> "http://sdalwp"
+	CHUNK ACTION: CURRENT [search_replace][wp_yoast_seo_links][0]
+	
+STEP-3 CHUNK STOP @ 12:52:01 - RUNTIME: 5.7505 sec. 
+
+
+	AJAX ACTION [webupdate] SUCCESS
+	-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [webupdate] START
+--------------------------------------
+SCANNED:	Tables:34 	|	 Rows:310610 	|	 Cells:2119052 
+UPDATED:	Tables:9 	|	 Rows:27914 	|	 Cells:41253 
+ERRORS:		0 
+RUNTIME:	45.637700 sec
+CHUNK ACTION: CURRENT [rem_maintenance][][]
+
+====================================
+REMOVE MAINTENANCE MODE
+====================================
+MAINTENANCE MODE DISABLE
+CHUNK ACTION: CURRENT [config_update][][]
+SET CONFIG FILES
+Retained original entry wpconfig target:D:/OPENSERVER/domains/SDALWP/wp-config.php
+New htaccess file created:D:/OPENSERVER/domains/SDALWP/.htaccess
+
+====================================
+CONFIGURATION FILE UPDATES
+====================================
+	UPDATE ABSPATH "dirname(__FILE__) . '/'"
+	UPDATE DB_NAME ""sdalwp""
+	UPDATE DB_USER "** OBSCURED **"
+	UPDATE DB_PASSWORD "** OBSCURED **"
+	UPDATE DB_HOST ""localhost""
+	UPDATE DB_CHARSET "utf8mb4"
+	UPDATE DB_COLLATE ""
+	WP CONFIG UPDATE WP_DEBUG "false"
+	WP CONFIG UPDATE DISABLE_WP_CRON "true"
+	
+*** UPDATED WP CONFIG FILE ***
+
+====================================
+HTACCESS UPDATE
+====================================
+
+WEB SERVER CONFIGURATION FILE UPDATED:
+- Preparing .htaccess file with basic setup.
+HTACCESS FILE - Successfully updated the .htaccess file setting.
+
+====================================
+INDEX.PHP UPDATE
+====================================
+INDEX.PHP updated with new blog header "dirname(__FILE__) . '/wp-blog-header.php'"
+
+CHUNK ACTION: CURRENT [gen_update][][]
+
+====================================
+GENERAL UPDATES
+====================================
+
+====================================
+MANAGE PLUGINS
+====================================
+CHUNK ACTION: CURRENT [gen_clean][][]
+
+====================================
+GENERAL CLEANUP
+====================================
+RESET ALL USERS SESSION TOKENS
+MIGRATION INFO SET
+CHUNK ACTION: CURRENT [create_admin][][]
+
+====================================
+RESET USERS PASSWORD
+====================================
+CHUNK ACTION: CURRENT [notice_test][][]
+
+====================================
+CHECK FOR INDEX.HTML
+====================================
+NO INDEX.HTML WAS FOUND
+
+====================================
+NOTICES TEST
+====================================
+No General Notices Found
+
+CHUNK ACTION: CURRENT [cleanup_tmp_files][][]
+
+====================================
+CLEANUP TMP FILES
+====================================
+CHUNK ACTION: CURRENT [set_files_perms][][]
+
+====================================
+SET PARAMS PERMISSION
+====================================
+\n SKIP FOLDER PERMISSION AFTER EXTRACTION
+CHUNK ACTION: CURRENT [final_report][][]
+
+====================================
+FINAL REPORT NOTICES
+====================================
+
+STEP-3 COMPLETE @ 12:52:02 - RUNTIME: 0.2974 sec. 
+
+
+AJAX ACTION [webupdate] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [finalpre] START
+AJAX ACTION [finalpre] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+-------------------------
+AJAX ACTION [finalafter] START
+AJAX ACTION [finalafter] SUCCESS
+-------------------------
+
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\src\Core\Bootstrap.php:71] RESET TIME
+
+====================================
+NEXT STEP NOTICES
+====================================
+-----------------------
+[WARNING] One or multiple config files were found in main WordPress folders
+	SECTIONS: general
+	LONG MSG: Config files in WordPress main folders may cause problems with accessing the site after the installation. The following config files were found: - D:/OPENSERVER/domains/SDALWP/wp-includes/.htaccess- D:/OPENSERVER/domains/SDALWP/wp-content/.htaccessPlease consider removing those files in case you have problems with your site after the installation.
+
+====================================
+
+====================================
+FINAL REPORT NOTICES LIST
+====================================
+-----------------------
+[WARNING] One or multiple config files were found in main WordPress folders
+	SECTIONS: general
+	LONG MSG: Config files in WordPress main folders may cause problems with accessing the site after the installation. The following config files were found: - D:/OPENSERVER/domains/SDALWP/wp-includes/.htaccess- D:/OPENSERVER/domains/SDALWP/wp-content/.htaccessPlease consider removing those files in case you have problems with your site after the installation.
+
+====================================
+LOG-TIME[D:\OPENSERVER\domains\SDALWP\dup-installer\ctrls\ctrl.base.php:227][DELTA:   1.94759]  MESSAGE:END RENDER PAGE

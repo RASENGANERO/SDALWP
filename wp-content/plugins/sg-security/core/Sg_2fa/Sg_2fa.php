@@ -361,9 +361,9 @@ class Sg_2fa {
 		return array_merge(
 			$args,
 			array(
-				'interim_login' => ( isset( $_REQUEST['interim-login'] ) ) ? filter_var( wp_unslash( $_REQUEST['interim-login'] ), FILTER_VALIDATE_BOOLEAN ) : false,
-				'redirect_to'   => isset( $_REQUEST['redirect_to'] ) ? esc_url_raw( wp_unslash( $_REQUEST['redirect_to'] ) ) : admin_url(),
-				'rememberme'    => ( ! empty( $_REQUEST['rememberme'] ) ) ? true : false,
+				'interim_login' => ( isset( $_REQUEST['interim-login'] ) ) ? filter_var( wp_unslash( $_REQUEST['interim-login'] ), FILTER_VALIDATE_BOOLEAN ) : false, // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+				'redirect_to'   => isset( $_REQUEST['redirect_to'] ) ? esc_url_raw( wp_unslash( $_REQUEST['redirect_to'] ) ) : admin_url(), // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+				'rememberme'    => ( ! empty( $_REQUEST['rememberme'] ) ) ? true : false, // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				'is_wp_login'   => false,
 			)
 		);
@@ -620,10 +620,10 @@ class Sg_2fa {
 		$result = false;
 
 		// Check if the 2fa backup code is set, if not, don't try to apply it's value.
-		if ( isset( $_POST['sgc2fabackupcode'] ) ) {
+		if ( isset( $_POST['sgc2fabackupcode'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 			// Validate the backup code.
 			$result = $this->validate_backup_login(
-				wp_unslash( $_POST['sgc2fabackupcode'] ),
+				wp_unslash( $_POST['sgc2fabackupcode'] ), // phpcs:ignore WordPress.Security.NonceVerification.Missing
 				wp_unslash( $cookie_data[0] )
 			); // phpcs:ignore
 		}
@@ -680,7 +680,7 @@ class Sg_2fa {
 		$result = false;
 
 		// Check if the 2fa code is set, if not, don't try to apply it's value.
-		if ( isset( $_POST['sgc2facode'] ) ) {
+		if ( isset( $_POST['sgc2facode'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 			$result = $this->check_authentication_code( wp_unslash( $_POST['sgc2facode'] ), wp_unslash( $cookie_data[0] ) ); // phpcs:ignore
 		}
 

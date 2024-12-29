@@ -37,7 +37,35 @@ final class WPBE_HELPER {
         $link .= '>' . $data['title'] . '</a>';
         return $link;
     }
+    public static function draw_link_e($data) {
+		
+		?>
+		<a href='<?php echo esc_attr($data['href']);?>'
+		   <?php if(isset($data['class'])) { ?>
+			   class='<?php echo esc_attr($data['class']);?>'
+		   <?php } ?>
+		   <?php if(isset($data['style'])) { ?>
+			   style='<?php echo esc_attr($data['style']);?>'
+		   <?php } ?>
+		   <?php if(isset($data['id'])) { ?>
+			   id='<?php echo esc_attr($data['id']);?>'
+		   <?php } ?>			   
+		   <?php if(isset($data['target'])) { ?>
+			   target='<?php echo esc_attr($data['target']);?>'
+		   <?php } ?>
+		   <?php if(isset($data['title_attr'])) { ?>
+			   title='<?php echo esc_attr($data['title_attr']);?>'
+		   <?php } ?>
+		   <?php if(isset($data['more'])) { ?>
+			   <?php echo esc_attr($data['more']);?>
+		   <?php } ?>
+		>
+			<?php echo wp_kses_post($data['title'])?>
 
+		</a>
+
+        <?php
+    }
     public static function get_users() {
 
         if (empty(self::$users)) {
@@ -184,6 +212,14 @@ final class WPBE_HELPER {
                     'post' => $post
         ));
     }
+	public static function draw_attribute_list_btn_e($terms, $selected_terms_ids, $tax_key, $post) {
+        self::render_html_e(WPBE_PATH . 'views/elements/draw_attribute_list_btn.php', array(
+                    'terms' => $terms,
+                    'selected_terms_ids' => $selected_terms_ids,
+                    'tax_key' => $tax_key,
+                    'post' => $post
+        ));
+    }
 
     public static function draw_popup_editor_btn($val, $field_key, $post) {
         return self::render_html(WPBE_PATH . 'views/elements/draw_popup_editor_btn.php', array(
@@ -219,7 +255,7 @@ final class WPBE_HELPER {
 
     public static function draw_tooltip($text, $direction = 'down') {
         ?>
-        <a class="info_helper zebra_tips1" title="<?= $text ?>"><span class="icon-info"></span></a>
+        <a class="info_helper zebra_tips1" title="<?= esc_html($text) ?>"><span class="icon-info"></span></a>
         <?php
     }
 
@@ -418,7 +454,18 @@ final class WPBE_HELPER {
         include(str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, $pagepath));
         return ob_get_clean();
     }
+	public static function render_html_e($pagepath, $data = array()) {
 
+        if (is_array($data) AND!empty($data)) {
+            if (isset($data['pagepath'])) {
+                unset($data['pagepath']);
+            }
+            extract($data);
+        }
+
+        //***
+        include(str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, $pagepath));
+    }
     public static function get_post_statuses($use_filter = 1) {
         $statuses = get_post_statuses();
 

@@ -96,16 +96,15 @@ class Bulkedit extends EditFeature {
 	 */
 	public function init_fields() {
 
-		add_filter( 'acf/validate_value', [ $this, 'validate_value'], 10, 4 );
+		add_filter( 'acf/validate_value', [ $this, 'validate_value' ], 10, 4 );
 
-		parent::init_fields();
+		$is_active = parent::init_fields();
 
-		if ( $this->is_active() ) {
-
+		if ( $is_active ) {
 			add_action( 'bulk_edit_custom_box', [ $this , 'display_bulk_edit' ], 200, 2 );
-
 		}
 
+		return $is_active;
 	}
 
 	/**
@@ -200,8 +199,7 @@ class Bulkedit extends EditFeature {
 			//
 			$data = array_filter( $data, [ $this, 'filter_commands' ] );
 			array_walk( $data, [ $this, 'process_data' ], $post_id );
-
-			$data = array_filter( $data, [ $this, 'filter_ampty_array' ] );
+			$data = array_filter( $data, [ $this, 'filter_empty_array' ] );
 		}
 
 		$op = $this->get_bulk_operation( $key );
@@ -222,7 +220,7 @@ class Bulkedit extends EditFeature {
 	/**
 	 *	array_filter callback - returns false for empty arrays
 	 */
-	private function filter_ampty_array( $el ) {
+	private function filter_empty_array( $el ) {
 		return ! is_array( $el ) || ( count( $el ) > 0 );
 	}
 }

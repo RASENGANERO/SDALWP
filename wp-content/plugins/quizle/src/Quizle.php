@@ -45,7 +45,7 @@ class Quizle {
 
         add_action( 'save_post_quizle', function ( $post_ID, $post, $update ) {
             if ( $update ) {
-                PluginContainer::get( MetaBoxes::class )->set_post( $post )->update_metadata();
+                container()->get( MetaBoxes::class )->set_post( $post )->update_metadata();
             }
         }, 10, 3 );
 
@@ -55,7 +55,7 @@ class Quizle {
             if ( ! $screen || $screen->id != 'quizle' ) {
                 return;
             }
-            PluginContainer::get( MetaBoxes::class )->set_post( get_post( get_the_ID() ) )->output();
+            container()->get( MetaBoxes::class )->set_post( get_post( get_the_ID() ) )->output();
         } );
     }
 
@@ -101,7 +101,11 @@ class Quizle {
                 'add_new_item'  => __( 'Add new Quiz', QUIZLE_TEXTDOMAIN ),
                 'edit_item'     => __( 'Edit Quiz', QUIZLE_TEXTDOMAIN ),
             ];
-            register_post_type( self::POST_TYPE, [
+
+            /**
+             * @since 1.4
+             */
+            $post_type_args = apply_filters( 'quizle/register/post_type_args', [
                 'label'               => __( 'Quizle', QUIZLE_TEXTDOMAIN ),
                 'menu_icon'           => admin_icon_url(),
                 'menu_position'       => 120,
@@ -117,7 +121,7 @@ class Quizle {
                 //                'show_in_menu'          => self::POST_TYPE,
                 'show_in_nav_menus'   => $public,
                 'exclude_from_search' => true,
-                'capability_type'     => 'page',
+                'capability_type'     => 'post',
                 'map_meta_cap'        => true,
                 'hierarchical'        => false,
                 'rewrite'             => [ 'slug' => 'quizle', 'with_front' => true ],
@@ -127,6 +131,8 @@ class Quizle {
                 ],
                 'feed'                => false,
             ] );
+
+            register_post_type( self::POST_TYPE, $post_type_args );
         } );
     }
 }

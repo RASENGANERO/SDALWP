@@ -178,7 +178,7 @@ class Clearfy_Login_Attempts {
 
         $message = $this->get_message();
         if ( ! empty( $message ) ) {
-            $content .= "<br />\n" . $message . "<br />\n";
+            $content .= '<br>' . PHP_EOL . $message . '<br>' . PHP_EOL;
         }
 
         return $content;

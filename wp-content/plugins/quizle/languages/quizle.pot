@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Quizle\n"
-"POT-Creation-Date: 2023-09-06 18:59+0300\n"
+"POT-Creation-Date: 2024-12-10 13:25+0300\n"
 "PO-Revision-Date: 2021-03-13 23:03+0300\n"
 "Last-Translator: \n"
 "Language-Team: WPShop.ru <support@wpshop.biz>\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.5\n"
 "X-Domain: quizle\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx;esc_html__;"
@@ -32,502 +32,561 @@ msgstr ""
 msgid "A plugin for creating quizzes and tests in WordPress."
 msgstr ""
 
-#: src/Admin/MenuPage.php:43 src/Admin/MenuPage.php:44
-#: src/Admin/MetaBoxes.php:448 template-parts/admin/results.php:18
+#: src/Admin/ImportExport.php:60
+msgid "Export Quizle"
+msgstr ""
+
+#: src/Admin/ImportExport.php:173
+msgid "Export"
+msgstr ""
+
+#: src/Admin/ImportExport.php:208 template-parts/admin/templates.php:20
+#: template-parts/admin/templates.php:32
+msgid "Import"
+msgstr ""
+
+#: src/Admin/ImportExport.php:236
+msgid "Unable to import empty data"
+msgstr ""
+
+#: src/Admin/ImportExport.php:247
+msgid "Unable to extract zipped import file"
+msgstr ""
+
+#: src/Admin/ImportExport.php:253
+msgid "Import file not found."
+msgstr ""
+
+#: src/Admin/ImportExport.php:259
+msgid "Unable to read import file data"
+msgstr ""
+
+#: src/Admin/ImportExport.php:264
+msgid "Unable to decode import data: "
+msgstr ""
+
+#: src/Admin/ImportExport.php:310
+#, php-format
+msgid "Image for Quizle: %s"
+msgstr ""
+
+#: src/Admin/ImportExport.php:506
+msgid "Unable to save attachment file"
+msgstr ""
+
+#: src/Admin/ImportExport.php:516
+msgid "Unable to save invalid image file: "
+msgstr ""
+
+#: src/Admin/MenuPage.php:44 src/Admin/MenuPage.php:45
+#: src/Admin/MetaBoxes.php:513 template-parts/admin/results.php:18
 msgid "Results"
 msgstr ""
 
-#: src/Admin/MenuPage.php:70 src/Admin/MenuPage.php:71
+#: src/Admin/MenuPage.php:71 src/Admin/MenuPage.php:72
 #: src/Analytics.php:44 template-parts/admin/analytics-single.php:48
 msgid "Analytics"
 msgstr ""
 
-#: src/Admin/MenuPage.php:87
+#: src/Admin/MenuPage.php:88
+msgid "Choose Quizle Template"
+msgstr ""
+
+#: src/Admin/MenuPage.php:89 template-parts/admin/templates.php:123
+msgid "Templates"
+msgstr ""
+
+#: src/Admin/MenuPage.php:99
 msgctxt "settings"
 msgid "Quizle Settings"
 msgstr ""
 
-#: src/Admin/MenuPage.php:88 src/Admin/MetaBoxes.php:583
-#: src/Admin/Settings.php:53 src/functions.php:56
-#: template-parts/admin/settings/tab-settings.php:20
+#: src/Admin/MenuPage.php:100 src/Admin/MetaBoxes.php:720
+#: src/Admin/Settings.php:122 src/functions.php:73
+#: template-parts/admin/settings/tab-settings.php:24
 msgid "Settings"
 msgstr ""
 
-#: src/Admin/MenuPage.php:93
+#: src/Admin/MenuPage.php:105
 msgid "Settings saved."
 msgstr ""
 
-#: src/Admin/MenuPage.php:100 src/Admin/MenuPage.php:101 src/Quizle.php:96
-#: src/Quizle.php:98 src/Quizle.php:105
+#: src/Admin/MenuPage.php:112 src/Admin/MenuPage.php:113 src/Quizle.php:96
+#: src/Quizle.php:98 src/Quizle.php:109
 msgid "Quizle"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:76
+#: src/Admin/MetaBoxes.php:78
 msgid "Text"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:80
+#: src/Admin/MetaBoxes.php:82
 msgid "Textarea"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:84
+#: src/Admin/MetaBoxes.php:86
 msgid "Check"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:88
+#: src/Admin/MetaBoxes.php:90
 msgid "Image Horizontal"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:92
+#: src/Admin/MetaBoxes.php:94
 msgid "Image Vertical"
 msgstr ""
 
 #: src/Admin/MetaBoxes.php:98
-msgid "Slides (only one question is shown)"
-msgstr ""
-
-#: src/Admin/MetaBoxes.php:99
-msgid "List (all questions one after another)"
-msgstr ""
-
-#: src/Admin/MetaBoxes.php:103
-msgid "Do not show"
+msgid "File Upload"
 msgstr ""
 
 #: src/Admin/MetaBoxes.php:104
-msgid "Show line progress"
+msgid "Slides (only one question is shown)"
 msgstr ""
 
 #: src/Admin/MetaBoxes.php:105
-msgid "Show number finished / all questions"
+msgid "List (all questions one after another)"
 msgstr ""
 
 #: src/Admin/MetaBoxes.php:109
-msgid "Show before the results"
+msgid "Do not show"
 msgstr ""
 
 #: src/Admin/MetaBoxes.php:110
+msgid "Show line progress"
+msgstr ""
+
+#: src/Admin/MetaBoxes.php:111
+msgid "Show number finished / all questions"
+msgstr ""
+
+#: src/Admin/MetaBoxes.php:115
+msgid "Show before the results"
+msgstr ""
+
+#: src/Admin/MetaBoxes.php:116
 msgid "Show after results"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:342
+#: src/Admin/MetaBoxes.php:395
 msgid "A shortcode to insert on the page:"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:349
+#: src/Admin/MetaBoxes.php:402
 msgid "Select quiz type:"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:351
+#: src/Admin/MetaBoxes.php:404
 msgid "What type of quiz to choose?"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:370
+#: src/Admin/MetaBoxes.php:423
 msgid "Start screen"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:390 src/Admin/MetaBoxes.php:544
-#: src/Admin/MetaBoxes.php:887
+#: src/Admin/MetaBoxes.php:443 src/Admin/MetaBoxes.php:609
+#: src/Admin/MetaBoxes.php:688
+#: template-parts/admin/text-html-templates/quizle-result-item.php:20
 msgid "Title"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:390
+#: src/Admin/MetaBoxes.php:443
 msgid "Take a short quiz and find the right answer for you"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:393 src/Admin/MetaBoxes.php:549
-#: src/Admin/MetaBoxes.php:796 src/Admin/MetaBoxes.php:891
+#: src/Admin/MetaBoxes.php:452 src/Admin/MetaBoxes.php:614
+#: src/Admin/MetaBoxes.php:955
+#: template-parts/admin/text-html-templates/quizle-result-item.php:24
 msgid "Description"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:393
+#: src/Admin/MetaBoxes.php:454
 #, php-format
 msgid ""
 "After you pass we give you a 20%% discount on all our products and a "
 "personal consultation with our manager"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:398
+#: src/Admin/MetaBoxes.php:463 src/Admin/MetaBoxes.php:701
 msgid "Image"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:401 src/Admin/MetaBoxes.php:901
+#: src/Admin/MetaBoxes.php:466 src/Admin/MetaBoxes.php:704
+#: template-parts/admin/text-html-templates/quizle-result-item.php:40
 msgid "Image Position"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:402 src/Admin/MetaBoxes.php:904
+#: src/Admin/MetaBoxes.php:467 src/Admin/MetaBoxes.php:705
+#: template-parts/admin/text-html-templates/quizle-result-item.php:43
 msgctxt "img_pos_options"
 msgid "Background"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:403 src/Admin/MetaBoxes.php:905
+#: src/Admin/MetaBoxes.php:468 src/Admin/MetaBoxes.php:706
+#: template-parts/admin/text-html-templates/quizle-result-item.php:44
 msgctxt "img_pos_options"
 msgid "Left"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:404 src/Admin/MetaBoxes.php:906
+#: src/Admin/MetaBoxes.php:469 src/Admin/MetaBoxes.php:707
+#: template-parts/admin/text-html-templates/quizle-result-item.php:45
 msgctxt "img_pos_options"
 msgid "Top"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:405 src/Admin/MetaBoxes.php:907
+#: src/Admin/MetaBoxes.php:470 src/Admin/MetaBoxes.php:708
+#: template-parts/admin/text-html-templates/quizle-result-item.php:46
 msgctxt "img_pos_options"
 msgid "Right"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:406 src/Admin/MetaBoxes.php:908
+#: src/Admin/MetaBoxes.php:471 src/Admin/MetaBoxes.php:709
+#: template-parts/admin/text-html-templates/quizle-result-item.php:47
 msgctxt "img_pos_options"
 msgid "Bottom"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:412 src/Admin/MetaBoxes.php:556
-#: src/Admin/MetaBoxes.php:921
+#: src/Admin/MetaBoxes.php:477 src/Admin/MetaBoxes.php:625
+#: template-parts/admin/text-html-templates/quizle-result-item.php:60
 msgid "Button Text"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:412 src/Shortcodes.php:486
+#: src/Admin/MetaBoxes.php:477 src/Shortcodes.php:619
 msgid "Start"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:420
+#: src/Admin/MetaBoxes.php:485
 msgid "Questions"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:423 src/Admin/MetaBoxes.php:451
+#: src/Admin/MetaBoxes.php:488 src/Admin/MetaBoxes.php:516
 msgid "collapse all"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:441
+#: src/Admin/MetaBoxes.php:506
 msgid "+ Add Question"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:467
+#: src/Admin/MetaBoxes.php:532
 msgid "+ Add Result"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:474 src/Quizle.php:69
+#: src/Admin/MetaBoxes.php:539 src/Quizle.php:69
 msgid "Gathering contacts"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:502 src/Admin/ResultListTable.php:175
-#: src/Shortcodes.php:443 template-parts/admin/result-single.php:71
-#: template-parts/mail/result-admin.php:19
+#: src/Admin/MetaBoxes.php:567 src/Admin/ResultListTable.php:295
+#: src/Shortcodes.php:541 template-parts/admin/result-single.php:72
+#: template-parts/mail/html/result-admin.php:23
+#: template-parts/mail/plain/result-admin.php:24
+#: template-parts/mail/result-admin.php:22
+#: template-parts/telegram/result-markdown.php:23
 msgid "Name"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:509 src/Shortcodes.php:446
+#: src/Admin/MetaBoxes.php:574 src/Shortcodes.php:544
 msgid "E-mail"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:516 src/Admin/ResultListTable.php:177
-#: src/Shortcodes.php:449 template-parts/admin/result-single.php:73
-#: template-parts/mail/result-admin.php:21
+#: src/Admin/MetaBoxes.php:581 src/Admin/ResultListTable.php:297
+#: src/Shortcodes.php:553 template-parts/admin/result-single.php:78
+#: template-parts/mail/html/result-admin.php:26
+#: template-parts/mail/plain/result-admin.php:30
+#: template-parts/mail/result-admin.php:25
 msgid "Phone"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:524
+#: src/Admin/MetaBoxes.php:589
 msgid "Messengers"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:545
+#: src/Admin/MetaBoxes.php:610
 msgid "Fill out the form to get your results"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:557 src/Shortcodes.php:412
+#: src/Admin/MetaBoxes.php:626 src/Shortcodes.php:510
 msgid "Submit"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:562
+#: src/Admin/MetaBoxes.php:631
 msgid "Privacy policy text"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:569
+#: src/Admin/MetaBoxes.php:638 src/Admin/MetaBoxes.php:692
+#: src/Admin/MetaBoxes.php:695
 msgid "Message after submitting the form"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:570
-msgid "Thank you, we will get back to you soon."
+#: src/Admin/MetaBoxes.php:639
+msgid "Moved to Finish Screen Block"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:574
-msgid "Show contact form"
+#: src/Admin/MetaBoxes.php:645 template-parts/admin/result-single.php:188
+#: template-parts/admin/text-html-templates/quizle-result-item.php:89
+#: template-parts/mail/html/result-admin.php:122
+#: template-parts/mail/plain/_result-details.php:53
+#: template-parts/telegram/result-markdown.php:62
+msgid "Redirect Link"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:598
-msgid "Save contacts and quiz results"
-msgstr ""
-
-#: src/Admin/MetaBoxes.php:606
-msgid "Show social share buttons (with enabled results only)"
-msgstr ""
-
-#: src/Admin/MetaBoxes.php:633
-msgid "Questions in random order"
-msgstr ""
-
-#: src/Admin/MetaBoxes.php:640
-msgid "Answers in random order"
-msgstr ""
-
-#: src/Admin/MetaBoxes.php:647
-msgid ""
-"Show test results immediately after selecting an option (only for "
-"Testing)"
-msgstr ""
-
-#: src/Admin/MetaBoxes.php:651
-msgid "Question output format"
+#: src/Admin/MetaBoxes.php:653
+msgid "Redirect Timeout"
 msgstr ""
 
 #: src/Admin/MetaBoxes.php:654
+msgid "value in milliseconds"
+msgstr ""
+
+#: src/Admin/MetaBoxes.php:660
+msgid "Show contact form"
+msgstr ""
+
+#: src/Admin/MetaBoxes.php:671
+msgid "Finish screen"
+msgstr ""
+
+#: src/Admin/MetaBoxes.php:735
+msgid "Save contacts and quiz results"
+msgstr ""
+
+#: src/Admin/MetaBoxes.php:743
+msgid "Show social share buttons (with enabled results only)"
+msgstr ""
+
+#: src/Admin/MetaBoxes.php:770
+msgid "Questions in random order"
+msgstr ""
+
+#: src/Admin/MetaBoxes.php:777
+msgid "Answers in random order"
+msgstr ""
+
+#: src/Admin/MetaBoxes.php:784
+msgid ""
+"Show the correct or incorrect answer immediately after selecting an "
+"option (for Tests only)"
+msgstr ""
+
+#: src/Admin/MetaBoxes.php:791
+msgid "Allow to change preview answers"
+msgstr ""
+
+#: src/Admin/MetaBoxes.php:795
+msgid "Question output format"
+msgstr ""
+
+#: src/Admin/MetaBoxes.php:798
 msgid ""
 "Progress (with the format of outputting questions only in the form of "
 "slides)"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:657
+#: src/Admin/MetaBoxes.php:801
 msgid "Last step button text"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:657
+#: src/Admin/MetaBoxes.php:801
 msgid "Show Results"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:660
-msgid "Emails to get contacts"
+#: src/Admin/MetaBoxes.php:805
+msgid "Emails to get contacts (comma separated values)"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:669 src/Admin/Settings.php:54
+#: src/Admin/MetaBoxes.php:812
+msgid "Quiz Completion Time (in seconds)"
+msgstr ""
+
+#: src/Admin/MetaBoxes.php:828 src/Admin/Settings.php:124
 #: template-parts/admin/settings/tab-appearance.php:20
 msgid "Appearance"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:682
+#: src/Admin/MetaBoxes.php:841
 #: template-parts/admin/settings/tab-appearance.php:33
 msgid "Control Color"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:687
+#: src/Admin/MetaBoxes.php:846
 #: template-parts/admin/settings/tab-appearance.php:37
 msgid "Control Text Color"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:692
+#: src/Admin/MetaBoxes.php:851
 #: template-parts/admin/settings/tab-appearance.php:45
 msgid "Background Color"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:697
+#: src/Admin/MetaBoxes.php:856
 #: template-parts/admin/settings/tab-appearance.php:49
 msgid "Text Color"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:705
+#: src/Admin/MetaBoxes.php:864
 msgid "Quizle Slide Height"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:706
+#: src/Admin/MetaBoxes.php:865
 msgid ""
 "Height works only for the Slide output format. If no units are "
 "specified, pixels will be used. If the field is empty, the height will "
 "depend on the content."
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:719
+#: src/Admin/MetaBoxes.php:878
 msgctxt "show conditions"
 msgid "show"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:723
+#: src/Admin/MetaBoxes.php:882
 msgctxt "show conditions"
 msgid "hide"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:729
+#: src/Admin/MetaBoxes.php:888
 msgctxt "show conditions"
 msgid "all"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:733
+#: src/Admin/MetaBoxes.php:892
 msgctxt "show conditions"
 msgid "some of the"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:736
+#: src/Admin/MetaBoxes.php:895
 msgid "Partial Match"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:737
+#: src/Admin/MetaBoxes.php:896
 msgid "Case Sensitive"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:742
+#: src/Admin/MetaBoxes.php:901
 msgid "Get more details"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:752
+#: src/Admin/MetaBoxes.php:911
 msgid "Question"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:756
+#: src/Admin/MetaBoxes.php:915
 msgid "Duplicate Question"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:757
+#: src/Admin/MetaBoxes.php:916
 msgid "Remove Question"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:757
+#: src/Admin/MetaBoxes.php:916
 msgid "Are you sure you want to remove the question?"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:766
+#: src/Admin/MetaBoxes.php:925
 msgid "Enter Question"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:770
+#: src/Admin/MetaBoxes.php:929
 msgid "Question Type"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:780
+#: src/Admin/MetaBoxes.php:939
 msgid "Columns"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:801
+#: src/Admin/MetaBoxes.php:966
 msgid "Right Answer Description"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:812
+#: src/Admin/MetaBoxes.php:983
 msgid "Add Answer"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:813
+#: src/Admin/MetaBoxes.php:986
 msgid "Add Custom Answer"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:820
+#: src/Admin/MetaBoxes.php:993
 msgid "Required"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:824
+#: src/Admin/MetaBoxes.php:997
 msgid "Multiselect"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:832
+#: src/Admin/MetaBoxes.php:1005
 msgid "Add Branching"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:844
+#: src/Admin/MetaBoxes.php:1017
 msgid "answer text"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:846 src/Analytics.php:131
-#: src/Shortcodes.php:788 src/Shortcodes.php:842
-#: template-parts/admin/result-single.php:153
-#: template-parts/mail/result-admin.php:61
+#: src/Admin/MetaBoxes.php:1019 src/Analytics.php:131
+#: src/Shortcodes.php:980 src/Shortcodes.php:1034
+#: template-parts/admin/result-single.php:170
+#: template-parts/mail/html/result-admin.php:102
+#: template-parts/mail/plain/_result-details-full.php:39
+#: template-parts/mail/plain/_result-details.php:39
+#: template-parts/mail/result-admin.php:76
+#: template-parts/telegram/result-markdown.php:51
 msgid "custom answer"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:850
+#: src/Admin/MetaBoxes.php:1023
 msgid "score"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:851 src/Admin/MetaBoxes.php:852
+#: src/Admin/MetaBoxes.php:1024 src/Admin/MetaBoxes.php:1025
 msgid "select value"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:859
+#: src/Admin/MetaBoxes.php:1032
 msgid "Add Description"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:861
+#: src/Admin/MetaBoxes.php:1034
 msgid "Remove Answer"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:862
+#: src/Admin/MetaBoxes.php:1035
 msgid "Are you sure you want to remove the answer?"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:875 src/Admin/ResultListTable.php:137
-#: template-parts/admin/result-single.php:50
-#: template-parts/admin/result-single.php:168
-msgid "Result"
-msgstr ""
-
-#: src/Admin/MetaBoxes.php:879
-msgid "Duplicate Result"
-msgstr ""
-
-#: src/Admin/MetaBoxes.php:880
-msgid "Remove Result"
-msgstr ""
-
-#: src/Admin/MetaBoxes.php:880
-msgid "Are you sure you want to remove the result?"
-msgstr ""
-
-#: src/Admin/MetaBoxes.php:922 src/Admin/MetaBoxes.php:926
-msgid "fill to output the button"
-msgstr ""
-
-#: src/Admin/MetaBoxes.php:925
-msgid "Link"
-msgstr ""
-
-#: src/Admin/MetaBoxes.php:933
-msgid "Value Min"
-msgstr ""
-
-#: src/Admin/MetaBoxes.php:935
-msgid "current minimal available"
-msgstr ""
-
-#: src/Admin/MetaBoxes.php:938
-msgid "Value Max"
-msgstr ""
-
-#: src/Admin/MetaBoxes.php:940
-msgid "current maximum available"
-msgstr ""
-
-#: src/Admin/MetaBoxes.php:1040
+#: src/Admin/MetaBoxes.php:1157
 #: template-parts/admin/text-html-templates/quizle-image-uploader.php:19
 msgid "Upload Image"
 msgstr ""
 
-#: src/Admin/MetaBoxes.php:1041
+#: src/Admin/MetaBoxes.php:1158
 #: template-parts/admin/text-html-templates/quizle-image-uploader.php:21
 msgid "Remove Image"
 msgstr ""
 
-#: src/Admin/QuizleListTable.php:52
+#: src/Admin/QuizleListTable.php:53
 #, php-format
 msgid "%s is currently editing"
 msgstr ""
 
-#: src/Admin/QuizleListTable.php:71
+#: src/Admin/QuizleListTable.php:72
 #, php-format
 msgid "&#8220;%s&#8221; (Edit)"
 msgstr ""
 
-#: src/Admin/QuizlePostGrid.php:54
+#: src/Admin/QuizlePostGrid.php:55
 msgid "Shortcode"
 msgstr ""
 
-#: src/Admin/QuizlePostGrid.php:55
+#: src/Admin/QuizlePostGrid.php:56
 msgid "Statistic"
 msgstr ""
 
-#: src/Admin/QuizlePostGrid.php:71
-msgid "Results Count"
+#: src/Admin/QuizlePostGrid.php:57
+msgid "Author"
 msgstr ""
 
-#: src/Admin/QuizlePostGrid.php:75
-msgid "Registered Users Count"
-msgstr ""
-
-#: src/Admin/QuizlePostGrid.php:79
-msgid "Unique Users Count"
+#: src/Admin/QuizlePostGrid.php:80
+msgctxt "quizle-post-grid"
+msgid "Results"
 msgstr ""
 
 #: src/Admin/QuizleResultActions.php:44
@@ -538,103 +597,268 @@ msgstr ""
 msgid "Results successfully removed."
 msgstr ""
 
-#: src/Admin/ResultListTable.php:30 src/Admin/ResultListTable.php:144
+#: src/Admin/ResultListTable.php:31 src/Admin/ResultListTable.php:264
 msgid "Remove"
 msgstr ""
 
-#: src/Admin/ResultListTable.php:52
-msgid "Info"
-msgstr ""
-
-#: src/Admin/ResultListTable.php:53 src/Quizle.php:97
-msgid "Quiz"
+#: src/Admin/ResultListTable.php:32
+msgid "Export CSV"
 msgstr ""
 
 #: src/Admin/ResultListTable.php:54
-msgid "User Info"
+msgctxt "list_table"
+msgid "Draft"
 msgstr ""
 
 #: src/Admin/ResultListTable.php:55
+msgctxt "list_table"
+msgid "Publish"
+msgstr ""
+
+#: src/Admin/ResultListTable.php:60
+msgid "(no title)"
+msgstr ""
+
+#: src/Admin/ResultListTable.php:68
+msgid "-- filter by quizle --"
+msgstr ""
+
+#: src/Admin/ResultListTable.php:88
+msgid "Only Finished"
+msgstr ""
+
+#: src/Admin/ResultListTable.php:90
+msgid "Apply Filters"
+msgstr ""
+
+#: src/Admin/ResultListTable.php:91
+#: template-parts/admin/analytics-single.php:71
+msgid "Reset"
+msgstr ""
+
+#: src/Admin/ResultListTable.php:162
+msgid "Info"
+msgstr ""
+
+#: src/Admin/ResultListTable.php:163 src/Quizle.php:97
+msgid "Quiz"
+msgstr ""
+
+#: src/Admin/ResultListTable.php:164
+msgid "User Info"
+msgstr ""
+
+#: src/Admin/ResultListTable.php:165
 msgid "Created At"
 msgstr ""
 
-#: src/Admin/ResultListTable.php:56
+#: src/Admin/ResultListTable.php:166
 msgid "Finished At"
 msgstr ""
 
-#: src/Admin/ResultListTable.php:143
+#: src/Admin/ResultListTable.php:257
+#: template-parts/admin/result-single.php:51
+#: template-parts/admin/result-single.php:185
+#: template-parts/admin/text-html-templates/quizle-result-item.php:116
+#: template-parts/mail/plain/_result-details.php:50
+#: template-parts/telegram/result-markdown.php:60
+msgid "Result"
+msgstr ""
+
+#: src/Admin/ResultListTable.php:263
 msgctxt "list_table"
 msgid "View"
 msgstr ""
 
-#: src/Admin/ResultListTable.php:150
+#: src/Admin/ResultListTable.php:270
 #: template-parts/admin/analytics-single.php:55
 msgid "View"
 msgstr ""
 
-#: src/Admin/ResultListTable.php:176
-#: template-parts/admin/result-single.php:72
-#: template-parts/mail/result-admin.php:20
+#: src/Admin/ResultListTable.php:296
+#: template-parts/admin/result-single.php:73
+#: template-parts/mail/html/result-admin.php:24
+#: template-parts/mail/plain/result-admin.php:26
+#: template-parts/mail/result-admin.php:23
+#: template-parts/telegram/result-markdown.php:24
 msgid "Email"
 msgstr ""
 
-#: src/Admin/ResultListTable.php:213 src/Admin/ResultListTable.php:234
-#: template-parts/admin/result-single.php:29
-#: template-parts/admin/result-single.php:36
+#: src/Admin/ResultListTable.php:338 src/Admin/ResultListTable.php:359
+#: template-parts/admin/result-single.php:30
+#: template-parts/admin/result-single.php:37
 #, php-format
 msgid "%1$s at %2$s"
 msgstr ""
 
-#: src/Admin/ResultListTable.php:214 src/Admin/ResultListTable.php:235
+#: src/Admin/ResultListTable.php:339 src/Admin/ResultListTable.php:360
 msgid "Y/m/d"
 msgstr ""
 
-#: src/Admin/ResultListTable.php:215 src/Admin/ResultListTable.php:236
+#: src/Admin/ResultListTable.php:340 src/Admin/ResultListTable.php:361
 msgid "g:i:s a"
 msgstr ""
 
-#: src/Admin/ResultListTable.php:245
+#: src/Admin/ResultListTable.php:370
 msgid "spent time"
 msgstr ""
 
-#: src/Admin/Settings.php:61
-msgid "I have read and agree to the <a href=\"#\">privacy policy</a>."
+#: src/Admin/Settings.php:123
+#: template-parts/admin/settings/tab-integrations.php:21
+msgid "Integrations"
+msgstr ""
+
+#: src/Admin/Settings.php:131
+msgid ""
+"I have read and agree to the <a href=\"#\" target=\"_blank\">privacy "
+"policy</a>."
+msgstr ""
+
+#: src/Admin/Templates.php:58
+msgid "Unable to create new quizle without meta data"
+msgstr ""
+
+#: src/Admin/Templates.php:117
+msgid "Unable to retrieve templates from api server"
 msgstr ""
 
 #: src/Analytics.php:133
 msgid "(text input)"
 msgstr ""
 
-#: src/AssetsProvider.php:85
+#: src/AssetsProvider.php:53
+msgid "Please enter your correct phone number"
+msgstr ""
+
+#: src/AssetsProvider.php:81
+msgid "Russia"
+msgstr ""
+
+#: src/AssetsProvider.php:82
+msgid "Ukraine"
+msgstr ""
+
+#: src/AssetsProvider.php:99
+msgid "You have chosen too many files."
+msgstr ""
+
+#: src/AssetsProvider.php:100
+msgid "A maximum of %d file is allowed"
+msgid_plural "A maximum of %в files is allowed"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: src/AssetsProvider.php:160
 msgid "You should to set the results or contacts for quiz."
 msgstr ""
 
-#: src/Context.php:68
+#: src/AssetsProvider.php:168
+msgid "(copy)"
+msgstr ""
+
+#: src/Context.php:70
 msgid "Unable to get proper data from empty serialized string"
 msgstr ""
 
-#: src/Context.php:78
+#: src/Context.php:80
 msgid "Unable to get proper data from serialized string"
 msgstr ""
 
-#: src/Context.php:84
+#: src/Context.php:86
 msgid "Unable to get proper data"
 msgstr ""
 
-#: src/DefaultHooks.php:63
+#: src/DefaultHooks.php:90
 msgid "Quizle Result"
 msgstr ""
 
-#: src/MailService.php:59
+#: src/DefaultHooks.php:213
+msgid "point"
+msgid_plural "points"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: src/FileUpload.php:42
+msgid "You are not allowed to upload files"
+msgstr ""
+
+#: src/FileUpload.php:46
+msgid "Unable to upload file"
+msgstr ""
+
+#: src/FileUpload.php:49
+msgid "Quizle not found for the file uploading"
+msgstr ""
+
+#: src/FileUploadHandler.php:176
+#, php-format
+msgid "\"%1$s\" from %2$s by %3$s."
+msgstr ""
+
+#: src/FileUploadHandler.php:179
+#, php-format
+msgid "\"%1$s\" from %2$s."
+msgstr ""
+
+#: src/FileUploadHandler.php:182
+#, php-format
+msgid "\"%1$s\" by %2$s."
+msgstr ""
+
+#: src/FileUploadHandler.php:185
+#, php-format
+msgid "\"%s\"."
+msgstr ""
+
+#: src/FileUploadHandler.php:191
+#, php-format
+msgid "%1$s by %2$s."
+msgstr ""
+
+#: src/FileUploadHandler.php:203
+#, php-format
+msgid "Released: %d."
+msgstr ""
+
+#: src/FileUploadHandler.php:213
+#, php-format
+msgid "Track %1$s of %2$s."
+msgstr ""
+
+#: src/FileUploadHandler.php:220
+#, php-format
+msgid "Track %s."
+msgstr ""
+
+#: src/FileUploadHandler.php:229
+#, php-format
+msgid "Genre: %s."
+msgstr ""
+
+#: src/Integration/AmoCRM.php:116 src/Integration/Bitrix24.php:57
+msgid "User From Quizle"
+msgstr ""
+
+#: src/Integration/AmoCRM.php:122
+msgid "New Client"
+msgstr ""
+
+#: src/Integration/Bitrix24.php:72
+msgid "Quizle Data"
+msgstr ""
+
+#: src/MailService.php:91
 msgid "Quizle Contacts"
 msgstr ""
 
-#: src/MailService.php:83
+#: src/MailService.php:115
 #, php-format
 msgid "Your result of quizle \"%s\""
 msgstr ""
 
-#: src/MailService.php:83
+#: src/MailService.php:115
 msgid "Your result of quizle"
 msgstr ""
 
@@ -693,125 +917,179 @@ msgstr ""
 msgid "Edit Quiz"
 msgstr ""
 
-#: src/QuizleResultHandler.php:51
+#: src/QuizleResultExport.php:462
+#, php-format
+msgid "question%d: "
+msgstr ""
+
+#: src/QuizleResultHandler.php:79
 msgid "Unable to handle request"
 msgstr ""
 
-#: src/QuizleResultHandler.php:67
+#: src/QuizleResultHandler.php:98
 msgid "Unable to find quizle"
 msgstr ""
 
-#: src/QuizleResultHandler.php:80
+#: src/QuizleResultHandler.php:111
 msgid "Unable to insert quizle result"
 msgstr ""
 
-#: src/QuizleResultHandler.php:99
+#: src/QuizleResultHandler.php:130
 msgid "Unable to retrieve result for update"
 msgstr ""
 
-#: src/QuizleResultHandler.php:103
+#: src/QuizleResultHandler.php:134
 msgid "Unable to update result without related quizle"
 msgstr ""
 
-#: src/QuizleResultHandler.php:106
+#: src/QuizleResultHandler.php:137
 msgid "Unable to update invalid quizle result"
 msgstr ""
 
-#: src/QuizleResultHandler.php:150
+#: src/QuizleResultHandler.php:159
+msgid "Unable to handle contacts data: captcha validation failed"
+msgstr ""
+
+#: src/QuizleResultHandler.php:193
 msgid "Unable to update quizle result"
 msgstr ""
 
-#: src/Shortcodes.php:130
+#: src/RestAPI.php:153
+msgid "The result does not exists"
+msgstr ""
+
+#: src/RestAPI.php:156
+msgid "Something went wrong"
+msgstr ""
+
+#: src/Shortcodes.php:154
 msgid "This quiz does not contain questions."
 msgstr ""
 
-#: src/Shortcodes.php:131 template-parts/admin/analytics-single.php:53
+#: src/Shortcodes.php:155 template-parts/admin/analytics-single.php:53
 msgid "Edit quiz"
 msgstr ""
 
-#: src/Shortcodes.php:282
+#: src/Shortcodes.php:307
+msgid "Time left:"
+msgstr ""
+
+#: src/Shortcodes.php:328
 msgid "Previous"
 msgstr ""
 
-#: src/Shortcodes.php:283
+#: src/Shortcodes.php:329
 msgid "Next"
 msgstr ""
 
-#: src/Shortcodes.php:284
+#: src/Shortcodes.php:330
 msgid "Finish"
 msgstr ""
 
-#: src/Shortcodes.php:300
+#: src/Shortcodes.php:356
 msgid "Enter"
 msgstr ""
 
-#: src/Shortcodes.php:307
+#: src/Shortcodes.php:363
 msgid "Submit Answers"
 msgstr ""
 
-#: src/Shortcodes.php:382
+#: src/Shortcodes.php:435
+msgid "Uploading files..."
+msgstr ""
+
+#: src/Shortcodes.php:446
+msgid "Quizle completion time has expired."
+msgstr ""
+
+#: src/Shortcodes.php:465
 msgid "Preparing Results..."
 msgstr ""
 
-#: src/Shortcodes.php:456
+#: src/Shortcodes.php:583
 msgid "Submitting data..."
 msgstr ""
 
-#: src/Shortcodes.php:548
+#: src/Shortcodes.php:681
 msgid "Completed: "
 msgstr ""
 
-#: src/Social.php:20
+#: src/Shortcodes.php:882
+msgid "Done"
+msgstr ""
+
+#: src/Shortcodes.php:882
+msgid "Select File"
+msgstr ""
+
+#: src/Shortcodes.php:886
+#, php-format
+msgid "You can choose max %d file"
+msgid_plural "You can choose max %d files"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: src/Shortcodes.php:888
+#, php-format
+msgid "Max file size is %s"
+msgstr ""
+
+#: src/Shortcodes.php:891
+msgid "uploading"
+msgstr ""
+
+#: src/Social.php:23
 msgctxt "social provider"
 msgid "Vkontakte"
 msgstr ""
 
-#: src/Social.php:27
+#: src/Social.php:30
 msgctxt "social provider"
 msgid "Odnoklassniki"
 msgstr ""
 
-#: src/Social.php:34
+#: src/Social.php:37
 msgctxt "social provider"
 msgid "Telegram"
 msgstr ""
 
-#: src/Social.php:41
+#: src/Social.php:44
 msgctxt "social provider"
 msgid "Whatsapp"
 msgstr ""
 
-#: src/Social.php:48
+#: src/Social.php:51
 msgctxt "social provider"
 msgid "Twitter"
 msgstr ""
 
-#: src/Social.php:55
+#: src/Social.php:58
 msgctxt "social provider"
 msgid "Facebook"
 msgstr ""
 
-#: src/Social.php:65
+#: src/Social.php:68
 msgctxt "messengers"
 msgid "Telegram"
 msgstr ""
 
-#: src/Social.php:72
+#: src/Social.php:75
 msgctxt "messengers"
 msgid "Whatsapp"
 msgstr ""
 
-#: src/Social.php:79
+#: src/Social.php:82
 msgctxt "messengers"
 msgid "Viber"
 msgstr ""
 
-#: src/Social.php:86
+#: src/Social.php:89
 msgctxt "messengers"
 msgid "Skype"
 msgstr ""
 
-#: template-parts/_result.php:19
+#: template-parts/_result.php:22
 msgid "Nice"
 msgstr ""
 
@@ -821,10 +1099,6 @@ msgstr ""
 
 #: template-parts/admin/analytics-single.php:70
 msgid "Apply"
-msgstr ""
-
-#: template-parts/admin/analytics-single.php:71
-msgid "Reset"
 msgstr ""
 
 #: template-parts/admin/analytics-single.php:77
@@ -842,7 +1116,7 @@ msgstr ""
 
 #: template-parts/admin/analytics-single.php:89
 #: template-parts/admin/analytics-single.php:126
-#: template-parts/admin/result-single.php:67
+#: template-parts/admin/result-single.php:68
 msgid "Finished"
 msgstr ""
 
@@ -852,7 +1126,7 @@ msgid "Conversion"
 msgstr ""
 
 #: template-parts/admin/analytics-single.php:121
-#: template-parts/admin/result-single.php:66
+#: template-parts/admin/result-single.php:67
 msgid "Started"
 msgstr ""
 
@@ -860,47 +1134,53 @@ msgstr ""
 msgid "Question Statistics for the Period"
 msgstr ""
 
-#: template-parts/admin/result-single.php:17
+#: template-parts/admin/result-single.php:18
 msgid "Unable to show result data"
 msgstr ""
 
-#: template-parts/admin/result-single.php:48
+#: template-parts/admin/result-single.php:49
 msgid "Back to results"
 msgstr ""
 
-#: template-parts/admin/result-single.php:51
+#: template-parts/admin/result-single.php:52
 msgid "--"
 msgstr ""
 
-#: template-parts/admin/result-single.php:58
+#: template-parts/admin/result-single.php:59
 msgctxt "quizle result"
 msgid "Finished"
 msgstr ""
 
-#: template-parts/admin/result-single.php:60
+#: template-parts/admin/result-single.php:61
 msgctxt "quizle result"
 msgid "Not Finished"
 msgstr ""
 
-#: template-parts/admin/result-single.php:85
+#: template-parts/admin/result-single.php:94
 msgid "Context"
 msgstr ""
 
-#: template-parts/admin/result-single.php:106
-#: template-parts/mail/result-admin.php:32
+#: template-parts/admin/result-single.php:115
+#: template-parts/mail/html/result-admin.php:40
+#: template-parts/mail/result-admin.php:39
+#: template-parts/telegram/result-markdown.php:32
 msgid "Answers"
 msgstr ""
 
-#: template-parts/admin/result-single.php:108
+#: template-parts/admin/result-single.php:117
 msgid "bound value"
 msgstr ""
 
-#: template-parts/admin/result-single.php:110
+#: template-parts/admin/result-single.php:119
 msgid "bound result"
 msgstr ""
 
-#: template-parts/admin/settings.php:44
+#: template-parts/admin/settings.php:66
 msgid "Sorry, you are not allowed to perform actions on this section."
+msgstr ""
+
+#: template-parts/admin/settings.php:76
+msgid "Our Pages:"
 msgstr ""
 
 #: template-parts/admin/settings/tab-appearance.php:28
@@ -1001,24 +1281,259 @@ msgstr ""
 msgid "Remove License"
 msgstr ""
 
-#: template-parts/admin/settings/tab-settings.php:27
+#: template-parts/admin/settings/tab-integrations.php:27
+msgid "Emails"
+msgstr ""
+
+#: template-parts/admin/settings/tab-integrations.php:44
+msgid "Webhook Urls"
+msgstr ""
+
+#: template-parts/admin/settings/tab-integrations.php:48
+msgid "new line separated values"
+msgstr ""
+
+#: template-parts/admin/settings/tab-integrations.php:54
+msgid "Telegram"
+msgstr ""
+
+#: template-parts/admin/settings/tab-integrations.php:61
+#: template-parts/admin/settings/tab-integrations.php:131
+#: template-parts/admin/settings/tab-integrations.php:156
+#: template-parts/admin/settings/tab-integrations.php:173
+#: template-parts/admin/settings/tab-settings.php:66
+msgid "Enable"
+msgstr ""
+
+#: template-parts/admin/settings/tab-integrations.php:65
+msgid "Token"
+msgstr ""
+
+#: template-parts/admin/settings/tab-integrations.php:69
+msgid "Chat Id"
+msgstr ""
+
+#: template-parts/admin/settings/tab-integrations.php:74
+msgid "AmoCRM"
+msgstr ""
+
+#: template-parts/admin/settings/tab-integrations.php:135
+msgid "Account Base Domain"
+msgstr ""
+
+#: template-parts/admin/settings/tab-integrations.php:139
+msgid "Long-term Token"
+msgstr ""
+
+#: template-parts/admin/settings/tab-integrations.php:143
+msgid "Price"
+msgstr ""
+
+#: template-parts/admin/settings/tab-integrations.php:149
+msgid "Bitrix24"
+msgstr ""
+
+#: template-parts/admin/settings/tab-integrations.php:160
+msgid "Webhook for Rest API Call"
+msgstr ""
+
+#: template-parts/admin/settings/tab-integrations.php:166
+msgid "Яндекс.Метрика"
+msgstr ""
+
+#: template-parts/admin/settings/tab-integrations.php:179
+msgid "Disable integration code from Quizle"
+msgstr ""
+
+#: template-parts/admin/settings/tab-integrations.php:181
+msgid ""
+"use this option if you already have integration with Yadnex.Metrika "
+"enabled in another way and do not want the code of integration to be "
+"duplicated"
+msgstr ""
+
+#: template-parts/admin/settings/tab-integrations.php:186
+msgid "Counter ID"
+msgstr ""
+
+#: template-parts/admin/settings/tab-integrations.php:190
+msgid "Available target identifiers"
+msgstr ""
+
+#: template-parts/admin/settings/tab-integrations.php:193
+msgid "It is triggered the first time you interact with a quiz"
+msgstr ""
+
+#: template-parts/admin/settings/tab-integrations.php:196
+msgid "It is triggered when the last question is sent"
+msgstr ""
+
+#: template-parts/admin/settings/tab-integrations.php:199
+msgid "Triggered by the \"Next\" button."
+msgstr ""
+
+#: template-parts/admin/settings/tab-integrations.php:201
+msgid "Triggered by the \"Prev\" button."
+msgstr ""
+
+#: template-parts/admin/settings/tab-integrations.php:203
+msgid "Triggers when results are displayed"
+msgstr ""
+
+#: template-parts/admin/settings/tab-integrations.php:206
+msgid "Triggers when a contact form is displayed"
+msgstr ""
+
+#: template-parts/admin/settings/tab-integrations.php:209
+msgid "Triggers when contact info is submitted"
+msgstr ""
+
+#: template-parts/admin/settings/tab-integrations.php:212
+msgid "Triggers when progress is changed"
+msgstr ""
+
+#: template-parts/admin/settings/tab-integrations.php:218
+msgid "General Settings"
+msgstr ""
+
+#: template-parts/admin/settings/tab-integrations.php:222
+msgid "Do not submit result with empty contact data"
+msgstr ""
+
+#: template-parts/admin/settings/tab-settings.php:31
 msgid "Enable pages for Quizles"
 msgstr ""
 
-#: template-parts/admin/settings/tab-settings.php:29
+#: template-parts/admin/settings/tab-settings.php:33
 msgid "By default, no separate pages are created for each quizle."
 msgstr ""
 
-#: template-parts/admin/settings/tab-settings.php:33
+#: template-parts/admin/settings/tab-settings.php:37
 msgid "Clear database on the plugin deleting"
 msgstr ""
 
-#: template-parts/admin/settings/tab-settings.php:35
+#: template-parts/admin/settings/tab-settings.php:39
 msgid "All data related to the plugin will be deleted from the database."
 msgstr ""
 
-#: template-parts/admin/settings/tab-settings.php:40
+#: template-parts/admin/settings/tab-settings.php:44
 msgid "Privacy Policy"
+msgstr ""
+
+#: template-parts/admin/settings/tab-settings.php:59
+msgid "Google reCAPTCHA"
+msgstr ""
+
+#: template-parts/admin/settings/tab-settings.php:70
+msgid "Site Key"
+msgstr ""
+
+#: template-parts/admin/settings/tab-settings.php:74
+msgid "Secret Key"
+msgstr ""
+
+#: template-parts/admin/settings/tab-settings.php:79
+msgctxt "settings"
+msgid "File Upload"
+msgstr ""
+
+#: template-parts/admin/settings/tab-settings.php:88
+#, php-format
+msgid ""
+"Maximum number of uploaded files set by server setting <a href=\"%s\" "
+"rel=\"noopener\" target=\"_blank\">max_file_uploads</a>: %d"
+msgstr ""
+
+#: template-parts/admin/settings/tab-settings.php:95
+#, php-format
+msgid ""
+"Maximum file size specified by server setting <a href=\"%s\" "
+"rel=\"noopener\" target=\"_blank\">upload_max_filesize</a>: %s"
+msgstr ""
+
+#: template-parts/admin/settings/tab-settings.php:104
+msgid "Max Files Count"
+msgstr ""
+
+#: template-parts/admin/settings/tab-settings.php:109
+msgid "Mime Types"
+msgstr ""
+
+#: template-parts/admin/settings/tab-settings.php:111
+msgid "Comma-separated values."
+msgstr ""
+
+#: template-parts/admin/settings/tab-settings.php:112
+msgid ""
+"You can specify specific extensions (<code>.png</code>, <code>.jpg</"
+"code>), specific file types (<code>image/jpeg</code>), or specify a "
+"subset of types, such as all images (<code>image/*</code>) or all text "
+"files (<code>text/*</code>)."
+msgstr ""
+
+#: template-parts/admin/settings/tab-settings.php:113
+#, php-format
+msgid ""
+"<a href=\"%s\" rel=\"noopener\" target=\"_blank\">More about here</a>"
+msgstr ""
+
+#: template-parts/admin/settings/tab-settings.php:126
+msgid "Allow for not Logged in Users"
+msgstr ""
+
+#: template-parts/admin/settings/tab-settings.php:128
+msgid ""
+"If a user is not allowed to upload files, questions with this type will "
+"not be displayed."
+msgstr ""
+
+#: template-parts/admin/settings/tab-settings.php:135
+msgid "Additional Settings"
+msgstr ""
+
+#: template-parts/admin/settings/tab-settings.php:142
+msgid "Enable Phone mask"
+msgstr ""
+
+#: template-parts/admin/settings/tab-settings.php:146
+msgid "Use Messenger Brand Colors"
+msgstr ""
+
+#: template-parts/admin/settings/tab-settings.php:150
+msgid "Enable Request Verification"
+msgstr ""
+
+#: template-parts/admin/settings/tab-settings.php:154
+msgid "Enable Visual Editor"
+msgstr ""
+
+#: template-parts/admin/settings/tab-settings.php:158
+msgid "Prevent Next/Prev buttons autofocus"
+msgstr ""
+
+#: template-parts/admin/templates.php:23
+#, php-format
+msgid "Import Quizles (max files size: %s)"
+msgstr ""
+
+#: template-parts/admin/templates.php:30
+msgid "Override existing quizles"
+msgstr ""
+
+#: template-parts/admin/templates.php:82
+msgid "likes"
+msgstr ""
+
+#: template-parts/admin/templates.php:108
+msgid "Create Quizle"
+msgstr ""
+
+#: template-parts/admin/templates.php:110
+msgid "downloads"
+msgstr ""
+
+#: template-parts/admin/templates.php:125
+msgid "Loading..."
 msgstr ""
 
 #: template-parts/admin/text-html-templates/quizle-condition-item.php:16
@@ -1085,31 +1600,105 @@ msgctxt "media position"
 msgid "Top"
 msgstr ""
 
-#: template-parts/mail/result-admin.php:17
+#: template-parts/admin/text-html-templates/quizle-result-item.php:61
+#: template-parts/admin/text-html-templates/quizle-result-item.php:65
+msgid "fill to output the button"
+msgstr ""
+
+#: template-parts/admin/text-html-templates/quizle-result-item.php:64
+msgid "Link"
+msgstr ""
+
+#: template-parts/admin/text-html-templates/quizle-result-item.php:72
+#: template-parts/admin/text-html-templates/quizle-result-item.php:95
+msgid "Value Min"
+msgstr ""
+
+#: template-parts/admin/text-html-templates/quizle-result-item.php:74
+#: template-parts/admin/text-html-templates/quizle-result-item.php:97
+msgid "current minimal available"
+msgstr ""
+
+#: template-parts/admin/text-html-templates/quizle-result-item.php:77
+#: template-parts/admin/text-html-templates/quizle-result-item.php:100
+msgid "Value Max"
+msgstr ""
+
+#: template-parts/admin/text-html-templates/quizle-result-item.php:79
+#: template-parts/admin/text-html-templates/quizle-result-item.php:102
+msgid "current maximum available"
+msgstr ""
+
+#: template-parts/admin/text-html-templates/quizle-result-item.php:120
+msgid "Duplicate Result"
+msgstr ""
+
+#: template-parts/admin/text-html-templates/quizle-result-item.php:121
+msgid "Remove Result"
+msgstr ""
+
+#: template-parts/admin/text-html-templates/quizle-result-item.php:121
+msgid "Are you sure you want to remove the result?"
+msgstr ""
+
+#: template-parts/admin/text-html-templates/quizle-result-item.php:127
+msgid "Set Content"
+msgstr ""
+
+#: template-parts/admin/text-html-templates/quizle-result-item.php:128
+msgid "Set Redirect Link"
+msgstr ""
+
+#: template-parts/mail/html/result-admin.php:21
+#: template-parts/mail/plain/result-admin.php:20
+#: template-parts/mail/result-admin.php:20
+#: template-parts/telegram/result-markdown.php:22
 msgid "New Quizle Contacts"
 msgstr ""
 
-#: template-parts/mail/result-admin.php:30
+#: template-parts/mail/html/result-admin.php:38
+#: template-parts/mail/html/result-admin.php:119
+#: template-parts/mail/plain/result-admin.php:39
+#: template-parts/mail/result-admin.php:37
+#: template-parts/telegram/result-markdown.php:31
 msgid "Result Details"
 msgstr ""
 
-#: vendor/wpshop/wpshop-settings/src/AbstractSettings.php:105
+#: vendor/wpshop/wpshop-settings/src/AbstractSettings.php:168
 msgid ""
 "Sorry, you are not allowed to modify unregistered settings for this "
 "site."
 msgstr ""
 
-#: vendor/wpshop/wpshop-settings/src/AbstractSettings.php:148
-#: vendor/wpshop/wpshop-settings/src/AbstractSettings.php:152
+#: vendor/wpshop/wpshop-settings/src/AbstractSettings.php:211
+#: vendor/wpshop/wpshop-settings/src/AbstractSettings.php:215
 msgid "Dashboard"
 msgstr ""
 
-#: vendor/wpshop/wpshop-settings/src/AbstractSettings.php:334
+#: vendor/wpshop/wpshop-settings/src/AbstractSettings.php:275
+msgid "You are not allowed to remove the license"
+msgstr ""
+
+#: vendor/wpshop/wpshop-settings/src/SettingsRenderer.php:37
 msgid "Activate"
 msgstr ""
 
-#: vendor/wpshop/wpshop-settings/src/AbstractSettings.php:642
+#: vendor/wpshop/wpshop-settings/src/SettingsRenderer.php:449
 msgid "Save"
+msgstr ""
+
+#: vendor/wpshop/wpshop-settings/src/SettingsRenderer.php:526
+msgctxt "translations"
+msgid "Installed"
+msgstr ""
+
+#: vendor/wpshop/wpshop-settings/src/SettingsRenderer.php:534
+msgid "Default"
+msgstr ""
+
+#: vendor/wpshop/wpshop-settings/src/SettingsRenderer.php:563
+msgctxt "translations"
+msgid "Available"
 msgstr ""
 
 #: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p13/Plugin/Ui.php:54

@@ -28,6 +28,7 @@
 	<?php wp_head(); ?>
 
 	
+<script src="//code.jivo.ru/widget/EupusvNPo6" async></script>
 
 </head>
 
@@ -69,6 +70,7 @@
 				<a href="<?php the_field('soc_item1', 2); ?>" target="_blank" class="soc_icon"><img src="<?php echo get_template_directory_uri(); ?>/img/vk_icon.png" alt=""></a>
 				<a href="https://wa.me/<?php the_field('soc_item2', 2); ?>" target="_blank" class="soc_icon"><img src="<?php echo get_template_directory_uri(); ?>/img/whatsap_icon1.png" alt=""></a>
 				<a href="mailto:<?php the_field('soc_item3', 2); ?>" target="_blank" class="soc_icon"><img src="<?php echo get_template_directory_uri(); ?>/img/mail_icon1.png" alt=""></a>
+				<a href="https://t.me/+79120166260" target="_blank" class="soc_icon soc_icon_tg"><span></span></a>
 				</div>
 				<div class="nav_burger"></div>
 			</div>

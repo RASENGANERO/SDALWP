@@ -129,27 +129,20 @@ class Clearfy_Plugin_Admin {
      * @since    0.9.5
      */
     public function enqueue_scripts() {
-        /**
-         * This function is provided for demonstration purposes only.
-         *
-         * An instance of this class should be passed to the run() function
-         * defined in Plugin_Name_Loader as all of the hooks are defined
-         * in that particular class.
-         *
-         * The Plugin_Name_Loader will then create the relationship
-         * between the defined hooks and the functions defined in this
-         * class.
-         */
-        $enqueue_script_deps = apply_filters( 'clearfy_enqueue_script_deps', array( 'jquery', 'wp-color-picker' ) );
-        wp_enqueue_script( $this->plugin_options->plugin_name, plugin_dir_url( $this->plugin_options->plugin_path ) . 'assets/js/clearfy-admin.js', $enqueue_script_deps, $this->plugin_options->version, false );
-        wp_localize_script( $this->plugin_options->plugin_name, 'clearfy_settings', [
-            'color_picker_enable' => apply_filters( 'clearfy_admin_color_picker_enable', true ),
-            'i18n' => [
-                'choose_avatar' => __( 'Choose avatar', $this->plugin_options->text_domain ),
-                'select' => __( 'Select', $this->plugin_options->text_domain ),
-                'crop' => __( 'Crop', $this->plugin_options->text_domain ),
-            ],
-        ] );
+        // выводим только на странице плагина и на странице редактирования юзера
+        if ( get_current_screen() && in_array( get_current_screen()->id, [ 'toplevel_page_clearfy', 'profile', 'user-edit' ] ) ) {
+            $enqueue_script_deps = apply_filters( 'clearfy_enqueue_script_deps', array( 'jquery', 'wp-color-picker' ) );
+            wp_enqueue_script( $this->plugin_options->plugin_name, plugin_dir_url( $this->plugin_options->plugin_path ) . 'assets/js/clearfy-admin.js', $enqueue_script_deps, $this->plugin_options->version, false );
+            wp_localize_script( $this->plugin_options->plugin_name, 'clearfy_settings', [
+                'color_picker_enable' => apply_filters( 'clearfy_admin_color_picker_enable', true ),
+                'i18n' => [
+                    'choose_avatar' => __( 'Choose avatar', $this->plugin_options->text_domain ),
+                    'select' => __( 'Select', $this->plugin_options->text_domain ),
+                    'crop' => __( 'Crop', $this->plugin_options->text_domain ),
+                ],
+            ] );
+            wp_enqueue_media();
+        }
         wp_enqueue_media();
     }
 
@@ -203,18 +196,6 @@ class Clearfy_Plugin_Admin {
     }
 
     public function sanitize_clearfy_options( $options ) {
-
-        $old_options = get_option($this->option_name);
-
-        if ( ! empty( $options['sanitize_title'] ) && $options['sanitize_title'] == 'on' && empty( $old_options['sanitize_title'] ) ) {
-
-            /**
-             * Sanitize existing slugs
-             */
-            require_once dirname(__FILE__) . '/../inc/sanitize-title.php';
-            $clearfy_sanitize = new Clearfy_Sanitize;
-        }
-
         return $options;
     }
 
@@ -398,9 +379,6 @@ class Clearfy_Plugin_Admin {
                                 <?php _e( 'Our pages', $this->plugin_options->text_domain ) ?>:
                                 <a href="https://vk.com/wpshop" target="_blank" rel="noopener" class="wpshop-widget-social-icon wpshop-widget-social-icon--vk"></a>
                                 <a href="https://t.me/wpshop" target="_blank" rel="noopener" class="wpshop-widget-social-icon wpshop-widget-social-icon--telegram"></a>
-                                <a href="https://www.facebook.com/wpshopbiz/" target="_blank" rel="noopener" class="wpshop-widget-social-icon wpshop-widget-social-icon--facebook"></a>
-                                <a href="https://twitter.com/wpshopbiz" target="_blank" rel="noopener" class="wpshop-widget-social-icon wpshop-widget-social-icon--twitter"></a>
-                                <a href="https://www.instagram.com/wpshop_ru/" target="_blank" rel="noopener" class="wpshop-widget-social-icon wpshop-widget-social-icon--instagram"></a>
 
                                 <a href="https://wpshop.ru/partner?utm_source=plugin&utm_medium=clearfy&utm_campaign=instruction" target="_blank" rel="noopener" class="wpshop-widget-partners"><?php _e( 'Affiliate program', $this->plugin_options->text_domain ) ?></a>
                                 <a href="https://wpshop.ru/?utm_source=plugin&utm_medium=clearfy&utm_campaign=instruction" target="_blank" rel="noopener" class="wpshop-widget-partners">WPShop.ru</a>
@@ -412,7 +390,6 @@ class Clearfy_Plugin_Admin {
                             <p><?php _e( 'Just enable needed settings and click save. All done.', $this->plugin_options->text_domain ) ?></p>
                             <p><?php _e( 'Any questions? Send message to our technical support.', $this->plugin_options->text_domain ) ?></p>
 
-                            <hr>
 
                             <div class="option-field-header"><?php _e( 'License key', $this->plugin_options->text_domain ) ?></div>
 
@@ -422,12 +399,10 @@ class Clearfy_Plugin_Admin {
                                 <span class="button js-clearfy-remove-license" data-nonce="<?php echo wp_create_nonce( 'clearfy_remove_license_nonce' ) ?>"><?php _e( 'Remove license key', $this->plugin_options->text_domain ) ?></span>
                             </p>
 
-                            <hr>
 
                             <div class="option-field-header"><?php _e( 'Questions, changelog', $this->plugin_options->text_domain ) ?></div>
                             <p><?php printf( __( 'FAQ and changelog you can find in <a href="%s">our knowledge base</a>.', $this->plugin_options->text_domain ), 'https://support.wpshop.ru/docs/plugins/clearfy-pro/changelog/' ) ?></p>
 
-                            <hr>
 
                             <div class="option-field-header"><?php _e( 'Export / Import settings', $this->plugin_options->text_domain ) ?></div>
 
@@ -444,8 +419,6 @@ class Clearfy_Plugin_Admin {
                                 <p class="description"><?php _e( 'Warning! Old settings will be deleted before importing!', $this->plugin_options->text_domain ) ?></p>
                                 <span class="button js-import-settings-clearfy" data-nonce="<?php echo wp_create_nonce( 'wpshop_plugin_import_settings' ) ?>"><?php _e( 'Import', $this->plugin_options->text_domain ) ?></span>
                             </div>
-
-                            <hr>
 
                             <div class="option-field-header"><?php _e( 'Team WPShop.ru', 'clearfy' ) ?></div>
 
@@ -1028,7 +1001,25 @@ class Clearfy_Plugin_Admin {
 
                         </div>
                         <div id="clearfy_security" class="wpshop-tab-in js-wpshop-tab-item">
-                            <div class="option-field-header"><?php _e( 'Protection', $this->plugin_options->text_domain ) ?></div>
+                            <div class="option-field-header"><?php _e( 'Security', $this->plugin_options->text_domain ) ?></div>
+
+                            <div class="option-field">
+                                <label class="option-field-label" for="cloud_protection">
+                                    <?php _e( 'Cloud site protection', $this->plugin_options->text_domain ) ?>
+                                    <?php $this->the_help_icon( 'cloud-protection' ) ?>
+                                    <sup style="color: #143bd6; font-size: .8em;">🔥 beta</sup>
+                                    <br>
+                                    <span style="color: #165ff4;font-size: .9em;font-weight: 600;">Clearfy Cloud+</span><br>
+                                    <span class="clearfy-recommend"><?php _e( 'Recommended', $this->plugin_options->text_domain ) ?></span>
+                                </label>
+                                <div class="option-field-body">
+                                    <?php $this->display_checkbox('cloud_protection') ?>
+                                    <p class="description"><?php _e('All websites are constantly under attack by bots looking for vulnerabilities. These include attempts to find security holes, authorization attempts, opportunities to upload viruses to the site, find backups, logs, and so on. To avoid this, we decided to launch a cloud-based protection service.', 'clearfy-pro'); ?></p>
+                                    <p class="description"><?php _e( 'Now the service is free, but as the consumption of resources grows and Clearfy Cloud+ functionality improves, a small fee will be introduced.', 'clearfy-pro' ); ?></p>
+                                    <p class="description"><strong style="color: #165ff4;">Clearfy Cloud+:</strong> <?php _e( 'Includes cloud-based site protection in beta mode. Collects and analyzes potentially dangerous requests, gives recommendations.', 'clearfy-pro' ) ?></p>
+                                </div>
+                            </div><!--.option-field-->
+
 
                             <div class="option-field">
                                 <label class="option-field-label" for="hide_wp_login">
@@ -1110,8 +1101,8 @@ class Clearfy_Plugin_Admin {
                                     <?php $this->display_checkbox('login_attempts') ?>
                                     <p class="description"><?php _e( 'Bruteforcing or brute-forcing passwords to sites happens all the time. In addition to potential hacking, you get a constant load on the server.', $this->plugin_options->text_domain ) ?></p>
                                     <p class="description danger"><?php _e( 'If you forget your username/password and get locked out - ', $this->plugin_options->text_domain ) ?><a href="<?php echo $this->get_help_url( 'login-attempts-disable' ) ?>" target="_blank" rel="noopener noreferrer"><?php _e( 'this protection can be disabled', $this->plugin_options->text_domain ) ?></a>.</p>
-                                    <p class="description"><?php _e( 'After ', $this->plugin_options->text_domain ) ?><?php $this->display_input_number('login_attempts_allowed_retries', [ 'default' => $this->plugin_options->default_options['login_attempts_allowed_retries'] ] ) ?><?php _e( '  incorrect attempts to enter will be blocked for ', $this->plugin_options->text_domain ) ?><?php $this->display_input_number('login_attempts_lockout_duration',  [ 'default' => $this->plugin_options->default_options['login_attempts_lockout_duration'] ] ) ?><?php _e( ' minutes.', $this->plugin_options->text_domain ) ?></p>
-                                    <p class="description"><?php _e( 'After ', $this->plugin_options->text_domain ) ?><?php $this->display_input_number('login_attempts_allowed_lockouts', [ 'default' => $this->plugin_options->default_options['login_attempts_allowed_lockouts'] ] ) ?><?php _e( ' blockings, access will be blocked for ', $this->plugin_options->text_domain ) ?><?php $this->display_input_number('login_attempts_long_duration',  [ 'default' => $this->plugin_options->default_options['login_attempts_long_duration'] ] ) ?><?php _e( ' hours.', $this->plugin_options->text_domain ) ?></p>
+                                    <p class="description"><?php _e( 'After ', $this->plugin_options->text_domain ) ?><?php $this->display_input_number('login_attempts_allowed_retries', [ 'default' => $this->plugin_options->get_default_option('login_attempts_allowed_retries') ] ) ?><?php _e( '  incorrect attempts to enter will be blocked for ', $this->plugin_options->text_domain ) ?><?php $this->display_input_number('login_attempts_lockout_duration',  [ 'default' => $this->plugin_options->get_default_option('login_attempts_lockout_duration') ] ) ?><?php _e( ' minutes.', $this->plugin_options->text_domain ) ?></p>
+                                    <p class="description"><?php _e( 'After ', $this->plugin_options->text_domain ) ?><?php $this->display_input_number('login_attempts_allowed_lockouts', [ 'default' => $this->plugin_options->get_default_option('login_attempts_allowed_lockouts') ] ) ?><?php _e( ' blockings, access will be blocked for ', $this->plugin_options->text_domain ) ?><?php $this->display_input_number('login_attempts_long_duration',  [ 'default' => $this->plugin_options->get_default_option('login_attempts_long_duration') ] ) ?><?php _e( ' hours.', $this->plugin_options->text_domain ) ?></p>
                                     <p class="description">
                                         <strong>Clearfy Pro:</strong> <?php _e( 'Protects the site from password brute-forcing.', $this->plugin_options->text_domain ) ?>
 
@@ -1261,7 +1252,7 @@ class Clearfy_Plugin_Admin {
 
 
                             <div class="option-field-header">
-                                <?php _e( 'Avatars', $this->plugin_options->text_domain )?> <sup style="color: #e72e3a; font-size: .7em;">new</sup>
+                                <?php _e( 'Avatars', $this->plugin_options->text_domain )?>
                                 <?php $this->the_help_icon( 'avatars' ) ?>
                             </div>
 
@@ -1390,6 +1381,11 @@ class Clearfy_Plugin_Admin {
                                     <p class="description"><?php _e( 'For example:', $this->plugin_options->text_domain ) ?></p>
                                     <p class="description">&lt;br&gt;<?php _e( 'Source: %link%', $this->plugin_options->text_domain ) ?></p>
                                     <p class="description"><?php _e( '- Read more at: %link%', $this->plugin_options->text_domain ) ?></p>
+                                    <p class="description">
+                                        <a href="https://support.wpshop.ru/faq/clearfy-disable-content-protection/" target="_blank" rel="noopener">
+                                            <?php _e( 'How do I disable copy protection for an individual page?', $this->plugin_options->text_domain ) ?>
+                                        </a>
+                                    </p>
                                 </div>
                             </div><!--.option-field-->
 
@@ -1441,9 +1437,9 @@ class Clearfy_Plugin_Admin {
                                 <div class="option-field-body">
 			                        <?php $this->display_checkbox('message_cookie') ?>
                                     <div class="textarea-block">
-				                        <?php $this->display_textarea( 'cookie_message_text', array( 'default' => $this->plugin_options->default_options['cookie_message_text'] ) ) ?>
+				                        <?php $this->display_textarea( 'cookie_message_text', array( 'default' => $this->plugin_options->get_default_option('cookie_message_text') ) ) ?>
                                         <p class="description"><?php _e( 'You can set the text for the cookie notification, for example:', $this->plugin_options->text_domain ) ?></p>
-                                        <p class="description"><?php echo $this->plugin_options->default_options['cookie_message_text'] ?></p>
+                                        <p class="description"><?php echo $this->plugin_options->get_default_option('cookie_message_text') ?></p>
                                     </div>
                                     <p class="description"><strong>Clearfy:</strong> <?php _e( 'Displays a notification at the bottom about the use of cookies on the site.', $this->plugin_options->text_domain ) ?></p>
                                 </div>
@@ -1459,7 +1455,7 @@ class Clearfy_Plugin_Admin {
 				                        'left'      => __( 'Left', $this->plugin_options->text_domain ),
 				                        'right'     => __( 'Right', $this->plugin_options->text_domain ),
 			                        ), array(
-				                        'default' => $this->plugin_options->default_options['cookie_message_position']
+				                        'default' => $this->plugin_options->get_default_option('cookie_message_position')
 			                        ) ) ?>
                                 </div>
                             </div><!--.option-field-->
@@ -1469,7 +1465,7 @@ class Clearfy_Plugin_Admin {
                                     <?php _e( 'Text color', $this->plugin_options->text_domain ) ?>
                                 </label>
                                 <div class="option-field-body">
-			                        <?php $this->display_color( 'cookie_message_color', array( 'default' => $this->plugin_options->default_options['cookie_message_color'] ) ) ?>
+			                        <?php $this->display_color( 'cookie_message_color', array( 'default' => $this->plugin_options->get_default_option('cookie_message_color') ) ) ?>
                                 </div>
                             </div><!--.option-field-->
 
@@ -1478,7 +1474,7 @@ class Clearfy_Plugin_Admin {
                                     <?php _e( 'Background Color', $this->plugin_options->text_domain ) ?>
                                 </label>
                                 <div class="option-field-body">
-			                        <?php $this->display_color( 'cookie_message_background', array( 'default' => $this->plugin_options->default_options['cookie_message_background'] ) ) ?>
+			                        <?php $this->display_color( 'cookie_message_background', array( 'default' => $this->plugin_options->get_default_option('cookie_message_background') ) ) ?>
                                 </div>
                             </div><!--.option-field-->
 
@@ -1487,7 +1483,7 @@ class Clearfy_Plugin_Admin {
                                     <?php _e( 'Button text', $this->plugin_options->text_domain ) ?>
                                 </label>
                                 <div class="option-field-body">
-			                        <?php $this->display_input_text( 'cookie_message_button_text', array( 'default' => $this->plugin_options->default_options['cookie_message_button_text'] ) ) ?>
+			                        <?php $this->display_input_text( 'cookie_message_button_text', array( 'default' => $this->plugin_options->get_default_option('cookie_message_button_text') ) ) ?>
                                 </div>
                             </div><!--.option-field-->
 
@@ -1496,7 +1492,7 @@ class Clearfy_Plugin_Admin {
                                     <?php _e( 'Button Color', $this->plugin_options->text_domain ) ?>
                                 </label>
                                 <div class="option-field-body">
-			                        <?php $this->display_color( 'cookie_message_button_background', array( 'default' => $this->plugin_options->default_options['cookie_message_button_background'] ) ) ?>
+			                        <?php $this->display_color( 'cookie_message_button_background', array( 'default' => $this->plugin_options->get_default_option('cookie_message_button_background') ) ) ?>
                                 </div>
                             </div><!--.option-field-->
 
@@ -1852,7 +1848,7 @@ class Clearfy_Plugin_Admin {
                                             }
                                             ?>
                                             <tr>
-                                                <td><?php echo date( 'd.m.Y H:i', $log['date'] ) ?></td>
+                                                <td><?php echo date( 'd.m.Y H:i', (int) $log['date'] ) ?></td>
                                                 <td><?php echo $log['message'] ?></td>
                                                 <td><?php echo ( ! empty( $referer_short ) ) ? '<a href="' . esc_attr( $referer ) . '" target="_blank" rel="noopener noreferrer">' . $referer_short . '</span>' : '' ?></td>
                                                 <td><?php echo $log['ip'] ?></td>
@@ -2129,6 +2125,9 @@ class Clearfy_Plugin_Admin {
 
 
             // security
+            'cloud-protection' => [
+                'default' => 'https://support.wpshop.ru/docs/plugins/clearfy-pro/clearfy-cloud/#cloud-protection',
+            ],
             'hide-wp-login' => [
                 'default' => 'https://support.wpshop.ru/docs/plugins/clearfy-pro/setting/#hide-wp-login',
             ],
@@ -2402,6 +2401,15 @@ class Clearfy_Plugin_Admin {
         echo $string;
     }
 
+
+	/**
+	 * @return string
+	 */
+	public function get_api_url(): string {
+		return $this->api_url;
+	}
+
+
     /**
      * Display select
      *
@@ -2427,14 +2435,10 @@ class Clearfy_Plugin_Admin {
 
 
     public function is_rank_math_enabled() {
-        $plugin_path = trailingslashit( WP_PLUGIN_DIR ) . 'seo-by-rank-math/rank-math.php';
-
-        return in_array( $plugin_path, wp_get_active_and_valid_plugins() );
+        return is_plugin_active('seo-by-rank-math/rank-math.php');
     }
 
     public function is_yoast_seo_enabled() {
-        $plugin_path = trailingslashit( WP_PLUGIN_DIR ) . 'wordpress-seo/wp-seo.php';
-
-        return in_array( $plugin_path, wp_get_active_and_valid_plugins() );
+        return is_plugin_active('wordpress-seo/wp-seo.php');
     }
 }

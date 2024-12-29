@@ -13,7 +13,7 @@ if (!defined('ABSPATH')) {
             $img = wp_get_attachment_image_src($attachment_id);
             ?>
             <li>
-                <img src="<?php echo $img[0] ?>" alt="" class="wpbe_gal_img_block" data-attachment-id="<?php echo $attachment_id ?>" />
+                <img src="<?php echo esc_attr($img[0]) ?>" alt="" class="wpbe_gal_img_block" data-attachment-id="<?php echo esc_attr($attachment_id) ?>" />
                 <a href="#" class="wpbe_gall_file_delete" title="<?php esc_html_e('Detach image of the post', 'bulk-editor') ?>"><span class="icon-trash button"></span></a>
                 <input type="hidden" name="wpbe_gallery_images[]" value="<?php echo intval($attachment_id); ?>" />
             </li>

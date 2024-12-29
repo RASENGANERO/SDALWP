@@ -2,14 +2,19 @@
 # This file is distributed under the same license as the Plugins - a3 Lazy Load - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-11-21 09:30:40+0000\n"
+"PO-Revision-Date: 2023-07-29 07:43:35+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : ((n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) ? 1 : 2);\n"
-"X-Generator: GlotPress/4.0.0-alpha.3\n"
+"X-Generator: GlotPress/4.0.1\n"
 "Language: ru\n"
 "Project-Id-Version: Plugins - a3 Lazy Load - Stable (latest release)\n"
+
+#: admin/admin-interface.php:349 admin/admin-interface.php:2771
+#: admin/includes/fonts_face.php:596
+msgid "Default"
+msgstr "По умолчанию"
 
 #: admin/settings/template-settings/global-settings.php:252
 msgid "Switch to OFF to completely disable WordPress core Lazy Load."
@@ -23,15 +28,15 @@ msgstr "WordPress Core Lazy Load"
 msgid "On and a3 Lazy Load will lazy load elements that are missed by WordPress Core Lazy Load."
 msgstr "On и a3 Lazy Load будут отложено загружать элементы, которые пропускаются WordPress Core Lazy Load."
 
-#: admin/admin-interface.php:2050
+#: admin/admin-interface.php:2045
 msgid "Your Google API Key is valid."
 msgstr "Ваш ключ Google API действителен."
 
-#: admin/admin-interface.php:2023
+#: admin/admin-interface.php:2018
 msgid "Enter your Google Maps API Key and save changes, or go to <a href='%s' target='_blank'>Google Maps API</a> to create a new key. The key must have the Geocoding API, Maps Embed API and Maps JavaScript API as a minimum."
 msgstr "Введите ключ API Карт Google и сохраните изменения или перейдите на страницу <a href='%s' target='_blank'>API Карт Google</a>, чтобы создать новый ключ. Ключ должен иметь как минимум API геокодирования, Maps Embed API и Maps JavaScript API."
 
-#: admin/admin-interface.php:1981 admin/admin-interface.php:2049
+#: admin/admin-interface.php:1976 admin/admin-interface.php:2044
 msgid "Validate"
 msgstr "Подтвердить"
 
@@ -87,15 +92,15 @@ msgstr "Совместимость с Jetpack Site Accelerator (Photon)"
 msgid "Threshold (px)"
 msgstr "Порог (px)"
 
-#: admin/admin-interface.php:2042
+#: admin/admin-interface.php:2037
 msgid "Google Map API Key"
 msgstr "API ключ для Google Maps"
 
-#: admin/admin-interface.php:2014
+#: admin/admin-interface.php:2009
 msgid "Switch ON to connect to Google Maps API"
 msgstr "Включите для подключения Google Maps API"
 
-#: admin/admin-interface.php:2002
+#: admin/admin-interface.php:1997
 msgid "Google Maps API"
 msgstr "Google Maps API"
 
@@ -171,35 +176,38 @@ msgstr "Найдите и введите название класса виде�
 msgid "Find and enter image class name. If more than 1 then comma seperate.<br>Example: image-class1, image-class2. Supports Wild Cards image*, .*thumbnail"
 msgstr "Найдите и введите название класса изображения. Если классов несколько, то разделите их запятой.<br>Например: image-class1, image-class2. Поддерживается Wild Cards изображения*, .*thumbnail"
 
-#: admin/admin-interface.php:2077
+#: admin/admin-interface.php:2072
 msgid "Go to <a href=\"%s\">a3 Dashboard Main page</a> and hit on <strong>CHECK NOW</strong> button to manual check for Update."
 msgstr "Перейдите на <a href=\"%s\">главную страницу a3 Dashboard</a> и кликните по кнопке <strong>CHECK NOW</strong> для ручного обновления."
 
-#: admin/admin-interface.php:2074
+#: admin/admin-interface.php:2069
 msgid "You need to go to <a title=\"\" href=\"%s\">a3 Dashboard Main page</a> for login before check for Update. Use your account creds on <a href=\"https://a3rev.com\" target=\"_parent\">a3rev.com</a> to login."
 msgstr "Вам необходимо перейти на <a title=\"\" href=\"%s\">главную страницу a3 Dashboard</a> и авторизоваться для обновления. Используйте данные входа на <a href=\"https://a3rev.com\" target=\"_parent\">a3rev.com</a> для авторизации."
 
-#: admin/admin-interface.php:2072
+#: admin/admin-interface.php:2067
 msgid "You need to activate the <a title=\"\" href=\"%s\" target=\"_parent\">a3rev Dashboard plugin</a> for manage version and get auto upgrade to latest version."
 msgstr "Вам необходимо активировать <a title=\"\" href=\"%s\" target=\"_parent\">плагин a3rev Dashboard</a> для управления версиями и автообновления до последней версии."
 
-#: admin/admin-interface.php:2070
+#: admin/admin-interface.php:2065
 msgid "You need to install and activate the <a title=\"\" href=\"%s\" target=\"_parent\">a3rev Dashboard plugin</a> for manage version and get auto upgrade to latest version."
 msgstr "Вам необходимо установить и активировать <a title=\"\" href=\"%s\" target=\"_parent\">плагин a3rev Dashboard</a> для управления версиями и автообновления до последней версии."
 
-#: admin/admin-interface.php:2065
+#: admin/admin-interface.php:2060
 msgid "Sorry, this feature just for Network Admin."
 msgstr "Простите, но эта функция только для администратора сети."
 
 #. Author URI of the plugin
+#: a3-lazy-load.php
 msgid "https://a3rev.com/"
 msgstr "https://a3rev.com/"
 
 #. Author of the plugin
+#: a3-lazy-load.php
 msgid "a3rev Software"
 msgstr "a3rev Software"
 
 #. Description of the plugin
+#: a3-lazy-load.php
 msgid "Speed up your site and enhance frontend user's visual experience in PC's, Tablets and mobile with a3 Lazy Load."
 msgstr "Ускорьте свой сайт и улучшите визуальные ощущения пользователей ПК, планшетов и смартфонов с a3 Lazy Load."
 
@@ -327,7 +335,7 @@ msgstr "FOOTER"
 
 #: admin/settings/template-settings/global-settings.php:503
 msgid "HEADER"
-msgstr "ШАПКА"
+msgstr "ЗАГОЛОВОК"
 
 #: admin/settings/template-settings/global-settings.php:497
 msgid "Your theme must have the wp_footer() function if you select FOOTER load."
@@ -492,144 +500,144 @@ msgid "Premium Version Enhanced Features"
 msgstr "Улучшенный функционал Премиум-версии"
 
 #. Plugin Name of the plugin
-#: admin/admin-pages/admin-settings-page.php:66
+#: a3-lazy-load.php admin/admin-pages/admin-settings-page.php:66
 #: admin/admin-pages/admin-settings-page.php:67
 #: admin/settings/template-settings/global-settings.php:238
 msgid "a3 Lazy Load"
 msgstr "a3 Lazy Load"
 
-#: admin/admin-interface.php:3708
+#: admin/admin-interface.php:3704
 msgid "Reset Settings"
 msgstr "Сбросить настройки"
 
-#: admin/admin-interface.php:3707
+#: admin/admin-interface.php:3703
 msgid "Save changes"
 msgstr "Сохранить изменения"
 
-#: admin/admin-interface.php:3404
+#: admin/admin-interface.php:3400
 msgid "Preview your customized box shadow settings"
 msgstr "Предпросмотр ваших настроек тени блоков"
 
-#: admin/admin-interface.php:3386
+#: admin/admin-interface.php:3382
 msgid "OUTER"
 msgstr "СНАРУЖИ"
 
-#: admin/admin-interface.php:3385
+#: admin/admin-interface.php:3381
 msgid "INNER"
 msgstr "ВНУТРИ"
 
-#: admin/admin-interface.php:3367
+#: admin/admin-interface.php:3363
 msgid "Spread Size"
 msgstr "Размер рассеивания"
 
-#: admin/admin-interface.php:3349
+#: admin/admin-interface.php:3345
 msgid "Blur Distance"
 msgstr "Размер размытия"
 
-#: admin/admin-interface.php:3331
+#: admin/admin-interface.php:3327
 msgid "Vertical Shadow"
 msgstr "Вертикальная тень"
 
-#: admin/admin-interface.php:3313
+#: admin/admin-interface.php:3309
 msgid "Horizontal Shadow"
 msgstr "Горизонтальная тень"
 
-#: admin/admin-interface.php:3117
+#: admin/admin-interface.php:3113
 msgid "Preview your customized border styles settings"
 msgstr "Предпросмотр ваших настроек стилей границ"
 
-#: admin/admin-interface.php:3032 admin/admin-interface.php:3249
+#: admin/admin-interface.php:3028 admin/admin-interface.php:3245
 msgid "Bottom Left Corner"
 msgstr "Нижний левый угол"
 
-#: admin/admin-interface.php:3012 admin/admin-interface.php:3229
+#: admin/admin-interface.php:3008 admin/admin-interface.php:3225
 msgid "Bottom Right Corner"
 msgstr "Нижний правый угол"
 
-#: admin/admin-interface.php:2992 admin/admin-interface.php:3209
+#: admin/admin-interface.php:2988 admin/admin-interface.php:3205
 msgid "Top Right Corner"
 msgstr "Верхний правый угол"
 
-#: admin/admin-interface.php:2972 admin/admin-interface.php:3189
+#: admin/admin-interface.php:2968 admin/admin-interface.php:3185
 msgid "Top Left Corner"
 msgstr "Верхний левый угол"
 
-#: admin/admin-interface.php:2962 admin/admin-interface.php:3176
+#: admin/admin-interface.php:2958 admin/admin-interface.php:3172
 msgid "Square"
 msgstr "Квадратный"
 
-#: admin/admin-interface.php:2961 admin/admin-interface.php:3175
+#: admin/admin-interface.php:2957 admin/admin-interface.php:3171
 msgid "Rounded"
 msgstr "Скруглённый"
 
-#: admin/admin-interface.php:2953 admin/admin-interface.php:3118
+#: admin/admin-interface.php:2949 admin/admin-interface.php:3114
 msgid "0px = No Border"
 msgstr "0px = Без рамки"
 
-#: admin/admin-interface.php:2952 admin/admin-interface.php:3184
+#: admin/admin-interface.php:2948 admin/admin-interface.php:3180
 msgid "Preview your customized border settings"
 msgstr "Предпросмотр ваших настроек границ"
 
-#: admin/admin-interface.php:2844
+#: admin/admin-interface.php:2840
 msgid "Preview your customized typography settings"
 msgstr "Предпросмотр ваших настроек типографики"
 
-#: admin/admin-interface.php:2803
+#: admin/admin-interface.php:2799
 msgid "-- Google Fonts --"
 msgstr "-- Шрифты Google --"
 
-#: admin/admin-interface.php:2792
+#: admin/admin-interface.php:2788
 msgid "-- Default Fonts --"
 msgstr "-- Шрифты по умолчанию --"
 
-#: admin/admin-interface.php:2701
+#: admin/admin-interface.php:2696
 msgid "Hard Crop"
 msgstr "Жёсткая обрезка"
 
-#: admin/admin-interface.php:2699
+#: admin/admin-interface.php:2694
 msgid "Height"
 msgstr "Высота"
 
-#: admin/admin-interface.php:2697
+#: admin/admin-interface.php:2692
 msgid "Width"
 msgstr "Ширина"
 
-#: admin/admin-interface.php:2284
+#: admin/admin-interface.php:2279
 msgid "ON and each admin panel setting box OPEN | CLOSED position are saved each time changes are SAVED."
 msgstr "Включите и каждый блок настроек при разворачивании/сворачивании будет сохранять указанные в нём настройки."
 
-#: admin/admin-interface.php:2271
+#: admin/admin-interface.php:2266
 msgid "Open Box Display"
 msgstr "Отображать открытые блоки"
 
-#: admin/admin-interface.php:1983 admin/admin-interface.php:2051
+#: admin/admin-interface.php:1978 admin/admin-interface.php:2046
 msgid "Please enter a valid Google API Key."
 msgstr "Укажите действующий ключ Google API."
 
-#: admin/admin-interface.php:1982
+#: admin/admin-interface.php:1977
 msgid "Your Google API Key is valid and automatic font updates are enabled."
 msgstr "Ваш ключ Google API указан верно и автоматические обновления шрифтов включены."
 
-#: admin/admin-interface.php:1974
+#: admin/admin-interface.php:1969
 msgid "Google Fonts API Key"
 msgstr "Ключ Google Fonts API"
 
-#: admin/admin-interface.php:1955
+#: admin/admin-interface.php:1950
 msgid "Enter your existing Google Fonts API Key below. Don't have a key? Visit <a href='%s' target='_blank'>Google Developer API</a> to create a key"
 msgstr "Введите ваш существующий ключ Google Fonts API в поле ниже. Нет ключа? Перейдите на <a href='%s' target='_blank'>Google Developer API</a>, чтобы создать ключ"
 
-#: admin/admin-interface.php:1946
+#: admin/admin-interface.php:1941
 msgid "ON to connect to Google Fonts API and have auto font updates direct from Google."
 msgstr "Включите, чтобы подключиться к Google Fonts API и автоматически обновлять шрифты прямо с Google."
 
-#: admin/admin-interface.php:1934
+#: admin/admin-interface.php:1929
 msgid "Google Fonts API"
 msgstr "Google Fonts API"
 
-#: admin/admin-interface.php:1929 admin/admin-interface.php:1997
-#: admin/admin-interface.php:2266 admin/admin-interface.php:2364
-#: admin/admin-interface.php:2544 admin/admin-interface.php:2634
-#: admin/admin-interface.php:2663 admin/admin-interface.php:3298
+#: admin/admin-interface.php:1924 admin/admin-interface.php:1992
+#: admin/admin-interface.php:2261 admin/admin-interface.php:2359
+#: admin/admin-interface.php:2539 admin/admin-interface.php:2629
+#: admin/admin-interface.php:2658 admin/admin-interface.php:3294
 #: admin/settings/template-settings/global-settings.php:228
 #: admin/settings/template-settings/global-settings.php:247
 #: admin/settings/template-settings/global-settings.php:258
@@ -650,10 +658,10 @@ msgstr "Google Fonts API"
 msgid "OFF"
 msgstr "ВЫКЛ"
 
-#: admin/admin-interface.php:1928 admin/admin-interface.php:1996
-#: admin/admin-interface.php:2265 admin/admin-interface.php:2363
-#: admin/admin-interface.php:2543 admin/admin-interface.php:2633
-#: admin/admin-interface.php:2662 admin/admin-interface.php:3297
+#: admin/admin-interface.php:1923 admin/admin-interface.php:1991
+#: admin/admin-interface.php:2260 admin/admin-interface.php:2358
+#: admin/admin-interface.php:2538 admin/admin-interface.php:2628
+#: admin/admin-interface.php:2657 admin/admin-interface.php:3293
 #: admin/settings/template-settings/global-settings.php:227
 #: admin/settings/template-settings/global-settings.php:246
 #: admin/settings/template-settings/global-settings.php:257
@@ -674,77 +682,77 @@ msgstr "ВЫКЛ"
 msgid "ON"
 msgstr "ВКЛ"
 
-#: admin/admin-interface.php:377
+#: admin/admin-interface.php:372
 msgid "Outset"
 msgstr "Снаружи"
 
-#: admin/admin-interface.php:376
+#: admin/admin-interface.php:371
 msgid "Inset"
 msgstr "Внутри"
 
-#: admin/admin-interface.php:375
+#: admin/admin-interface.php:370
 msgid "Ridge"
 msgstr "Выпуклость"
 
-#: admin/admin-interface.php:374
+#: admin/admin-interface.php:369
 msgid "Groove"
 msgstr "Вдавленность"
 
-#: admin/admin-interface.php:373
+#: admin/admin-interface.php:368
 msgid "Dotted"
 msgstr "Точки"
 
-#: admin/admin-interface.php:372
+#: admin/admin-interface.php:367
 msgid "Dashed"
 msgstr "Пунктир"
 
-#: admin/admin-interface.php:371
+#: admin/admin-interface.php:366
 msgid "Double"
 msgstr "Двойная линия"
 
-#: admin/admin-interface.php:370
+#: admin/admin-interface.php:365
 msgid "Solid"
 msgstr "Сплошная линия"
 
-#: admin/admin-interface.php:360
+#: admin/admin-interface.php:355
 msgid "Bold/Italic"
 msgstr "Жирный/Курсив"
 
-#: admin/admin-interface.php:359
+#: admin/admin-interface.php:354
 msgid "Bold"
 msgstr "Жирный"
 
-#: admin/admin-interface.php:358
+#: admin/admin-interface.php:353
 msgid "Italic"
 msgstr "Курсив"
 
-#: admin/admin-interface.php:357
+#: admin/admin-interface.php:352
 msgid "Normal"
 msgstr "Обычный"
 
-#: admin/admin-interface.php:356
+#: admin/admin-interface.php:351
 msgid "Thin/Italic"
 msgstr "Тонкий/Курсив"
 
-#: admin/admin-interface.php:355
+#: admin/admin-interface.php:350
 msgid "Thin"
 msgstr "Тонкий"
 
-#: admin/admin-interface.php:334
+#: admin/admin-interface.php:328
 #: admin/settings/template-settings/global-settings.php:89
 msgid "Settings successfully reseted."
 msgstr "Настройки успешно обновлены."
 
-#: admin/admin-interface.php:326
+#: admin/admin-interface.php:320
 #: admin/settings/template-settings/global-settings.php:88
 msgid "Error: Settings can not save."
 msgstr "Невозможно сохранить настройки."
 
-#: admin/admin-interface.php:318
+#: admin/admin-interface.php:312
 #: admin/settings/template-settings/global-settings.php:87
 msgid "Settings successfully saved."
 msgstr "Настройки успешно сохранены."
 
-#: admin/admin-interface.php:211
+#: admin/admin-interface.php:205
 msgid "Great! You have the latest version installed."
 msgstr "Отлично! У вас установлена последняя версия."

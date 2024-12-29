@@ -1,49 +1,40 @@
-=== Smart Custom 404 error page [404page] ===
-Contributors: petersplugins
-Tags: page, 404, error, error page, 404 page, page not found, page not found error, 404 error page, missing, broken link, template, 404 link, seo, custom 404, custom 404 page, custom 404 error, custom 404 error page, customize 404, customize 404 page, customize 404 error page, classicpress
-Requires at least: 4.0
-Tested up to: 6.3
-Stable tag: 11.4.6
-Requires PHP: 5.4
+=== Smart Custom 404 Error Page ===
+Contributors: nerdpressteam, petersplugins, jchristopher
+Tags: 404, 404 page, custom 404, not found, 404 error
+Author: NerdPress
+Author URI: https://www.nerdpress.net
+Tested up to: 6.6
+Stable tag: 11.4.8
 License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Create your custom 404 error page the easy way! No coding. Works with most Themes.
+Create a custom 404 error page the easy way! No coding, and no redirects.
 
 == Description ==
 
-Bringing visitors to your website takes time and effort. Every visitor is important. The default 404 error page of most themes do not provide any information on what to find on your site. A first tme visitor, who does not know you, is left in a dead end and leaves your website. Set up a helpful custom 404 error page to keep him on your site.
+Bringing visitors to your website takes time and effort. Every visitor is important. The default 404 error page of most themes does not provide any information on what to find on your site. A first-time visitor, who does not know you, is left in a dead end and leaves your website. Set up a helpful custom 404 error page to keep them on your site!
 
 This handy plugin allows you to easily create your own 404 error page without any effort and it works with almost every theme.
 
-== Retired Plugin ==
+== Out of Retirement! ==
 
-Development, maintenance and support of this plugin has been retired in october 2023. You can use this plugin as long as is works for you. 
+NerdPress has adopted Smart Custom 404 Page! [Read the announcement here.](https://www.nerdpress.net/announcing-404-page/)
 
-There will be no more updates and I won't answer any support questions. Thanks for your understanding.
-
-Feel free to fork this plugin.
-
-== Thanks ==
-
-Many thanks to the more than 100,000 users of this plugin. You have made this plugin a huge success. It was a pleasure and an honor, but I am retiring from plugin development.
-
-Best regards,
-Peter
+We've been fans of this plugin for many years, and we're grateful for Peter's many years of service to the community. Peter retired from plugin development in October 2023, so we've jumped in to help ensure this plugin continues to work well now and in the future.
 
 == Usage ==
 
-Create your custom 404 error page just like any other page using the WordPress Page Editor. Then go to 'Appearance' -> '404 Error Page' and select the created page as your custom 404 error page. That's it!
+Create your custom 404 error page just like any other page using the WordPress Editor (`Pages > Add New`). Then go to `Appearance > 404 Error Page` and select the created page as your custom 404 error page. That's it!
 
 == Why use this plugin? ==
 
-Different from other similar plugins the 404page plugin **does not create redirects**. That’s **quite important** because a correct code 404 is delivered which tells search engines that the page does not exist and has to be removed from the index.
+Unlike similar plugins the 404page plugin **does not create redirects**. That’s **quite important** because a correct code 404 is delivered which tells search engines that the page does not exist and has to be removed from the index.
 
-Different from other similar plugins the 404page plugin **does not create additional server requests**. 
+Additionally, the 404page plugin **does not create additional server requests**. 
 
 == Requirements ==
 
-The only requirement for this plugin is that you change the Permalink Structure in ‘Settings’ -> ‘Permalinks’ to anything else but ‘Plain’. This also activates the WordPress 404 error handling.
+The only requirement for this plugin is that you change the Permalink Structure in `Settings > Permalinks` to anything else but "Plain." This also activates the WordPress 404 error handling.
 
 == Block & Shortcode ==
 
@@ -51,18 +42,17 @@ The only requirement for this plugin is that you change the Permalink Structure 
 
 The Plugin offers a block "URL causing 404 error" for the block-based editor to show the URL that caused the error. The block offers three display options:
 
-* "Page" to show the page including path ( e.g. does/not/exist )
-* "Domain Path" to show the URL without protocol and parameters ( e.g. example.com/does/not/exist )
-* "Domain Path" to show the URL without protocol and parameters ( e.g. example.com/does/not/exist )
-* "Full" to show the complete URL ( e.g. https://example.com/does/not/exist?p=1 )
+* "Page" to show the page including path ( e.g. `does/not/exist` )
+* "Domain Path" to show the URL without protocol and parameters ( e.g. `example.com/does/not/exist` )
+* "Full" to show the complete URL ( e.g. `https://example.com/does/not/exist?p=1` )
 
 = Shortcode =
 
 The Plugin offers a shortcode "pp_404_url" for the classic editor to show the URL that caused the error. There are three possible options:
 
-* [pp_404_url page] to show the page including path ( e.g. does/not/exist )
-* [pp_404_url domainpath] to show the URL without protocol and parameters ( e.g. example.com/does/not/exist )
-* [pp_404_url] or [pp_404_url full] to show the complete URL ( e.g. https://example.com/does/not/exist?p=1 )
+* **`[pp_404_url page]`** to show the page including path ( e.g. `does/not/exist` )
+* **`[pp_404_url domainpath]`** to show the URL without protocol and parameters ( e.g. `example.com/does/not/exist` )
+* **`[pp_404_url]`** or **`[pp_404_url full]`** to show the complete URL ( e.g. `https://example.com/does/not/exist?p=1` )
 
 == Plugin Privacy Information ==
 
@@ -73,29 +63,37 @@ The Plugin offers a shortcode "pp_404_url" for the classic editor to show the UR
 == For developers ==
 
 = Action Hook =
-The plugin adds an action hook 404page_after_404 which you can use to add extra functionality. The exact position the action occurs after an 404 error is detected depends on the Operating Method. Your function must not generate any output. There are no parameters.
+The plugin adds an action hook `404page_after_404` which you can use to add extra functionality. The exact position the action occurs after an 404 error is detected depends on the Operating Method. Your function must not generate any output. There are no parameters.
 
 = Constant =
-If the 404page plugin is installed and activated it defines the PHP constant PP_404. Check existence of it to detect the 404page plugin.
+If the 404page plugin is installed and activated it defines the PHP constant `PP_404`. Check existence of it to detect the 404page plugin.
 
 = Functions =
 
 The Plugin provides the following functions:
 
-* pp_404_is_active() to check if there is a custom 404 page selected and the selected page exists
-* pp_404_get_page_id() to get the ID of the 404 page 
-* pp_404_get_all_page_ids() to get an array of page IDs in all languages
-* pp_404_get_the_url( $type ) to get the URL that caused the 404 error
+* **`pp_404_is_active()`** to check if there is a custom 404 page selected and the selected page exists
+* **`pp_404_get_page_id()`** to get the ID of the 404 page 
+* **`pp_404_get_all_page_ids()`** to get an array of page IDs in all languages
+* **`pp_404_get_the_url( $type )`** to get the URL that caused the 404 error
   * Parameter $type string Optional
-    * "page" to get the page including path ( e.g. does/not/exist )
-	* "domainpath" to get the URL without protocol and parameters ( e.g. example.com/does/not/exist )
-	* "full" (default) to get the complete URL ( e.g. https://example.com/does/not/exist?p=1 )
+    * "page" to get the page including path ( e.g. `does/not/exist` )
+	* "domainpath" to get the URL without protocol and parameters ( e.g. `example.com/does/not/exist` )
+	* "full" (default) to get the complete URL ( e.g. `https://example.com/does/not/exist?p=1` )
 
 = Native Mode =
 
 If you are a theme developer you can add native support for the 404page plugin to your theme for full control.
 
 == Changelog ==
+
+= 11.4.8 (2024-10-02) =
+* Address potential XSS vulnerability. Thanks to Webbernaut for responsible disclosure.
+
+= 11.4.7 (2024-09-16) OUT OF RETIREMENT! =
+* NerdPress has adopted Smart Custom 404 Page! [Read the announcement here.](https://www.nerdpress.net/announcing-404-page/)
+* Tested up to WP 6.6
+* Modernized direct file access protection and removed closing PHP tags
 
 = 11.4.6 (2024-04-17) URGENT BUGFIX =
 * Bugfix after Cleanup

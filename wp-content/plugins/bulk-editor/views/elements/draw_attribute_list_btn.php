@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
     <ul>
         <?php if (!empty($selected_terms_ids)): ?>
             <?php foreach ($selected_terms_ids as $k => $term_id): ?>
-                <li class="wpbe_li_tag"><?php echo $terms[$term_id] ?></li>
+                <li class="wpbe_li_tag"><?php echo esc_html($terms[$term_id]) ?></li>
             <?php endforeach; ?>
         <?php else: ?>
             <li class="wpbe_li_tag"><?php esc_html_e('no items', 'bulk-editor') ?></li>

@@ -3,7 +3,7 @@
 Plugin Name: Simple Spoiler
 Plugin URI: https://webliberty.ru/simple-spoiler/
 Description: The plugin allows to create simple spoilers with shortcode.
-Version: 1.2
+Version: 1.4
 Author: Webliberty
 Author URI: https://webliberty.ru/
 Text Domain: simple-spoiler
@@ -63,25 +63,25 @@ function simple_spoiler_settings() {
 
 function spoiler_bg_wrap() {
 	$val = get_option( 'simple_spoiler_bg_wrap' );
-	$val = $val ? $val['input'] : '#f1f1f1';
+	$val = $val ? sanitize_hex_color( $val['input'] ) : '#f1f1f1';
 	?>
-	<input type="text" name="simple_spoiler_bg_wrap[input]" value="<?php echo esc_attr( $val ) ?>" />
+	<input type="color" name="simple_spoiler_bg_wrap[input]" value="<?php echo esc_attr( $val ) ?>" />
 	<?php
 }
 
 function spoiler_bg_body() {
 	$val = get_option('simple_spoiler_bg_body');
-	$val = $val ? $val['input'] : '#fbfbfb';
+	$val = $val ? sanitize_hex_color( $val['input'] ) : '#fbfbfb';
 	?>
-	<input type="text" name="simple_spoiler_bg_body[input]" value="<?php echo esc_attr( $val ) ?>" />
+	<input type="color" name="simple_spoiler_bg_body[input]" value="<?php echo esc_attr( $val ) ?>" />
 	<?php
 }
 
 function spoiler_br_color() {
 	$val = get_option('simple_spoiler_br_color');
-	$val = $val ? $val['input'] : '#dddddd';
+	$val = $val ? sanitize_hex_color( $val['input'] ) : '#dddddd';
 	?>
-	<input type="text" name="simple_spoiler_br_color[input]" value="<?php echo esc_attr( $val ) ?>" />
+	<input type="color" name="simple_spoiler_br_color[input]" value="<?php echo esc_attr( $val ) ?>" />
 	<?php
 }
 
@@ -100,12 +100,21 @@ function simple_spoiler_shortcode($atts, $content) {
 		$sp_name = $atts['title'];
 	}
 	return '<div class="spoiler-wrap">
-				<h2 class="spoiler-head folded">'.$sp_name.'</h2>
+				<div class="spoiler-head folded">'.$sp_name.'</div>
 				<div class="spoiler-body">'.$content.'</div>
 			</div>';
 }
 add_shortcode( 'spoiler', 'simple_spoiler_shortcode' );
-add_filter( 'comment_text', 'do_shortcode' );
+add_filter( 'comment_text', 'do_shortcodes_in_comment', 11, 2 );
+function do_shortcodes_in_comment( $content, $comm ){
+	if( 'comment' === $comm->comment_type ){
+		$save = $shortcodes = & $GLOBALS['shortcode_tags'];
+		$shortcodes = [ 'spoiler' => $shortcodes['spoiler'] ];
+		$content = apply_shortcodes( $content );
+		$shortcodes = $save;
+	}
+	return $content;
+}
 
 add_action( 'wp_enqueue_scripts', 'simple_spoiler_head' );
 function simple_spoiler_head() {
@@ -123,9 +132,9 @@ function simple_spoiler_css() {
 		$bg_body = get_option( 'simple_spoiler_bg_body' );
 		$br_color = get_option( 'simple_spoiler_br_color' );
 
-		$spoiler_wrap = empty( $bg_wrap['input'] ) ? '#f1f1f1' : $bg_wrap['input'];
-		$spoiler_body = empty( $bg_body['input'] ) ? '#fbfbfb' : $bg_body['input'];
-		$spoiler_border = empty( $br_color['input'] ) ? '#dddddd' : $br_color['input'];
+		$spoiler_wrap = empty( $bg_wrap['input'] ) ? '#f1f1f1' : sanitize_hex_color( $bg_wrap['input'] );
+		$spoiler_body = empty( $bg_body['input'] ) ? '#fbfbfb' : sanitize_hex_color( $bg_body['input'] );
+		$spoiler_border = empty( $br_color['input'] ) ? '#dddddd' : sanitize_hex_color( $br_color['input'] );
 
 		?>
 		<style type="text/css">

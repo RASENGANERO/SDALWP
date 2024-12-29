@@ -7,7 +7,7 @@ namespace SG_Security\Readme_Service;
 class Readme_Service {
 
 	/**
-	 * Check if the file exist in the root directory of the WP Instalation
+	 * Check if the file exist in the root directory of the WP Installation
 	 *
 	 * @since  1.0.0
 	 *
@@ -23,7 +23,7 @@ class Readme_Service {
 	}
 
 	/**
-	 * Remove the readme.html file from the root directory of WP Instalation.
+	 * Remove the readme.html file from the root directory of WP Installation.
 	 *
 	 * @since  1.0.0
 	 *
@@ -41,7 +41,7 @@ class Readme_Service {
 		}
 
 		// Try to remove the file.
-		if ( @unlink( ABSPATH . 'readme.html' ) === false ) {
+		if ( wp_delete_file( ABSPATH . 'readme.html' ) === false ) {
 			return false;
 		}
 

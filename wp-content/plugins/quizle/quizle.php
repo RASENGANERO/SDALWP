@@ -13,9 +13,9 @@
  * License URI:
  * Text Domain:       quizle
  * Domain Path:       /languages
- * Version:           1.1.0
+ * Version:           1.4.0
  * Requires at least: 5.6
- * Tested up to:      6.2
+ * Tested up to:      6.7.1
  * Requires PHP:      7.2
  */
 
@@ -29,21 +29,29 @@ use Wpshop\Quizle\Admin\QuizleResultActions;
 use Wpshop\Quizle\Admin\QuizlePostGrid;
 use Wpshop\Quizle\Admin\QuizleResultGrid;
 use Wpshop\Quizle\Admin\Settings;
+use Wpshop\Quizle\Admin\Templates;
 use Wpshop\Quizle\Analytics;
 use Wpshop\Quizle\AssetsProvider;
 use Wpshop\Quizle\Db\Upgrade;
 use Wpshop\Quizle\DefaultHooks;
 use Wpshop\Quizle\Encryption;
+use Wpshop\Quizle\Admin\ImportExport;
+use Wpshop\Quizle\FileUpload;
+use Wpshop\Quizle\Integration\ReCaptcha;
+use Wpshop\Quizle\Integration\YandexMetrika;
 use Wpshop\Quizle\MailService;
-use Wpshop\Quizle\PluginContainer;
 use Wpshop\Quizle\Quizle;
+use Wpshop\Quizle\QuizleResultExport;
 use Wpshop\Quizle\QuizleResultHandler;
+use Wpshop\Quizle\RestAPI;
 use Wpshop\Quizle\Shortcodes;
 use Wpshop\Quizle\Support\SeoSupport;
+use function Wpshop\Quizle\container;
 
 require __DIR__ . '/vendor/autoload.php';
 
-const QUIZLE_VERSION    = '1.1.0';
+
+const QUIZLE_VERSION    = '1.4.0';
 const QUIZLE_FILE       = __FILE__;
 const QUIZLE_SLUG       = 'quizle';
 const QUIZLE_TEXTDOMAIN = 'quizle';
@@ -53,23 +61,37 @@ add_action( 'plugins_loaded', 'Wpshop\Quizle\init_i18n' );
 add_action( 'activated_plugin', 'Wpshop\Quizle\redirect_on_activated' );
 add_filter( 'plugin_action_links_' . QUIZLE_BASENAME, 'Wpshop\Quizle\add_settings_plugin_action' );
 add_action( 'plugins_loaded', function () {
-    PluginContainer::get( Analytics::class )->init();
-    PluginContainer::get( AssetsProvider::class )->init();
-    PluginContainer::get( DefaultHooks::class )->init();
-    PluginContainer::get( Encryption::class )->init();
-    PluginContainer::get( MailService::class )->init();
-    PluginContainer::get( MenuPage::class )->init();
-    PluginContainer::get( Quizle::class )->init();
-    PluginContainer::get( QuizleResultActions::class )->init();
-    PluginContainer::get( QuizlePostGrid::class )->init();
-    PluginContainer::get( QuizleResultGrid::class )->init();
-    PluginContainer::get( QuizleResultHandler::class )->init();
-    PluginContainer::get( SeoSupport::class )->init();
-    PluginContainer::get( Settings::class )->init();
-    PluginContainer::get( Shortcodes::class )->init();
-    PluginContainer::get( Upgrade::class )->init();
+    container()->get( Analytics::class )->init();
+    container()->get( AssetsProvider::class )->init();
+    container()->get( DefaultHooks::class )->init();
+    container()->get( Encryption::class )->init();
+    container()->get( FileUpload::class )->init();
+    container()->get( ImportExport::class )->init();
+    container()->get( MailService::class )->init();
+    container()->get( MenuPage::class )->init();
+    container()->get( Quizle::class )->init();
+    container()->get( QuizleResultActions::class )->init();
+    container()->get( QuizlePostGrid::class )->init();
+    container()->get( QuizleResultExport::class )->init();
+    container()->get( QuizleResultGrid::class )->init();
+    container()->get( QuizleResultHandler::class )->init();
+    container()->get( ReCaptcha::class )->init();
+    container()->get( RestAPI::class )->init();
+    container()->get( SeoSupport::class )->init();
+    container()->get( Settings::class )->init();
+    container()->get( Shortcodes::class )->init();
+    container()->get( Templates::class )->init();
+    container()->get( Upgrade::class )->init();
+    container()->get( YandexMetrika::class )->init();
 } );
 
-register_activation_hook( __FILE__, 'Wpshop\Quizle\activate' );
-register_deactivation_hook( __FILE__, 'Wpshop\Quizle\deactivate' );
-//register_uninstall_hook( __FILE__, 'Wpshop\Quizle\uninstall' );
+add_action( 'init', function () {
+    if ( get_option( 'quizle--flush_rewrite_rules' ) ) {
+        flush_rewrite_rules();
+        delete_option( 'quizle--flush_rewrite_rules' );
+    }
+} );
+
+register_activation_hook( QUIZLE_FILE, 'Wpshop\Quizle\activate' );
+register_deactivation_hook( QUIZLE_FILE, 'Wpshop\Quizle\deactivate' );
+//register_uninstall_hook( QUIZLE_FILE, 'Wpshop\Quizle\uninstall' );

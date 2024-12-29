@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @version 1.0.0
+ * @version 1.3.0
  */
 
 if ( ! defined( 'WPINC' ) ) {
@@ -9,13 +9,13 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 use Wpshop\Quizle\Admin\Settings;
-use Wpshop\Quizle\PluginContainer;
+use function Wpshop\Quizle\container;
 
 /**
  * @var array{'label':string} $args
  */
 
-$settings = PluginContainer::get( Settings::class );
+$settings = container()->get( Settings::class );
 
 ?>
 

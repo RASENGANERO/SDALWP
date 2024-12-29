@@ -10,7 +10,11 @@ namespace Smush\App\Pages;
 
 use Smush\App\Abstract_Summary_Page;
 use Smush\App\Interface_Page;
+use Smush\Core\Array_Utils;
+use Smush\Core\CDN\CDN_Helper;
 use Smush\Core\Settings;
+use Smush\Core\Webp\Webp_Configuration;
+use Smush\Core\Media_Library\Background_Media_Library_Scanner;
 use WP_Smush;
 
 if ( ! defined( 'WPINC' ) ) {
@@ -55,7 +59,7 @@ class Dashboard extends Abstract_Summary_Page implements Interface_Page {
 				null,
 				'summary',
 				array(
-					'box_class'         => 'sui-box sui-summary',
+					'box_class'         => 'sui-box sui-summary sui-summary-smush-metabox',
 					'box_content_class' => false,
 				)
 			);
@@ -170,29 +174,24 @@ class Dashboard extends Abstract_Summary_Page implements Interface_Page {
 			$this->upgrade_url
 		);
 
-		$core = WP_Smush::get_instance()->core();
-
-		// Split human size to get format and size.
-		$human = explode( ' ', $core->stats['human'] );
-
-		$resize_count = $core->get_savings( 'resize', false, false, true );
-
-		$args = array(
-			'human_format'    => empty( $human[1] ) ? 'B' : $human[1],
-			'human_size'      => empty( $human[0] ) ? '0' : intval( $human[0] ),
-			'cdn_status'      => WP_Smush::get_instance()->core()->mod->cdn->status(),
-			'is_cdn'          => $this->settings->get( 'cdn' ),
-			'is_lazy_load'    => $this->settings->get( 'lazy_load' ),
-			'is_local_webp'   => $this->settings->get( 'webp_mod' ),
-			'resize_count'    => ! $resize_count ? 0 : $resize_count,
-			'total_optimized' => $core->stats['total_images'],
-			'stats_percent'   => $core->stats['percent'] > 0 ? number_format_i18n( $core->stats['percent'], 1 ) : 0,
-			'upsell_url_cdn'  => $upsell_url_cdn,
-			'upsell_url_webp' => $upsell_url_webp,
-			'webp_configured' => true === WP_Smush::get_instance()->core()->mod->webp->is_configured(),
-			'percent_grade'     => $core->percent_grade,
-			'percent_metric'    => $core->percent_metric,
-			'percent_optimized' => $core->percent_optimized,
+		$core         = WP_Smush::get_instance()->core();
+		$array_utils  = new Array_Utils();
+		$global_stats = $core->get_global_stats();
+		$args         = array(
+			'human_bytes'       => $array_utils->get_array_value( $global_stats, 'human_bytes' ),
+			'cdn_status'        => CDN_Helper::get_instance()->get_cdn_status_string(),
+			'is_cdn'            => $this->settings->get( 'cdn' ),
+			'is_lazy_load'      => $this->settings->get( 'lazy_load' ),
+			'is_local_webp'     => $this->settings->get( 'webp_mod' ),
+			'resize_count'      => $array_utils->get_array_value( $global_stats, 'count_resize' ),
+			'total_optimized'   => $array_utils->get_array_value( $global_stats, 'count_images' ),
+			'stats_percent'     => $array_utils->get_array_value( $global_stats, 'savings_percent' ),
+			'upsell_url_cdn'    => $upsell_url_cdn,
+			'upsell_url_webp'   => $upsell_url_webp,
+			'webp_configured'   => Webp_Configuration::get_instance()->is_configured(),
+			'percent_grade'     => $array_utils->get_array_value( $global_stats, 'percent_grade' ),
+			'percent_metric'    => $array_utils->get_array_value( $global_stats, 'percent_metric' ),
+			'percent_optimized' => $array_utils->get_array_value( $global_stats, 'percent_optimized' ),
 		);
 
 		$this->view( 'dashboard/summary-meta-box', $args );
@@ -204,11 +203,10 @@ class Dashboard extends Abstract_Summary_Page implements Interface_Page {
 	 * @since 3.8.6
 	 */
 	public function bulk_compress_meta_box() {
-		$core          = WP_Smush::get_instance()->core();
-		$uncompressed  = count( $core->get_unsmushed_attachments() );
-		$resmush_count = count( get_option( 'wp-smush-resmush-list', array() ) );
-
-		$upsell_url = add_query_arg(
+		$array_utils  = new Array_Utils();
+		$core         = WP_Smush::get_instance()->core();
+		$global_stats = $core->get_global_stats();
+		$upsell_url   = add_query_arg(
 			array(
 				'utm_source'   => 'smush',
 				'utm_medium'   => 'plugin',
@@ -220,14 +218,17 @@ class Dashboard extends Abstract_Summary_Page implements Interface_Page {
 		$bg_optimization               = WP_Smush::get_instance()->core()->mod->bg_optimization;
 		$background_processing_enabled = $bg_optimization->should_use_background();
 		$background_in_processing      = $background_processing_enabled && $bg_optimization->is_in_processing();
+		$background_scan_status        = Background_Media_Library_Scanner::get_instance()->get_background_process()->get_status();
 
 		$args = array(
-			'total_count'                     => $core->total_count,
-			'uncompressed'                    => $uncompressed + $resmush_count,
+			'total_count'                     => (int) $array_utils->get_array_value( $global_stats, 'count_total' ),
+			'uncompressed'                    => (int) $array_utils->get_array_value( $global_stats, 'remaining_count' ),
 			'upsell_url'                      => $upsell_url,
 			'background_processing_enabled'   => $background_processing_enabled,
 			'background_in_processing'        => $background_in_processing,
 			'background_in_processing_notice' => $bg_optimization->get_in_process_notice(),
+			'bulk_background_process_dead'    => $background_processing_enabled && $bg_optimization->is_dead(),
+			'scan_background_process_dead'    => $background_scan_status->is_dead(),
 		);
 
 		$this->view( 'dashboard/bulk/meta-box', $args );
@@ -281,10 +282,13 @@ class Dashboard extends Abstract_Summary_Page implements Interface_Page {
 			$this->upgrade_url
 		);
 
-		$webp = WP_Smush::get_instance()->core()->mod->webp;
+		$webp_configuration = Webp_Configuration::get_instance();
+		$is_webp_configured = $webp_configuration->is_configured();
+		$error_message      = $is_webp_configured ? '' : $webp_configuration->server_configuration()->get_configuration_message();
 
 		$args = array(
-			'is_configured'  => $webp->get_is_configured_with_error_message(),
+			'is_configured'  => $is_webp_configured,
+			'error_message'  => $error_message,
 			'is_webp_active' => $this->settings->get( 'webp_mod' ),
 			'upsell_url'     => $upsell_url,
 		);
@@ -388,7 +392,7 @@ class Dashboard extends Abstract_Summary_Page implements Interface_Page {
 		);
 
 		$args = array(
-			'cdn_status' => WP_Smush::get_instance()->core()->mod->cdn->status(),
+			'cdn_status' => CDN_Helper::get_instance()->get_cdn_status_string(),
 			'is_webp'    => $this->settings->get( 'webp' ),
 			'upsell_url' => $upsell_url,
 		);

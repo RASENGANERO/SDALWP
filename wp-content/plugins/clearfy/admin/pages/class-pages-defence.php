@@ -17,7 +17,7 @@ class WCL_DefencePage extends WCL_Page {
 	 * The id of the page in the admin menu.
 	 *
 	 * Mainly used to navigate between pages.
-	 * @see FactoryPages475_AdminPage
+	 * @see FactoryPages480_AdminPage
 	 *
 	 * @since 1.0.0
 	 * @var string
@@ -132,7 +132,7 @@ class WCL_DefencePage extends WCL_Page {
 			//'cssClass' => 'postbox'
 		);
 		
-		return wbcr_factory_475_apply_filters_deprecated( 'wbcr_clr_defence_form_options', array(
+		return wbcr_factory_480_apply_filters_deprecated( 'wbcr_clr_defence_form_options', array(
 			$form_options,
 			$this
 		), '1.3.1', 'wbcr_clearfy_defence_form_options' );

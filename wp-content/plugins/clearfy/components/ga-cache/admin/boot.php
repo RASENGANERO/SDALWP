@@ -21,9 +21,9 @@ if( !defined('ABSPATH') ) {
  * options for analytic caching are enabled or not. If enabled,
  * add cron task.
  *
- * @param Wbcr_FactoryPages475_ImpressiveThemplate $page
+ * @param Wbcr_FactoryPages480_ImpressiveThemplate $page
  *
- * @param Wbcr_Factory475_Plugin $plugin
+ * @param Wbcr_Factory480_Plugin $plugin
  *
  * @return void
  * @since 3.0.1

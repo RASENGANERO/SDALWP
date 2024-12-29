@@ -1,9 +1,9 @@
 === a3 Lazy Load ===
 Contributors: a3rev, a3rev Software, nguyencongtuan
 Tags: a3 lazy load, Lazy Loading, image lazy load, lazyload
-Requires at least: 5.6
-Tested up to: 6.1
-Stable tag: 2.6.1
+Requires at least: 6.0
+Tested up to: 6.7
+Stable tag: 2.7.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -201,6 +201,29 @@ Filter tags to add to class name of theme to exclude lazy load on images or vide
 
 
 == Changelog ==
+
+= 2.7.3 - 2024/07/15 =
+* This release has various tweaks for compatibility with WordPress 6.6
+* Tweak - Tested for compatibility with WordPress 6.6
+
+= 2.7.2 - 2024/02/06 =
+* This release has a fix for conflict with WordPress expand on click feature in the image block.
+* Fix - Update lazy load work compatibility with Expand on Click feature from core image block
+
+= 2.7.1 - 2023/11/23 =
+* This maintenance release has plugin framework updates for compatibility with PHP 8.1 onwards, plus compatibility with WordPress 6.4.1
+* Tweak - Test for compatibility with WordPress 6.4.1
+* Framework - Set parameter number of preg_match function from null to 0 for compatibility with PHP 8.1 onwards
+* Framework - Validate empty before call trim for option value
+
+= 2.7.0 - 2023/01/03 =
+* This feature release removes the fontawesome lib and replaces icons with SVGs plus adds Default Topography option to font controls.
+* Feature - Convert icon from font awesome to SVG
+* Feature - Update styling for new SVG icons
+* Plugin Framework - Update typography control from plugin framework to add support for Default value
+* Plugin Framework - Default value will get fonts set in the theme.
+* Plugin Framework - Change generate typography style for change on typography control
+* Plugin Framework - Remove fontawesome lib
 
 = 2.6.1 - 2022/10/04 =
 * This maintenance release has a security vulnerability patch, please run this update.
@@ -617,6 +640,18 @@ Filter tags to add to class name of theme to exclude lazy load on images or vide
 
 
 == Upgrade Notice ==
+
+= 2.7.3 =
+This release has various tweaks for compatibility with WordPress 6.6
+
+= 2.7.2 =
+This release has a fix for conflict with WordPress expand on click feature in the image block.
+
+= 2.7.1 =
+This maintenance release has plugin framework updates for compatibility with PHP 8.1 onwards, plus compatibility with WordPress 6.4.1
+
+= 2.7.0 =
+This feature release removes the fontawesome lib and replaces icons with SVGs plus adds Default Topography option to font controls.
 
 = 2.6.1 =
 This maintenance release has a security vulnerability patch, please run this update.

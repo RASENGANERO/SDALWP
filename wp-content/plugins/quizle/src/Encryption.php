@@ -10,10 +10,22 @@ class Encryption {
     protected $salt;
 
     /**
-     * @param string|null $salt
+     * Constructor
      */
-    public function __construct( $salt = null ) {
-        $this->salt = $_COOKIE[ COOKIE_SALT ] ?? ( $salt ?: $this->generate_salt( 8 ) );
+    public function __construct() {
+        $salt_length = 8;
+
+        /**
+         * Allows to change salt generation
+         *
+         * @since 1.2.0
+         */
+        $this->salt = apply_filters(
+            'quizle/encryption/salt',
+            substr( md5( defined( 'NONCE_SALT' ) ? NONCE_SALT : 'NONCE_SALT' ), 2, $salt_length ),
+            $salt_length,
+            $this
+        );
     }
 
     /**
@@ -86,7 +98,7 @@ class Encryption {
      *
      * @return string
      */
-    protected function generate_salt( $length ) {
+    public function generate_salt( $length ) {
         return generate_string( $length );
     }
 }

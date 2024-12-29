@@ -179,6 +179,12 @@ body {
   border: 1px solid #283655;
 }
 
+
+.pp-admin-page-footer {
+  margin-top: 20px;
+  padding: 24px;
+}
+
 .pp-admin-page-wrapper .form-table th, .form-table td {
   display: block;
   width: auto;

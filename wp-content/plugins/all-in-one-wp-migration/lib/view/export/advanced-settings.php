@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (C) 2014-2020 ServMask Inc.
+ * Copyright (C) 2014-2023 ServMask Inc.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -41,7 +41,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<label for="ai1wm-encrypt-backups">
 						<input type="checkbox" id="ai1wm-encrypt-backups" name="options[encrypt_backups]" />
 						<?php _e( 'Protect this backup with a password', AI1WM_PLUGIN_NAME ); ?>
-						<small style="color: red;">beta</small>
 					</label>
 					<div class="ai1wm-encrypt-backups-passwords-toggle">
 						<div class="ai1wm-encrypt-backups-passwords-container">
@@ -124,6 +123,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</li>
 
 			<?php do_action( 'ai1wm_export_advanced_settings' ); ?>
+
+			<?php do_action( 'ai1wm_export_exclude_db_tables' ); ?>
 		</ul>
 	</div>
 </div>

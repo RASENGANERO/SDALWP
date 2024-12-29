@@ -1,12 +1,16 @@
 <?php
 
+/**
+ * @version 1.3.0
+ */
+
 use Wpshop\Quizle\Admin\Settings;
 use Wpshop\Quizle\Css\CssBuilder;
 use Wpshop\Quizle\Db\Database;
-use Wpshop\Quizle\PluginContainer;
+use function Wpshop\Quizle\container;
 use const Wpshop\Quizle\RESULT_REQUEST_VAR;
 
-$settings = PluginContainer::get( Settings::class );
+$settings = container()->get( Settings::class );
 
 ?>
 <!doctype html>
@@ -26,7 +30,7 @@ $settings = PluginContainer::get( Settings::class );
     <?php
     $result = null;
     if ( $token = $_REQUEST[ RESULT_REQUEST_VAR ] ?? null ) {
-        $result = PluginContainer::get( Database::class )->get_quizle_result_by_token( $token );
+        $result = container()->get( Database::class )->get_quizle_result_by_token( $token );
     }
     if ( $result && ( $result_item = $result->get_result_item() ) ) {
         $color_primary    = get_post_meta( $result->quiz_id, 'quizle-color-primary', true ) ?: null;

@@ -101,7 +101,7 @@ if ( ! defined( 'LOADING_COMMENTS_PLUS_AS_ADDON' ) ) {
 		return $page_url;
 	}
 
-	add_filter( 'wbcr_factory_pages_475_imppage_rating_widget_url', 'wbcr_cmp_rating_widget_url', 10, 2 );
+	add_filter( 'wbcr_factory_pages_480_imppage_rating_widget_url', 'wbcr_cmp_rating_widget_url', 10, 2 );
 
 	/**
 	 * Удаляем лишние виджеты из правого сайдбара в интерфейсе плагина

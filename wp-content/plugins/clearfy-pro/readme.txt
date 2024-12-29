@@ -2,9 +2,9 @@
 
 Contributors:      wpshopbiz
 Requires at least: 4.7
-Tested up to:      6.0.2
+Tested up to:      6.7
 Requires PHP:      5.6
-Stable tag:        3.5.3
+Stable tag:        3.6.4
 License:           WPShop License
 License URI:       https://wpshop.ru/license
 Tags:              SEO, protect, protect admin, seo optimize, clear code, disable emoji, rest api, rss feeds, remove versions, yoast helper, yoast breadbrubms, minifier, minify, remove meta generator, rsd, wlw, next link, previous link, remove dns-prefetch
@@ -21,6 +21,39 @@ Powerful All in One plugin (SEO, Protect, Clear code  etc.)
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Changelog ==
+
+= 3.6.4 - 09.12.2024 =
+* Исправлено: загрузка локальных аватаров пользователей в админке на странице пользователя
+
+= 3.6.3 - 27.11.2024 =
+* Исправлено: циклический редирект при отключении RSS и вывод ссылок на RSS в исходном коде
+
+= 3.6.2 - 25.11.2024 =
+* Исправлено: предупреждение Warning в модуле отключения комментариев
+
+= 3.6.1 - 25.11.2024 =
+* Исправлено: предупреждение Warning: Trying to access array offset ... clearfy-pro.php on line 1385
+
+= 3.6.0 - 21.11.2024 =
+* Добавлено: сервис Clearfy Cloud+, который собирает и анализирует потенциально опасные запросы на ваш сайт, опасных ботов, которые ищут уязвимости. Подробнее https://support.wpshop.ru/docs/plugins/clearfy-pro/clearfy-cloud/
+* Добавлено: хук `clearfy/disable_feeds/is_redirect` для возможности выбора отключения RSS, редирект или 404 ошибка https://support.wpshop.ru/docs/plugins/clearfy-pro/hooks/#clearfy-disable_feeds-is_redirect-3-6-0
+* Добавлено: хук `clearfy/disable_feeds/is_feed` для ручной настройки на каких страницах отключать фид, а на каких нет https://support.wpshop.ru/docs/plugins/clearfy-pro/hooks/#clearfy-disable_feeds-is_feed-3-6-0
+* Добавлено: хук `clearfy/content_protection/enable` для ручной настройки функции "защиты от копирования" для отдельных страниц https://support.wpshop.ru/faq/clearfy-disable-content-protection/
+* Добавлено: в robots.txt новое правило Disallow: /?customize_changeset_uuid= и Clean-param для Яндекса, подробнее https://web1.ru/customize-changeset-uuid/
+* Улучшено: полностью переписан модуль «Отключить ленту RSS»
+* Улучшено: стили окна уведомления о Cookie, сделали более современными
+* Улучшено: обновили список исключения REST API для популярных плагинов
+* Улучшено: внешний вид и верстка плагина, более современный, лучше адаптируется
+* Исправлено: переводы для версии WP 6.7
+* Исправлено: работа IndexNow вместе с плагином Elementor
+* Исправлено: вывод даты и времени в Журнале 404 и IndexNow, время теперь выводится в часовом поясе сайта
+* Исправлено: баг с редиректом со старых адресов после транслитерации урлов
+* Исправлено: перенос строк в сообщениях модуля "Защита от перебора паролей"
+* Исправлено: конвертация буквы Ё в транслитерации, на некоторых устройствах
+* Исправлено: notice при Отключении комментариев и переходе на несуществующую страницу
+* Исправлено: ссылки на модерацию комментариев теперь прямые с /wp-admin/ и работают сразу из письма, даже если включено "Сокрытие админки"
+* Исправлено: правильный вывод canonical для Rank Math на странице пагинации у тегов
+* Исправлено: работа в мультисайте и определение активированных SEO-плагинов
 
 = 3.5.3 - 23.09.2022 =
 * Добавлена: поддержка Rank Math

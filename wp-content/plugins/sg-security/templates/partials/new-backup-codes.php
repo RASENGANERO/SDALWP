@@ -7,7 +7,7 @@
 
 <?php if ( ! empty( $args['backup_codes'] ) ) : ?>
 	<div class="qr-section" style="text-align: center">
-		<pre style="margin: 20px;"><code style="background: #2b2b2b; color: #f8f8f2;"><?php echo implode( "\n", $args['backup_codes'] ); ?></code></pre>
+		<pre style="margin: 20px;"><code style="background: #2b2b2b; color: #f8f8f2;"><?php echo implode( "\n", esc_html( $args['backup_codes'] ) ); ?></code></pre>
 	</div>
 <?php endif ?>
 <div class="backup_codes_written" style="text-align: left">

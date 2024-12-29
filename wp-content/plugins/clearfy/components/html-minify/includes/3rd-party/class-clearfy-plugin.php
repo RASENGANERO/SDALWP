@@ -42,6 +42,13 @@ class WHTM_Plugin {
 		}
 
 		add_action( 'plugins_loaded', [ $this, 'plugins_loaded' ] );
+
+		// Wordpress 6.7 fix
+		add_action( 'init', function () {
+			if ( is_admin() ) {
+				$this->register_pages();
+			}
+		} );
 	}
 
 	/**
@@ -66,10 +73,6 @@ class WHTM_Plugin {
 	 * @throws \Exception
 	 */
 	public function plugins_loaded() {
-		if ( is_admin() ) {
-			$this->register_pages();
-		}
-
 		require_once( WHTM_PLUGIN_DIR . '/includes/classes/class-base.php' );
 		require_once( WHTM_PLUGIN_DIR . '/includes/classes/class-html.php' );
 		require_once( WHTM_PLUGIN_DIR . '/includes/classes/class-main.php' );

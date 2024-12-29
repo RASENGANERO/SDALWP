@@ -142,7 +142,7 @@ class Activity_Log {
 		$class = __NAMESPACE__ . '\\Activity_Log_' . str_replace( ' ', '_', ucwords( str_replace( '_', ' ', $type ) ) );
 
 		if ( ! class_exists( $class ) ) {
-			throw new \Exception( 'Unknown activity log type "' . $type . '".' );
+			throw new \Exception( 'Unknown activity log type "' . esc_html( $type ) . '".' );
 		}
 
 		$this->$type = new $class();
@@ -150,12 +150,12 @@ class Activity_Log {
 
 
 	/**
-	 * Set the cron job for deleting old logs.
+	 * Set the CRON job for deleting old logs.
 	 *
 	 * @since  1.0.0
 	 */
 	public function set_sgs_logs_cron() {
-		// Bail if cron is disabled.
+		// Bail if CRON is disabled.
 		if ( 1 === Helper_Service::is_cron_disabled() ) {
 			return;
 		}
@@ -166,12 +166,12 @@ class Activity_Log {
 	}
 
 	/**
-	 * Delete logs on plugin page if cron is disabled.
+	 * Delete logs on plugin page if CRON is disabled.
 	 *
 	 * @since  1.0.0
 	 */
 	public function delete_logs_on_admin_page() {
-		// Delete if we are on plugin page and cron is disabled.
+		// Delete if we are on plugin page and CRON is disabled.
 		if (
 			isset( $_GET['page'] ) &&
 			'sg-security' === $_GET['page'] &&
@@ -226,7 +226,7 @@ class Activity_Log {
 	 * @return int $log_lifetime How many days the log is preserved, 12 by default.
 	 */
 	public static function get_activity_log_lifetime() {
-		// Set custom log lifetime interval in days. The intval covers the cases for string, array and sql injections.
+		// Set custom log lifetime interval in days. The intval covers the cases for string, array and SQL injections.
 		$log_lifetime = intval( apply_filters( 'sgs_set_activity_log_lifetime', get_option( 'sgs_activity_log_lifetime', 12 ) ) );
 
 		// If the custom value is less than 1 day or more than 12, fallback to the default lifetime.

@@ -19,6 +19,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @copyright (c) 2018 Webraftic Ltd
  */
-class WbcrCmp_MoreFeaturesPage extends \WBCR\Factory_Templates_128\Pages\MoreFeatures {
+class WbcrCmp_MoreFeaturesPage extends \WBCR\Factory_Templates_134\Pages\MoreFeatures {
 
 }

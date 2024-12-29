@@ -7,10 +7,10 @@ Donate link: https://gotmls.net/donate/
 Tags: anti-malware, security, scanner, brute-force, firewall
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html#license-text
-Version: 4.23.69
-Stable tag: 4.23.69
+Version: 4.23.73
+Stable tag: 4.23.73
 Requires at least: 3.3
-Tested up to: 6.6
+Tested up to: 6.7.1
 
 This Anti-Malware scanner searches for Malware, Viruses, and other security threats and vulnerabilities on your server and it helps you fix them.
 
@@ -99,6 +99,17 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 5. The Quarantine showing threats that have been fix already.
 
 == Changelog ==
+
+= 4.23.73 =
+* Added cleanup for old _session files.
+* Fixed hidden files exception to the skip by extention option in last update.
+* Fixed updates to manual session files when PHP sessions are not saves.
+* Checked code for compatibility with WordPress 6.7.1.
+
+= 4.23.71 =
+* Set autoload to false on the large values in wp_option.
+* Added exception to the skip by extention option so that hidden files are never skipped.
+* Checked code for compatibility with WordPress 6.6.2.
 
 = 4.23.69 =
 * Updated Brute-Force Login Protection to integrate better with login forms from other plugins like WP User Manager and StranoWeb Ajax Login.
@@ -486,6 +497,12 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 == Upgrade Notice ==
 
+= 4.23.73 =
+* Added cleanup for old _session files, fxed hidden files exception to the skip by extention option and updates to manual session files when PHP sessions are not saves, and checked code for compatibility with WordPress 6.7.1.
+
+= 4.23.71 =
+Set autoload to false on the large values in wp_option, added exception to never skip hidden files, and checked code for compatibility with WordPress 6.6.2.
+
 = 4.23.69 =
 Updated Brute-Force Login Protection to integrate better with login forms from other plugins, added option to hide the Brute-Force Login Protection logo on the login page, and checked code for compatibility with WordPress 6.6.
 
@@ -589,7 +606,7 @@ Fixed a bug in the Nonce Token Errors that was created by changes in the last re
 Added wp_options table to the db_scan and fixed a few minor bugs in the quarantine view, and changed some wording and checked code for compatibility with WP 5.2.1 (latest release).
 
 = 4.18.69 =
-Added a Warning message about the vulnerability in the yuzo-related-post plugin,  updated the Quarantine interface with a re-scan / re-clean feature, fixed a bug in the scan depth array that would produce PHP Notices, changed some wording and other minor fomatting issues, and checked code for compatibility with WP 5.2 (latest release).
+Added warning message about vulnerability in yuzo-related-post plugin, updated Quarantine interface with re-scan/re-clean feature, fixed bug in scan depth array that produced PHP Notices, changed some wording and other minor fomatting issues, and checked code for compatibility with WP 5.2.
 
 = 4.18.63 =
 Fixed a major bug in the Firewall updates that could cause a False Positive lockout.

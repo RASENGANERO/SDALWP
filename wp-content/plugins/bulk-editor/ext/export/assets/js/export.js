@@ -67,6 +67,7 @@ function wpbe_export(format) {
 
     var export_txt = lang.export.want_to_export + '\n';
 
+console.log(wpbe_export_time_postfix);
     //***   
 
     jQuery('.wpbe_export_posts_btn').hide();

@@ -3,7 +3,7 @@
  * Webcraftic AM plugin load filter
  * Dynamically activated only plugins that you have selected in each page. [Note]  Webcraftic AM has been automatically installed/deleted by Activate/Deactivate of "load filter plugin".
  * Version: 1.1.2
- * Framework Version: FACTORY_475_VERSION
+ * Framework Version: FACTORY_480_VERSION
  */
 
 // todo: проверить, как работает кеширование

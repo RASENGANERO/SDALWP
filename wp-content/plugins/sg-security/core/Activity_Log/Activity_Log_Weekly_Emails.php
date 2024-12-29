@@ -18,11 +18,19 @@ class Activity_Log_Weekly_Emails extends Activity_Log_Helper {
 	public $weekly_report_email;
 
 	/**
+	 * Database placeholder.
+	 */
+	public $wpdb;
+
+	/**
 	 * The constructor.
 	 *
 	 * @since 1.2.0
 	 */
 	public function __construct() {
+		// Assign the Database.
+		global $wpdb;
+		$this->wpdb = $wpdb;
 
 		// Initiate the Email Service Class.
 		$this->weekly_report_email = new Email_Service(
@@ -31,7 +39,7 @@ class Activity_Log_Weekly_Emails extends Activity_Log_Helper {
 			strtotime( 'next monday + ' . rand( 1, 360 ) . ' minutes' ),
 			array(
 				'recipients_option' => 'sg_security_notification_emails',
-				'subject'           => __( 'Weekly Activity for ', 'sg-security' ) . Helper_Service::get_site_url(),
+				'subject'           => 'Weekly Activity for ' . Helper_Service::get_site_url(),
 				'body_method'       => array( '\SG_Security\Activity_Log\Activity_Log_Weekly_Emails', 'generate_message_body' ),
 				'from_name'         => 'Security Optimizer by SiteGround',
 			)
@@ -221,15 +229,18 @@ class Activity_Log_Weekly_Emails extends Activity_Log_Helper {
 	 * @return int             The number of total human visits.
 	 */
 	private function get_total_human_stats( $start_date, $end_date ) {
-		global $wpdb;
 
-		return $wpdb->get_var(
-			'SELECT COUNT(*) FROM `' . $wpdb->prefix . 'sgs_log_events' . '`
-			WHERE `action` = "visit"
-			AND `visitor_type` = "Human"
-			AND `type` = "unknown"
-			AND `ts` BETWEEN ' . $start_date . ' AND ' . $end_date . ' ;'
+		$query = $this->wpdb->prepare(
+			'SELECT COUNT(*) FROM `' . esc_sql( $this->wpdb->prefix . 'sgs_log_events' ) . "`
+				WHERE `action` = 'visit'
+				AND `visitor_type` = 'Human'
+				AND `type` = 'unknown'
+				AND `ts` BETWEEN %s AND %s",
+			$start_date,
+			$end_date
 		);
+
+		return $this->wpdb->get_var( $query ); //phpcs:ignore
 	}
 
 	/**
@@ -243,15 +254,19 @@ class Activity_Log_Weekly_Emails extends Activity_Log_Helper {
 	 * @return int             The number of total bots visits.
 	 */
 	private function get_total_bots_stats( $start_date, $end_date ) {
-		global $wpdb;
 
-		return $wpdb->get_var(
-			'SELECT COUNT(*) FROM `' . $wpdb->prefix . 'sgs_log_events' . '`
-			WHERE `action` = "visit"
-			AND `visitor_type` <>"Human" AND `visitor_type` <>"unknown"
-			AND `type` = "unknown"
-			AND `ts` BETWEEN ' . $start_date . ' AND ' . $end_date . ' ;'
+		$query = $this->wpdb->prepare(
+			'SELECT COUNT(*) FROM `' . esc_sql( $this->wpdb->prefix . 'sgs_log_events' ) . "`
+				WHERE `action` = 'visit'
+				AND `visitor_type` <> 'Human'
+				AND `visitor_type` <> 'unknown'
+				AND `type` = 'unknown'
+				AND `ts` BETWEEN %s AND %s",
+			$start_date,
+			$end_date
 		);
+
+		return $this->wpdb->get_var( $query ); //phpcs:ignore
 	}
 
 	/**
@@ -267,7 +282,7 @@ class Activity_Log_Weekly_Emails extends Activity_Log_Helper {
 	}
 
 	/**
-	 * Get notification receipient emails.
+	 * Get notification recipient emails.
 	 *
 	 * @since  1.2.0
 	 *
@@ -276,10 +291,10 @@ class Activity_Log_Weekly_Emails extends Activity_Log_Helper {
 	public function weekly_report_receipients() {
 		$data = array();
 
-		// Get the currently set receipients.
+		// Get the currently set recipients.
 		$receipients = get_option( 'sg_security_notification_emails', array() );
 
-		// Return empty array if no receipients are set.
+		// Return empty array if no recipients are set.
 		if ( empty( $receipients ) ) {
 			return $data;
 		}

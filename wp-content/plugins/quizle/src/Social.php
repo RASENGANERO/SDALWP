@@ -5,10 +5,13 @@ namespace Wpshop\Quizle;
 class Social {
 
     /**
-     * @var array
+     * @var array[]
      */
     protected $share_providers;
 
+    /**
+     * @var array[]
+     */
     protected $messengers;
 
     /**
@@ -96,7 +99,15 @@ class Social {
      * @return array
      */
     public function get_share_providers() {
-        return (array) apply_filters( 'quizle/social/share_providers', $this->share_providers );
+
+        /**
+         * Allows to add custom share providers
+         *
+         * @since 1.0
+         */
+        $share_providers = (array) apply_filters( 'quizle/social/share_providers', $this->share_providers );
+
+        return $share_providers;
     }
 
     /**
@@ -119,7 +130,15 @@ class Social {
      * @return array
      */
     public function get_messengers() {
-        return (array) apply_filters( 'quizle/social/messengers', $this->messengers );
+
+        /**
+         * Allows to add additional messengers
+         *
+         * @since 1.0
+         */
+        $messengers = (array) apply_filters( 'quizle/social/messengers', $this->messengers );
+
+        return $messengers;
     }
 
     /**

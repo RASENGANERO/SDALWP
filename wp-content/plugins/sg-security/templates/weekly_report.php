@@ -74,7 +74,7 @@
                 <tr>
                     <td style="padding: 30px 0 30px 0;">
                         <img
-                                src="<?php echo $args['email_image']; ?>"
+                                src="<?php echo esc_url( $args['email_image'] ); ?>"
                                 width="600" alt="SiteGround Security Optimizer weekly report"
                                 style="max-height: 300px;"/>
                     </td>
@@ -89,7 +89,7 @@
                 ?>
                 <tr>
                     <td class="body-text"
-                        style="color: #363636; font-weight: 700; font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 20px; line-height: 30px; padding: 0 0 20px 0"><?php esc_html_e( 'Traffic summary for ', 'sg-security' ); echo $args['start_time'] ?> - <?php echo $args['end_time'] ?>
+                        style="color: #363636; font-weight: 700; font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 20px; line-height: 30px; padding: 0 0 20px 0"><?php esc_html_e( 'Traffic summary for ', 'sg-security' ); echo esc_html( $args['start_time'] ); ?> - <?php echo esc_html( $args['end_time'] ); ?>
                     </td>
                 </tr>
                 <tr>
@@ -101,13 +101,13 @@
                                     <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                         <tr>
                                             <td valign="top" align="center" class="body-text" style="width:50%; padding: 0 0 30px 0;">
-                                                <div class="body-text" style="color: #363636; font-weight: 700; font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 26px; line-height: 38px; padding: 0 15px; text-align: center"><?php echo $args['total_human']; ?></div>
+                                                <div class="body-text" style="color: #363636; font-weight: 700; font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 26px; line-height: 38px; padding: 0 15px; text-align: center"><?php echo esc_html( $args['total_human'] ); ?></div>
                                                 <div class="body-text" style="color: #444444; font-weight: 400; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 16px; line-height: 26px; padding: 0 15px; text-align: center; display: block">
                                                 <?php esc_html_e( 'Human traffic', 'sg-security' ); ?>
                                                  </div>
                                             </td>
                                             <td valign="top" align="center" class="body-text" style="width:50%; padding: 0 0 30px 0;">
-                                                <div class="body-text" style="color: #363636; font-weight: 700; font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 26px; line-height: 38px; padding: 0 15px; text-align: center"><?php echo $args['total_bots']; ?></div>
+                                                <div class="body-text" style="color: #363636; font-weight: 700; font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 26px; line-height: 38px; padding: 0 15px; text-align: center"><?php echo esc_html( $args['total_bots'] ); ?></div>
                                                 <div class="body-text" style="color: #444444; font-weight: 400; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 16px; line-height: 26px; padding: 0 15px; text-align: center; display: block">
                                                 <?php esc_html_e( 'Bot traffic', 'sg-security' ); ?>
                                                  </div>
@@ -115,13 +115,13 @@
                                         </tr>
                                         <tr>
                                             <td valign="top" align="center" class="body-text" style="width:50%;">
-                                                <div class="body-text" style="color: #363636; font-weight: 700; font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 26px; line-height: 38px; padding: 0 15px; text-align: center"><?php echo $args['total_blocked_login']; ?></div>
+                                                <div class="body-text" style="color: #363636; font-weight: 700; font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 26px; line-height: 38px; padding: 0 15px; text-align: center"><?php echo esc_html( $args['total_blocked_login'] ); ?></div>
                                                 <div class="body-text" style="color: #444444; font-weight: 400; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 16px; line-height: 26px; padding: 0 15px; text-align: center; display: block">
                                                  <?php esc_html_e( 'Blocked login attempts', 'sg-security' ); ?>
                                                  </div>
                                             </td>
                                             <td valign="top" align="center" class="body-text" style="width:50%;">
-                                                <div class="body-text" style="color: #363636; font-weight: 700; font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 26px; line-height: 38px; padding: 0 15px; text-align: center"><?php echo $args['total_blocked_visits']; ?></div>
+                                                <div class="body-text" style="color: #363636; font-weight: 700; font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 26px; line-height: 38px; padding: 0 15px; text-align: center"><?php echo esc_html( $args['total_blocked_visits'] ); ?></div>
                                                 <div class="body-text" style="color: #444444; font-weight: 400; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 16px; line-height: 26px; padding: 0 15px; text-align: center; display: block">
                                                 <?php esc_html_e( 'Blocked visit attempts', 'sg-security' ); ?>
                                                  </div>
@@ -145,7 +145,7 @@
                 <tr>
                     <td class="body-text"
                         style="color: #a4a4a4; font-weight: 400; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px; padding: 0px 0 25px 0">
-                        <?php echo $args['unsubscribe']['text']; ?><a href="<?php echo $args['activity_log_link']; ?>" target="_blank" rel="noreferrer" style="color: #22b8d1; text-decoration: none;"><?php echo $args['unsubscribe']['button']; ?></a>.
+                        <?php echo esc_html( $args['unsubscribe']['text'] ); ?><a href="<?php echo esc_url( $args['activity_log_link'] ); ?>" target="_blank" rel="noreferrer" style="color: #22b8d1; text-decoration: none;"><?php echo esc_html( $args['unsubscribe']['button'] ); ?></a>.
                     </td>
                 </tr>
 

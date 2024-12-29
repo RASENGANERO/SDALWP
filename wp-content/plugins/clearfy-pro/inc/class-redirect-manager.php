@@ -134,15 +134,12 @@ class Clearfy_Redirect_Manager {
             $to     = $this->sanitize_url( $_POST['redirect_to'][$k] );
 
             // remove protocol (to - if our domain)
-            $from = $this->remove_protocol( $from, true );
 //            if ( $this->clearfy_strpos( $to, $site_url ) !== false ) {
 //                $to   = $this->remove_protocol( $to );
 //            }
 
             // remove site url
-            $from   = str_ireplace( $site_url, '', $from );
-//            $to     = str_ireplace( $site_url, '', $to );
-
+            $from = preg_replace('/^(http|https):\/\/' . preg_quote($site_url, '/') . '/', '', $from);
             $to = preg_replace('/^(http|https):\/\/' . preg_quote($site_url, '/') . '/', '', $to);
 
             if ( $this->clearfy_substr( $from, 0, 1 ) != '/' ) $from = '/' . $from;

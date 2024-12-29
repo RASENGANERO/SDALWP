@@ -10,11 +10,12 @@
  * Plugin Name:       Security Optimizer
  * Plugin URI:        https://siteground.com
  * Description:       Security Optimizer by SiteGround is the all-in-one security solution for your WordPress website. With the carefully selected and easy to configure functions the plugin provides everything you need to secure your website and prevent a number of threats such as brute-force attacks, compromised login, data leaks and more.
- * Version:           1.5.2
+ * Version:           1.5.7
  * Author:            SiteGround
  * Author URI:        https://www.siteground.com
  * Text Domain:       sg-security
  * Domain Path:       /languages
+ * License:           GPLv3
  */
 
 // Our namespace.
@@ -31,7 +32,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 // Define version constant.
 if ( ! defined( __NAMESPACE__ . '\VERSION' ) ) {
-	define( __NAMESPACE__ . '\VERSION', '1.5.2' );
+	define( __NAMESPACE__ . '\VERSION', '1.5.7' );
 }
 
 // Define slug constant.

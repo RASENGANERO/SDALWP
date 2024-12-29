@@ -42,6 +42,13 @@ class WCTR_Plugin {
 		if ( is_admin() ) {
 			$this->admin_scripts();
 		}
+
+		// Wordpress 6.7 fix
+		add_action( 'init', function () {
+			if ( is_admin() ) {
+				$this->register_pages();
+			}
+		} );
 	}
 
 	/**
@@ -74,8 +81,6 @@ class WCTR_Plugin {
 	 */
 	private function admin_scripts() {
 		require_once( WCTR_PLUGIN_DIR . '/admin/boot.php' );
-
-		$this->register_pages();
 	}
 
 	/**

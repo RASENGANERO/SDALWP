@@ -10,7 +10,10 @@
  * @license    GPL2+
  */
 
- 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+
 if ( !class_exists( 'PPF09_Plugin_Addon' ) ) {
   
   abstract class PPF09_Plugin_Addon extends PPF09_Plugin {
@@ -225,5 +228,3 @@ if ( !class_exists( 'PPF09_Plugin_Addon' ) ) {
   }
   
 }
-
-?>

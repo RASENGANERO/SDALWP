@@ -50,6 +50,14 @@ class Clearfy_Rank_Math {
             return get_category_link( $cat_id );
         }
 
+        if ( is_tag() && is_paged() ) {
+            $wp_query = $GLOBALS['wp_the_query'];
+            $queried_object = $wp_query->get_queried_object();
+            if ( $queried_object && ! is_wp_error( $queried_object ) ) {
+                return get_term_link( $queried_object->term_id );
+            }
+        }
+
         if ( is_tax() && is_paged() ) {
             $wp_query = $GLOBALS['wp_the_query'];
             $queried_object = $wp_query->get_queried_object();

@@ -9,7 +9,7 @@ class Clearfy_Sanitize {
      * Clearfy_Sanitize constructor.
      */
     public function __construct() {
-        add_filter( 'sanitize_title', array( $this, 'sanitize_title' ), 9 );
+        add_filter( 'sanitize_title', array( $this, 'sanitize_title' ), 9, 3 );
         add_filter( 'sanitize_file_name', array( $this, 'sanitize_file_name' ) );
     }
 
@@ -45,9 +45,14 @@ class Clearfy_Sanitize {
      *
      * @return mixed|string
      */
-    public function sanitize_title( $title ) {
+    public function sanitize_title( $title, $raw_title = '', $context = '' ) {
 
         if ( ! $title ) {
+            return $title;
+        }
+
+        // #112 _wp_old_slug redirect bug
+        if ( 'query' === $context ) {
             return $title;
         }
 
@@ -258,10 +263,12 @@ class Clearfy_Sanitize {
             'Д' => 'D',
             'Е' => 'E',
             'Ё' => 'YO',
+            'Ё' => 'yo', // #114
             'Ж' => 'ZH',
             'З' => 'Z',
             'И' => 'I',
             'Й' => 'Y',
+            'Й' => 'Y',  // #114
             'К' => 'K',
             'Л' => 'L',
             'М' => 'M',
@@ -291,10 +298,12 @@ class Clearfy_Sanitize {
             'д' => 'd',
             'е' => 'e',
             'ё' => 'yo',
+            'ё' => 'yo', // #114
             'ж' => 'zh',
             'з' => 'z',
             'и' => 'i',
             'й' => 'y',
+            'й' => 'y',  // #114
             'к' => 'k',
             'л' => 'l',
             'м' => 'm',

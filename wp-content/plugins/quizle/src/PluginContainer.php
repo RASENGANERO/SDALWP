@@ -2,11 +2,13 @@
 
 namespace Wpshop\Quizle;
 
-use Pimple\Psr11\Container;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Container\NotFoundExceptionInterface;
 
+/**
+ * @deprecated
+ */
 class PluginContainer {
 
     /**
@@ -46,12 +48,6 @@ class PluginContainer {
      * @return ContainerInterface
      */
     public static function container() {
-        if ( ! static::$container ) {
-            $config            = require dirname( __DIR__ ) . '/config/config.php';
-            $init              = require dirname( __DIR__ ) . '/config/container.php';
-            static::$container = new Container( $init( $config ) );
-        }
-
-        return static::$container;
+        return container();
     }
 }

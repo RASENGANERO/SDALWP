@@ -44,6 +44,13 @@ class WCM_Plugin {
 		}
 
 		add_action( 'plugins_loaded', [ $this, 'plugins_loaded' ] );
+
+		// Wordpress 6.7 fix
+		add_action( 'init', function () {
+			if ( is_admin() ) {
+				$this->register_pages();
+			}
+		} );
 	}
 
 	/**
@@ -66,9 +73,7 @@ class WCM_Plugin {
 	 * @throws \Exception
 	 */
 	public function plugins_loaded() {
-		if ( is_admin() ) {
-			$this->register_pages();
-		}
+
 	}
 
 	/**

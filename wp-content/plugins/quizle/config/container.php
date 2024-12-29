@@ -4,23 +4,33 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
+use WPShop\Container\ServiceRegistry;
 use Wpshop\Quizle\Admin\QuizleResultActions;
 use Wpshop\Quizle\Admin\QuizlePostGrid;
 use Wpshop\Quizle\Admin\QuizleResultGrid;
 use Wpshop\Quizle\Admin\ResultListTable;
 use Wpshop\Quizle\Admin\Settings;
+use Wpshop\Quizle\Admin\Templates;
 use Wpshop\Quizle\Analytics;
 use Wpshop\Quizle\AssetsProvider;
 use Wpshop\Quizle\Db\Database;
 use Wpshop\Quizle\Db\Upgrade;
 use Wpshop\Quizle\DefaultHooks;
 use Wpshop\Quizle\Encryption;
+use Wpshop\Quizle\Admin\ImportExport;
+use Wpshop\Quizle\FileUpload;
+use Wpshop\Quizle\Integration\AmoCRM;
+use Wpshop\Quizle\Integration\Bitrix24;
+use Wpshop\Quizle\Integration\ReCaptcha;
+use Wpshop\Quizle\Integration\Telegram;
+use Wpshop\Quizle\Integration\YandexMetrika;
 use Wpshop\Quizle\Logger;
 use Wpshop\Quizle\Admin\MenuPage;
 use Wpshop\Quizle\Admin\MetaBoxes;
 use Wpshop\Quizle\MailService;
-use Pimple\Container;
+use Wpshop\Quizle\QuizleResultExport;
 use Wpshop\Quizle\QuizleResultHandler;
+use Wpshop\Quizle\RestAPI;
 use Wpshop\Quizle\Shortcodes;
 use Wpshop\Quizle\Quizle;
 use Wpshop\Quizle\Social;
@@ -29,13 +39,25 @@ use Wpshop\Settings\Maintenance;
 use Wpshop\Settings\MaintenanceInterface;
 
 return function ( $config ) {
-    $container = new Container( [
+    $container = new ServiceRegistry( [
         'config'                    => $config,
         Analytics::class            => function ( $c ) {
             return new Analytics( $c[ Database::class ] );
         },
+        AmoCRM::class               => function ( $c ) {
+            return new AmoCRM(
+                $c[ Settings::class ],
+                new Logger(
+                    null,
+                    'quizle-amorcm.log'
+                )
+            );
+        },
         AssetsProvider::class       => function ( $c ) {
             return new AssetsProvider( $c[ Settings::class ] );
+        },
+        Bitrix24::class             => function ( $c ) {
+            return new Bitrix24( $c[ Settings::class ] );
         },
         Database::class             => function () {
             global $wpdb;
@@ -47,6 +69,12 @@ return function ( $config ) {
         },
         Encryption::class           => function () {
             return new Encryption();
+        },
+        FileUpload::class           => function ( $c ) {
+            return new FileUpload( $c[ Settings::class ] );
+        },
+        ImportExport::class         => function () {
+            return new ImportExport();
         },
         Logger::class               => function () {
             return new Logger( get_option( 'quizle-log-level', Logger::DISABLED ) );
@@ -78,14 +106,27 @@ return function ( $config ) {
         QuizlePostGrid::class       => function () {
             return new QuizlePostGrid();
         },
+        QuizleResultExport::class   => function ( $c ) {
+            return new QuizleResultExport(
+                $c[ Settings::class ],
+                $c[ Database::class ]
+            );
+        },
         QuizleResultGrid::class     => function ( $c ) {
             return new QuizleResultGrid( $c['config']['quizle_grid_screen_id'] );
         },
         QuizleResultHandler::class  => function ( $c ) {
             return new QuizleResultHandler(
                 $c[ Database::class ],
-                $c[ MailService::class ]
+                $c[ MailService::class ],
+                $c[ ReCaptcha::class ]
             );
+        },
+        ReCaptcha::class            => function ( $c ) {
+            return new ReCaptcha( $c[ Settings::class ] );
+        },
+        RestAPI::class              => function ( $c ) {
+            return new RestAPI( $c[ Database::class ] );
         },
         ResultListTable::class      => function ( $c ) {
             return new ResultListTable( [ 'screen' => $c['config']['quizle_grid_screen_id'] ] );
@@ -110,6 +151,15 @@ return function ( $config ) {
         Social::class               => function () {
             return new Social();
         },
+        Telegram::class             => function ( $c ) {
+            return new Telegram( $c[ Settings::class ] );
+        },
+        Templates::class            => function ( $c ) {
+            return new Templates(
+                $c[ Settings::class ],
+                $c['config']['templates_api']
+            );
+        },
         Upgrade::class              => function ( $c ) {
             global $wpdb;
 
@@ -117,6 +167,9 @@ return function ( $config ) {
                 $wpdb,
                 $c[ Database::class ]
             );
+        },
+        YandexMetrika::class        => function ( $c ) {
+            return new YandexMetrika( $c[ Settings::class ] );
         },
     ] );
 

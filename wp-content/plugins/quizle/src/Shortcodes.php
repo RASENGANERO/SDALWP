@@ -26,6 +26,16 @@ class Shortcodes {
     protected $social;
 
     /**
+     * @var bool
+     */
+    protected $fist_question_rendered = false;
+
+    /**
+     * @var bool
+     */
+    protected $has_file_upload_question = false;
+
+    /**
      * Shortcodes constructor.
      *
      * @param Settings   $settings
@@ -93,11 +103,25 @@ class Shortcodes {
             'height' => '',
             'color'  => '',
         ], $atts, $shortcode );
-        if ( ! apply_filters( 'quizle/shortcode/do_output', true, $shortcode, $atts ) ) {
+
+        /**
+         * Allows to prevent output of the shortcode
+         */
+        $do_output = apply_filters( 'quizle/shortcode/do_output', true, $shortcode, $atts );
+        if ( ! $do_output ) {
             return '';
         }
 
-        if ( empty( $atts['name'] ) || ! ( $quizle = get_quizle( $atts['name'] ) ) ) {
+        if ( is_wp_error( $context = Context::createFromWpQuery() ) ) {
+            $context = '';
+        }
+
+        $quizle = get_quizle(
+            $atts['name'],
+            $context && $context->is_preview ? 'any' : 'publish'
+        );
+
+        if ( empty( $atts['name'] ) || ! $quizle ) {
             return '<!-- wrong quizle name -->';
         }
 
@@ -220,31 +244,40 @@ class Shortcodes {
             '--quizle-height'             => get_quizle_height( $quizle ),
         ] );
 
-        $html    = '';
+        $html = '';
+
+        [ $result_enabled, $quizle_results ] = $this->get_results_data( $quizle->ID );
+
         $options = [
             'type'                        => $quiz_type,
             'view_type'                   => $quiz_view_type,
             'animation_duration'          => 200,
             'progress_animation_duration' => $this->settings->get_value( 'progress_animation_duration' ),
-            'contacts_order'              => get_post_meta( $quizle->ID, 'result-enabled', true )
+            'completion_time'             => absint( get_post_meta( $quizle->ID, 'quizle-completion-time', true ) ),
+            'contacts_order'              => $result_enabled && ! empty( $quizle_results )
                 ? ( get_post_meta( $quizle->ID, 'contact-enabled', true )
                     ? get_post_meta( $quizle->ID, 'contact-form-order', true )
                     : null )
                 : 'only_contacts',
             'save_contacts_and_results'   => ! is_preview() && get_post_meta( $quizle->ID, 'save-quizle-contacts-and-results', true ),
+            'can_change_answer'           => (bool) get_post_meta( $quizle->ID, 'can-change-answer', true ),
+            'prevent_autofocus'           => (bool) $this->settings->get_value( 'prevent_autofocus' ),
         ];
         if ( $quiz_type === Quizle::TYPE_TEST ) {
             $options['show_results'] = (bool) get_post_meta( $quizle->ID, 'test-instant-answer', true );
         }
 
+        /**
+         * Allows to modify quizle options
+         *
+         * @since 1.3
+         */
+        $options = apply_filters( 'quizle/shortcode/options', $options, $quizle );
+
         $html .= '<div class="quizle-container">';
         $html .= '<style>' . $styles . '</style>';
         if ( is_debug() ) {
             $html .= sprintf( '<a href="%s" target="_blank">edit quizle</a>', get_edit_post_link( $quizle ) );
-        }
-
-        if ( is_wp_error( $context = Context::createFromWpQuery() ) ) {
-            $context = [];
         }
 
         $attributes = [
@@ -269,12 +302,25 @@ class Shortcodes {
 
         $html .= '<div class="quizle-body js-quizle-body"' . $quizle_body_style . '>';
 
+        $html .= '    <div class="quizle-expiration js-quizle-expiration-countdown" style="display: none">';
+        $html .= '        <div class="quizle-expiration__progress"><div class="quizle-expiration__progress-line js-quizle-expiration-countdown-progress"></div></div>';
+        $html .= '        <span class="quizle-expiration__text">' . __( 'Time left:', 'quizle' ) . ' <span class="quizle-expiration__time js-quizle-expiration-countdown-time"></span></span>';
+        $html .= '    </div><!--.quizle-expiration-->';
+
         $html .= '  <div class="quizle-questions js-quizle-questions">';
         $html .= $question_html;
         $html .= '  </div><!--.quizle-questions-->';
 
+//        if ( $all_slides_text = trim( get_post_meta( $quizle->ID, 'all-slides-text', true ) ) ) {
+//            $html .= '<div>';
+//            $html .= $all_slides_text;
+//            $html .= '</div>';
+//        }
+
         $contacts_html = $this->output_contacts( $quizle->ID, $atts );
 
+        $html .= $this->output_expiration_screen( $quizle->ID );
+        $html .= $this->output_file_uploading();
         $html .= $this->output_result( $quizle->ID );
         $html .= $contacts_html;
 
@@ -305,7 +351,8 @@ class Shortcodes {
 
             $disabled = $fist_question_required ? ' disabled' : '';
 
-            $html .= '        <button class="quizle-button js-quizle-next-step" data-direction="next" data-finish_text="' . esc_attr( $finish_btn_text ) . '"' . $disabled . '>' . $next_btn_text . '</button>';
+            $html .= '        <button class="quizle-button js-quizle-next-step" data-direction="next" data-finish_text="' . esc_attr( $finish_btn_text ) . '"' . $disabled . '>';
+            $html .= $next_btn_text . '</button>';
             $html .= '        <div class="quizle-footer__step-description js-quizle-next-step-description" data-shift="' . __( 'Enter', QUIZLE_TEXTDOMAIN ) . ' shift+↵">' . __( 'Enter', QUIZLE_TEXTDOMAIN ) . ' ↵</div>';
             $html .= '      </div>';
 
@@ -317,6 +364,10 @@ class Shortcodes {
             $html .= '  </div>';
         }
 
+//        $html .= '    <div class="quizle-expiration js-quizle-expiration-countdown" style="display: none">';
+//        $html .= '        <span class="quizle-expiration__text">' . __( 'Time left:', 'quizle' ) . ' <span class="quizle-expiration__time js-quizle-expiration-countdown-time"></span></span>';
+//        $html .= '        <div class="quizle-expiration__progress"><div class="quizle-expiration__progress-line js-quizle-expiration-countdown-progress"></div></div>';
+//        $html .= '    </div><!--.quizle-expiration-->';
         $html .= '</div><!--.quizle-body-->';
 
 //        $html .= $sidebar;
@@ -372,17 +423,40 @@ HTML;
     }
 
     /**
+     * @return string
+     */
+    protected function output_file_uploading() {
+        if ( ! $this->has_file_upload_question ) {
+            return '';
+        }
+
+        return '<div class="quizle-upload-screen js-quizle-upload-screen" style="display: none">' .
+               '<svg xmlns="http://www.w3.org/2000/svg" width="66" height="86" fill="none"><path fill="currentColor" d="M12.015 69.36c0-.704.218-.903.615-1.197l.695-.52c3.711-2.788 14.486-10.878 19.598-10.878 5.107 0 15.87 8.079 19.589 10.871.275.207.511.384.704.527.395.294.614.493.614 1.197v6.588s.078.73-.75.73l-14.206.016-5.95.006a388120.65 388120.65 0 0 1-20.159-.022c-.828 0-.75-.73-.75-.73V69.36Z"/><path fill="currentColor" fill-rule="evenodd" d="M62.431 21.333c0 6.865-4.086 9.7-5.831 10.91-1.38.959-11.92 7.268-15.953 9.677v4.137l16.017 9.698c3.683 2.23 5.767 3.822 5.767 10.62v12.438h1.948c.891 0 1.621.725 1.621 1.61v3.967c0 .885-.73 1.61-1.62 1.61H1.62A1.62 1.62 0 0 1 0 84.39v-3.967c0-.885.728-1.61 1.62-1.61h1.948v-12.18c0-6.867 4.086-9.7 5.83-10.91 1.382-.958 11.921-7.268 15.955-9.678v-4.136L9.334 32.21c-3.682-2.23-5.766-3.822-5.766-10.622V7.187H1.62A1.62 1.62 0 0 1 0 5.577V1.609C0 .724.728 0 1.62 0h62.759c.891 0 1.62.724 1.62 1.61v3.967c0 .885-.729 1.61-1.62 1.61H62.43v14.146Zm-8.802 39.372L36.212 50.16a2.898 2.898 0 0 1-1.4-2.476V40.28c0-1.016.537-1.96 1.415-2.483 6.246-3.725 15.935-9.544 17.035-10.308 1.407-.975 3.335-2.313 3.335-6.156V7.187H9.4v14.402c0 1.999.193 3.274.59 3.896.33.52 1.042.967 2.378 1.776l17.419 10.546a2.89 2.89 0 0 1 1.399 2.473v7.404a2.895 2.895 0 0 1-1.415 2.486c-6.245 3.725-15.935 9.544-17.035 10.306-1.408.976-3.336 2.313-3.336 6.158v12.179h47.197V66.375c0-1.999-.192-3.273-.588-3.896-.329-.518-1.041-.965-2.38-1.774Z" clip-rule="evenodd"/></svg>' .
+               '<p>' . __( 'Uploading files...', 'quizle' ) . '</p>' .
+               '</div>';
+    }
+
+    /**
+     * @return string
+     */
+    protected function output_expiration_screen( $quizle_id ) {
+        if ( get_post_meta( $quizle_id, 'quizle-completion-time', true ) ) {
+            return '<div class="quizle-completion-expire js-quizle-completion-expire" style="display: none">' .
+                   '<svg xmlns="http://www.w3.org/2000/svg" width="66" height="86" fill="none"><path fill="currentColor" d="M12.015 69.36c0-.704.218-.903.615-1.197l.695-.52c3.711-2.788 14.486-10.878 19.598-10.878 5.107 0 15.87 8.079 19.589 10.871.275.207.511.384.704.527.395.294.614.493.614 1.197v6.588s.078.73-.75.73l-14.206.016-5.95.006a388120.65 388120.65 0 0 1-20.159-.022c-.828 0-.75-.73-.75-.73V69.36Z"/><path fill="currentColor" fill-rule="evenodd" d="M62.431 21.333c0 6.865-4.086 9.7-5.831 10.91-1.38.959-11.92 7.268-15.953 9.677v4.137l16.017 9.698c3.683 2.23 5.767 3.822 5.767 10.62v12.438h1.948c.891 0 1.621.725 1.621 1.61v3.967c0 .885-.73 1.61-1.62 1.61H1.62A1.62 1.62 0 0 1 0 84.39v-3.967c0-.885.728-1.61 1.62-1.61h1.948v-12.18c0-6.867 4.086-9.7 5.83-10.91 1.382-.958 11.921-7.268 15.955-9.678v-4.136L9.334 32.21c-3.682-2.23-5.766-3.822-5.766-10.622V7.187H1.62A1.62 1.62 0 0 1 0 5.577V1.609C0 .724.728 0 1.62 0h62.759c.891 0 1.62.724 1.62 1.61v3.967c0 .885-.729 1.61-1.62 1.61H62.43v14.146Zm-8.802 39.372L36.212 50.16a2.898 2.898 0 0 1-1.4-2.476V40.28c0-1.016.537-1.96 1.415-2.483 6.246-3.725 15.935-9.544 17.035-10.308 1.407-.975 3.335-2.313 3.335-6.156V7.187H9.4v14.402c0 1.999.193 3.274.59 3.896.33.52 1.042.967 2.378 1.776l17.419 10.546a2.89 2.89 0 0 1 1.399 2.473v7.404a2.895 2.895 0 0 1-1.415 2.486c-6.245 3.725-15.935 9.544-17.035 10.306-1.408.976-3.336 2.313-3.336 6.158v12.179h47.197V66.375c0-1.999-.192-3.273-.588-3.896-.329-.518-1.041-.965-2.38-1.774Z" clip-rule="evenodd"/></svg>' .
+                   '<p>' . __( 'Quizle completion time has expired.', 'quizle' ) . '</p>' .
+                   '</div>';
+        }
+
+        return '';
+    }
+
+    /**
      * @param int $quizle_id
      *
      * @return string
      */
     protected function output_result( $quizle_id ) {
-        $result_enabled = get_post_meta( $quizle_id, 'result-enabled', true );
-        $quizle_results = get_post_meta( $quizle_id, 'quizle-results', true );
-
-        if ( ! empty( $quizle_results ) ) {
-            $quizle_results = json_decode( $quizle_results, true );
-        }
+        [ $result_enabled, $quizle_results ] = $this->get_results_data( $quizle_id );
 
         if ( ! $result_enabled || empty( $quizle_results ) ) {
             return '';
@@ -393,6 +467,21 @@ HTML;
 
         return '<div class="quizle-results js-quizle-results" style="display: none">' . $progress . '</div>';
 
+    }
+
+    /**
+     * @param int $quizle_id
+     *
+     * @return array
+     */
+    protected function get_results_data( $quizle_id ) {
+        $result_enabled = get_post_meta( $quizle_id, 'result-enabled', true );
+        $quizle_results = get_post_meta( $quizle_id, 'quizle-results', true );
+        if ( ! empty( $quizle_results ) ) {
+            $quizle_results = json_decode( $quizle_results, true );
+        }
+
+        return [ $result_enabled, $quizle_results ];
     }
 
     /**
@@ -455,14 +544,49 @@ HTML;
             $html .= '<div class="quizle-contacts__field"><input type="email" name="data[contacts][email]" value="' . $user_email . '" required placeholder="' . esc_attr__( 'E-mail', QUIZLE_TEXTDOMAIN ) . '" class="quizle-text"></div>';
         }
         if ( $contact_with_phone ) {
-            $html .= '<div class="quizle-contacts__field"><input type="text" name="data[contacts][phone]" required placeholder="' . esc_attr__( 'Phone', QUIZLE_TEXTDOMAIN ) . '" class="quizle-text"></div>';
+            if ( $this->settings->get_value( 'enable_phone_mask' ) ) {
+                $html .= '<div class="quizle-contacts__field js-quizle-contacts-phone">';
+                $html .= '  <input type="tel" name="" required placeholder="" class="quizle-text">';
+                $html .= '  <input type="hidden" name="data[contacts][phone]">';
+                $html .= '</div>';
+            } else {
+                $html .= '<div class="quizle-contacts__field"><input type="text" name="data[contacts][phone]" required placeholder="' . esc_attr__( 'Phone', QUIZLE_TEXTDOMAIN ) . '" class="quizle-text"></div>';
+            }
         }
 
         foreach ( $messengers as $messenger_key => $messenger ) {
-            $html .= '<div class="quizle-contacts__field"><input type="text" name="data[messengers][' . $messenger_key . ']" placeholder="' . esc_attr( $messenger['title'] ) . '" class="quizle-text"></div>';
+
+            /**
+             * Allows to set messenger required
+             *
+             * @since 1.2
+             */
+            $required = apply_filters( 'quizle/contacts/messenger_required', false, $messenger_key );
+            $required = $required ? ' required' : '';
+
+            $style = '';
+            if ( $this->settings->get_value( 'user_messengers_brand_colors' ) ) {
+                $style = ' style="color: ' . $messenger['color'] . '"';
+            }
+
+            $html .= '<div class="quizle-contacts__field">';
+            $html .= '  <div class="quizle-contact-messengers">';
+            $html .= '    <svg xmlns="http://www.w3.org/2000/svg" class="quizle-contact-messengers__icon" viewBox="0 0 32 32"><path d="' . $messenger['path'] . '" fill="currentColor"' . $style . '></path></svg>';
+            $html .= '    <input type="text" name="data[messengers][' . $messenger_key . ']" placeholder="' . esc_attr( $messenger['title'] ) . '" class="quizle-text quizle-contact-messengers__input"' . $required . '>';
+            $html .= '  </div>';
+            $html .= '</div>';
         }
 
-        $html .= '<div class="quizle-contacts__buttons"><button disabled class="quizle-button" type="submit" data-toggle_txt="' . esc_attr__( 'Submitting data...', QUIZLE_TEXTDOMAIN ) . '">' . $contact_btn_text . '</button></div>';
+        $btn_attributes = [
+            'class'           => 'quizle-button',
+            'type'            => 'submit',
+            'data-toggle_txt' => __( 'Submitting data...', QUIZLE_TEXTDOMAIN ),
+        ];
+        if ( $this->settings->get_value( 'grecaptcha.enabled' ) ) {
+            $btn_attributes['class'] .= ' g-recaptcha';
+        }
+
+        $html .= '<div class="quizle-contacts__buttons"><button disabled ' . build_attributes( $btn_attributes ) . '>' . $contact_btn_text . '</button></div>';
 
         $html .= '</fieldset></form>';
 
@@ -593,8 +717,12 @@ HTML;
             'required'    => false,
         ] );
 
+        if ( $question['type'] == 'file' && ! is_file_upload_allowed( $quizle ) ) {
+            return '';
+        }
+
         $question_style = null;
-        if ( $quiz_view_type == Quizle::VIEW_TYPE_SLIDES && $n != 1 ) {
+        if ( $quiz_view_type == Quizle::VIEW_TYPE_SLIDES && $this->fist_question_rendered ) {
             $question_style = 'display: none;';
         }
 
@@ -665,11 +793,13 @@ HTML;
             $html .= '</div>';
         }
 
+        $description = apply_filters( 'the_content', $question['description'] );
+
         $html .= '<div class="quizle-question__body">';
 
         $html .= '<div class="quizle-question__header">';
         $html .= '  <div class="quizle-question__title">' . $question['title'] . '</div>';
-        $html .= '  <div class="quizle-question__description">' . $question['description'] . '</div>';
+        $html .= '  <div class="quizle-question__description">' . $description . '</div>';
         $html .= '</div>';
 
         $answers_classes = [];
@@ -698,6 +828,9 @@ HTML;
             case 'image_vertical' :
                 $render_callback = [ $this, '_display_answer_image' ];
                 break;
+            case 'file':
+                $render_callback = [ $this, '_display_file_upload' ];
+                break;
             default :
                 break;
         }
@@ -719,6 +852,56 @@ HTML;
         $html .= '</div><!--.quizle-question__body-->';
 
         $html .= '</div>';
+
+        $this->fist_question_rendered = true;
+
+        return $html;
+    }
+
+    /**
+     * @return string
+     */
+    public function _display_file_upload( $question, $atts ) {
+        $attributes = [
+            'id'     => uniqid( 'quizle_file.' ),
+            'class'  => 'js-quizle-file-upload-input',
+            'accept' => $this->settings->get_value( 'file_upload.accept' ),
+            'style'  => 'opacity:0',
+        ];
+
+        if ( $this->settings->get_value( 'file_upload.limit' ) > 1 ) {
+            $attributes[] = 'multiple';
+        }
+
+        $html = '';
+        $html .= '<div class="quizle-answer js-quizle-answer quizle-answer--file">';
+        $html .= '<form method="post" enctype="multipart/form-data" class>';
+
+        $html .= '<div class="quizle-file-upload-container">';
+        $html .= '<input type="file" ' . build_attributes( $attributes ) . '>';
+        $html .= '<label class="quizle-file-upload-label js-quizle-file-upload-label" for="' . $attributes['id'] . '" data-toggle_text="' . __( 'Done', 'quizle' ) . '">' . __( 'Select File', 'quizle' ) . '</label>';
+
+        $info = [];
+        if ( $this->settings->get_value( 'file_upload.limit' ) > 1 ) {
+            $info[] = sprintf( _n( 'You can choose max %d file', 'You can choose max %d files', $this->settings->get_value( 'file_upload.limit' ), 'quizle' ), $this->settings->get_value( 'file_upload.limit' ) );
+        }
+        $info[] = sprintf( __( 'Max file size is %s', 'quizle' ), human_filesize( get_file_upload_max_size() ) );
+        $html   .= '<span class="quizle-file-upload-container__info js-quizle-file-upload-info">' . implode( '. ', $info ) . '</span>';
+
+        $html .= '<span class="quizle-file-upload-container__rolling js-quizle-file-upload-rolling" style="display: none">' . __( 'uploading', 'quizle' ) . '...</span>';
+        $html .= '</div>';
+
+        $html .= '<div class="quizle-file-upload-messages js-quizle-file-upload-messages"></div>';
+
+        $html .= '<div class="quizle-file-upload-preview">';
+        $html .= '</div><!--.quizle-file-upload-preview-->';
+
+        //$html .= '<button class="quizle-button js-quizle-file-upload" disabled>' . __( 'Upload', 'quizle' ) . '</button>';
+        $html .= '</form>';
+
+        $html .= '</div>';
+
+        $this->has_file_upload_question = true;
 
         return $html;
     }

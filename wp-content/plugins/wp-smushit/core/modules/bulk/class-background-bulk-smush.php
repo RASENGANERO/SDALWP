@@ -4,6 +4,9 @@ namespace Smush\Core\Modules\Bulk;
 
 use Smush\Core\Error_Handler;
 use Smush\Core\Helper;
+use Smush\Core\Server_Utils;
+use Smush\Core\Stats\Global_Stats;
+
 use WP_Smush;
 
 class Background_Bulk_Smush {
@@ -15,6 +18,23 @@ class Background_Bulk_Smush {
 	private $background_process;
 	private $mail;
 	private $logger;
+	private $global_stats;
+	private $server_utils;
+
+	/**
+	 * Static instance
+	 *
+	 * @var self
+	 */
+	private static $instance;
+
+	public static function get_instance() {
+		if ( empty( self::$instance ) ) {
+			self::$instance = new self();
+		}
+
+		return self::$instance;
+	}
 
 	public function __construct() {
 		$process_manager          = new Background_Process_Manager(
@@ -24,6 +44,12 @@ class Background_Bulk_Smush {
 		$this->background_process = $process_manager->create_process();
 		$this->mail               = new Mail( 'wp_smush_background' );
 		$this->logger             = Helper::logger();
+		$this->global_stats       = Global_Stats::get();
+		$this->server_utils       = new Server_Utils();
+
+		if ( ! $this->should_use_background() ) {
+			return;
+		}
 
 		$this->register_ajax_handler( 'bulk_smush_start', array( $this, 'bulk_smush_start' ) );
 		$this->register_ajax_handler( 'bulk_smush_cancel', array( $this, 'bulk_smush_cancel' ) );
@@ -32,6 +58,10 @@ class Background_Bulk_Smush {
 
 		add_filter( 'wp_smush_script_data', array( $this, 'localize_background_stats' ) );
 		add_action( 'init', array( $this, 'cancel_programmatically' ) );
+	}
+
+	public function get_background_process() {
+		return $this->background_process;
 	}
 
 	public function cancel_programmatically() {
@@ -60,18 +90,6 @@ class Background_Bulk_Smush {
 			wp_send_json_error();
 		}
 
-		if ( ! $this->loopback_supported() ) {
-			$this->logger->error( 'Loopback check failed. Not starting a new background process.' );
-			wp_send_json_error( array(
-				'message' => sprintf(
-					esc_html__( 'Your site seems to have an issue with loopback requests. Please try again and if the problem persists find out more %s.', 'wp-smushit' ),
-					sprintf( '<a target="_blank" href="https://wpmudev.com/docs/wpmu-dev-plugins/smush/#background-processing">%s</a>', esc_html__( 'here', 'wp-smushit' ) )
-				),
-			) );
-		} else {
-			$this->logger->notice( 'Loopback check successful.' );
-		}
-
 		$tasks = $this->prepare_background_tasks();
 		if ( $tasks ) {
 			do_action( 'wp_smush_bulk_smush_start' );
@@ -87,7 +105,10 @@ class Background_Bulk_Smush {
 	public function bulk_smush_cancel() {
 		$this->check_ajax_referrer();
 
-		$this->background_process->cancel();
+		if ( ! $this->background_process->get_status()->is_cancelled() ) {
+			$this->background_process->cancel();
+		}
+
 		wp_send_json_success();
 	}
 
@@ -105,28 +126,7 @@ class Background_Bulk_Smush {
 	public function bulk_smush_get_global_stats() {
 		$this->check_ajax_referrer();
 
-		$core = WP_Smush::get_instance()->core();
-
-		if ( empty( $core->stats ) ) {
-			$core->setup_global_stats_with_resmush_correction( true );
-		}
-
-		$stats           = $core->get_global_stats();
-		$content         = '';
-		$resmush_count   = count( $core->get_resmush_ids() );
-		$smushable_count = $core->remaining_count;
-		if ( $smushable_count > 0 ) {
-			ob_start();
-			WP_Smush::get_instance()->admin()->print_pending_bulk_smush_content(
-				$smushable_count,
-				$resmush_count,
-				$smushable_count - $resmush_count
-			);
-			$content = ob_get_clean();
-		}
-		$stats['content'] = $content;
-		$stats['errors']  = Error_Handler::get_last_errors();
-
+		$stats = WP_Smush::get_instance()->admin()->get_global_stats_with_bulk_smush_content();
 		wp_send_json_success( $stats );
 	}
 
@@ -146,21 +146,8 @@ class Background_Bulk_Smush {
 	 * @return Smush_Background_Task[]
 	 */
 	private function prepare_background_tasks() {
-		$core = WP_Smush::get_instance()->core();
-
-		$max_rows    = $core->get_max_rows();
-		$query_limit = $core->get_query_limit();
-
-		$core->set_max_rows( PHP_INT_MAX );
-		$core->set_query_limit( PHP_INT_MAX );
-
-		$core->setup_global_stats( true );
-
 		$smush_tasks   = $this->prepare_smush_tasks();
 		$resmush_tasks = $this->prepare_resmush_tasks();
-
-		$core->set_max_rows( $max_rows );
-		$core->set_query_limit( $query_limit );
 
 		return array_merge(
 			$smush_tasks,
@@ -169,8 +156,7 @@ class Background_Bulk_Smush {
 	}
 
 	private function prepare_smush_tasks() {
-		$core     = WP_Smush::get_instance()->core();
-		$to_smush = $core->get_unsmushed_attachments();
+		$to_smush = $this->global_stats->get_optimize_list()->get_ids();
 		if ( empty( $to_smush ) || ! is_array( $to_smush ) ) {
 			$to_smush = array();
 		}
@@ -184,8 +170,7 @@ class Background_Bulk_Smush {
 	}
 
 	private function prepare_resmush_tasks() {
-		$core       = WP_Smush::get_instance()->core();
-		$to_resmush = $core->get_resmush_ids();
+		$to_resmush = $this->global_stats->get_redo_ids();
 
 		return array_map( function ( $image_id ) {
 			return new Smush_Background_Task(
@@ -193,6 +178,17 @@ class Background_Bulk_Smush {
 				$image_id
 			);
 		}, $to_resmush );
+	}
+
+	private function prepare_error_tasks() {
+		$error_items_to_retry = $this->global_stats->get_error_list()->get_ids();
+
+		return array_map( function ( $image_id ) {
+			return new Smush_Background_Task(
+				Smush_Background_Task::TASK_TYPE_ERROR,
+				$image_id
+			);
+		}, $error_items_to_retry );
 	}
 
 	public function localize_background_stats( $script_data ) {
@@ -226,6 +222,15 @@ class Background_Bulk_Smush {
 	}
 
 	/**
+	 * Whether BO is dead or not.
+	 *
+	 * @return boolean
+	 */
+	public function is_dead() {
+		return $this->background_process->get_status()->is_dead();
+	}
+
+	/**
 	 * Get total items.
 	 *
 	 * @return int
@@ -235,12 +240,37 @@ class Background_Bulk_Smush {
 	}
 
 	/**
+	 * Get processed items.
+	 *
+	 * @return int
+	 */
+	public function get_processed_items() {
+		return $this->background_process->get_status()->get_processed_items();
+	}
+
+	/**
 	 * Get failed items.
 	 *
 	 * @return int
 	 */
 	public function get_failed_items() {
 		return $this->background_process->get_status()->get_failed_items();
+	}
+
+	/**
+	 * Get revival count.
+	 *
+	 * @return int
+	 */
+	public function get_revival_count() {
+		return $this->background_process->get_revival_count();
+	}
+
+	/**
+	 * Get process id.
+	 */
+	public function get_process_id() {
+		return $this->background_process->get_process_id();
 	}
 
 	/**
@@ -266,16 +296,21 @@ class Background_Bulk_Smush {
 			esc_html__( 'Enable the email notification', 'wp-smushit' )
 		);
 
+		/* translators: %s: a link */
 		return sprintf( __( 'Feel free to close this page while Smush works its magic in the background. %s to receive an email when the process finishes.', 'wp-smushit' ), $email_setting_link );
 	}
 
 	private function get_email_enabled_notice() {
 		$mail_recipient = $this->get_mail_recipient();
-
+		/* translators: %s: Email address */
 		return sprintf( __( 'Feel free to close this page while Smush works its magic in the background. We’ll email you at <strong>%s</strong> when it’s done.', 'wp-smushit' ), $mail_recipient );
 	}
 
 	public function is_background_enabled() {
+		if ( ! $this->can_use_background() ) {
+			return false;
+		}
+
 		return defined( 'WP_SMUSH_BACKGROUND' ) && WP_SMUSH_BACKGROUND;
 	}
 
@@ -286,6 +321,10 @@ class Background_Bulk_Smush {
 
 	public function is_background_supported() {
 		return $this->is_mysql_requirement_met();
+	}
+
+	public function can_use_background() {
+		return WP_Smush::is_pro() || ! empty( get_site_option( 'wp_smush_pre_3_12_6_site' ) );
 	}
 
 	/**
@@ -301,22 +340,32 @@ class Background_Bulk_Smush {
 	}
 
 	public function get_actual_mysql_version() {
-		global $wpdb;
-
-		return $wpdb->get_var( 'SELECT VERSION()' );
+		return $this->server_utils->get_mysql_version();
 	}
 
-	private function loopback_supported() {
-		$method_available = class_exists( '\WP_Site_Health' )
-		                    && method_exists( '\WP_Site_Health', 'get_instance' )
-		                    && method_exists( \WP_Site_Health::get_instance(), 'can_perform_loopback' );
-
-		if ( $method_available ) {
-			$loopback = \WP_Site_Health::get_instance()->can_perform_loopback();
-
-			return $loopback->status === 'good';
+	public function start_bulk_smush_direct() {
+		if ( ! $this->should_use_background() ) {
+			return false;
+		}
+		$process       = $this->background_process;
+		$in_processing = $process->get_status()->is_in_processing();
+		if ( $in_processing ) {
+			return $process->get_status()->to_array();
 		}
 
-		return true;
+		if ( ! Helper::loopback_supported() ) {
+			$this->logger->error( 'Loopback check failed. Not starting a new background process.' );
+
+			return false;
+		}
+
+		$tasks = $this->prepare_background_tasks();
+		if ( $tasks ) {
+			do_action( 'wp_smush_bulk_smush_start' );
+
+			$process->start( $tasks );
+		}
+
+		return $process->get_status()->to_array();
 	}
 }

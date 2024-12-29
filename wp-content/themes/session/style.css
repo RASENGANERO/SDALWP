@@ -602,7 +602,7 @@ a{
 	color: #000;
 }
 .top_line a.order_button{	
-	padding: 14px 20px;
+	padding: 10px 6px;
 	background: linear-gradient(95.85deg, rgba(255, 2, 100, 0.8) 0%, #FDDF30 100%);
 	border-radius: 5px;
 	text-transform: uppercase;
@@ -1146,7 +1146,7 @@ header.header_service + .article_section{
 	padding-bottom: 0;
 }
 header.header_service + .article_section p{
-	line-height: 1;
+	line-height: 1.5;
 	margin-bottom: 20px;
 }
 .items.usl {overflow: hidden;position: relative;z-index: 1;margin-top: 30px;}
@@ -1159,7 +1159,11 @@ header.header_service + .article_section p{
 .items.usl .item .all {overflow: hidden;font-size: 25px;font-weight: 500;white-space: nowrap;}
 .items.usl .item .all img { 
 }
-.items.usl .item .all span {display: block;font-size: 17px;}
+.items.usl .item .all span {
+	display: block;
+	font-size: 17px;
+	display: none;
+}
 .article_section{
 	padding-top: 105px;
 	padding-bottom: 45px;
@@ -1183,7 +1187,7 @@ header.header_service + .article_section p{
 .article_section p{	
 	font-size: 18px;
 	color: #000;
-	line-height: 21px;
+	line-height: 1.5;
 	margin-bottom: 15px;
 }
 .article_section .container > strong{	
@@ -1201,7 +1205,7 @@ header.header_service + .article_section p{
 }
 .article_section ol li{	
 	font-size: 18px;
-	line-height: 21px;
+	line-height: 1.25;
 	list-style: auto;
 	margin-bottom: 5px;
 }
@@ -1211,7 +1215,7 @@ header.header_service + .article_section p{
 }
 .article_section ul li{
 	font-size: 18px;
-	line-height: 21px;
+	line-height: 1.5;
 	list-style: disc;
 }
 .excell_txt{	
@@ -1230,7 +1234,7 @@ header.header_service + .article_section p{
 }
 .excell_txt .excell_desc{
 	font-size: 18px;
-	line-height: 1;
+	line-height: 1.5;
 }
 .excell_txt .excell_photo{
 	position: absolute;
@@ -2863,6 +2867,12 @@ footer .f_col{
     gap: 12px;
 	flex-wrap: wrap;
 }
+.container + .mark-container {
+	max-width: 1390px;
+	width: 100%;
+	margin: 0 auto;
+	padding: 0 15px;
+}
 .mark-item{
 	display: flex;
     width: auto;
@@ -2877,4 +2887,21 @@ footer .f_col{
 	font-size: 18px;
     color: #000;
     line-height: 21px;
+}
+
+.header_right .soc_icon_tg span {
+	display: block;
+	width: 30px;
+	height: 30px;
+}
+.header_right .soc_icon_tg span {
+	background-color: #ffffff;
+	mask-image: url('/wp-content/uploads/2024/12/icons8-tg-app-150.png');
+	-webkit-mask-image: url('/wp-content/uploads/2024/12/icons8-tg-app-150.png');
+	mask-size: 24px;
+	-webkit-mask-size: 24px;
+	mask-position: center;
+	-webkit-mask-position: center;
+	mask-repeat: no-repeat;
+	-webkit-mask-repeat: no-repeat;
 }

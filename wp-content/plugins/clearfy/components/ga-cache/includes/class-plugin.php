@@ -10,11 +10,11 @@ if( !defined('ABSPATH') ) {
  * @author        Alex Kovalev <alex.kovalevv@gmail.com>, Github: https://github.com/alexkovalevv
  * @copyright (c) 19.02.2018, Webcraftic
  */
-class WGA_Plugin extends Wbcr_Factory475_Plugin {
+class WGA_Plugin extends Wbcr_Factory480_Plugin {
 
 	/**
 	 * @see self::app()
-	 * @var Wbcr_Factory475_Plugin
+	 * @var Wbcr_Factory480_Plugin
 	 */
 	private static $app;
 
@@ -48,6 +48,13 @@ class WGA_Plugin extends Wbcr_Factory475_Plugin {
 			$this->init_activation();
 			$this->admin_scripts();
 		}
+
+		// Wordpress 6.7 fix
+		add_action( 'init', function () {
+			if ( is_admin() ) {
+				$this->register_pages();
+			}
+		} );
 	}
 
 	/**
@@ -59,7 +66,7 @@ class WGA_Plugin extends Wbcr_Factory475_Plugin {
 	 * Используется для получения настроек плагина, информации о плагине, для доступа к вспомогательным
 	 * классам.
 	 *
-	 * @return \Wbcr_Factory475_Plugin|\WGA_Plugin
+	 * @return \Wbcr_Factory480_Plugin|\WGA_Plugin
 	 */
 	public static function app()
 	{
@@ -110,8 +117,6 @@ class WGA_Plugin extends Wbcr_Factory475_Plugin {
 	{
 		require(WGA_PLUGIN_DIR . '/admin/options.php');
 		require(WGA_PLUGIN_DIR . '/admin/boot.php');
-
-		$this->register_pages();
 	}
 
 	/**

@@ -8,6 +8,7 @@ use Wpshop\Quizle\Data\ResultData;
 use Wpshop\Quizle\Db\Database;
 use Wpshop\Quizle\PluginContainer;
 use Wpshop\Quizle\Quizle;
+use function Wpshop\Quizle\container;
 use function Wpshop\Quizle\get_edit_quizle_result_url;
 use function Wpshop\Quizle\get_quizle_result_url;
 use function Wpshop\Quizle\get_quizle_type;
@@ -27,9 +28,118 @@ class ResultListTable extends WP_List_Table {
      */
     protected function get_bulk_actions() {
         return [
-            'remove' => __( 'Remove', QUIZLE_TEXTDOMAIN ),
-            //            'export_csv' => __( 'Export CSV', QUIZLE_TEXTDOMAIN ),
+            'remove'     => __( 'Remove', QUIZLE_TEXTDOMAIN ),
+            'export_csv' => __( 'Export CSV', QUIZLE_TEXTDOMAIN ),
         ];
+    }
+
+    /**
+     * @param $which
+     *
+     * @return void
+     */
+    protected function extra_tablenav( $which ) {
+        if ( 'top' !== $which ) {
+            return;
+        }
+
+        $base_url = add_query_arg( [
+            'post_type' => Quizle::POST_TYPE,
+            'page'      => 'quizle-results',
+        ], admin_url( 'edit.php' ) );
+
+        $current_quizle_id = $_GET['quizle_id'] ?? '';
+
+        $status_labels = [
+            'draft'   => _x( 'Draft', 'list_table', QUIZLE_TEXTDOMAIN ),
+            'publish' => _x( 'Publish', 'list_table', QUIZLE_TEXTDOMAIN ),
+        ];
+        $opt_items     = [];
+        foreach ( $this->get_quizles_for_options() as $quizle ) {
+            $opt_items[ $status_labels[ $quizle->post_status ] ?: $quizle->post_status ][] = [
+                'label' => $quizle->post_title ?: __( '(no title)', QUIZLE_TEXTDOMAIN ),
+                'value' => $quizle->ID,
+            ];
+        }
+
+        ?>
+        <div class="alignleft actions" style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap">
+            <select name="quizle_id" id="filter-quizle-results-by-quizle">
+                <option value=""><?php echo __( '-- filter by quizle --', QUIZLE_TEXTDOMAIN ) ?></option>
+                <?php if ( count( $opt_items ) > 1 ): ?>
+                    <?php foreach ( $opt_items as $optgroup_label => $items ): ?>
+                        <optgroup label="<?php echo $optgroup_label ?>">
+                            <?php foreach ( $items as $item ): ?>
+                                <option value="<?php echo $item['value'] ?>"<?php selected( $current_quizle_id, $item['value'] ) ?>><?php echo $item['label'] ?></option>
+                            <?php endforeach ?>
+                        </optgroup>
+                    <?php endforeach ?>
+                <?php else: ?>
+                    <?php foreach ( $opt_items as $optgroup_label => $items ): ?>
+                        <?php foreach ( $items as $item ): ?>
+                            <option value="<?php echo $item['value'] ?>"<?php selected( $current_quizle_id, $item['value'] ) ?>><?php echo $item['label'] ?></option>
+                        <?php endforeach ?>
+                    <?php endforeach ?>
+                <?php endif ?>
+            </select>
+            <label>
+                <input type="hidden" name="finished" value="0">
+                <input type="checkbox" name="finished" value="1"<?php checked( $_GET['finished'] ?? '' ) ?> id="filter-quizle-results-finished">
+                <?php echo __( 'Only Finished', QUIZLE_TEXTDOMAIN ) ?>
+            </label>
+            <a href="<?php echo $base_url ?>" class="button" id="filter-quizle-results-btn"><?php echo __( 'Apply Filters', QUIZLE_TEXTDOMAIN ) ?></a>
+            <a href="<?php echo $base_url ?>" class=""><?php echo __( 'Reset', QUIZLE_TEXTDOMAIN ) ?></a>
+            <script type="text/javascript">
+                document.getElementById('filter-quizle-results-btn').addEventListener('click', function (e) {
+                    e.preventDefault();
+                    var url = new URL(e.target.getAttribute('href'));
+                    var quizleId = document.getElementById('filter-quizle-results-by-quizle').value;
+                    if (quizleId) {
+                        url.searchParams.append('quizle_id', quizleId);
+                    }
+                    if (document.getElementById('filter-quizle-results-finished').checked) {
+                        url.searchParams.append('finished', 1);
+                    }
+
+                    window.location.href = url;
+                });
+            </script>
+        </div>
+        <?php
+    }
+
+    /**
+     * @return \Generator|\WP_Post[]
+     */
+    protected function get_quizles_for_options() {
+        $counts = wp_count_posts( Quizle::POST_TYPE );
+        $total  = $counts->publish + $counts->draft;
+
+        $per_page = 1000;
+        $offset   = 0;
+
+        while ( $offset < $total ) {
+
+            add_filter( 'posts_orderby', $filter = function () {
+                return 'post_status ASC, post_title ASC';
+            } );
+
+            $posts = get_posts( [
+                'post_type'        => Quizle::POST_TYPE,
+                'post_status'      => [ 'publish', 'draft' ],
+                'posts_per_page'   => $per_page,
+                'offset'           => $offset,
+                'suppress_filters' => false,
+            ] );
+
+            remove_filter( 'posts_orderby', $filter );
+
+            foreach ( $posts as $post ) {
+                yield $post;
+            }
+
+            $offset += $per_page;
+        }
     }
 
     /**
@@ -68,11 +178,13 @@ class ResultListTable extends WP_List_Table {
      * @inheridoc
      */
     public function prepare_items() {
-        $db = PluginContainer::get( Database::class );
+        $db = container()->get( Database::class );
+
+        $quizle_id = $_REQUEST['quizle_id'] ?? null;
 
         $offset      = null;
         $per_page    = apply_filters( 'quizle/result_table/per_page', 20 );
-        $total_count = $db->get_quizle_total_count();
+        $total_count = $db->get_quizle_total_count( $quizle_id, ! empty( $_REQUEST['finished'] ) );
         if ( $per_page < $total_count ) {
             $offset = ( $this->get_pagenum() - 1 ) * $per_page;
         }
@@ -90,9 +202,17 @@ class ResultListTable extends WP_List_Table {
             $order   = 'asc';
         }
 
-        $this->items = $db->get_quizle_results_for_list_table( $per_page, $offset, $_REQUEST['orderby'] ?? $orderby, $_REQUEST['order'] ?? $order );
+
+        $this->items = $db->get_quizle_results_for_list_table(
+            $quizle_id,
+            $per_page,
+            $offset,
+            $_REQUEST['orderby'] ?? $orderby,
+            $_REQUEST['order'] ?? $order,
+            ! empty( $_REQUEST['finished'] )
+        );
         $this->set_pagination_args( [
-            'total_items' => $db->get_quizle_total_count(),
+            'total_items' => $total_count,
             'per_page'    => $per_page,
         ] );
     }
@@ -116,11 +236,11 @@ class ResultListTable extends WP_List_Table {
     function column_info( $item ) {
         $result_data = (array) \Wpshop\Quizle\json_decode( $item->result_data );
 
-        $types      = PluginContainer::get( Quizle::class )->get_types();
+        $types      = container()->get( Quizle::class )->get_types();
         $empty_type = $types[ get_quizle_type( $item->quiz_id ) ] ?? [
-                'icon'  => '-',
-                'title' => '',
-            ];
+            'icon'  => '-',
+            'title' => '',
+        ];
 
         $result = '<strong>';
 
@@ -194,11 +314,16 @@ class ResultListTable extends WP_List_Table {
      * @return string
      */
     protected function column_quiz_id( $item ) {
-        return sprintf( '<a href="%s">%s [%s]</a>',
-            get_edit_post_link( $item->quiz_id ),
-            get_the_title( $item->quiz_id ) ?: '--',
-            $item->quiz_id
-        );
+        $title = get_the_title( $item->quiz_id ) ?: '--';
+        if ( $edit_link = get_edit_post_link( $item->quiz_id ) ) {
+            return sprintf( '<a href="%s">%s [%s]</a>',
+                $edit_link,
+                $title,
+                $item->quiz_id
+            );
+        }
+
+        return sprintf( '%s [%s]', $title, $item->quiz_id );
     }
 
     /**

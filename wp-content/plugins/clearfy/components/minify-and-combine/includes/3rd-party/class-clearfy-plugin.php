@@ -45,6 +45,13 @@ class WMAC_Plugin {
 		}
 
 		add_action('plugins_loaded', [$this, 'plugins_loaded']);
+
+		// Wordpress 6.7 fix
+		add_action( 'init', function () {
+			if ( is_admin() ) {
+				$this->register_pages();
+			}
+		} );
 	}
 
 	/**
@@ -114,7 +121,6 @@ class WMAC_Plugin {
 	private function admin_scripts()
 	{
 		require_once(WMAC_PLUGIN_DIR . '/admin/boot.php');
-		$this->register_pages();
 	}
 
 	/**

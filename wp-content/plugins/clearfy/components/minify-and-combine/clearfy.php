@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'WMAC_PLUGIN_ACTIVE' ) ) {
-	define( 'WMAC_PLUGIN_VERSION', '1.1.0' );
+	define( 'WMAC_PLUGIN_VERSION', '1.1.2' );
 	define( 'WMAC_TEXT_DOMAIN', 'minify-and-combine' );
 	define( 'WMAC_PLUGIN_ACTIVE', true );
 

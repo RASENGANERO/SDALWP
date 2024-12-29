@@ -34,7 +34,7 @@ class Clearfy_Logging {
         $log = get_option( $this->option_name );
         if ( empty( $log ) ) $log = array();
         $line = array(
-            'date'      => time(),
+            'date'      => current_time('timestamp'),
             'type'      => $type,
             'message'   => $message,
         );

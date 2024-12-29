@@ -15,7 +15,7 @@ if( !defined('ABSPATH') ) {
 }
 
 if( !defined('WGA_PLUGIN_ACTIVE') ) {
-	define('WGA_PLUGIN_VERSION', '3.2.8');
+	define('WGA_PLUGIN_VERSION', '3.2.9');
 	define('WGA_TEXT_DOMAIN', 'simple-google-analytics');
 	define('WGA_PLUGIN_ACTIVE', true);
 

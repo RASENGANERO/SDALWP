@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class WCLUpdate010200 extends Wbcr_Factory475_Update {
+class WCLUpdate010200 extends Wbcr_Factory480_Update {
 
 	public function install() {
 		WCL_Plugin::app()->deleteOption( 'enable_wordpres_sanitize' );

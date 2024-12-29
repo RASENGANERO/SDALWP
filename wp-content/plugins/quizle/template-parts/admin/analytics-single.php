@@ -4,19 +4,19 @@ defined( 'WPINC' ) || die;
 
 use Wpshop\Quizle\Admin\Settings;
 use Wpshop\Quizle\Analytics;
-use Wpshop\Quizle\PluginContainer;
+use function Wpshop\Quizle\container;
 use function Wpshop\Quizle\get_quizle_analytic_url;
 
 /**
- * @version 1.1.0
+ * @version 1.3.0
  */
 
 /**
  * @var array{'post':WP_Post|false} $args
  */
 
-$analytics = PluginContainer::get( Analytics::class );
-$settings  = PluginContainer::get( Settings::class );
+$analytics = container()->get( Analytics::class );
+$settings  = container()->get( Settings::class );
 ?>
 
 <?php

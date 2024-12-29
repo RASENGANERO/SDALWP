@@ -5,6 +5,7 @@ namespace Wpshop\Quizle\Admin;
 use WP_Posts_List_Table;
 use Wpshop\Quizle\PluginContainer;
 use Wpshop\Quizle\Quizle;
+use function Wpshop\Quizle\container;
 use function Wpshop\Quizle\get_quizle_type;
 
 class QuizleListTable extends WP_Posts_List_Table {
@@ -110,7 +111,7 @@ class QuizleListTable extends WP_Posts_List_Table {
      * @return string
      */
     protected function get_quizle_type_icon( $post_id ) {
-        $types = PluginContainer::get( Quizle::class )->get_types();
+        $types = container()->get( Quizle::class )->get_types();
         $type  = $types[ get_quizle_type( $post_id ) ] ?? [
                 'icon'  => '-',
                 'title' => '',

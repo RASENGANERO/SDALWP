@@ -136,7 +136,7 @@ class Main {
 	 *
 	 * @return void
 	 */
-	public function init() {
+	public function init(): void {
 		add_action( 'plugins_loaded', [ $this, 'init_all' ], - PHP_INT_MAX );
 	}
 
@@ -145,7 +145,7 @@ class Main {
 	 *
 	 * @return void
 	 */
-	public function init_all() {
+	public function init_all(): void {
 		$this->load_textdomain();
 
 		$this->init_multilingual();
@@ -159,7 +159,7 @@ class Main {
 	 *
 	 * @return void
 	 */
-	public function load_textdomain() {
+	public function load_textdomain(): void {
 		load_default_textdomain();
 		load_plugin_textdomain(
 			'cyr2lat',
@@ -174,7 +174,7 @@ class Main {
 	 *
 	 * @return void
 	 */
-	protected function init_multilingual() {
+	protected function init_multilingual(): void {
 		if ( class_exists( Polylang::class ) ) {
 			add_filter( 'locale', [ $this, 'pll_locale_filter' ] );
 		}
@@ -195,7 +195,9 @@ class Main {
 	 *
 	 * @return void
 	 */
-	public function init_classes() {
+	protected function init_classes(): void {
+		( new ErrorHandler() )->init();
+
 		$this->request  = new Request();
 		$this->settings = new Settings(
 			[
@@ -233,7 +235,7 @@ class Main {
 	 *
 	 * @return void
 	 */
-	protected function init_cli() {
+	protected function init_cli(): void {
 		if ( ! $this->request->is_cli() ) {
 			return;
 		}
@@ -255,7 +257,7 @@ class Main {
 	/**
 	 * Init hooks.
 	 */
-	protected function init_hooks() {
+	protected function init_hooks(): void {
 		if ( $this->is_frontend ) {
 			add_action( 'woocommerce_before_template_part', [ $this, 'woocommerce_before_template_part_filter' ] );
 			add_action( 'woocommerce_after_template_part', [ $this, 'woocommerce_after_template_part_filter' ] );
@@ -361,7 +363,7 @@ class Main {
 	 *
 	 * @return void
 	 */
-	public function woocommerce_before_template_part_filter() {
+	public function woocommerce_before_template_part_filter(): void {
 		add_filter( 'sanitize_title', [ $this, 'sanitize_title' ], 9, 3 );
 	}
 
@@ -371,7 +373,7 @@ class Main {
 	 *
 	 * @return void
 	 */
-	public function woocommerce_after_template_part_filter() {
+	public function woocommerce_after_template_part_filter(): void {
 		remove_filter( 'sanitize_title', [ $this, 'sanitize_title' ], 9 );
 	}
 
@@ -555,11 +557,11 @@ class Main {
 			return true;
 		}
 
-		// @codeCoverageIgnoreStart
 		if ( ! function_exists( 'is_plugin_active' ) ) {
+			// @codeCoverageIgnoreStart
 			include_once ABSPATH . 'wp-admin/includes/plugin.php';
+			// @codeCoverageIgnoreEnd
 		}
-		// @codeCoverageIgnoreEnd
 
 		if ( is_plugin_active( 'classic-editor/classic-editor.php' ) ) {
 			return in_array( get_option( 'classic-editor-replace' ), [ 'no-replace', 'block' ], true );
@@ -800,7 +802,7 @@ class Main {
 	 * @return string|null
 	 * @noinspection PhpUndefinedFunctionInspection
 	 */
-	protected function get_wpml_locale() {
+	protected function get_wpml_locale(): ?string {
 		$language_code        = wpml_get_current_language();
 		$this->wpml_languages = (array) apply_filters( 'wpml_active_languages', [] );
 
@@ -822,7 +824,7 @@ class Main {
 	 * @noinspection PhpUnusedParameterInspection
 	 * @noinspection PhpMissingParamTypeInspection
 	 */
-	public function wpml_language_has_switched( $language_code, $cookie_lang, string $original_language ) {
+	public function wpml_language_has_switched( $language_code, $cookie_lang, string $original_language ): void {
 		$language_code = (string) $language_code;
 
 		$this->wpml_locale =
@@ -839,8 +841,9 @@ class Main {
 	 * @param WP_Post $post_before The previous post object.
 	 *
 	 * @noinspection PhpMissingParamTypeInspection
+	 * @noinspection PhpUnusedParameterInspection
 	 */
-	public function check_for_changed_slugs( $post_id, $post, $post_before ) {
+	public function check_for_changed_slugs( $post_id, $post, $post_before ): void {
 		// Don't bother if it hasn't changed.
 		if ( $post->post_name === $post_before->post_name ) {
 			return;
@@ -866,7 +869,7 @@ class Main {
 	 *
 	 * @return void
 	 */
-	public function declare_wc_compatibility() {
+	public function declare_wc_compatibility(): void {
 		if ( class_exists( FeaturesUtil::class ) ) {
 			FeaturesUtil::declare_compatibility(
 				'custom_order_tables',

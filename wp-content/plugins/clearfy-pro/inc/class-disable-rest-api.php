@@ -56,12 +56,25 @@ class Clearfy_Disable_Rest_Api {
 		$rest_route = $this->get_rest_route();
 
 		$white_list = apply_filters( 'clearfy_rest_api_white_list', array(
+			'oembed',
+			'yoast',
+			'wp-smush',
 		    'contact-form-7',
 			'google-site-kit',
             'jet-menu-api',
             'oz',
             'wc',
+			'wc-admin',
+			'wc-analytics',
+			'wc-telemetry',
+			'wccom-site',
             'aioseo',
+			'hivepress',
+			'elementor',
+			'astra',
+			'wp',
+			'wp-site-health',
+			'wp-block-editor',
 		) );
 
 		if ( ! empty( $rest_route ) ) {

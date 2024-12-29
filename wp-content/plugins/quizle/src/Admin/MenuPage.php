@@ -6,6 +6,7 @@ use Wpshop\Quizle\Db\Database;
 use Wpshop\Quizle\PluginContainer;
 use Wpshop\Quizle\Quizle;
 use function Wpshop\Quizle\admin_icon_url;
+use function Wpshop\Quizle\container;
 use function Wpshop\Quizle\get_template_part;
 
 class MenuPage {
@@ -42,7 +43,7 @@ class MenuPage {
                 'edit.php?post_type=' . Quizle::POST_TYPE,
                 __( 'Results', QUIZLE_TEXTDOMAIN ),
                 __( 'Results', QUIZLE_TEXTDOMAIN ),
-                'manage_options',
+                $this->default_capability(),
                 self::RESULT_LIST_SLUG,
                 function () {
                     if ( empty( $_REQUEST['quiz_result_id'] ) ) {
@@ -55,21 +56,21 @@ class MenuPage {
                             );
                         }
                         get_template_part( 'admin/results', null, [
-                            'grid' => PluginContainer::get( ResultListTable::class ),
+                            'grid' => container()->get( ResultListTable::class ),
                         ] );
                     } else {
                         get_template_part( 'admin/result', 'single', [
-                            'result' => PluginContainer::get( Database::class )->get_quizle_result( $_REQUEST['quiz_result_id'] ?? - 1 ),
+                            'result' => container()->get( Database::class )->get_quizle_result( $_REQUEST['quiz_result_id'] ?? - 1 ),
                         ] );
                     }
                 }
             );
 
             add_submenu_page(
-                null,
+                '',
                 __( 'Analytics', QUIZLE_TEXTDOMAIN ),
                 __( 'Analytics', QUIZLE_TEXTDOMAIN ),
-                'manage_options',
+                $this->default_capability(),
                 'analytics',
                 function () {
                     if ( $quizle_id = $_REQUEST['id'] ?? null ) {
@@ -79,6 +80,17 @@ class MenuPage {
                     } else {
                         get_template_part( 'admin/analytics' );
                     }
+                }
+            );
+
+            add_submenu_page(
+                'edit.php?post_type=' . Quizle::POST_TYPE,
+                __( 'Choose Quizle Template', QUIZLE_TEXTDOMAIN ),
+                __( 'Templates', QUIZLE_TEXTDOMAIN ),
+                $this->default_capability(),
+                'quizle-templates',
+                function () {
+                    get_template_part( 'admin/templates' );
                 }
             );
 
@@ -99,7 +111,7 @@ class MenuPage {
             add_menu_page(
                 __( 'Quizle', QUIZLE_TEXTDOMAIN ),
                 __( 'Quizle', QUIZLE_TEXTDOMAIN ),
-                'manage_options',
+                $this->default_capability(),
                 self::SETTINGS_SLUG,
                 function () {
                     get_template_part( 'admin/settings' );
@@ -107,5 +119,13 @@ class MenuPage {
                 admin_icon_url()
             );
         }
+    }
+
+    /**
+     * @return string
+     * @see https://wordpress.org/documentation/article/roles-and-capabilities/#capability-vs-role-table
+     */
+    protected function default_capability() {
+        return apply_filters( 'quizle/admin_menu_default/capability', 'edit_posts' );
     }
 }

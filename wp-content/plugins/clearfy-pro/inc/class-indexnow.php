@@ -65,7 +65,7 @@ class Clearfy_Indexnow {
             'post_id' => $post_id,
             'status'  => $code,
             'message' => $message,
-            'time'    => time(),
+            'time'    => current_time('timestamp'),
         ];
 
         // limit
@@ -87,23 +87,41 @@ class Clearfy_Indexnow {
                     return;
                 }
 
-                if ( $post->post_status == 'publish' ) {
-
-                    $url    = get_permalink( $post );
-                    $result = $this->send_yandex( $url );
-
-                    if ( is_wp_error( $result ) ) {
-                        foreach ( $result->errors as $code => $message ) {
-                            $this->add_log( $post_ID, $code, $message );
-                        }
-                    } else {
-                        $this->add_log( $post_ID, 200 );
-                    }
-
+                if ( wp_is_post_autosave( $post ) ) {
+                    return;
                 }
+
+                // если пост не доступен к просмотру на сайте -- выходим
+                if ( function_exists( 'is_post_publicly_viewable' ) && ! is_post_publicly_viewable( $post ) ) {
+                    return;
+                }
+
+                if ( $post->post_status != 'publish' ) {
+                    return;
+                }
+
+
+                // задержка, чтобы не слать часто, 30 сек по умолчанию, можно поменять через хук clearfy_indexnow_delay
+                $check_delay = get_transient( 'clearfy_indexnow_send_' . $post_ID );
+                if ( ! empty( $check_delay ) ) {
+                    return;
+                }
+
+
+                $url    = get_permalink( $post );
+                $result = $this->send_yandex( $url );
+                set_transient( 'clearfy_indexnow_send_' . $post_ID, 1, apply_filters( 'clearfy_indexnow_delay', 30 ) );
+
+                if ( is_wp_error( $result ) ) {
+                    foreach ( $result->errors as $code => $message ) {
+                        $this->add_log( $post_ID, $code, $message );
+                    }
+                } else {
+                    $this->add_log( $post_ID, 200 );
+                }
+
             }, 10, 3 );
         }
-
 
     }
 
@@ -188,8 +206,11 @@ class Clearfy_Indexnow {
 
     public function check_key() {
         if ( ! isset( $this->plugin_options->options['indexnow_key'] ) || empty( $this->plugin_options->options['indexnow_key'] ) ) {
-            $clearfy_options                 = get_option( $this->plugin_options->option_name );
-            $clearfy_options['indexnow_key'] = $this->generate_key();
+            $clearfy_options                 = get_option( $this->plugin_options->option_name, [] );
+			if ( empty( $clearfy_options ) ) {
+				$clearfy_options = [];
+				$clearfy_options['indexnow_key'] = $this->generate_key();
+			}
             update_option( $this->plugin_options->option_name, $clearfy_options );
         }
     }

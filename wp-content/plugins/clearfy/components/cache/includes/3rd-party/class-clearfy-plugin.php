@@ -43,6 +43,13 @@ class WCACHE_Plugin {
 		if( is_admin() ) {
 			$this->admin_scripts();
 		}
+
+		// Wordpress 6.7 fix
+		add_action( 'init', function () {
+			if ( is_admin() ) {
+				$this->register_pages();
+			}
+		} );
 	}
 
 	/**
@@ -91,7 +98,6 @@ class WCACHE_Plugin {
 		require(WCACHE_PLUGIN_DIR . '/admin/boot.php');
 
 		$this->init_activation();
-		$this->register_pages();
 	}
 
 	private function global_scripts()

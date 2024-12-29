@@ -157,7 +157,7 @@ class Maintenance implements MaintenanceInterface {
 
                 return get_plugin_data( $this->file_path, false, false )['Version'] ?? '';
             case 'theme':
-                return wp_get_theme( $this->file_path )->get( 'Version' );
+                return wp_get_theme( basename( $this->file_path ) )->get( 'Version' );
             default:
                 break;
         }

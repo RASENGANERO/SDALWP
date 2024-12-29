@@ -19,7 +19,7 @@ class WCL_ImageOptimizationPage extends WCL_Page {
 	 * Mainly used to navigate between pages.
 	 *
 	 * @since 1.0.0
-	 * @see   FactoryPages475_AdminPage
+	 * @see   FactoryPages480_AdminPage
 	 *
 	 * @var string
 	 */
@@ -79,7 +79,7 @@ class WCL_ImageOptimizationPage extends WCL_Page {
 		?>
         <script>
 			jQuery(document).ready(function($) {
-				$.wfactory_475.hooks.add('core/components/updated', function(button, component_name) {
+				$.wfactory_480.hooks.add('core/components/updated', function(button, component_name) {
 					if( component_name.plugin_action === 'install' ) {
 						button.removeClass('wbcr-factory-purchase-premium');
 						button.addClass('wbcr-factory-activate-premium');
@@ -92,7 +92,7 @@ class WCL_ImageOptimizationPage extends WCL_Page {
 				});
 			});
         </script>
-        <div class="wbcr-factory-templates-128-multisite-suggetion">
+        <div class="wbcr-factory-templates-134-multisite-suggetion">
             <div class="wbcr-factory-inner-contanier">
                 <h3><?php _e( 'Install Robin Image Optimizer component', 'clearfy' ) ?></h3>
                 <p><?php _e( 'To start optimizing images, you need to install the additional component  Robin image optimizer!', 'clearfy' ) ?></p>

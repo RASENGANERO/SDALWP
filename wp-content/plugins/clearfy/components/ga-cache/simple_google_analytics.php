@@ -4,14 +4,14 @@
  * Plugin URI: https://webcraftic.com
  * Description: Old plugin name: Simple Google Analytics. To improve Google Page Speed indicators Analytics caching is needed. However, it can also slightly increase your website loading speed, because Analytics js files will load locally. The second case that you might need these settings is the usual Google Analytics connection to your website. You do not need to do this with other plugins or insert the tracking code into your theme.
  * Author: Webcraftic <wordpress.webraftic@gmail.com>
- * Version: 3.2.8
+ * Version: 3.2.9
  * Text Domain: simple-google-analytics
  * Domain Path: /languages/
  * Author URI: http://webcraftic.com
  */
 
 // Exit if accessed directly
-if( !defined('ABSPATH') ) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
@@ -36,57 +36,57 @@ if( !defined('ABSPATH') ) {
  * -----------------------------------------------------------------------------
  */
 
-require_once(dirname(__FILE__) . '/libs/factory/core/includes/class-factory-requirements.php');
+require_once( dirname( __FILE__ ) . '/libs/factory/core/includes/class-factory-requirements.php' );
 
 // @formatter:off
-$plugin_info = array(
-	'prefix' => 'wbcr_gac_',
-	'plugin_name' => 'wbcr_gac',
-	'plugin_title' => __('Webcraftic Local Google Analytics', 'simple-google-analytics'),
+$plugin_info = [
+	'prefix'               => 'wbcr_gac_',
+	'plugin_name'          => 'wbcr_gac',
+	'plugin_title'         => 'Webcraftic Local Google Analytics',
 
 	// PLUGIN SUPPORT
-	'support_details' => array(
-		'url' => 'https://webcraftic.com',
-		'pages_map' => array(
+	'support_details'      => [
+		'url'       => 'https://webcraftic.com',
+		'pages_map' => [
 			'support' => 'support',           // {site}/support
-			'docs' => 'docs'               // {site}/docs
-		)
-	),
+			'docs'    => 'docs'               // {site}/docs
+		]
+	],
 
 	// PLUGIN ADVERTS
-	'render_adverts' => true,
-	'adverts_settings' => array(
+	'render_adverts'       => true,
+	'adverts_settings'     => [
 		'dashboard_widget' => true, // show dashboard widget (default: false)
-		'right_sidebar' => true, // show adverts sidebar (default: false)
-		'notice' => true, // show notice message (default: false)
-	),
+		'right_sidebar'    => true, // show adverts sidebar (default: false)
+		'notice'           => true, // show notice message (default: false)
+	],
 
 	// PLUGIN SUBSCRIBE FORM
-	'subscribe_widget' => true,
-	'subscribe_settings' => ['group_id' => '105425989'],
+	'subscribe_widget'     => true,
+	'subscribe_settings'   => [ 'group_id' => '105425989' ],
 
 	// FRAMEWORK MODULES
-	'load_factory_modules' => array(
-		array('libs/factory/bootstrap', 'factory_bootstrap_477', 'admin'),
-		array('libs/factory/forms', 'factory_forms_475', 'admin'),
-		array('libs/factory/pages', 'factory_pages_475', 'admin'),
-		array('libs/factory/templates', 'factory_templates_128', 'all'),
-		array('libs/factory/adverts', 'factory_adverts_153', 'admin')
-	)
-);
+	'load_factory_modules' => [
+		[ 'libs/factory/bootstrap', 'factory_bootstrap_482', 'admin' ],
+		[ 'libs/factory/forms', 'factory_forms_480', 'admin' ],
+		[ 'libs/factory/pages', 'factory_pages_480', 'admin' ],
+		[ 'libs/factory/templates', 'factory_templates_134', 'all' ],
+		[ 'libs/factory/adverts', 'factory_adverts_159', 'admin' ]
+	]
+];
 
-$wga_compatibility = new Wbcr_Factory475_Requirements(__FILE__, array_merge($plugin_info, array(
-	'plugin_already_activate' => defined('WGA_PLUGIN_ACTIVE'),
-	'required_php_version' => '5.4',
-	'required_wp_version' => '4.2.0',
+$wga_compatibility = new Wbcr_Factory480_Requirements( __FILE__, array_merge( $plugin_info, [
+	'plugin_already_activate'          => defined( 'WGA_PLUGIN_ACTIVE' ),
+	'required_php_version'             => '5.4',
+	'required_wp_version'              => '4.2.0',
 	'required_clearfy_check_component' => false
-)));
+] ) );
 
 /**
  * If the plugin is compatible, then it will continue its work, otherwise it will be stopped,
  * and the user will throw a warning.
  */
-if( !$wga_compatibility->check() ) {
+if ( ! $wga_compatibility->check() ) {
 	return;
 }
 
@@ -99,12 +99,12 @@ if( !$wga_compatibility->check() ) {
  */
 
 // This plugin is activated
-define('WGA_PLUGIN_ACTIVE', true);
-define('WGA_PLUGIN_VERSION', $wga_compatibility->get_plugin_version());
-define('WGA_PLUGIN_DIR', dirname(__FILE__));
-define('WGA_PLUGIN_BASE', plugin_basename(__FILE__));
-define('WGA_PLUGIN_URL', plugins_url('', __FILE__));
-define('WGA_PLUGIN_CACHE_FOLDER', 'wga-cache');
+define( 'WGA_PLUGIN_ACTIVE', true );
+define( 'WGA_PLUGIN_VERSION', $wga_compatibility->get_plugin_version() );
+define( 'WGA_PLUGIN_DIR', dirname( __FILE__ ) );
+define( 'WGA_PLUGIN_BASE', plugin_basename( __FILE__ ) );
+define( 'WGA_PLUGIN_URL', plugins_url( '', __FILE__ ) );
+define( 'WGA_PLUGIN_CACHE_FOLDER', 'wga-cache' );
 
 
 
@@ -114,24 +114,24 @@ define('WGA_PLUGIN_CACHE_FOLDER', 'wga-cache');
  * -----------------------------------------------------------------------------
  */
 
-require_once(WGA_PLUGIN_DIR . '/libs/factory/core/boot.php');
-require_once(WGA_PLUGIN_DIR . '/includes/class-plugin.php');
+require_once( WGA_PLUGIN_DIR . '/libs/factory/core/boot.php' );
+require_once( WGA_PLUGIN_DIR . '/includes/class-plugin.php' );
 
 try {
-	new WGA_Plugin(__FILE__, array_merge($plugin_info, array(
-		'plugin_version' => WGA_PLUGIN_VERSION,
+	new WGA_Plugin( __FILE__, array_merge( $plugin_info, [
+		'plugin_version'     => WGA_PLUGIN_VERSION,
 		'plugin_text_domain' => $wga_compatibility->get_text_domain(),
-	)));
-} catch( Exception $e ) {
+	] ) );
+} catch ( Exception $e ) {
 	// Plugin wasn't initialized due to an error
-	define('WGA_PLUGIN_THROW_ERROR', true);
+	define( 'WGA_PLUGIN_THROW_ERROR', true );
 
-	$wga_plugin_error_func = function () use ($e) {
-		$error = sprintf("The %s plugin has stopped. <b>Error:</b> %s Code: %s", 'Webcraftic Local Google Analytics', $e->getMessage(), $e->getCode());
+	$wga_plugin_error_func = function () use ( $e ) {
+		$error = sprintf( "The %s plugin has stopped. <b>Error:</b> %s Code: %s", 'Webcraftic Local Google Analytics', $e->getMessage(), $e->getCode() );
 		echo '<div class="notice notice-error"><p>' . $error . '</p></div>';
 	};
 
-	add_action('admin_notices', $wga_plugin_error_func);
-	add_action('network_admin_notices', $wga_plugin_error_func);
+	add_action( 'admin_notices', $wga_plugin_error_func );
+	add_action( 'network_admin_notices', $wga_plugin_error_func );
 }
 // @formatter:on

@@ -57,7 +57,7 @@ function wbcr_clearfy_configurate_plugin()
 	}
 
 	if( !$flush_redirect ) {
-		WBCR\Factory_Templates_128\Helpers::flushPageCache();
+		WBCR\Factory_Templates_134\Helpers::flushPageCache();
 	}
 
 	do_action('wbcr_clearfy_configurated_quick_mode', $mode_name);

@@ -43,11 +43,11 @@ abstract class WPBE_EXT {
             add_action('wpbe_ext_' . $place . '_tabs', function () use ($slug, $place, $label, $icon) {
                 ?>
                 <li>
-                    <a href="#tabs-<?php echo $slug ?>" onclick="return wpbe_init_js_intab('tabs-<?php echo $slug ?>')">
+                    <a href="#tabs-<?php echo esc_attr($slug) ?>" onclick="return wpbe_init_js_intab('tabs-<?php echo esc_attr($slug) ?>')">
                         <?php if (!empty($icon)): ?>
-                            <span class="icon-<?php echo $icon ?>"></span>
+                            <span class="icon-<?php echo esc_attr($icon) ?>"></span>
                         <?php endif; ?>
-                        <span><?php echo $label ?></span>
+                        <span><?php echo esc_html($label) ?></span>
                     </a>
                 </li>
                 <?php
@@ -57,7 +57,7 @@ abstract class WPBE_EXT {
 
         add_action('wpbe_ext_' . $place . '_tabs_content', function () use ($slug, $place) {
             ?>
-            <section id="tabs-<?php echo $slug ?>"><?php do_action('wpbe_ext_' . $place . '_' . $slug); //including extensions views                     ?></section>
+            <section id="tabs-<?php echo esc_attr($slug) ?>"><?php do_action('wpbe_ext_' . $place . '_' . $slug); //including extensions views                     ?></section>
             <?php
         }, 1);
     }

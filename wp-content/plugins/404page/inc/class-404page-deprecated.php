@@ -8,8 +8,8 @@
  * @since  11.0.0
  */
  
-if ( ! defined( 'WPINC' ) ) {
-	die;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
 }
 
 /**
@@ -74,5 +74,3 @@ if ( !class_exists( 'PP_404Page_Deprecated' ) ) {
   }
   
 }
-
-?>

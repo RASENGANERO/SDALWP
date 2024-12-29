@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class WCLUpdate010501 extends Wbcr_Factory475_Update {
+class WCLUpdate010501 extends Wbcr_Factory480_Update {
 
 	public function install() {
 		require_once( WCL_PLUGIN_DIR . '/components/ga-cache/migrations/030002.php' );

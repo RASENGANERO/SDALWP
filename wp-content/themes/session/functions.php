@@ -1,6 +1,11 @@
 <?php
 
 require_once 'inc/terms_fields.php';
+function my_shortcode_fn() {
+        global $post;
+        return get_the_title(wp_get_post_parent_id($post->ID));
+}
+add_shortcode( 'title', 'my_shortcode_fn' );
 
 add_filter('the_content', 'session_the_content');
 function session_the_content($content)

@@ -12,7 +12,7 @@ if( !defined('ABSPATH') ) {
 	exit;
 }
 
-class WCL_Helper extends WBCR\Factory_Templates_128\Helpers {
+class WCL_Helper extends WBCR\Factory_Templates_134\Helpers {
 
 	public static function array_merge_insert(array $arr, array $inserted, $position = 'bottom', $key = null)
 	{

@@ -8,7 +8,7 @@ namespace WBCR\Clearfy\Pages;
  * @copyright (c) 23.07.2020, Webcraftic
  * @version 1.0
  */
-class Step_Google_Page_Speed_After extends \WBCR\Factory_Templates_128\Pages\Step_Custom {
+class Step_Google_Page_Speed_After extends \WBCR\Factory_Templates_134\Pages\Step_Custom {
 
 	protected $prev_id = 'step5';
 	protected $id = 'step6';
@@ -28,7 +28,7 @@ class Step_Google_Page_Speed_After extends \WBCR\Factory_Templates_128\Pages\Ste
 				wclearfy_fetch_google_pagespeed_audit("<?php echo wp_create_nonce('fetch_google_page_speed_audit') ?>", true);
 			});
 		</script>
-		<div class="w-factory-templates-128-setup__inner-wrap">
+		<div class="w-factory-templates-134-setup__inner-wrap">
 			<h3>Google Page Speed</h3>
 			<p style="text-align: left;">
 				We analyzed your site on the Google Page Speed service. You can see the test results below. Our plugin

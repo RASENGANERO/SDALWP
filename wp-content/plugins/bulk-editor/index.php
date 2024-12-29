@@ -4,10 +4,10 @@
   Plugin URI: https://bulk-editor.pro/
   Description: Tools for managing and bulk edit posts, pages and all custom types data in the reliable and flexible way! Be professionals with managing data of your site!
   Requires at least: WP 4.9
-  Tested up to: WP 6.6
+  Tested up to: WP 6.7
   Author: realmag777
   Author URI: https://pluginus.net/
-  Version: 1.0.8.3
+  Version: 1.0.8.6
   Requires PHP: 5.6
   Tags: bulk,bulk edit,bulk editor,posts editor,bulk delete,real estate,posts manager,meta bulk edit
   Text Domain: bulk-editor
@@ -38,7 +38,7 @@ define('WPBE_LINK', plugin_dir_url(__FILE__));
 define('WPBE_ASSETS_LINK', WPBE_LINK . 'assets/');
 define('WPBE_DATA_PATH', WPBE_PATH . 'data/');
 define('WPBE_PLUGIN_NAME', plugin_basename(__FILE__));
-define('WPBE_VERSION', '1.0.8.3');
+define('WPBE_VERSION', '1.0.8.6');
 //define('WPBE_VERSION', uniqid('wpbe-')); //dev
 define('WPBE_MIN_WP_VERSION', '4.9');
 
@@ -56,7 +56,7 @@ include WPBE_PATH . 'classes/models/settings.php';
 include WPBE_PATH . 'classes/models/posts.php';
 include WPBE_PATH . 'classes/ext.php';
 
-//15-04-2024
+//29-11-2024
 final class WPBE {
 
     public $storage = NULL;
@@ -115,11 +115,22 @@ final class WPBE {
             add_action('admin_notices', function () {
                 $user_id = get_current_user_id();
                 if (!get_user_meta($user_id, 'wpbe_notice_dismissed')) {
-                    echo '<div class="notice notice-warning"><p>' . sprintf(esc_html__('If you not familiar with the plugin, firstly %s please', 'bulk-editor'), WPBE_HELPER::draw_link(array(
+                    ?>
+                    <div class="notice notice-warning">
+                        <p>
+                            <?php esc_html_e('If you not familiar with the plugin, firstly', 'bulk-editor') ?>
+                            <?php
+                            WPBE_HELPER::draw_link_e(array(
                                 'title' => esc_html__('visit this page', 'bulk-editor'),
                                 'href' => 'https://bulk-editor.pro/document/posts-editor/',
-                                'target' => '_blank'
-                            ))) . '</p><a href="admin.php?page=wpbe&wpbe-notice-dismissed=1&notice_nonce=' . wp_create_nonce('wpbe_notice_nonce') . '" class="notice-dismiss"></a></div>';
+                                'target' => '_blank',
+                            ));
+                            ?>
+                    <?php esc_html_e('please', 'bulk-editor') ?>
+                        </p>
+                        <a href="admin.php?page=wpbe&wpbe-notice-dismissed=1&notice_nonce=<?php echo esc_attr(wp_create_nonce('wpbe_notice_nonce')) ?>" class="notice-dismiss"></a>
+                    </div>	
+                    <?php
                 }
             });
             add_action('admin_init', function () {
@@ -290,8 +301,8 @@ final class WPBE {
                     upload_images: "<?php esc_html_e('Upload images', 'bulk-editor') ?>",
                     upload_file: "<?php esc_html_e('Upload file', 'bulk-editor') ?>",
                     fill_up_data: "<?php esc_html_e('Fill up the data please!', 'bulk-editor') ?>",
-                    enter_duplicate_count: "<?php printf(esc_html__('Enter how many time duplicate selected [%s](s)!', 'bulk-editor'), $this->settings->current_post_type) ?>",
-                    enter_new_count: "<?php printf(esc_html__('Enter how many new [%s](s) to create!', 'bulk-editor'), $this->settings->current_post_type) ?>",
+                    enter_duplicate_count: "<?php printf(esc_html__('Enter how many time duplicate selected [%s](s)!', 'bulk-editor'), esc_html($this->settings->current_post_type)) ?>",
+                    enter_new_count: "<?php printf(esc_html__('Enter how many new [%s](s) to create!', 'bulk-editor'), esc_html($this->settings->current_post_type)) ?>",
                     search_input_placeholder: "<?php esc_html_e('Text search by title or SKU', 'bulk-editor') ?>",
                     show_panel: "<?php esc_html_e('Show: Filters/Bulk Edit/Export', 'bulk-editor') ?>",
                     close_panel: "<?php esc_html_e('Hide: Filters/Bulk Edit/Export', 'bulk-editor') ?>",
@@ -309,10 +320,10 @@ final class WPBE {
                     sLast: "<?php esc_html_e('Last', 'bulk-editor') ?>",
                     sNext: "<?php esc_html_e('Next', 'bulk-editor') ?>",
                     sPrevious: "<?php esc_html_e('Previous', 'bulk-editor') ?>",
-                    action_state_1: "<?php printf(esc_html__('all the [%s] on the site', 'bulk-editor'), $this->settings->current_post_type) ?>",
-                    action_state_2: "<?php printf(esc_html__('the filtered [%s]. To remove filtering press reset button on the tools panel below', 'bulk-editor'), $this->settings->current_post_type) ?>",
-                    action_state_31: "<?php printf(esc_html__('the selected [%s](s)', 'bulk-editor'), $this->settings->current_post_type) ?>",
-                    action_state_32: "<?php printf(esc_html__('You can reset selection of the [%s](s) by its reset button on the panel of the editor OR uncheck them manually!', 'bulk-editor'), $this->settings->current_post_type) ?>",
+                    action_state_1: "<?php printf(esc_html__('all the [%s] on the site', 'bulk-editor'), esc_html($this->settings->current_post_type)) ?>",
+                    action_state_2: "<?php printf(esc_html__('the filtered [%s]. To remove filtering press reset button on the tools panel below', 'bulk-editor'), esc_html($this->settings->current_post_type)) ?>",
+                    action_state_31: "<?php printf(esc_html__('the selected [%s](s)', 'bulk-editor'), esc_html($this->settings->current_post_type)) ?>",
+                    action_state_32: "<?php printf(esc_html__('You can reset selection of the [%s](s) by its reset button on the panel of the editor OR uncheck them manually!', 'bulk-editor'), esc_html($this->settings->current_post_type)) ?>",
                     term_maybe_exist: "<?php esc_html_e('Maybe term(s) with such name(s) already exists!', 'bulk-editor') ?>",
                     free_ver_profiles: "<?php esc_html_e('In FREE version of the plugin you can create one profile only!', 'bulk-editor') ?>",
                     append_sub_item: "<?php esc_html_e('append sub item', 'bulk-editor') ?>",
@@ -325,14 +336,14 @@ final class WPBE {
                     load_switchers: <?php echo intval($this->settings->load_switchers) ?>,
                     autocomplete_max_elem_count: <?php echo intval($this->settings->autocomplete_max_elem_count) ?>
                 };
-                var wpbe_field_update_nonce = "<?php echo wp_create_nonce('wpbe_field_update') ?>";
-                var wpbe_assets_link = "<?php echo WPBE_ASSETS_LINK ?>";
+                var wpbe_field_update_nonce = "<?php echo esc_attr(wp_create_nonce('wpbe_field_update')) ?>";
+                var wpbe_assets_link = "<?php echo esc_attr(WPBE_ASSETS_LINK) ?>";
                 var spinner = wpbe_assets_link + "/images/spinner.gif";
                 var start_page = <?php echo (isset($_GET['start_page']) ? intval($_GET['start_page']) : 0) ?>;
 
                 //***
 
-                var wpbe_lang = '<?php echo apply_filters('wpbe_current_language', '') ?>';//for translating compatibilities
+                var wpbe_lang = '<?php echo esc_attr(apply_filters('wpbe_current_language', '')) ?>';//for translating compatibilities
 
 
             </script>
@@ -439,7 +450,7 @@ final class WPBE {
 
         //***
 
-        echo WPBE_HELPER::render_html(WPBE_PATH . 'views/wpbe.php', apply_filters('wpbe_print_plugin_options', $args));
+        WPBE_HELPER::render_html_e(WPBE_PATH . 'views/wpbe.php', apply_filters('wpbe_print_plugin_options', $args));
     }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -635,7 +646,9 @@ final class WPBE {
 
 
             $value = $this->posts->__string_replacer($value, $post_id);
-            echo $this->posts->update_page_field($post_id, $field_key, $value, $field_type);
+            $response = $this->posts->update_page_field($post_id, $field_key, $value, $field_type);
+
+            echo $response;
         }
 
         if (isset($_REQUEST['post_id'])) {
@@ -676,7 +689,8 @@ final class WPBE {
 
 //ajax
     public function get_post_field() {
-        echo $this->posts->get_post_field(intval($_REQUEST['post_id']), sanitize_key($_REQUEST['field']), (isset($_REQUEST['post_parent']) ? $_REQUEST['post_parent'] : 0));
+        $response = $this->posts->get_post_field(intval($_REQUEST['post_id']), sanitize_key($_REQUEST['field']), (isset($_REQUEST['post_parent']) ? $_REQUEST['post_parent'] : 0));
+        echo $response;
         exit;
     }
 
@@ -691,7 +705,7 @@ final class WPBE {
 
         $post = $this->posts->get_post($post_id);
 
-        echo WPBE_HELPER::render_html(WPBE_PATH . 'views/parts/post-gallery.php', array(
+        WPBE_HELPER::render_html_e(WPBE_PATH . 'views/parts/post-gallery.php', array(
             'images' => $post->get_gallery_image_ids('edit')
         ));
 
@@ -709,7 +723,7 @@ final class WPBE {
 
         $post = $this->posts->get_post($post_id);
 
-        echo WPBE_HELPER::render_html(WPBE_PATH . 'views/parts/post-upsells.php', array(
+        WPBE_HELPER::render_html_e(WPBE_PATH . 'views/parts/post-upsells.php', array(
             'posts' => $post->get_upsell_ids('edit')
         ));
 
@@ -1269,7 +1283,7 @@ final class WPBE {
         if (!isset($_REQUEST['wpbe_nonce']) || !wp_verify_nonce($_REQUEST['wpbe_nonce'], 'wpbe_field_update')) {
             die('Forbidden!');
         }
-        
+
         $term_id = (int) $_REQUEST['term_id'];
         $title = sanitize_textarea_field($_REQUEST['title']);
         $slug = sanitize_textarea_field($_REQUEST['slug']);
@@ -1376,54 +1390,54 @@ final class WPBE {
                 $on = 'WordPress';
             }
             ?>
-            <div class="notice notice-info" id="pn_<?php echo $slug ?>_ask_favour" style="position: relative;">
-                <button onclick="javascript: pn_<?php echo $slug ?>_dismiss_review(1);
-                                    void(0);" title="<?php _e('Later', 'bulk-editor'); ?>" class="notice-dismiss"></button>
-                <div id="pn_<?php echo $slug ?>_review_suggestion">
-                    <p><?php _e('Hi! Are you enjoying using WOLF – WordPress Posts Bulk Editor Professional?', 'bulk-editor'); ?></p>
-                    <p><a href="javascript: pn_<?php echo $slug ?>_set_review(1); void(0);"><?php _e('Yes, I love it', 'bulk-editor'); ?></a> 🙂 | <a href="javascript: pn_<?php echo $slug ?>_set_review(0); void(0);"><?php _e('Not really...', 'bulk-editor'); ?></a></p>
+            <div class="notice notice-info" id="pn_<?php echo esc_attr($slug) ?>_ask_favour" style="position: relative;">
+                <button onclick="javascript: pn_<?php echo esc_attr($slug) ?>_dismiss_review(1);
+                                    void(0);" title="<?php esc_html_e('Later', 'bulk-editor'); ?>" class="notice-dismiss"></button>
+                <div id="pn_<?php echo esc_attr($slug) ?>_review_suggestion">
+                    <p><?php esc_html_e('Hi! Are you enjoying using WOLF – WordPress Posts Bulk Editor Professional?', 'bulk-editor'); ?></p>
+                    <p><a href="javascript: pn_<?php echo esc_attr($slug) ?>_set_review(1); void(0);"><?php esc_html_e('Yes, I love it', 'bulk-editor'); ?></a> 🙂 | <a href="javascript: pn_<?php echo esc_attr($slug) ?>_set_review(0); void(0);"><?php esc_html_e('Not really...', 'bulk-editor'); ?></a></p>
                 </div>
 
-                <div id="pn_<?php echo $slug ?>_review_yes" style="display: none;">
-                    <p><?php printf(__('That\'s awesome! Could you please do us a BIG favor and give it a 5-star rating on %s to help us spread the word and boost our motivation?', 'bulk-editor'), $on) ?></p>
+                <div id="pn_<?php echo esc_attr($slug) ?>_review_yes" style="display: none;">
+                    <p><?php printf(esc_html__('That\'s awesome! Could you please do us a BIG favor and give it a 5-star rating on %s to help us spread the word and boost our motivation?', 'bulk-editor'), esc_html($on)) ?></p>
                     <p style="font-weight: bold;">~ PluginUs.NET developers team</p>
                     <p>
-                        <a href="<?php echo $link ?>" style="display: inline-block; margin-right: 10px;" onclick="pn_<?php echo $slug ?>_dismiss_review(2)" target="_blank"><?php esc_html_e('Okay, you deserve it', 'bulk-editor'); ?></a>
-                        <a href="javascript: pn_<?php echo $slug ?>_dismiss_review(1); void(0);" style="display: inline-block; margin-right: 10px;"><?php esc_html_e('Nope, maybe later', 'bulk-editor'); ?></a>
-                        <a href="javascript: pn_<?php echo $slug ?>_dismiss_review(2); void(0);"><?php esc_html_e('I already did', 'bulk-editor'); ?></a>
+                        <a href="<?php echo esc_attr($link) ?>" style="display: inline-block; margin-right: 10px;" onclick="pn_<?php echo esc_attr($slug) ?>_dismiss_review(2)" target="_blank"><?php esc_html_e('Okay, you deserve it', 'bulk-editor'); ?></a>
+                        <a href="javascript: pn_<?php echo esc_attr($slug) ?>_dismiss_review(1); void(0);" style="display: inline-block; margin-right: 10px;"><?php esc_html_e('Nope, maybe later', 'bulk-editor'); ?></a>
+                        <a href="javascript: pn_<?php echo esc_attr($slug) ?>_dismiss_review(2); void(0);"><?php esc_html_e('I already did', 'bulk-editor'); ?></a>
                     </p>
                 </div>
 
-                <div id="pn_<?php echo $slug ?>_review_no" style="display: none;">
-                    <p><?php _e('We are sorry to hear you aren\'t enjoying WOLF. We would love a chance to improve it. Could you take a minute and let us know what we can do better?', 'bulk-editor'); ?></p>
+                <div id="pn_<?php echo esc_attr($slug) ?>_review_no" style="display: none;">
+                    <p><?php esc_html_e('We are sorry to hear you aren\'t enjoying WOLF. We would love a chance to improve it. Could you take a minute and let us know what we can do better?', 'bulk-editor'); ?></p>
                     <p>
-                        <a href="https://pluginus.net/contact-us/" onclick="pn_<?php echo $slug ?>_dismiss_review(2)" target="_blank"><?php esc_html_e('Give Feedback', 'bulk-editor'); ?></a>&nbsp;
-                        |&nbsp;<a href="javascript: pn_<?php echo $slug ?>_dismiss_review(2); void(0);"><?php esc_html_e('No thanks', 'bulk-editor'); ?></a>
+                        <a href="https://pluginus.net/contact-us/" onclick="pn_<?php echo esc_attr($slug) ?>_dismiss_review(2)" target="_blank"><?php esc_html_e('Give Feedback', 'bulk-editor'); ?></a>&nbsp;
+                        |&nbsp;<a href="javascript: pn_<?php echo esc_attr($slug) ?>_dismiss_review(2); void(0);"><?php esc_html_e('No thanks', 'bulk-editor'); ?></a>
                     </p>
                 </div>
 
 
                 <script>
-                    function pn_<?php echo $slug ?>_set_review(yes) {
-                        document.getElementById('pn_<?php echo $slug ?>_review_suggestion').style.display = 'none';
+                    function pn_<?php echo esc_attr($slug) ?>_set_review(yes) {
+                        document.getElementById('pn_<?php echo esc_attr($slug) ?>_review_suggestion').style.display = 'none';
                         if (yes) {
-                            document.getElementById('pn_<?php echo $slug ?>_review_yes').style.display = 'block';
+                            document.getElementById('pn_<?php echo esc_attr($slug) ?>_review_yes').style.display = 'block';
                         } else {
-                            document.getElementById('pn_<?php echo $slug ?>_review_no').style.display = 'block';
+                            document.getElementById('pn_<?php echo esc_attr($slug) ?>_review_no').style.display = 'block';
                         }
                     }
 
-                    function pn_<?php echo $slug ?>_dismiss_review(what = 1) {
+                    function pn_<?php echo esc_attr($slug) ?>_dismiss_review(what = 1) {
                         //1 maybe later, 2 do not ask more
-                        jQuery('#pn_<?php echo $slug ?>_ask_favour').fadeOut();
+                        jQuery('#pn_<?php echo esc_attr($slug) ?>_ask_favour').fadeOut();
 
                         if (what === 1) {
                             jQuery.post(ajaxurl, {
-                                action: '<?php echo $slug ?>_later_rate_alert'
+                                action: '<?php echo esc_attr($slug) ?>_later_rate_alert'
                             });
                         } else {
                             jQuery.post(ajaxurl, {
-                                action: '<?php echo $slug ?>_dismiss_rate_alert'
+                                action: '<?php echo esc_attr($slug) ?>_dismiss_rate_alert'
                             });
                         }
 

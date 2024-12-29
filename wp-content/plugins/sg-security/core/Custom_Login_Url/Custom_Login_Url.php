@@ -150,7 +150,7 @@ class Custom_Login_Url {
 		$this->set_permissions_cookie( $type );
 
 		// Preserve existing query vars and add access token query arg.
-		$query_vars                 = $_GET;
+		$query_vars                 = $_GET; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$query_vars[ $this->token ] = $this->options['new_slug'];
 
 		$url = add_query_arg( $query_vars, site_url( $path ) );
@@ -165,7 +165,7 @@ class Custom_Login_Url {
 	 * @since  1.1.0
 	 */
 	private function handle_login() {
-		$action = isset( $_GET['action'] ) ? $_GET['action'] : '';
+		$action = isset( $_GET['action'] ) ? $_GET['action'] : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
 		if ( 'rp' === $action ) {
 			return;
@@ -257,8 +257,8 @@ class Custom_Login_Url {
 
 		// Check if the token value is set.
 		if (
-			isset( $_REQUEST[ $this->token ] ) &&
-			$_REQUEST[ $this->token ] === $this->options['new_slug']
+			isset( $_REQUEST[ $this->token ] ) && // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			$_REQUEST[ $this->token ] === $this->options['new_slug'] // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		) {
 			// Add the permissions cookie.
 			$this->set_permissions_cookie( $type );
@@ -277,7 +277,7 @@ class Custom_Login_Url {
 	 * @param string $type The permissions type.
 	 */
 	private function set_permissions_cookie( $type ) {
-		$url_parts = parse_url( Helper_Service::get_site_url() );
+		$url_parts = wp_parse_url( Helper_Service::get_site_url() );
 		$home_path = trailingslashit( $url_parts['path'] );
 
 		setcookie(
@@ -477,7 +477,7 @@ class Custom_Login_Url {
 		);
 
 		// Parse the URL into query and path array items.
-		$referer_parts = parse_url( $referer );
+		$referer_parts = wp_parse_url( $referer );
 
 		// Bail if query is not set.
 		if ( empty( $referer_parts['query'] ) ) {

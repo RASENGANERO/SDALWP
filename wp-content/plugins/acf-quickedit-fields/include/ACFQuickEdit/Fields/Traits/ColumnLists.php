@@ -13,14 +13,20 @@ trait ColumnLists {
 			$callback = [ $this, 'render_list_column_item_value' ];
 		}
 
-		$value = (array) $this->get_value( $object_id, false );
+		$value = $this->get_value( $object_id, false );
+		if ( is_object( $value ) && isset( $value->id ) ) {
+			$value = $value->id;
+		} else if  ( is_array( $value ) && isset( $value['id'] ) ) {
+			$value = $value['id'];
+		}
+		$value = (array) $value;
 		$value = array_filter( $value );
 
 		$output = '';
 
 		if ( $is_multiple && is_array( $value ) && count( $value ) > 0 ) {
 
-			$output .= '<ul>'.PHP_EOL;
+			$output .= '<ul class="qef-list">'.PHP_EOL;
 			foreach ( $value as $val ) {
 				$output .= sprintf(
 					'<li>%s</li>'.PHP_EOL,
@@ -110,32 +116,28 @@ trait ColumnLists {
 	protected function render_list_column_item_value_term( $value ) {
 
 		$term_obj = get_term( $value, $this->acf_field['taxonomy'] );
-		$taxo_obj = get_taxonomy( $this->acf_field['taxonomy'] );
 
 		$is_term = is_a( $term_obj, '\WP_Term' );
-		$is_taxo = is_a( $taxo_obj, '\WP_Taxonomy' );
-		$can_edit = $is_taxo && $is_term && current_user_can( $taxo_obj->cap->edit_terms );
-
-		if ( $can_edit ) {
-			$link = get_edit_term_link( $term_obj ); // null
-		} else if ( $is_term ) {
-			$link = get_term_link( $term_obj ); // WP_Error
-			if ( is_wp_error( $link ) ) {
-				$link = null;
-			}
-		} else {
-			$link = null;
-		}
 
 		if ( ! $is_term ) {
 			/* translators: Term ID */
-			return sprintf( esc_html__( '(Term ID %d not found)', 'acf-quickedit-fields' ), $term );
+			return sprintf( esc_html__( '(Term ID %d not found)', 'acf-quickedit-fields' ), $value );
 		} else if ( trim( $term_obj->name ) !== '' ) {
 			$label =  $term_obj->name;
 		} else if ( trim( $term_obj->slug ) !== '' ) {
 			$label =  $term_obj->slug;
 		} else {
 			$label =  $term_obj->id;
+		}
+
+		$link = add_query_arg( $term_obj->taxonomy, $term_obj->slug );
+		foreach ( array_keys( $_GET ) as $param ) {
+			if ( $term_obj->taxonomy !== $param && taxonomy_exists( $param ) ) {
+				$link = remove_query_arg( $param, $link );
+			}
+		}
+		if ( is_wp_error( $link ) ) {
+			$link = null;
 		}
 
 		if ( ! is_null( $link ) ) {

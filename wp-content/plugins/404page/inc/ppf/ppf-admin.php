@@ -9,7 +9,11 @@
  * @author     Peter Raschendorfer
  * @license    GPL2+
  */
- 
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+
 if ( !class_exists( 'PPF09_Admin' ) ) {
   
   
@@ -502,7 +506,6 @@ if ( !class_exists( 'PPF09_Admin' ) ) {
       echo '<div class="pp-admin-page-header">';
       echo $this->_toolbar;
       echo '<div class="pp-admin-page-title"><h1>' . $this->core()->get_plugin_shortname() . '</h1>';
-	  echo '<p><strong>PLEASE NOTE</strong><br />Development, maintenance and support of this plugin has been retired. You can use this plugin as long as is works for you. Thanks for your understanding.<br />Regards, Peter</p>';
 	  echo '</div>';
       $this->print_setting_sections_nav();
       echo '</div>';
@@ -511,7 +514,11 @@ if ( !class_exists( 'PPF09_Admin' ) ) {
       settings_fields( $this->core()->get_plugin_slug() );
       $this->print_setting_sections();
       submit_button();
-      echo '</div></form></div></div>';
+      echo '</div></form></div>';
+	  echo '<div class="pp-admin-page-footer"><p>Need help? <a href="https://wordpress.org/support/plugin/404page/" target="_blank">Get Support</a>.</p>';
+	  echo '<p>⭐ Love 404 Page? <a href="https://wordpress.org/support/plugin/404page/reviews/#new-post" target="_blank">Please rate it 5-stars on WordPress.org.</a> Thank you!</p>';
+	  echo '<p>Maintained with ❤️ and ☕ by <a href="https://www.nerdpress.net" target="_blank">NerdPress</a>.</p></div></div>';	
+	  
       echo '<script>var pp_admin_cookie_prefix="' . $this->core()->get_plugin_slug() . '";</script>';
       
       wp_enqueue_style( $this->core()->get_plugin_slug() . '-ppf03', $this->get_foundation_asset_url( 'css', 'pp-admin-page.css' ) );      

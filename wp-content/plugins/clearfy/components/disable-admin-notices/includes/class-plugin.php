@@ -9,16 +9,16 @@
  */
 
 // Exit if accessed directly
-//use WBCR\Factory_Adverts_153\Base;
+//use WBCR\Factory_Adverts_159\Base;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class WDN_Plugin extends Wbcr_Factory475_Plugin {
+class WDN_Plugin extends Wbcr_Factory480_Plugin {
 
 	/**
-	 * @var Wbcr_Factory475_Plugin
+	 * @var Wbcr_Factory480_Plugin
 	 */
 	private static $app;
 	private $plugin_data;
@@ -41,16 +41,23 @@ class WDN_Plugin extends Wbcr_Factory475_Plugin {
 		if ( is_admin() ) {
 			$this->admin_scripts();
 		}
+
+		// Wordpress 6.7 fix
+		add_action( 'init', function () {
+			if ( is_admin() ) {
+				$this->register_pages();
+			}
+		} );
 	}
 
 	/**
-	 * @return Wbcr_Factory475_Plugin
+	 * @return Wbcr_Factory480_Plugin
 	 */
 	public static function app() {
 		return self::$app;
 	}
 
-	private function registerPages() {
+	private function register_pages() {
 		//self::app()->registerPage( 'WDN_Log_Page', WDN_PLUGIN_DIR . '/admin/pages/class-pages-log.php' );
 		self::app()->registerPage( 'WDN_Settings_Page', WDN_PLUGIN_DIR . '/admin/pages/class-pages-settings.php' );
 
@@ -77,9 +84,9 @@ class WDN_Plugin extends Wbcr_Factory475_Plugin {
 		require_once( WDN_PLUGIN_DIR . '/admin/pages/class-pages-edit-redirects.php' );
 		require_once( WDN_PLUGIN_DIR . '/admin/pages/class-pages-notices.php' );
 
-		add_action( 'plugins_loaded', function () {
-			$this->registerPages();
-		}, 30 );
+		/*add_action( 'plugins_loaded', function () {
+			$this->register_pages();
+		}, 30 );*/
 	}
 
 	private function global_scripts() {

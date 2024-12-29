@@ -13,6 +13,7 @@
 class Clearfy_Disable_Comments {
 
 	protected $plugin_options;
+	protected $post_types_original = [];
 
 	public function __construct( Clearfy_Plugin_Options $plugin_options ) {
 		$this->plugin_options = $plugin_options;
@@ -102,13 +103,25 @@ class Clearfy_Disable_Comments {
 	}
 
 	public function filter_comments_open( $open, $post_id ) {
-		$post = get_post( $post_id );
+	$post = get_post( $post_id );
 
-		return in_array( $post->post_type, $this->get_disable_comments_post_types() ) ? false : $open;
+    // такой же баг как и в #108
+    // https://github.com/zverush/clearfy/issues/108
+	if ( ! $post ) {
+		return $open;
 	}
+
+	return in_array( $post->post_type, $this->get_disable_comments_post_types() ) ? false : $open;
+}
 
 	public function filter_get_comments_number( $count, $post_id ) {
 		$post = get_post( $post_id );
+
+        // #108 fix notice when 404
+        // https://github.com/zverush/clearfy/issues/108
+        if ( ! isset( $post->post_type ) ) {
+            return $count;
+        }
 
 		return in_array( $post->post_type, $this->get_disable_comments_post_types() ) ? 0 : $count;
 	}

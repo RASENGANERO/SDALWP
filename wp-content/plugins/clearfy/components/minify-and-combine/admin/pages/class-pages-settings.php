@@ -9,7 +9,7 @@ if( !defined('ABSPATH') ) {
  *
  * @since 1.0.0
  */
-class WMAC_MinifyAndCombineSettingsPage extends WBCR\Factory_Templates_128\Pages\PageBase {
+class WMAC_MinifyAndCombineSettingsPage extends WBCR\Factory_Templates_134\Pages\PageBase {
 
 	/**
 	 * {@inheritDoc}
@@ -50,12 +50,12 @@ class WMAC_MinifyAndCombineSettingsPage extends WBCR\Factory_Templates_128\Pages
 	/**
 	 * WMAC_MinifyAndCombineSettingsPage constructor.
 	 *
-	 * @param \Wbcr_Factory475_Plugin $plugin
+	 * @param \Wbcr_Factory480_Plugin $plugin
 	 *
 	 * @author Alexander Kovalev <alex.kovalevv@gmail.com>
 	 *
 	 */
-	public function __construct(Wbcr_Factory475_Plugin $plugin)
+	public function __construct(Wbcr_Factory480_Plugin $plugin)
 	{
 		$this->menu_title = __('Optimize CSS & JS', 'minify-and-combine');
 		$this->page_menu_short_description = __('Optimize CSS & JS', 'minify-and-combine');
@@ -85,11 +85,11 @@ class WMAC_MinifyAndCombineSettingsPage extends WBCR\Factory_Templates_128\Pages
 	/**
 	 * Requests assets (js and css) for the page.
 	 *
-	 * @param Wbcr_Factory475_ScriptList $scripts
-	 * @param Wbcr_Factory475_StyleList $styles
+	 * @param Wbcr_Factory480_ScriptList $scripts
+	 * @param Wbcr_Factory480_StyleList $styles
 	 *
 	 * @return void
-	 * @see Wbcr_FactoryPages475_AdminPage
+	 * @see Wbcr_FactoryPages480_AdminPage
 	 *
 	 */
 	public function assets($scripts, $styles)
@@ -483,7 +483,7 @@ This can be fully automated for different types of pages with the Мinify And Co
 		/**
 		 * @since 1.1.1 - является устаревшим
 		 */
-		return wbcr_factory_475_apply_filters_deprecated('wbcr_mac_settings_form_options', [$formOptions], '1.1.1', 'wmac/pages/settings_form_options');
+		return wbcr_factory_480_apply_filters_deprecated('wbcr_mac_settings_form_options', [$formOptions], '1.1.1', 'wmac/pages/settings_form_options');
 	}
 
 	public function cacheInfo()

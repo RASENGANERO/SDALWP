@@ -105,7 +105,7 @@ function wbcr_clr_admin_bar_menu($wp_admin_bar)
 	 * @since 1.1.3 - добавлен
 	 * @since 1.1.4 - является устаревшим
 	 */
-	$menu_items = wbcr_factory_475_apply_filters_deprecated('wbcr_clearfy_admin_bar_menu_items', [$menu_items], '1.4.0', 'wbcr/clearfy/adminbar_menu_items');
+	$menu_items = wbcr_factory_480_apply_filters_deprecated('wbcr_clearfy_admin_bar_menu_items', [$menu_items], '1.4.0', 'wbcr/clearfy/adminbar_menu_items');
 
 	/**
 	 * @since 1.1.3 - добавлен

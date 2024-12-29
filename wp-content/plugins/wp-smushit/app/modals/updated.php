@@ -19,8 +19,9 @@ if ( ! defined( 'WPINC' ) ) {
 	<div
 		role="dialog"
 		id="smush-updated-dialog"
-		class="sui-modal-content smush-updated-dialog"
+		class="sui-modal-content smush-updated-dialog wp-smush-modal-dark-background"
 		aria-modal="true"
+		data-esc-close="false"
 		aria-labelledby="smush-title-updated-dialog"
 	>
 		<div class="sui-box">
@@ -31,23 +32,28 @@ if ( ! defined( 'WPINC' ) ) {
 						alt="<?php esc_attr_e( 'Smush Updated Modal', 'wp-smushit' ); ?>" class="sui-image sui-image-center">
 				</figure>
 
-				<a href="<?php echo is_multisite() ? 'javascript:void(0);' : esc_url( $cta_url ); ?>" class="sui-button-icon sui-button-float--right" onclick="WP_Smush.onboarding.hideUpgradeModal()">
+				<button class="sui-button-icon sui-button-float--right sui-button-grey" style="box-shadow:none!important" onclick="WP_Smush.onboarding.hideUpgradeModal(event, this)">
 					<i class="sui-icon-close sui-md" aria-hidden="true"></i>
-				</a>
+				</button>
 			</div>
 
-			<div class="sui-box-body sui-content-center sui-spacing-sides--30 sui-spacing-top--0 sui-spacing-bottom--50">
+			<div class="sui-box-body sui-content-center sui-spacing-sides--30 sui-spacing-top--30 sui-spacing-bottom--50">
 				<h3 class="sui-box-title sui-lg" id="smush-title-updated-dialog" style="white-space: normal">
-					<?php esc_html_e( 'NEW: Bulk Smush images in the background!', 'wp-smushit' ); ?>
+					<?php esc_html_e( 'Local WebP just leveled up!', 'wp-smushit' ); ?>
 				</h3>
 
 				<p class="sui-description">
-					<?php esc_html_e( 'Exciting news! You no longer need to keep the Bulk Smush tab open to complete optimizing your images, as Smush now works on processing the images in the background. Once your images are smushed, you will receive a notification email.', 'wp-smushit' ); ?>
+					<?php esc_html_e( 'Now serve Local WebP images with one-click, on all server types, without adding server rules with our new Direct Conversion method.', 'wp-smushit' ); ?>
 				</p>
-
-				<a href="<?php echo is_multisite() ? 'javascript:void(0);' : esc_url( $cta_url ); ?>" class="sui-button" onclick="WP_Smush.onboarding.hideUpgradeModal()">
-					<?php esc_html_e( 'Got it', 'wp-smushit' ); ?>
-				</a>
+				<?php
+				if ( $cta_url ) {
+					?>
+						<a href="<?php echo esc_js( $cta_url ); ?>" class="sui-button sui-button-grey" onclick="WP_Smush.onboarding.hideUpgradeModal(event, this)">
+						<?php esc_html_e( 'Take me there', 'wp-smushit' ); ?>
+						</a>
+					<?php
+				}
+				?>
 			</div>
 		</div>
 	</div>

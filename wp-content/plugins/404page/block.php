@@ -6,16 +6,15 @@
  * @since 11.4.0
  *
  **/
- 
-// If this file is called directly, abort
-if ( ! defined( 'WPINC' ) ) {
-	die;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
 }
 
 add_action( 'init', function() {
-	
+
 	if ( function_exists('register_block_type_from_metadata' ) ) {
-		
+
 		register_block_type_from_metadata( __DIR__, [
 			'render_callback' => function( $atts ) {
 				$alignmentClass = ( $atts['alignment'] != null ) ? 'has-text-align-' . $atts['alignment'] : '';

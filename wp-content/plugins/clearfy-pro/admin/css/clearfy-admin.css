@@ -73,17 +73,27 @@
 
 .option-field-header {
     position: relative;
-    font-size: 1.4em;
+    font-size: 1.3em;
     font-weight: 600;
-    margin-bottom: 1.5em;
-    border-left: 7px solid #70b8ba;
-    margin-left: -25px;
-    padding: 7px 24px 7px 17px;
+    /*margin-bottom: 1.5em;*/
+    /*border-left: 3px solid #165ff4;*/
+    /*margin-left: -25px;*/
+    /*padding: 7px 24px 7px 21px;*/
+    color: #165ff4;
+
+    border-top: 1px solid #e5e5e5;
+    padding: 30px 25px 0;
+    margin: 40px -25px 30px;
+}
+
+.option-field-header:first-child {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
 }
 
 .option-field {
     position: relative;
-    border-bottom: 1px solid #eee;
     padding-bottom: 20px;
     margin-bottom: 20px;
     padding-right: 24px;
@@ -157,25 +167,26 @@
     height: 26px;
     border-radius: 13px;
     background: #CDD1DA;
-    box-shadow: inset 0 2px 3px rgba(0,0,0,.2);
+    box-shadow: inset 0 2px 3px rgba(0,0,0,.1);
     cursor: pointer;
 }
 
 .pseudo-checkbox:after {
     content: '';
     position: absolute;
-    top: 2px;
-    left: 2px;
-    width: 22px;
-    height: 22px;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
     border-radius: 10px;
     background: #FFF;
-    box-shadow: 0 2px 5px rgba(0,0,0,.3);
+    box-shadow: 0 2px 5px rgba(0,0,0,.2);
     transition: all .2s;
 }
 
 .pseudo-checkbox.checked {
-    background: #75d2b4;
+    /*background: #75d2b4;*/
+    background: #165ff4;
 }
 
 .pseudo-checkbox.checked:after {
@@ -443,6 +454,9 @@ p.description.danger {
  *******************************************************************/
 
 .wpshop-tab-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4vw;
     margin: 0;
     padding-top: 9px;
     padding-bottom: 0;
@@ -456,19 +470,18 @@ p.description.danger {
 }
 
 .wpshop-tab {
-    float: left;
     border-bottom: none;
-    padding: 7px 20px;
+    padding: 7px calc(.6vw + .6%);
     font-size: 14px;
     line-height: 24px;
     background: #fbfbfb;
     color: #777;
     text-decoration: none;
-    margin-right: 7px;
     box-shadow: inset 0 -2px 5px rgba(0,0,0,.05);
     border-top: 2px solid #ccc;
     border-bottom: 1px solid #e6e6e6;
     outline: none;
+    border-radius: .1rem .1rem 0 0;
 }
 
 .wpshop-tab:focus,
@@ -481,16 +494,18 @@ p.description.danger {
     background: #fff;
     color: #000;
     box-shadow: none;
-    border-top: 2px solid #ffc93d;
+    border-top: 2px solid #165ff4;
     border-bottom: 1px solid #fff;
 }
 
 
 .wpshop-tab-in {
     display: none;
-    padding: 25px;
+    padding: 35px 25px 25px;
     background: #fff;
-    box-shadow: 0 0 20px rgba(0,0,0,.1);
+    /*box-shadow: 0 0 20px rgba(0,0,0,.1);*/
+    box-shadow: 0 1px 3px rgba(153, 144, 198, 0.2);
+    border-radius: 0 .5rem .5rem .5rem;
 }
 .wpshop-tab-in.active {
     display: block;
@@ -609,22 +624,26 @@ p.description.danger {
     display: inline-block;
     width: 24px;
     height: 24px;
-    border: 2px solid #afdcec;
+    border: 2px solid #165ff4;
     background: #fff;
-    box-shadow: 0 2px 12px -5px rgba(90, 145, 150, 0.8);
+    /*box-shadow: 0 2px 12px -5px #165ff4;*/
     border-radius: 50%;
     text-decoration: none;
     text-align: center;
     font-size: 14px;
     line-height: 20px;
-    color: #539edd;
-    opacity: .8;
+    color: #165ff4;
+    opacity: .7;
     transition: all .2s;
 }
 
 .clearfy-ico-help:hover {
-    border: 2px solid #63bfde;
     opacity: 1;
+}
+
+.option-field-header .clearfy-ico-help {
+    top: 30px;
+    right: 25px;
 }
 
 .clearfy-rest-api-list {
@@ -694,9 +713,12 @@ p.description.danger {
     margin: 0 0 20px;
     padding: 20px;
     background: #fff;
-    border: 1px solid #e5e5e5;
-    -webkit-box-shadow: 0 1px 2px rgba(93, 80, 172, .05);
-    box-shadow: 0 1px 2px rgba(93, 80, 172, .05);
+    /*border: 1px solid #e5e5e5;*/
+
+
+    box-shadow: 0 1px 3px rgba(153, 144, 198, 0.2);
+    border-radius: .5rem;
+
     -webkit-transition: all .2s;
     -o-transition: all .2s;
     transition: all .2s;

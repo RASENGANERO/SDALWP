@@ -2,10 +2,13 @@
 
 namespace Wpshop\Quizle;
 
+use Psr\Container\ContainerInterface;
 use WP_Post;
+use WPShop\Container\Container;
 use Wpshop\Quizle\Admin\MenuPage;
 use Wpshop\Quizle\Admin\Settings;
 use Wpshop\Quizle\Db\Database;
+use function WPShop\WPCommunity\get_setting;
 
 const COOKIE_UID  = 'quizle-uid';
 const COOKIE_SALT = 'quizle-salt';
@@ -15,6 +18,20 @@ const RESULT_REQUEST_VAR = 'quizle-result';
 const CACHE_GROUP = 'quizle';
 
 /**
+ * @return ContainerInterface
+ */
+function container() {
+    static $container;
+    if ( ! $container ) {
+        $config    = require dirname( __DIR__ ) . '/config/config.php';
+        $init      = require dirname( __DIR__ ) . '/config/container.php';
+        $container = new Container( $init( $config ) );
+    }
+
+    return $container;
+}
+
+/**
  * @return void
  */
 function init_i18n() {
@@ -22,12 +39,11 @@ function init_i18n() {
     $locale      = ( is_admin() && function_exists( 'get_user_locale' ) ) ? get_user_locale() : get_locale();
     $mo_file     = dirname( QUIZLE_FILE ) . "/languages/{$text_domain}-{$locale}.mo";
 
-    $loaded = false;
     if ( is_readable( $mo_file ) ) {
         $loaded = load_textdomain( $text_domain, $mo_file );
-    }
-    if ( ! $loaded ) {
-        trigger_error( "Unable to load translations for \"{$text_domain}\" text domain", E_USER_WARNING );
+        if ( ! $loaded ) {
+            trigger_error( "Unable to load translations for \"{$text_domain}\" text domain", E_USER_NOTICE );
+        }
     }
 }
 
@@ -37,10 +53,11 @@ function init_i18n() {
  * @return void
  */
 function redirect_on_activated( $plugin ) {
-    if ( $plugin === QUIZLE_BASENAME && ! PluginContainer::get( Settings::class )->verify() ) {
+    if ( $plugin === QUIZLE_BASENAME && ! container()->get( Settings::class )->verify() ) {
         $wp_list_table = _get_list_table( 'WP_Plugins_List_Table' );
         $action        = $wp_list_table->current_action();
         if ( $action === 'activate' ) {
+            flush_rewrite_rules( false );
             wp_redirect( get_settings_page_url() );
             die;
         }
@@ -73,7 +90,8 @@ function admin_icon_url() {
  */
 function activate() {
     add_option( 'quizle-log-level', Logger::DISABLED );
-    PluginContainer::get( Database::class )->install();
+    container()->get( Database::class )->install();
+    update_option( 'quizle--flush_rewrite_rules', 1 );
 }
 
 /**
@@ -83,7 +101,7 @@ function activate() {
  * @see \register_deactivation_hook()
  */
 function deactivate() {
-
+    flush_rewrite_rules();
 }
 
 /**
@@ -93,9 +111,9 @@ function deactivate() {
  * @see \register_uninstall_hook()
  */
 function uninstall() {
-    $settings = PluginContainer::get( Settings::class );
+    $settings = container()->get( Settings::class );
     if ( $settings->get_value( 'clear_database' ) ) {
-        PluginContainer::get( Database::class )->uninstall();
+        container()->get( Database::class )->uninstall();
         $settings->clear_database();
         delete_option( 'quizle-log-level' );
     }
@@ -105,7 +123,7 @@ function uninstall() {
  * @return string
  */
 function get_settings_page_url() {
-    if ( PluginContainer::get( Settings::class )->verify() ) {
+    if ( container()->get( Settings::class )->verify() ) {
         return add_query_arg( [
             'post_type' => Quizle::POST_TYPE,
             'page'      => MenuPage::SETTINGS_SLUG,
@@ -136,17 +154,18 @@ function json_decode( $json, $associative = null, int $depth = 512, int $flags =
 }
 
 /**
- * @param string $identity
+ * @param string      $identity
+ * @param string|null $post_status
  *
  * @return WP_Post|null
  */
-function get_quizle( $identity ) {
+function get_quizle( $identity, $post_status = 'publish' ) {
     return get_posts( [
-            'name'           => $identity,
-            'post_type'      => Quizle::POST_TYPE,
-            'post_status'    => is_preview() ? 'any' : 'publish',
-            'posts_per_page' => 1,
-        ] )[0] ?? null;
+        'name'           => $identity,
+        'post_type'      => Quizle::POST_TYPE,
+        'post_status'    => $post_status,
+        'posts_per_page' => 1,
+    ] )[0] ?? null;
 }
 
 /**
@@ -156,7 +175,7 @@ function get_quizle( $identity ) {
  */
 function get_result_by_token( $token ) {
     if ( $token ) {
-        return PluginContainer::get( Database::class )->get_quizle_result_by_token( $token );
+        return container()->get( Database::class )->get_quizle_result_by_token( $token );
     }
 
     return null;
@@ -205,7 +224,11 @@ function get_quizle_result_url( $token, $quiz_id ) {
  * @return string
  */
 function get_quizle_analytic_url( $quizle_id ) {
-    return admin_url( "edit.php?post_type=quizle&page=analytics&id={$quizle_id}" );
+    return add_query_arg( [
+        'post_type' => Quizle::POST_TYPE,
+        'page'      => 'analytics',
+        'id'        => $quizle_id,
+    ], admin_url( 'edit.php' ) );
 }
 
 /**
@@ -248,6 +271,15 @@ function sanitize_textarea( $value ) {
         '<p><h1><h2><h3><h4><h5><h6><a><strong><i><del><ins><span><br>',
         true
     );
+}
+
+/**
+ * @param string $phone
+ *
+ * @return string
+ */
+function sanitize_phone( $phone ) {
+    return preg_replace( '/[^0-9+]/', '', $phone );
 }
 
 /**
@@ -442,6 +474,22 @@ function generate_string( $length ) {
 }
 
 /**
+ * @param int $length
+ *
+ * @return string
+ */
+function generate_string_lower( $length ) {
+    $characters       = '0123456789abcdefghijklmnopqrstuvwxyz';
+    $charactersLength = strlen( $characters );
+    $result           = '';
+    for ( $i = 0 ; $i < $length ; $i ++ ) {
+        $result .= $characters[ rand( 0, $charactersLength - 1 ) ];
+    }
+
+    return $result;
+}
+
+/**
  * @return string
  */
 function get_ip() {
@@ -538,4 +586,141 @@ function get_quizle_height( $quizle ) {
     }
 
     return null;
+}
+
+/**
+ * Retrieve answers from store result data
+ *
+ * @param array $answers
+ *
+ * @return array
+ */
+function retreive_answers( array $answers ) {
+    $result = [];
+    foreach ( $answers as $answer ) {
+        if ( '__text__' === $answer['answer_id'] ) {
+            $result[] = $answer['value'];
+        } elseif ( '__file__' === $answer['answer_id'] ) {
+            foreach ( $answer['value'] as $url ) {
+                $result[] = $url;
+            }
+        } else {
+            if ( ! empty( $answer['_checked'] ) ) {
+                if ( 'custom' === ( $answer['type'] ?? '' ) ) {
+                    $result[] = $answer['_custom_answer'] ?? '';
+                } else {
+                    $result[] = $answer['name'];
+                }
+            }
+        }
+    }
+
+    return $result;
+}
+
+/**
+ * @param WP_Post|null $quizle if passed - check quizle can save results
+ *
+ * @return bool
+ */
+function is_file_upload_allowed( $quizle = null ) {
+    // allow for all (if enabled by setting) or for logged in only
+    $allowed = \Wpshop\Quizle\container()->get( Settings::class )->get_value( 'file_upload.allow_guest' ) ||
+               is_user_logged_in();;
+
+    if ( $quizle ) {
+        if ( is_preview() || ! get_post_meta( $quizle->ID, 'save-quizle-contacts-and-results', true ) ) {
+            $allowed = false;
+        }
+    }
+
+    return $allowed;
+}
+
+/**
+ * @param int $size
+ * @param int $precision
+ *
+ * @return string
+ */
+function human_filesize( $size, $precision = 2 ) {
+    $units = [ 'B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB' ];
+    $step  = 1024;
+    $i     = 0;
+    while ( ( $size / $step ) > 0.9 ) {
+        $size = $size / $step;
+        $i ++;
+    }
+
+    return round( $size, $precision ) . $units[ $i ];
+}
+
+/**
+ * @return false|string
+ */
+function get_max_file_uploads() {
+    return ini_get( 'max_file_uploads' );
+}
+
+
+/**
+ * @return float|int
+ */
+function get_file_upload_max_size() {
+    static $max_size = - 1;
+
+    if ( $max_size < 0 ) {
+        // Start with post_max_size.
+        $post_max_size = parse_size( ini_get( 'post_max_size' ) );
+        if ( $post_max_size > 0 ) {
+            $max_size = $post_max_size;
+        }
+
+        // If upload_max_size is less, then reduce. Except if upload_max_size is
+        // zero, which indicates no limit.
+        $upload_max = parse_size( ini_get( 'upload_max_filesize' ) );
+        if ( $upload_max > 0 && $upload_max < $max_size ) {
+            $max_size = $upload_max;
+        }
+    }
+
+    return $max_size;
+}
+
+/**
+ * @param $size
+ *
+ * @return float
+ */
+function parse_size( $size ) {
+    $unit = preg_replace( '/[^bkmgtpezy]/i', '', $size ); // Remove the non-unit characters from the size.
+    $size = preg_replace( '/[^0-9\.]/', '', $size ); // Remove the non-numeric characters from the size.
+    if ( $unit ) {
+        // Find the position of the unit in the ordered string which is the power of magnitude to multiply a kilobyte by.
+        return round( $size * pow( 1024, stripos( 'bkmgtpezy', $unit[0] ) ) );
+    } else {
+        return round( $size );
+    }
+}
+
+/**
+ * @param string $content
+ * @param string $editor_id
+ * @param array  $settings
+ *
+ * @return \Closure
+ */
+function quizle_editor_wrap( $content, $editor_id, $settings = [] ) {
+    if ( container()->get( Settings::class )->get_value( 'enable_wp_editor' ) ) {
+        wp_editor( $content, $editor_id, $settings );
+
+        return function () {
+            // do nothing
+        };
+    }
+
+    return function ( $fallback ) {
+        // call fallback function if wp editor disabled
+        $fallback();
+    };
 }

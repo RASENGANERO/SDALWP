@@ -13,10 +13,10 @@ $tables = array(
 );
 
 $user_2fa_meta = array(
-		'configured',
-		'secret',
-		'qr',
-		'backup_codes',
+	'configured',
+	'secret',
+	'qr',
+	'backup_codes',
 );
 
 // Loop through all tables and delete them.
@@ -32,7 +32,7 @@ foreach ( $user_2fa_meta as $meta ) {
 }
 
 // Delete encryption file.
-@unlink( defined( 'SGS_ENCRYPTION_KEY_FILE_PATH' ) ? SGS_ENCRYPTION_KEY_FILE_PATH : WP_CONTENT_DIR . '/sgs_encrypt_key.php' );
+wp_delete_file( defined( 'SGS_ENCRYPTION_KEY_FILE_PATH' ) ? SGS_ENCRYPTION_KEY_FILE_PATH : WP_CONTENT_DIR . '/sgs_encrypt_key.php' );
 
 // Stop uninstall service if SG Optimizer plugin exists.
 if ( file_exists( WP_PLUGIN_DIR . '/sg-cachepress/sg-cachepress.php' ) ) {

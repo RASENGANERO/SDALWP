@@ -5,12 +5,13 @@ if (!defined('ABSPATH')) {
 
 //$val is terms ids here
 ?>
-
 <div class="wpbe_multi_select_cell">
-    <div class="wpbe_multi_select_cell_list"><?php echo WPBE_HELPER::draw_attribute_list_btn($active_fields[$field_key]['select_options'], $val, $field_key, $post) ?></div>
+    <div class="wpbe_multi_select_cell_list">
+		<?php WPBE_HELPER::draw_attribute_list_btn_e($active_fields[$field_key]['select_options'], $val, $field_key, $post) ?>
+	</div>
     <div class="wpbe_multi_select_cell_dropdown" style="display: none;">
         <?php
-        echo WPBE_HELPER::draw_select(array(
+        WPBE_HELPER::draw_select_e(array(
             'field' => $field_key,
             'post_id' => $post_id,
             'class' => 'wpbe_data_select chosen-select',

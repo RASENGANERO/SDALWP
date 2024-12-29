@@ -3,9 +3,9 @@ Contributors: Creativemotion, webcraftic, alexkovalevv
 Donate link: https://clearfy.pro/pricing/?utm_source=wordpress.org&utm_campaign=wbcr_clearfy&utm_content=repo
 Tags: cache, minify, optimize, performance, pagespeed, minify css, minify js, remove querystrings, disable rest api, bicycles by falbar, remove rss feeds, remove meta generator, yoast seo remove comments, yoast seo, yoast seo breadcrumbs, disable embeds,remove embeds, remove rsd link, dns-prefetch, remove dns-prefetch, meta generator, rsd link, wlw manifest link, remove wlw manifest link, canonical link, remove canonical link, shortlink link, remove shortlink link, emoji, attachment pages, remove attachment pages, rss feeds, disable rss feeds, rest api, disable rest api, remove rest api, clearfy, archives date, post pagination, archives author, hide login errors, recent comments, tag, rpc, xml, xml rpc, xmlrpc, admin bar, remove querystrings, reduce HTTP requests, disable heartbeat, disable revision, heartbeat, revision, clean, optimize, remove rest-api, remove rest-api, remove jquery migrate, html minify, robots.txt editor, plugin updates, disable plugin updates, disable core updates, core updates, enable automatic updates, disable widgets, disable default widgets, remove html comments
 Requires at least: 5.2
-Tested up to: 6.6
+Tested up to: 6.7
 Requires PHP: 7.2
-Stable tag: trunk
+Stable tag: 2.3.0
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -253,7 +253,22 @@ Of course! To do this, email us your wishes with address, which you will find in
 5. Assets manager
 
 == Changelog ==
-= 2.2.3 (17.07.2024) =
+= 2.3.0 (05.12.2024) =
+* Fixed: Minor bugs
+
+= 2.2.9 (05.12.2024) =
+* Fixed: Compatibility with premium plugin
+
+= 2.2.7 (05.12.2024) =
+* Added: Compatibility with Wordpress 6.7
+
+= 2.2.5 (29.09.2024) =
+* Fixed: Security issues fixed
+
+= 2.2.4 (24.07.2024) =
+* Fixed: Security issues fixed
+
+= 2.2.2 (17.07.2024) =
 * Added: Compatibility with Wordpress 6.6
 * Fixed: Minor bugs
 

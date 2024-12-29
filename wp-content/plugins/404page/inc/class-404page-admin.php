@@ -6,8 +6,8 @@
  * @since  10
  */
  
-if ( ! defined( 'WPINC' ) ) {
-	die;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
 }
 
 /**
@@ -496,5 +496,3 @@ if ( !class_exists( 'PP_404Page_Admin' ) ) {
   }
   
 }
-
-?>

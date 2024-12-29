@@ -7,8 +7,8 @@
  * partially rewritten in 11.4.0, because it stopped working
  */
  
-if ( ! defined( 'WPINC' ) ) {
-	die;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
 }
 
 /**
@@ -100,5 +100,3 @@ if ( !class_exists( 'PP_404Page_BlockEditor' ) ) {
   }
   
 }
-
-?>

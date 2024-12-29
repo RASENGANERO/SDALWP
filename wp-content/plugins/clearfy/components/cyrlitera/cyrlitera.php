@@ -4,15 +4,15 @@
  * Plugin URI: https://webcraftic.com
  * Description: The plugin converts Cyrillic, Georgian links, filenames into Latin. It is necessary for correct work of WordPress plugins and improve links readability.
  * Author: Webcraftic <wordpress.webraftic@gmail.com>
- * Version: 1.1.9
+ * Version: 1.2.0
  * Text Domain: cyrlitera
  * Domain Path: /languages/
  * Author URI: https://webcraftic.com
- * Framework Version: FACTORY_475_VERSION
+ * Framework Version: FACTORY_480_VERSION
  */
 
 // Exit if accessed directly
-if( !defined('ABSPATH') ) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
@@ -37,57 +37,57 @@ if( !defined('ABSPATH') ) {
  * -----------------------------------------------------------------------------
  */
 
-require_once(dirname(__FILE__) . '/libs/factory/core/includes/class-factory-requirements.php');
+require_once( dirname( __FILE__ ) . '/libs/factory/core/includes/class-factory-requirements.php' );
 
 // @formatter:off
-$wctr_plugin_info = array(
-	'prefix' => 'wbcr_cyrlitera_',
-	'plugin_name' => 'wbcr_cyrlitera',
-	'plugin_title' => __('Webcraftic Cyrlitera', 'cyrlitera'),
+$wctr_plugin_info = [
+	'prefix'               => 'wbcr_cyrlitera_',
+	'plugin_name'          => 'wbcr_cyrlitera',
+	'plugin_title'         => 'Webcraftic Cyrlitera',
 
 	// PLUGIN SUPPORT
-	'support_details' => array(
-		'url' => 'https://webcraftic.com',
-		'pages_map' => array(
+	'support_details'      => [
+		'url'       => 'https://webcraftic.com',
+		'pages_map' => [
 			'support' => 'support',           // {site}/support
-			'docs' => 'docs'               // {site}/docs
-		)
-	),
+			'docs'    => 'docs'               // {site}/docs
+		]
+	],
 
 	// PLUGIN SUBSCRIBE FORM
-	'subscribe_widget' => true,
-	'subscribe_settings' => ['group_id' => '105408892'],
+	'subscribe_widget'     => true,
+	'subscribe_settings'   => [ 'group_id' => '105408892' ],
 
 	// PLUGIN ADVERTS
-	'render_adverts' => true,
-	'adverts_settings' => array(
+	'render_adverts'       => true,
+	'adverts_settings'     => [
 		'dashboard_widget' => true, // show dashboard widget (default: false)
-		'right_sidebar' => true, // show adverts sidebar (default: false)
-		'notice' => true, // show notice message (default: false)
-	),
+		'right_sidebar'    => true, // show adverts sidebar (default: false)
+		'notice'           => true, // show notice message (default: false)
+	],
 
 	// FRAMEWORK MODULES
-	'load_factory_modules' => array(
-		array('libs/factory/bootstrap', 'factory_bootstrap_477', 'admin'),
-		array('libs/factory/forms', 'factory_forms_475', 'admin'),
-		array('libs/factory/pages', 'factory_pages_475', 'admin'),
-		array('libs/factory/templates', 'factory_templates_128', 'all'),
-		array('libs/factory/adverts', 'factory_adverts_153', 'admin')
-	)
-);
+	'load_factory_modules' => [
+		[ 'libs/factory/bootstrap', 'factory_bootstrap_482', 'admin' ],
+		[ 'libs/factory/forms', 'factory_forms_480', 'admin' ],
+		[ 'libs/factory/pages', 'factory_pages_480', 'admin' ],
+		[ 'libs/factory/templates', 'factory_templates_134', 'all' ],
+		[ 'libs/factory/adverts', 'factory_adverts_159', 'admin' ]
+	]
+];
 
-$wctr_compatibility = new Wbcr_Factory475_Requirements(__FILE__, array_merge($wctr_plugin_info, array(
-	'plugin_already_activate' => defined('WCTR_PLUGIN_ACTIVE'),
-	'required_php_version' => '5.4',
-	'required_wp_version' => '4.2.0',
+$wctr_compatibility = new Wbcr_Factory480_Requirements( __FILE__, array_merge( $wctr_plugin_info, [
+	'plugin_already_activate'          => defined( 'WCTR_PLUGIN_ACTIVE' ),
+	'required_php_version'             => '5.4',
+	'required_wp_version'              => '4.2.0',
 	'required_clearfy_check_component' => false
-)));
+] ) );
 
 /**
  * If the plugin is compatible, then it will continue its work, otherwise it will be stopped,
  * and the user will throw a warning.
  */
-if( !$wctr_compatibility->check() ) {
+if ( ! $wctr_compatibility->check() ) {
 	return;
 }
 
@@ -100,11 +100,11 @@ if( !$wctr_compatibility->check() ) {
  */
 
 // This plugin is activated
-define('WCTR_PLUGIN_ACTIVE', true);
-define('WCTR_PLUGIN_VERSION', $wctr_compatibility->get_plugin_version());
-define('WCTR_PLUGIN_DIR', dirname(__FILE__));
-define('WCTR_PLUGIN_BASE', plugin_basename(__FILE__));
-define('WCTR_PLUGIN_URL', plugins_url('', __FILE__));
+define( 'WCTR_PLUGIN_ACTIVE', true );
+define( 'WCTR_PLUGIN_VERSION', $wctr_compatibility->get_plugin_version() );
+define( 'WCTR_PLUGIN_DIR', dirname( __FILE__ ) );
+define( 'WCTR_PLUGIN_BASE', plugin_basename( __FILE__ ) );
+define( 'WCTR_PLUGIN_URL', plugins_url( '', __FILE__ ) );
 
 
 
@@ -114,25 +114,25 @@ define('WCTR_PLUGIN_URL', plugins_url('', __FILE__));
  * -----------------------------------------------------------------------------
  */
 
-require_once(WCTR_PLUGIN_DIR . '/libs/factory/core/boot.php');
-require_once(WCTR_PLUGIN_DIR . '/includes/class-helpers.php');
-require_once(WCTR_PLUGIN_DIR . '/includes/class-plugin.php');
+require_once( WCTR_PLUGIN_DIR . '/libs/factory/core/boot.php' );
+require_once( WCTR_PLUGIN_DIR . '/includes/class-helpers.php' );
+require_once( WCTR_PLUGIN_DIR . '/includes/class-plugin.php' );
 
 try {
-	new WCTR_Plugin(__FILE__, array_merge($wctr_plugin_info, array(
-		'plugin_version' => WCTR_PLUGIN_VERSION,
+	new WCTR_Plugin( __FILE__, array_merge( $wctr_plugin_info, [
+		'plugin_version'     => WCTR_PLUGIN_VERSION,
 		'plugin_text_domain' => $wctr_compatibility->get_text_domain(),
-	)));
-} catch( Exception $e ) {
+	] ) );
+} catch ( Exception $e ) {
 	// Plugin wasn't initialized due to an error
-	define('WCTR_PLUGIN_THROW_ERROR', true);
+	define( 'WCTR_PLUGIN_THROW_ERROR', true );
 
-	$wctr_plugin_error_func = function () use ($e) {
-		$error = sprintf("The %s plugin has stopped. <b>Error:</b> %s Code: %s", 'Webcraftic Cyrlitera', $e->getMessage(), $e->getCode());
+	$wctr_plugin_error_func = function () use ( $e ) {
+		$error = sprintf( "The %s plugin has stopped. <b>Error:</b> %s Code: %s", 'Webcraftic Cyrlitera', $e->getMessage(), $e->getCode() );
 		echo '<div class="notice notice-error"><p>' . $error . '</p></div>';
 	};
 
-	add_action('admin_notices', $wctr_plugin_error_func);
-	add_action('network_admin_notices', $wctr_plugin_error_func);
+	add_action( 'admin_notices', $wctr_plugin_error_func );
+	add_action( 'network_admin_notices', $wctr_plugin_error_func );
 }
 // @formatter:on

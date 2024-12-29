@@ -149,7 +149,7 @@ add_action('wbcr/factory/pages/impressive/print_all_notices', function ($plugin,
 	if( "clearfy_cache" === $page->id ) {
 		if( WCL_Cache_Helpers::is_nginx() && WCL_Plugin::app()->getPopulateOption('enable_cache') ) {
 			$button = '<br><a class="btn btn-default" href="' . WCL_Plugin::app()->getPluginPageUrl('clearfy_cache_nginx_rules') . '">NGINX configuration</a>';
-			$page->printWarningNotice("<p>" . __("Clearfy will work out of the box on NGINX servers. But if you want to get the best performance results, place the NGINX rules we generated in your server config. It enables NGINX to directly serve previously cached files without calling WordPress or any PHP. It also adds headers to cached CSS, JS, and images via browser cache.", 'wbcr_factory_pages_475') . "</p>" . $button);
+			$page->printWarningNotice("<p>" . __("Clearfy will work out of the box on NGINX servers. But if you want to get the best performance results, place the NGINX rules we generated in your server config. It enables NGINX to directly serve previously cached files without calling WordPress or any PHP. It also adds headers to cached CSS, JS, and images via browser cache.", 'wbcr_factory_pages_480') . "</p>" . $button);
 		}
 	}
 }, 10, 2);

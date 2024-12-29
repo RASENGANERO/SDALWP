@@ -1,0 +1,1523 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Expert Review\n"
+"POT-Creation-Date: 2023-02-02 14:11+0300\n"
+"PO-Revision-Date: 2021-08-05 13:54+0300\n"
+"Last-Translator: \n"
+"Language-Team: WPShop.ru <support@wpshop.biz>\n"
+"Language-Team: WPShop\n"
+"Language: ru_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"X-Generator: Poedit 3.2.2\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx;esc_html__;"
+"esc_html_e;esc_html_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-3: assets\n"
+"X-Poedit-SearchPathExcluded-4: resources\n"
+"X-Poedit-SearchPathExcluded-0: languages\n"
+"X-Poedit-SearchPathExcluded-1: node_modules\n"
+
+#: src/AdminMenu.php:55 src/AdminMenu.php:56 src/Shortcodes/Poll.php:238
+#: src/Shortcodes/Poll.php:240
+msgid "Polls"
+msgstr ""
+
+#: src/Likes.php:253 src/Preset.php:71 src/Preset.php:95 src/Preset.php:114
+#: src/Shortcodes/Poll.php:378 src/Shortcodes/Poll.php:418
+#: src/Shortcodes/Poll.php:563 src/Shortcodes/Poll.php:604
+msgid "Forbidden"
+msgstr ""
+
+#: src/Likes.php:257
+msgid "Unable to handle request without required data"
+msgstr ""
+
+#: src/Likes.php:268
+msgid "Unable to handle request due to not supported entity"
+msgstr ""
+
+#: src/Likes.php:320
+msgid "Unable to update post"
+msgstr ""
+
+#: src/Likes.php:383
+msgid "Unable to update comment likes"
+msgstr ""
+
+#: src/MetaBoxProvider.php:47
+msgid "Poll Data"
+msgstr ""
+
+#: src/Plugin.php:149
+msgctxt "js_i18n"
+msgid "Name"
+msgstr ""
+
+#: src/Plugin.php:150
+msgctxt "js_i18n"
+msgid "Email"
+msgstr ""
+
+#: src/Plugin.php:151
+msgctxt "js_i18n"
+msgid "Phone"
+msgstr ""
+
+#: src/Plugin.php:152
+msgctxt "js_i18n"
+msgid "Question"
+msgstr ""
+
+#: src/Plugin.php:153
+msgctxt "js_i18n"
+msgid "Submit"
+msgstr ""
+
+#: src/Plugin.php:154 src/Plugin.php:189
+msgctxt "js_i18n"
+msgid "Cancel"
+msgstr ""
+
+#: src/Plugin.php:155
+msgctxt "js_i18n"
+msgid "Your question was successfully submitted"
+msgstr ""
+
+#: src/Plugin.php:156
+msgctxt "js_i18n"
+msgid "Require to update custom form generation"
+msgstr ""
+
+#: src/Plugin.php:157
+msgctxt "js_i18n"
+msgid "Field cannot be empty"
+msgstr ""
+
+#: src/Plugin.php:158
+msgctxt "js_i18n"
+msgid "Field must be checked"
+msgstr ""
+
+#: src/Plugin.php:159
+msgctxt "js_i18n"
+msgid "Consent to the processing of personal data"
+msgstr ""
+
+#: src/Plugin.php:183
+msgctxt "js_i18n"
+msgid "Please, enter at least name"
+msgstr ""
+
+#: src/Plugin.php:184
+msgctxt "js_i18n"
+msgid "edit"
+msgstr ""
+
+#: src/Plugin.php:185
+msgctxt "js_i18n"
+msgid "remove"
+msgstr ""
+
+#: src/Plugin.php:186
+msgctxt "js_i18n"
+msgid "Save"
+msgstr ""
+
+#: src/Plugin.php:187
+msgctxt "js_i18n"
+msgid "Expert Review"
+msgstr ""
+
+#: src/Plugin.php:188
+msgctxt "js_i18n"
+msgid "OK"
+msgstr ""
+
+#: src/Plugin.php:190 src/Plugin.php:211
+msgctxt "js_i18n"
+msgid "Link"
+msgstr ""
+
+#: src/Plugin.php:191
+msgctxt "js_i18n"
+msgid "Plus & Minus"
+msgstr ""
+
+#: src/Plugin.php:192
+msgctxt "js_i18n"
+msgid "Questions to the expert"
+msgstr ""
+
+#: src/Plugin.php:193
+msgctxt "js_i18n"
+msgid "Add Expert Review Block"
+msgstr ""
+
+#: src/Plugin.php:194
+msgctxt "js_i18n"
+msgid "Add Likes"
+msgstr ""
+
+#: src/Plugin.php:195
+msgctxt "js_i18n"
+msgid "Add Likes for Comments"
+msgstr ""
+
+#: src/Plugin.php:196
+msgctxt "js_i18n"
+msgid "Expert Review Likes"
+msgstr ""
+
+#: src/Plugin.php:197 src/Plugin.php:226
+msgctxt "js_i18n"
+msgid "Style"
+msgstr ""
+
+#: src/Plugin.php:198
+msgctxt "js_i18n"
+msgid "Size"
+msgstr ""
+
+#: src/Plugin.php:199
+msgctxt "js_i18n"
+msgid "Icon"
+msgstr ""
+
+#: src/Plugin.php:200
+msgctxt "js_i18n"
+msgid "Alignment"
+msgstr ""
+
+#: src/Plugin.php:201
+msgctxt "js_i18n"
+msgid "Show Icon"
+msgstr ""
+
+#: src/Plugin.php:202 src/Plugin.php:238
+msgctxt "js_i18n"
+msgid "show"
+msgstr ""
+
+#: src/Plugin.php:203
+msgctxt "js_i18n"
+msgid "hide"
+msgstr ""
+
+#: src/Plugin.php:204
+msgctxt "js_i18n"
+msgid "Show Label"
+msgstr ""
+
+#: src/Plugin.php:205
+msgctxt "js_i18n"
+msgid "Show Count"
+msgstr ""
+
+#: src/Plugin.php:206
+msgctxt "js_i18n"
+msgid "Hide Dislikes"
+msgstr ""
+
+#: src/Plugin.php:207
+msgctxt "js_i18n"
+msgid "Label Like"
+msgstr ""
+
+#: src/Plugin.php:208
+msgctxt "js_i18n"
+msgid "Label Dislike"
+msgstr ""
+
+#: src/Plugin.php:209
+msgctxt "js_i18n_label_name"
+msgid "Name"
+msgstr ""
+
+#: src/Plugin.php:210
+msgctxt "js_i18n"
+msgid ""
+"If you fill out this field, the likes will be attached to the name and not "
+"to the post"
+msgstr ""
+
+#: src/Plugin.php:212
+msgctxt "js_i18n"
+msgid "Post ID"
+msgstr ""
+
+#: src/Plugin.php:213
+msgctxt "js_i18n_label_name"
+msgid "if Name is filled this field will be ignored"
+msgstr ""
+
+#: src/Plugin.php:214
+msgctxt "js_i18n"
+msgid "If you fill out this field, it will be used in rating table"
+msgstr ""
+
+#: src/Plugin.php:217
+msgctxt "js_i18n"
+msgid "Simple 1"
+msgstr ""
+
+#: src/Plugin.php:220
+msgctxt "js_i18n"
+msgid "Like"
+msgstr ""
+
+#: src/Plugin.php:221
+msgctxt "js_i18n"
+msgid "Dislike"
+msgstr ""
+
+#: src/Plugin.php:222
+msgctxt "js_i18n"
+msgid "Add Likes Rate"
+msgstr ""
+
+#: src/Plugin.php:223
+msgctxt "js_i18n"
+msgid "Likes Rate"
+msgstr ""
+
+#: src/Plugin.php:224
+msgctxt "js_i18n"
+msgid "Title"
+msgstr ""
+
+#: src/Plugin.php:225
+msgctxt "js_i18n"
+msgid "Rate result table"
+msgstr ""
+
+#: src/Plugin.php:227
+msgctxt "js_i18n"
+msgid "Order"
+msgstr ""
+
+#: src/Plugin.php:228
+msgctxt "js_i18n"
+msgid "asc"
+msgstr ""
+
+#: src/Plugin.php:229
+msgctxt "js_i18n"
+msgid "desc"
+msgstr ""
+
+#: src/Plugin.php:230
+msgctxt "js_i18n"
+msgid "asc likes"
+msgstr ""
+
+#: src/Plugin.php:231
+msgctxt "js_i18n"
+msgid "desc likes"
+msgstr ""
+
+#: src/Plugin.php:232
+msgctxt "js_i18n"
+msgid "asc dislikes"
+msgstr ""
+
+#: src/Plugin.php:233
+msgctxt "js_i18n"
+msgid "desc dislikes"
+msgstr ""
+
+#: src/Plugin.php:234
+msgctxt "js_i18n"
+msgid "Post IDs"
+msgstr ""
+
+#: src/Plugin.php:235
+msgctxt "js_i18n"
+msgid "Include Likes"
+msgstr ""
+
+#: src/Plugin.php:236
+msgctxt "js_i18n"
+msgid "Output Count"
+msgstr ""
+
+#: src/Plugin.php:237
+msgctxt "js_i18n"
+msgid "Show Total Score"
+msgstr ""
+
+#: src/Plugin.php:240
+msgctxt "js_i18n"
+msgid "Ask Question"
+msgstr ""
+
+#: src/Plugin.php:242
+msgctxt "js_i18n"
+msgid "FAQ"
+msgstr ""
+
+#: src/Plugin.php:243
+msgctxt "js_i18n"
+msgid "Add FAQ"
+msgstr ""
+
+#: src/Plugin.php:244
+msgctxt "js_i18n"
+msgid "Frequently Asked Questions"
+msgstr ""
+
+#: src/Plugin.php:246
+msgctxt "js_i18n"
+msgid "Please, select preset"
+msgstr ""
+
+#: src/Plugin.php:247
+msgctxt "js_i18n"
+msgid "Please enter name"
+msgstr ""
+
+#: src/Plugin.php:248
+msgctxt "js_i18n"
+msgid "Are you sure you want override preset"
+msgstr ""
+
+#: src/Plugin.php:250
+msgctxt "js_i18n"
+msgid "Add Poll"
+msgstr ""
+
+#: src/Plugin.php:251
+msgctxt "js_i18n"
+msgid "Poll"
+msgstr ""
+
+#: src/Plugin.php:385
+msgid "Attention!"
+msgstr ""
+
+#: src/Plugin.php:386
+#, php-format
+msgid ""
+"To activate plugin %s you need to enter the license key on <a "
+"href=\"%s\">this page</a>."
+msgstr ""
+
+#: src/Plugin.php:421
+msgid "Unable to check license without activation url"
+msgstr ""
+
+#: src/Plugin.php:447
+msgid "Can't get response from license server"
+msgstr ""
+
+#: src/Preset.php:75
+msgid "Unable to save unnamed preset"
+msgstr ""
+
+#: src/Preset.php:87
+msgid "Unable to save preset"
+msgstr ""
+
+#: src/Preset.php:99
+msgid "Unable to remove unnamed preset"
+msgstr ""
+
+#: src/Preset.php:106
+msgid "Unable to remove preset"
+msgstr ""
+
+#: src/Preset.php:118
+msgid "Unable to retrieve unnamed preset"
+msgstr ""
+
+#: src/Preset.php:125
+msgid "Unable to retrieve preset"
+msgstr ""
+
+#: src/Question.php:80
+msgid ""
+"Cannot handle question without consent to the processing of personal data"
+msgstr ""
+
+#: src/Question.php:89
+#, php-format
+msgid ""
+"Warning! Looks like custom form used not properly according new version. "
+"More at %s"
+msgstr ""
+
+#: src/Question.php:104
+msgid "The settings passed through the form are invalid"
+msgstr ""
+
+#: src/Question.php:116
+msgid "Unable to send email without mail or name data"
+msgstr ""
+
+#: src/Question.php:120
+msgid "Please, fill email field"
+msgstr ""
+
+#: src/Question.php:125
+#, php-format
+msgid ""
+"Question from: %s %s, page: %s\n"
+"\n"
+msgstr ""
+
+#: src/Question.php:143
+#, php-format
+msgid "Question to Expert from %s"
+msgstr ""
+
+#: src/Question.php:150
+msgid "Unable to send email"
+msgstr ""
+
+#: src/SettingsProvider.php:90 src/SettingsProvider.php:91
+msgid "Settings"
+msgstr ""
+
+#: src/SettingsProvider.php:100
+msgid "Main"
+msgstr ""
+
+#: src/SettingsProvider.php:106
+msgid "License"
+msgstr ""
+
+#: src/SettingsProvider.php:107
+msgid "Enter license key"
+msgstr ""
+
+#: src/SettingsProvider.php:125
+msgid "Show License"
+msgstr ""
+
+#: src/SettingsProvider.php:126
+msgid "Show license key in input"
+msgstr ""
+
+#: src/SettingsProvider.php:138
+msgid "Experts"
+msgstr ""
+
+#: src/SettingsProvider.php:157
+msgctxt "experts_options"
+msgid "Use Users Links"
+msgstr ""
+
+#: src/SettingsProvider.php:158
+msgctxt "experts_options"
+msgid "link of user profiles will be used if users is used as expert"
+msgstr ""
+
+#: src/SettingsProvider.php:167
+msgctxt "like_options"
+msgid "Likes"
+msgstr ""
+
+#: src/SettingsProvider.php:173
+msgctxt "like_options"
+msgid "Likes before post content"
+msgstr ""
+
+#: src/SettingsProvider.php:174
+msgctxt "like_options"
+msgid "add [expert_review_likes] before content"
+msgstr ""
+
+#: src/SettingsProvider.php:178
+msgctxt "like_options"
+msgid "Likes after post content"
+msgstr ""
+
+#: src/SettingsProvider.php:179
+msgctxt "like_options"
+msgid "add [expert_review_likes] after content"
+msgstr ""
+
+#: src/SettingsProvider.php:183
+msgctxt "like_options"
+msgid "Exclude posts"
+msgstr ""
+
+#: src/SettingsProvider.php:184
+msgid "comma separated values"
+msgstr ""
+
+#: src/SettingsProvider.php:188
+msgctxt "like_options"
+msgid "Exclude post categories"
+msgstr ""
+
+#: src/SettingsProvider.php:189
+msgid "comma or new line separated category names"
+msgstr ""
+
+#: src/SettingsProvider.php:193
+msgctxt "like_options"
+msgid "Like Content"
+msgstr ""
+
+#: src/SettingsProvider.php:199
+msgctxt "like_options"
+msgid "Likes for Comment"
+msgstr ""
+
+#: src/SettingsProvider.php:200
+msgctxt "like_options"
+msgid "add likes after comment"
+msgstr ""
+
+#: src/SettingsProvider.php:205
+msgctxt "like_options"
+msgid "Like Content for Comment"
+msgstr ""
+
+#: src/SettingsProvider.php:211
+msgctxt "like_options"
+msgid "Add Likes to MicroData"
+msgstr ""
+
+#: src/SettingsProvider.php:213 src/SettingsProvider.php:291
+msgctxt "like_options"
+msgid "None"
+msgstr ""
+
+#: src/SettingsProvider.php:214 src/SettingsProvider.php:292
+msgctxt "like_options"
+msgid "schema.org"
+msgstr ""
+
+#: src/SettingsProvider.php:221
+msgctxt "like_options"
+msgid "Likes MicroData"
+msgstr ""
+
+#: src/SettingsProvider.php:222
+msgctxt "like_options"
+msgid "add likes to microdata"
+msgstr ""
+
+#: src/SettingsProvider.php:227
+msgctxt "like_options"
+msgid "Dislikes MicroData"
+msgstr ""
+
+#: src/SettingsProvider.php:228
+msgctxt "like_options"
+msgid "add dislikes to microdata"
+msgstr ""
+
+#: src/SettingsProvider.php:236
+msgctxt "settings"
+msgid "HTML Tags"
+msgstr ""
+
+#: src/SettingsProvider.php:248
+msgid "Question Tag to Wrap (Q&A)"
+msgstr ""
+
+#: src/SettingsProvider.php:250
+msgid "The tag used for wrapping questions in question and answers"
+msgstr ""
+
+#: src/SettingsProvider.php:260
+msgid "Question Tag to Wrap (FAQ)"
+msgstr ""
+
+#: src/SettingsProvider.php:262
+msgid "The tag used for wrapping questions in FAQ"
+msgstr ""
+
+#: src/SettingsProvider.php:266
+msgid "Header Tag to Wrap (Pluses and Minuses)"
+msgstr ""
+
+#: src/SettingsProvider.php:268
+msgid "The tag used for wrapping Plus & Minus"
+msgstr ""
+
+#: src/SettingsProvider.php:276
+msgctxt "settings"
+msgid "Advanced"
+msgstr ""
+
+#: src/SettingsProvider.php:282
+msgid "FAQPage JSON+LD "
+msgstr ""
+
+#: src/SettingsProvider.php:283
+msgid "Output microdata of faq page in json+ld"
+msgstr ""
+
+#: src/SettingsProvider.php:289
+msgctxt "like_options"
+msgid "Expert Block MicroData"
+msgstr ""
+
+#: src/SettingsProvider.php:299
+msgid "Comment Selector"
+msgstr ""
+
+#: src/SettingsProvider.php:300
+msgid "where to scroll when click on button Ask Question"
+msgstr ""
+
+#: src/SettingsProvider.php:305
+msgid "Expert in New Tab"
+msgstr ""
+
+#: src/SettingsProvider.php:306
+msgid "always open new tab on Ask Question button click if link type used"
+msgstr ""
+
+#: src/SettingsProvider.php:311
+msgid "Email To"
+msgstr ""
+
+#: src/SettingsProvider.php:312
+msgid "question will be sent to the email"
+msgstr ""
+
+#: src/SettingsProvider.php:316
+msgid "Email Copy To (CC)"
+msgstr ""
+
+#: src/SettingsProvider.php:317 src/SettingsProvider.php:322
+msgid ""
+"New line separated values. Example John Doe &lt;john@example.com&gt; or "
+"john@example.com"
+msgstr ""
+
+#: src/SettingsProvider.php:321
+msgid "Email Copy To (BCC)"
+msgstr ""
+
+#: src/SettingsProvider.php:326
+msgid "Email Copy To Expert"
+msgstr ""
+
+#: src/SettingsProvider.php:327
+msgid "Send copy of email to expert if has it"
+msgstr ""
+
+#: src/SettingsProvider.php:329
+msgid "Don't send"
+msgstr ""
+
+#: src/SettingsProvider.php:330
+msgid "CC"
+msgstr ""
+
+#: src/SettingsProvider.php:331
+msgid "BCC"
+msgstr ""
+
+#: src/SettingsProvider.php:337
+msgid "Enable Consent Checkbox"
+msgstr ""
+
+#: src/SettingsProvider.php:338
+msgid "consent to the processing of personal data"
+msgstr ""
+
+#: src/SettingsProvider.php:343
+msgid "Enable Templates"
+msgstr ""
+
+#: src/SettingsProvider.php:344
+msgid ""
+"render content using templates (this will disable setting from HTML section)"
+msgstr ""
+
+#: src/SettingsProvider.php:349
+msgctxt "settings"
+msgid "Custom Style"
+msgstr ""
+
+#: src/SettingsProvider.php:355
+msgid "Enable Custom Style"
+msgstr ""
+
+#: src/SettingsProvider.php:356
+msgid "enable the feature and add styles to html document"
+msgstr ""
+
+#: src/SettingsProvider.php:360
+msgid "Background"
+msgstr ""
+
+#: src/SettingsProvider.php:362
+msgid "Primary Color"
+msgstr ""
+
+#: src/SettingsProvider.php:364
+msgid "Gradient Color"
+msgstr ""
+
+#: src/Shortcodes.php:139
+msgid "Questions to the expert"
+msgstr ""
+
+#: src/Shortcodes.php:151
+msgid "Plus & Minus"
+msgstr ""
+
+#: src/Shortcodes.php:160
+msgctxt "shortcode"
+msgid "Ask Question"
+msgstr ""
+
+#: src/Shortcodes.php:437 template-parts/expert-blocks/rating.php:48
+msgid "Result"
+msgstr ""
+
+#: src/Shortcodes.php:534
+msgctxt "expert_review_likes"
+msgid "Like"
+msgstr ""
+
+#: src/Shortcodes.php:535
+msgctxt "expert_review_likes"
+msgid "Dislike"
+msgstr ""
+
+#: src/Shortcodes.php:952
+msgid "m."
+msgstr ""
+
+#: src/Shortcodes.php:955 src/Shortcodes.php:958
+msgid "k."
+msgstr ""
+
+#: src/Shortcodes/Poll.php:129 template-parts/poll.php:22
+#: templates/tmpl-expert-review-poll-live-preview.php:29
+msgid "Show Results"
+msgstr ""
+
+#: src/Shortcodes/Poll.php:130 template-parts/poll.php:23
+msgid "Hide Results"
+msgstr ""
+
+#: src/Shortcodes/Poll.php:138 template-parts/poll.php:55
+msgid "Voted"
+msgstr ""
+
+#: src/Shortcodes/Poll.php:239 src/Shortcodes/Poll.php:244
+#: src/Shortcodes/Poll.php:247
+msgid "Poll"
+msgstr ""
+
+#: src/Shortcodes/Poll.php:241
+msgid "All Polls"
+msgstr ""
+
+#: src/Shortcodes/Poll.php:242
+msgid "Add new"
+msgstr ""
+
+#: src/Shortcodes/Poll.php:243
+msgid "Add new Poll"
+msgstr ""
+
+#: src/Shortcodes/Poll.php:288
+msgid "Info"
+msgstr ""
+
+#: src/Shortcodes/Poll.php:289
+msgid "Actions"
+msgstr ""
+
+#: src/Shortcodes/Poll.php:290
+msgid "In Posts"
+msgstr ""
+
+#: src/Shortcodes/Poll.php:313
+msgid "Total Votes"
+msgstr ""
+
+#: src/Shortcodes/Poll.php:320
+msgid "hide"
+msgstr ""
+
+#: src/Shortcodes/Poll.php:322
+msgid "display"
+msgstr ""
+
+#: src/Shortcodes/Poll.php:325
+msgid "pause voting"
+msgstr ""
+
+#: src/Shortcodes/Poll.php:327
+msgid "resume voting"
+msgstr ""
+
+#: src/Shortcodes/Poll.php:329
+msgid "reset voting"
+msgstr ""
+
+#: src/Shortcodes/Poll.php:382
+msgid "Unable to update poll."
+msgstr ""
+
+#: src/Shortcodes/Poll.php:410
+msgid "Poll metadata was not updated."
+msgstr ""
+
+#: src/Shortcodes/Poll.php:422
+msgid "Unable to save poll without params"
+msgstr ""
+
+#: src/Shortcodes/Poll.php:453
+#, php-format
+msgid ""
+"Are you sure you want to change answers of poll with id %d? This will change "
+"answers in other polls on this page with this id when you update the post."
+msgstr ""
+
+#: src/Shortcodes/Poll.php:469
+msgid "Unable to save poll"
+msgstr ""
+
+#: src/Shortcodes/Poll.php:567
+msgid "Unable to save poll data"
+msgstr ""
+
+#: src/Shortcodes/Poll.php:571
+msgid "Unable to save vote, voting is stopped"
+msgstr ""
+
+#: src/Shortcodes/Poll.php:608
+msgid "Unable to retrieve poll data"
+msgstr ""
+
+#: template-parts/question-popup.php:22 templates/experts.php:23
+msgid "Name"
+msgstr ""
+
+#: template-parts/question-popup.php:26
+msgid "Phone"
+msgstr ""
+
+#: template-parts/question-popup.php:29 templates/experts.php:28
+msgid "Email"
+msgstr ""
+
+#: template-parts/question-popup.php:33
+msgid "Question"
+msgstr ""
+
+#: template-parts/question-popup.php:37
+msgid "Consent to the processing of personal data"
+msgstr ""
+
+#: template-parts/question-popup.php:39
+msgid "Submit"
+msgstr ""
+
+#: template-parts/question-popup.php:40
+msgid "Cancel"
+msgstr ""
+
+#: templates/experts.php:33
+msgid "Avatar URL"
+msgstr ""
+
+#: templates/experts.php:39
+msgid "Choose"
+msgstr ""
+
+#: templates/experts.php:44
+msgid "Link"
+msgstr ""
+
+#: templates/experts.php:50
+msgid "Description"
+msgstr ""
+
+#: templates/experts.php:55
+msgid "Add New Expert"
+msgstr ""
+
+#: templates/poll-metadata.php:18
+msgctxt "tpl"
+msgid "Poll Result"
+msgstr ""
+
+#: templates/poll-metadata.php:29
+msgctxt "tpl"
+msgid "Total Voted"
+msgstr ""
+
+#: templates/poll-metadata.php:32
+msgid "Edit"
+msgstr ""
+
+#: templates/poll-metadata.php:38
+msgid "Answer"
+msgstr ""
+
+#: templates/poll-metadata.php:39
+msgid "Count of Votes"
+msgstr ""
+
+#: templates/poll-metadata.php:56
+msgid "Save"
+msgstr ""
+
+#: templates/poll-metadata.php:89
+msgid "Oops, some error occurred while updated the poll"
+msgstr ""
+
+#: templates/tmlp-expert-review-live-preview.php:129
+#: templates/tmpl-expert-review-faq-live-preview.php:24
+#: templates/tmpl-expert-review-likes-rate-live-preview.php:12
+#: templates/tmpl-expert-review-poll-live-preview.php:12
+msgctxt "tpl"
+msgid "Preview may vary from actual"
+msgstr ""
+
+#: templates/tmlp-expert-review-live-preview.php:138
+msgctxt "tpl"
+msgid "no header"
+msgstr ""
+
+#: templates/tmlp-expert-review-live-preview.php:173
+msgctxt "tpl"
+msgid "questions & answers"
+msgstr ""
+
+#: templates/tmlp-expert-review-live-preview.php:197
+msgctxt "tpl"
+msgid "rating"
+msgstr ""
+
+#: templates/tmlp-expert-review-live-preview.php:233
+msgctxt "tpl"
+msgid "pros & cons"
+msgstr ""
+
+#: templates/tmpl-expert-review-faq-popup.php:57
+msgctxt "tpl"
+msgid "Output"
+msgstr ""
+
+#: templates/tmpl-expert-review-faq-popup.php:61
+msgctxt "tpl"
+msgid "expanded"
+msgstr ""
+
+#: templates/tmpl-expert-review-faq-popup.php:67
+#: templates/tmpl-expert-review-poll-popup.php:88
+#: templates/tmpl-expert-review-popup.php:169
+#: templates/tmpl-expert-review-popup.php:215
+#: templates/tmpl-expert-review-popup.php:279
+#: templates/tmpl-expert-review-popup.php:335
+msgctxt "tpl"
+msgid "Show Title"
+msgstr ""
+
+#: templates/tmpl-expert-review-faq-popup.php:71
+#: templates/tmpl-expert-review-poll-popup.php:92
+#: templates/tmpl-expert-review-poll-popup.php:127
+#: templates/tmpl-expert-review-poll-popup.php:136
+msgctxt "tpl"
+msgid "show"
+msgstr ""
+
+#: templates/tmpl-expert-review-faq-popup.php:77
+#: templates/tmpl-expert-review-poll-popup.php:107
+#: templates/tmpl-expert-review-popup.php:174
+#: templates/tmpl-expert-review-popup.php:220
+#: templates/tmpl-expert-review-popup.php:284
+#: templates/tmpl-expert-review-popup.php:340
+msgctxt "tpl"
+msgid "Title"
+msgstr ""
+
+#: templates/tmpl-expert-review-faq-popup.php:84
+#: templates/tmpl-expert-review-poll-popup.php:114
+msgctxt "tpl"
+msgid "Style"
+msgstr ""
+
+#: templates/tmpl-expert-review-faq-popup.php:96
+#: templates/tmpl-expert-review-faq-popup.php:105
+#: templates/tmpl-expert-review-popup.php:192
+#: templates/tmpl-expert-review-popup.php:201
+msgctxt "tpl"
+msgid "Question"
+msgstr ""
+
+#: templates/tmpl-expert-review-faq-popup.php:97
+#: templates/tmpl-expert-review-faq-popup.php:106
+#: templates/tmpl-expert-review-poll-popup.php:160
+#: templates/tmpl-expert-review-poll-popup.php:169
+#: templates/tmpl-expert-review-popup.php:193
+#: templates/tmpl-expert-review-popup.php:202
+msgctxt "tpl"
+msgid "Answer"
+msgstr ""
+
+#: templates/tmpl-expert-review-faq-popup.php:114
+#: templates/tmpl-expert-review-poll-popup.php:177
+#: templates/tmpl-expert-review-popup.php:210
+#: templates/tmpl-expert-review-popup.php:252
+#: templates/tmpl-expert-review-popup.php:310
+#: templates/tmpl-expert-review-popup.php:329
+msgctxt "tpl"
+msgid "Add"
+msgstr ""
+
+#: templates/tmpl-expert-review-likes-live-preview.php:52
+#: templates/tmpl-expert-review-popup.php:384
+msgctxt "tpl_"
+msgid "Name"
+msgstr ""
+
+#: templates/tmpl-expert-review-likes-rate-live-preview.php:19
+#: templates/tmpl-expert-review-likes-rate-live-preview.php:26
+#: templates/tmpl-expert-review-likes-rate-live-preview.php:33
+msgctxt "tpl"
+msgid "Example"
+msgstr ""
+
+#: templates/tmpl-expert-review-poll-live-preview.php:34
+msgctxt "tpl"
+msgid "Voted"
+msgstr ""
+
+#: templates/tmpl-expert-review-poll-popup.php:26
+msgctxt "tpl"
+msgid "Light 1"
+msgstr ""
+
+#: templates/tmpl-expert-review-poll-popup.php:27
+msgctxt "tpl"
+msgid "Light 2"
+msgstr ""
+
+#: templates/tmpl-expert-review-poll-popup.php:28
+msgctxt "tpl"
+msgid "Solid 2"
+msgstr ""
+
+#: templates/tmpl-expert-review-poll-popup.php:66
+msgctxt "tpl"
+msgid "Existing Polls"
+msgstr ""
+
+#: templates/tmpl-expert-review-poll-popup.php:69
+msgctxt "tpl"
+msgid "-- select value --"
+msgstr ""
+
+#: templates/tmpl-expert-review-poll-popup.php:81
+msgctxt "tpl"
+msgid "select existing poll or create new one manually"
+msgstr ""
+
+#: templates/tmpl-expert-review-poll-popup.php:123
+msgctxt "tpl"
+msgid "Show Count"
+msgstr ""
+
+#: templates/tmpl-expert-review-poll-popup.php:132
+msgctxt "tpl"
+msgid "Results Button"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:43
+#: templates/tmpl-expert-review-popup.php:53
+msgctxt "tpl"
+msgid "Expert"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:48
+msgctxt "tpl"
+msgid "Show Expert"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:49
+#: templates/tmpl-expert-review-popup.php:170
+#: templates/tmpl-expert-review-popup.php:216
+#: templates/tmpl-expert-review-popup.php:262
+#: templates/tmpl-expert-review-popup.php:280
+#: templates/tmpl-expert-review-popup.php:336
+msgctxt "tpl"
+msgid "Show"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:58
+msgctxt "tpl"
+msgid "Setup manually"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:60
+msgctxt "tpl"
+msgid "Select from users"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:62
+msgctxt "tpl"
+msgid "Select from experts"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:70
+msgctxt "tpl"
+msgid "Avatar Alt"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:73
+msgctxt "tpl"
+msgid "Additional"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:79
+msgctxt "tpl"
+msgid "Avatar URL"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:86
+msgctxt "tpl"
+msgid "Name"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:92
+#: templates/tmpl-expert-review-popup.php:150
+msgctxt "tpl"
+msgid "Link"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:98
+msgctxt "tpl"
+msgid "Experts"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:110
+msgctxt "tpl"
+msgid "User"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:122
+msgctxt "tpl"
+msgid "Description"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:129
+msgctxt "tpl"
+msgid "Ask Question"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:130
+msgctxt "tpl"
+msgid "Show Button"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:135
+msgctxt "tpl"
+msgid "Ask Question - text"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:142
+msgctxt "tpl"
+msgid "Ask Question - action"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:146
+msgctxt "tpl"
+msgid "Popup"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:148
+msgctxt "tpl"
+msgid "Comments"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:156
+msgctxt "tpl"
+msgid "Ask Question - link"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:164
+msgctxt "tpl"
+msgid "Phone instead of email"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:180
+msgctxt "tpl"
+msgid "Text (if needed)"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:186
+msgid "Q&A"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:225
+msgid "Rating"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:257
+msgctxt "tpl"
+msgid "Result Text (if needed)"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:261
+msgctxt "tpl"
+msgid "Result Score"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:266
+msgctxt "tpl"
+msgid "Maximum Points"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:272
+msgctxt "tpl"
+msgid "Symbol"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:291
+msgid "Pros and Cons"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:347
+msgctxt "tpl"
+msgid "Pluses Title"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:353
+msgctxt "tpl"
+msgid "Minuses Title"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:360
+msgctxt "tpl"
+msgid "Preset"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:364
+msgctxt "tpl"
+msgid "Saved presets"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:367
+msgctxt "tpl"
+msgid "-- select preset --"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:377
+msgctxt "tpl"
+msgid "Apply"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:378
+msgctxt "tpl"
+msgid "Apply And Close"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:379
+msgctxt "tpl"
+msgid "Remove"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:393
+msgctxt "tpl"
+msgid "Update Preset"
+msgstr ""
+
+#: templates/tmpl-expert-review-popup.php:393
+msgctxt "tpl"
+msgid "Save Preset"
+msgstr ""
+
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p11/Plugin/Ui.php:54
+msgid "View details"
+msgstr ""
+
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p11/Plugin/Ui.php:77
+#, php-format
+msgid "More information about %s"
+msgstr ""
+
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p11/Plugin/Ui.php:128
+msgid "Check for updates"
+msgstr ""
+
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p11/Plugin/Ui.php:214
+#, php-format
+msgctxt "the plugin title"
+msgid "The %s plugin is up to date."
+msgstr ""
+
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p11/Plugin/Ui.php:216
+#, php-format
+msgctxt "the plugin title"
+msgid "A new version of the %s plugin is available."
+msgstr ""
+
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p11/Plugin/Ui.php:218
+#, php-format
+msgctxt "the plugin title"
+msgid "Could not determine if updates are available for %s."
+msgstr ""
+
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p11/Plugin/Ui.php:224
+#, php-format
+msgid "Unknown update checker status \"%s\""
+msgstr ""
+
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p11/Vcs/PluginUpdateChecker.php:98
+msgid "There is no changelog available."
+msgstr ""
+
+#~ msgid "Text Color"
+#~ msgstr "Цвет текста"
+
+#~ msgid "Button Text Color"
+#~ msgstr "Цвет текста кнопки"
+
+#~ msgid "render content using templates"
+#~ msgstr "выводить контнет с помощью шаблонов"
+
+#~ msgctxt "settings"
+#~ msgid "Question & Answer"
+#~ msgstr "Вопросы и ответы"
+
+#~ msgid "Email Copy To Expert (BCC)"
+#~ msgstr "Копия письма эксперту (BCC)"
+
+#~ msgid ""
+#~ "Are you sure you want to change answers of this poll? This will change "
+#~ "answers of all polls with same title."
+#~ msgstr ""
+#~ "Вы уверены что хотите изменить ответы данного опроса? Это изменит ответы "
+#~ "во всех подобных опросах."
+
+#~ msgid "%s Settings"
+#~ msgstr "%s настройки"
+
+#~ msgid "Edit Poll"
+#~ msgstr "Редактировать опрос"
+
+#~ msgctxt "tpl"
+#~ msgid "Multiple"
+#~ msgstr "Множественный"
+
+#~ msgctxt "tpl"
+#~ msgid "allow fiew answers"
+#~ msgstr "разрешить несколько ответов"
+
+#~ msgctxt "tpl"
+#~ msgid "Choose"
+#~ msgstr "Выбрать"
+
+#~ msgctxt "tpl"
+#~ msgid "Choose and close"
+#~ msgstr "Выбрать и закрыть"
+
+#~ msgctxt "tpl"
+#~ msgid "Save New Preset"
+#~ msgstr "Сохранить новый пресет"
+
+#~ msgid "Show Title"
+#~ msgstr "Показать заголовок"
+
+#~ msgid "show"
+#~ msgstr "показать"
+
+#~ msgid "Title"
+#~ msgstr "Заголовок"
+
+#~ msgid "Style"
+#~ msgstr "Стиль"
+
+#~ msgid "Add"
+#~ msgstr "Добавить"
+
+#~ msgid "Expert"
+#~ msgstr "Эксперт"
+
+#~ msgctxt "expert_review_popup"
+#~ msgid "Show Title"
+#~ msgstr "Показать заголовок"
+
+#~ msgctxt "expert_review_popup"
+#~ msgid "Title"
+#~ msgstr "Заголовок"
+
+#~ msgctxt "js_i18n_label_name"
+#~ msgid "If you fill out this field, the name will be ignored"
+#~ msgstr "Если заполнить поле, то Название не будет использоваться"
+
+#~ msgctxt "js_i18n_label_name"
+#~ msgid "Link"
+#~ msgstr "Ссылка"
+
+#~ msgctxt "js_i18n"
+#~ msgid "Color"
+#~ msgstr "Цвет"
+
+#~ msgctxt "js_i18n"
+#~ msgid "Show Title"
+#~ msgstr "Показать заголовок"
+
+#~ msgctxt "js_i18n"
+#~ msgid "Add Expert Review"
+#~ msgstr "Добавить отзыв эксперта"
+
+#~ msgctxt "shortcode"
+#~ msgid "Like Rate Result"
+#~ msgstr "Итоговая таблица рейтинга"
+
+#~ msgctxt "like_options"
+#~ msgid "Likes before content"
+#~ msgstr "Лайк перед контентом"
+
+#~ msgctxt "like_options"
+#~ msgid "Likes after content"
+#~ msgstr "Лайк после контента"
+
+#~ msgid ""
+#~ "To activate plugin you need to enter the license key on <a "
+#~ "href=\"%s\">this page</a>."
+#~ msgstr ""
+#~ "Чтобы активировать плагин, вы должны ввести лицензионный ключ на <a "
+#~ "href=\"%s\">этой странице</a>."
+
+#~ msgid "Expert Review"
+#~ msgstr "Отзыв эксперта"
+
+#~ msgid "OK"
+#~ msgstr "ОК"
+
+#~ msgid "Like"
+#~ msgstr "Мне нравится"
+
+#~ msgid "Dislike"
+#~ msgstr "Не нравится"
+
+#~ msgid ""
+#~ "Question from: %s <%s>, page: %s\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Вопрос от: %s <%s>, страница %s\n"
+#~ "\n"
+
+#~ msgid "Add Expert Review"
+#~ msgstr "Добавить отзыв эксперта"
+
+#~ msgid ""
+#~ "Question from: %s <%s>\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Вопрос от: %s <%s>\n"
+#~ "\n"

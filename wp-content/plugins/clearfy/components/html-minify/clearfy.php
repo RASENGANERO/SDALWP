@@ -15,7 +15,7 @@ if( !defined('ABSPATH') ) {
 }
 
 if( !defined('WHTM_PLUGIN_ACTIVE') ) {
-	define('WHTM_PLUGIN_VERSION', '1.1.2');
+	define('WHTM_PLUGIN_VERSION', '1.1.3');
 	define('WHTM_TEXT_DOMAIN', 'html-minify');
 	define('WHTM_PLUGIN_ACTIVE', true);
 

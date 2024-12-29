@@ -24,21 +24,48 @@ class DefaultHooks {
     public function init() {
         add_filter( 'quizle/shortcode/do_output', [ $this, '_disable_shortcode_in_feed' ] );
         add_filter( 'quizle/shortcode/do_output', [ $this, '_check_verify' ], PHP_INT_MAX );
+
         add_action( 'save_post', [ $this, '_generate_name' ], 10, 2 );
 
-        add_filter( 'quizle/welcome/description', 'nl2br' );
+        add_filter( 'quizle/welcome/description', 'wpautop' );
+        add_filter( 'quizle/welcome/description', 'shortcode_unautop' );
+        add_filter( 'quizle/welcome/description', 'do_shortcode', 11 );
 
-        add_filter( 'quizle/contacts/description', 'nl2br' );
-        add_filter( 'quizle/contacts/message', 'nl2br' );
-        add_filter( 'quizle/contacts/message', 'do_shortcode' );
+//        add_filter( 'quizle/welcome/description', [ $this, '_nl2br' ] );
+//        add_filter( 'quizle/welcome/description', 'do_shortcode', 11 );
+
+        add_filter( 'quizle/contacts/description', 'wpautop' );
+        add_filter( 'quizle/contacts/description', 'shortcode_unautop' );
+        add_filter( 'quizle/contacts/description', 'do_shortcode', 11 );
+
+        add_filter( 'quizle/contacts/message', 'wpautop' );
+        add_filter( 'quizle/contacts/message', 'shortcode_unautop' );
+        add_filter( 'quizle/contacts/message', 'do_shortcode', 11 );
 
         add_filter( 'quizle/question/title', 'nl2br' );
-        add_filter( 'quizle/question/description', 'nl2br' );
-        add_filter( 'quizle/question/right_answer_description', 'nl2br' );
-        add_filter( 'quizle/answer/description', 'nl2br' );
+//        add_filter( 'quizle/question/description', [ $this, '_nl2br' ] );
+        add_filter( 'quizle/question/description', 'wpautop' );
+        add_filter( 'quizle/question/description', 'shortcode_unautop' );
+        add_filter( 'quizle/question/description', 'do_shortcode', 11 );
+
+        add_filter( 'quizle/question/right_answer_description', 'wpautop' );
+        add_filter( 'quizle/question/right_answer_description', 'shortcode_unautop' );
+        add_filter( 'quizle/question/right_answer_description', 'do_shortcode', 11 );
+
+        add_filter( 'quizle/answer/description', 'wpautop' );
+        add_filter( 'quizle/answer/description', 'shortcode_unautop' );
+        add_filter( 'quizle/answer/description', 'do_shortcode', 11 );
 
         add_filter( 'quizle/result/title', 'wp_kses_post' );
-        add_filter( 'quizle/result/description', 'wp_kses_post' );
+
+        add_filter( 'quizle/result/description', 'wpautop' );
+        add_filter( 'quizle/result/description', 'shortcode_unautop' );
+        add_filter( 'quizle/result/description', 'do_shortcode', 11 );
+
+        add_filter( 'quizle/result/description', [ $this, '_insert_variables' ], 10, 2 );
+        add_filter( 'quizle/result/description', 'wpautop' );
+        add_filter( 'quizle/result/description', 'shortcode_unautop' );
+        add_filter( 'quizle/result/description', 'do_shortcode', 11 );
 
 //        add_action( 'wp_head', [ $this, '_add_result_page_meta' ] );
 
@@ -104,7 +131,7 @@ class DefaultHooks {
         add_filter( 'single_template_hierarchy', function ( $templates ) {
             global $post;
 
-            if ( Quizle::POST_TYPE === $post->post_type ) {
+            if ( $post && Quizle::POST_TYPE === $post->post_type ) {
                 array_unshift( $templates, 'quizle/single-quizle.php' );
             }
 
@@ -169,5 +196,25 @@ class DefaultHooks {
             ] );
             add_action( 'save_post', [ $this, '_generate_name' ], 10, 2 );
         }
+    }
+
+    /**
+     * @param string       $description
+     * @param QuizleResult $result
+     *
+     * @return string
+     */
+    public function _insert_variables( $description, $result ) {
+        $data = $result->get_result_data_array();
+
+        $description = str_replace( '%%total_score%%', $data['total_score'] ?? 0, $description );
+        $description = str_replace(
+            '%%total_score_text%%',
+            _n( 'point', 'points', intval( $data['total_score'] ?? 0 ), QUIZLE_TEXTDOMAIN ),
+            $description
+        );
+        $description = str_replace( '%%user_name%%', esc_html( $result->name ), $description );
+
+        return $description;
     }
 }

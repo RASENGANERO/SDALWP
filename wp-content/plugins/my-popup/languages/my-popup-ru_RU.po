@@ -1,0 +1,1063 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: My Popup\n"
+"POT-Creation-Date: 2022-12-06 17:33+0300\n"
+"PO-Revision-Date: 2022-12-06 17:34+0300\n"
+"Last-Translator: WPShop.ru <support@wpshop.biz>\n"
+"Language-Team: WPShop\n"
+"Language: ru_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: _e;__;_ex:1,2c;_n:1,2;_x:1,2c;esc_attr__;esc_attr_e;"
+"esc_html__;esc_html_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: languages\n"
+"X-Poedit-SearchPathExcluded-1: assets\n"
+"X-Poedit-SearchPathExcluded-2: node_modules\n"
+"X-Poedit-SearchPathExcluded-3: vendor\n"
+"X-Poedit-SearchPathExcluded-4: resources\n"
+
+#: _i18n.php:3
+msgid "Fully customizable popup plugin"
+msgstr "Полностью настраиваемый плагин всплывающих окон"
+
+#: src/AdminMenu.php:24 src/AdminMenu.php:25 src/DefaultHooks.php:35
+#: src/SettingsProvider.php:49 src/SettingsProvider.php:50
+msgid "Settings"
+msgstr "Настройки"
+
+#: src/DefaultHooks.php:30
+#, php-format
+msgid "<{%s} will be placed automatically>"
+msgstr "<{%s} заменится автоматически>"
+
+#: src/FormHandler.php:36
+msgid "Forbidden"
+msgstr "Запрещено"
+
+#: src/FormHandler.php:45
+msgid "Great!"
+msgstr "Отлично!"
+
+#: src/FormHandler.php:48
+msgid "Unable to handle request"
+msgstr ""
+
+#: src/FormHandler.php:61
+msgid "New data of MyPopup form:"
+msgstr "Новый денные формы MyPopup:"
+
+#: src/FormHandler.php:72
+msgid "New Request from My Popup Form"
+msgstr "Новый запрос формы My Popup"
+
+#: src/MetaBox/Container/TabbedMetaBoxContainer.php:100
+msgid "Unstick Preview"
+msgstr "Открепить"
+
+#: src/MetaBox/Container/TabbedMetaBoxContainer.php:100
+msgid "Stick Preview"
+msgstr "Закрепить"
+
+#: src/MetaBox/Container/TabbedMetaBoxContainer.php:101
+msgid "Show Preview"
+msgstr "Показать предварительный просмотр"
+
+#: src/MetaBox/Container/TabbedMetaBoxContainer.php:101
+msgid "Hide Preview"
+msgstr "Скрыть предварительный просмотр"
+
+#: src/MetaBox/Container/TabbedMetaBoxContainer.php:102
+msgid "Refresh"
+msgstr "Обновить"
+
+#: src/MetaBoxProvider.php:58
+msgid "Display"
+msgstr "Отображение"
+
+#: src/MetaBoxProvider.php:63
+msgid "Main settings"
+msgstr "Основные настройки"
+
+#: src/MetaBoxProvider.php:79
+msgid "Appearance"
+msgstr "Внешний вид"
+
+#: src/MetaBoxProvider.php:91 templates/content-tab-html.php:57
+msgid "Content"
+msgstr "Контент"
+
+#: src/MetaBoxProvider.php:103
+msgid "Output rules"
+msgstr "Правила вывода"
+
+#: src/MetaBoxProvider.php:115 templates/presets-tab-html.php:25
+msgid "Presets"
+msgstr "Пресеты"
+
+#: src/MetaBoxProvider.php:127 templates/import-export-tab-html.php:17
+msgid "Import and Export"
+msgstr "Импорт и Экспорт"
+
+#: src/MyPopup.php:240 src/MyPopup.php:241 src/MyPopup.php:242
+#: src/MyPopup.php:249
+msgid "My Popup"
+msgstr "My Popup"
+
+#: src/MyPopup.php:243
+msgid "All My Popups"
+msgstr "Все My Popup"
+
+#: src/MyPopup.php:244
+msgid "Add new"
+msgstr "Добавить новый"
+
+#: src/MyPopup.php:245
+msgid "Add new Popup"
+msgstr "Добавить попап"
+
+#: src/MyPopup.php:246
+msgid "Edit Popup"
+msgstr "Редактировать Popup"
+
+#: src/MyPopupPreview.php:56
+msgid "You have no permission to preview popup."
+msgstr ""
+
+#: src/MyPopupPreview.php:60
+msgid "Unable to preview not founded popup."
+msgstr ""
+
+#: src/MyPopupPreview.php:64
+msgid "Unable to preview not \"my_popup\" post type."
+msgstr ""
+
+#: src/Plugin.php:323
+msgid "Attention!"
+msgstr "Внимание!"
+
+#: src/Plugin.php:324
+#, php-format
+msgid ""
+"To activate plugin you need to enter the license key on <a href=\"%s\">this "
+"page</a>."
+msgstr ""
+"Для активации плагина необходимо ввести лицензионный ключ на <a href=\"%s"
+"\">этой странице</a>."
+
+#: src/Plugin.php:358 src/Plugin.php:360 src/Plugin.php:402
+msgid "Unable to check license without activation url"
+msgstr "Невозможно проверить лицензию без url-адреса активации"
+
+#: src/Plugin.php:384 src/Plugin.php:386
+msgid "Can't get response from license server"
+msgstr "Не получатся получить ответ от сервера лицензий"
+
+#: src/PostGrid.php:31
+msgid "Status"
+msgstr "Статус"
+
+#: src/SettingsProvider.php:60
+msgid "Main"
+msgstr "Основные"
+
+#: src/SettingsProvider.php:66
+msgid "License"
+msgstr "Лицензия"
+
+#: src/SettingsProvider.php:67
+msgid "Enter license key"
+msgstr "Введите лицензионный ключ"
+
+#: src/functions.php:259 templates/rules-tab-html.php:185
+msgid "Help"
+msgstr "Помощь"
+
+#: templates/appearance-tab-html.php:59
+msgid "Appearance popup"
+msgstr "Внешний вид попап"
+
+#: templates/appearance-tab-html.php:66
+msgid "Padding"
+msgstr "Внутренний отступ"
+
+#: templates/appearance-tab-html.php:84
+msgid "Border"
+msgstr "Рамка"
+
+#: templates/appearance-tab-html.php:103
+msgid "solid"
+msgstr "сплошная"
+
+#: templates/appearance-tab-html.php:104
+msgid "dotted"
+msgstr "точки"
+
+#: templates/appearance-tab-html.php:105
+msgid "dashed"
+msgstr "пунктир"
+
+#: templates/appearance-tab-html.php:106
+msgid "double"
+msgstr "двойная"
+
+#: templates/appearance-tab-html.php:123
+msgid "rounding"
+msgstr "скругление"
+
+#: templates/appearance-tab-html.php:144
+msgid "Shadow"
+msgstr "Тень"
+
+#: templates/appearance-tab-html.php:152
+msgid "Offset X"
+msgstr "Смещение X"
+
+#: templates/appearance-tab-html.php:160
+msgid "Offset Y"
+msgstr "Смещение Y"
+
+#: templates/appearance-tab-html.php:169
+msgid "Blur Radius"
+msgstr "Радиус размытия"
+
+#: templates/appearance-tab-html.php:178
+msgid "Spread Radius"
+msgstr "Растяжение"
+
+#: templates/appearance-tab-html.php:190 templates/appearance-tab-html.php:366
+#: templates/appearance-tab-html.php:513 templates/appearance-tab-html.php:687
+#: templates/appearance-tab-html.php:841
+msgid "opacity"
+msgstr "прозрачность"
+
+#: templates/appearance-tab-html.php:215
+msgid "Vertical alignment content"
+msgstr "Выравнивание контента по вертикали"
+
+#: templates/appearance-tab-html.php:224 templates/appearance-tab-html.php:407
+#: templates/appearance-tab-html.php:567
+msgid "Top"
+msgstr "Сверху"
+
+#: templates/appearance-tab-html.php:225 templates/content-tab-html.php:253
+msgid "Center"
+msgstr "По центру"
+
+#: templates/appearance-tab-html.php:226 templates/appearance-tab-html.php:423
+#: templates/appearance-tab-html.php:583
+msgid "Bottom"
+msgstr "Снизу"
+
+#: templates/appearance-tab-html.php:241
+msgid "Color text"
+msgstr "Цвет текста"
+
+#: templates/appearance-tab-html.php:259
+msgid "Animation"
+msgstr "Анимация"
+
+#: templates/appearance-tab-html.php:347
+msgid "Background"
+msgstr "Фон"
+
+#: templates/appearance-tab-html.php:354 templates/appearance-tab-html.php:677
+msgid "Background color"
+msgstr "Фоновый цвет"
+
+#: templates/appearance-tab-html.php:389
+msgid "Background image"
+msgstr "Фоновая картинка"
+
+#: templates/appearance-tab-html.php:397 templates/appearance-tab-html.php:550
+msgid "Choose"
+msgstr "Выбрать"
+
+#: templates/appearance-tab-html.php:409 templates/appearance-tab-html.php:569
+msgid "Top left"
+msgstr "Сверху слева"
+
+#: templates/appearance-tab-html.php:410 templates/appearance-tab-html.php:570
+msgid "Top center"
+msgstr "Сверху по центру"
+
+#: templates/appearance-tab-html.php:411 templates/appearance-tab-html.php:571
+msgid "Top right"
+msgstr "Сверху справа"
+
+#: templates/appearance-tab-html.php:415
+msgid "Middle"
+msgstr "По середине"
+
+#: templates/appearance-tab-html.php:417
+msgid "Middle left"
+msgstr "По середине слева"
+
+#: templates/appearance-tab-html.php:418
+msgid "Middle center"
+msgstr "По середине по центру"
+
+#: templates/appearance-tab-html.php:419
+msgid "Middle right"
+msgstr "По середине справа"
+
+#: templates/appearance-tab-html.php:425 templates/appearance-tab-html.php:585
+msgid "Bottom left"
+msgstr "Снизу слева"
+
+#: templates/appearance-tab-html.php:426 templates/appearance-tab-html.php:586
+msgid "Bottom center"
+msgstr "Снизу по центру"
+
+#: templates/appearance-tab-html.php:427 templates/appearance-tab-html.php:587
+msgid "Bottom right"
+msgstr "Снизу справа"
+
+#: templates/appearance-tab-html.php:448
+msgid "Do not repeat"
+msgstr "Не повторять"
+
+#: templates/appearance-tab-html.php:449
+msgid "Repeat on X"
+msgstr "Повторять по X"
+
+#: templates/appearance-tab-html.php:450
+msgid "Repeat on Y"
+msgstr "Повторять по Y"
+
+#: templates/appearance-tab-html.php:465
+msgid "don't stretch"
+msgstr "не растягивать"
+
+#: templates/appearance-tab-html.php:466
+msgid "stretch"
+msgstr "растянуть"
+
+#: templates/appearance-tab-html.php:467
+msgid "contain"
+msgstr "contain"
+
+#: templates/appearance-tab-html.php:482
+msgid "Darken the background image"
+msgstr "Затемнить фоновую картинку"
+
+#: templates/appearance-tab-html.php:503
+msgid "Darken parameters"
+msgstr "Параметры затемнения"
+
+#: templates/appearance-tab-html.php:538 templates/appearance-tab-html.php:745
+msgid "Icon"
+msgstr "Иконка"
+
+#: templates/appearance-tab-html.php:544
+msgid "Icon image"
+msgstr "Изображение иконки"
+
+#: templates/appearance-tab-html.php:559 templates/content-tab-html.php:252
+msgid "Left"
+msgstr "Слева"
+
+#: templates/appearance-tab-html.php:561
+msgid "Left top"
+msgstr "Слева сверху"
+
+#: templates/appearance-tab-html.php:562
+msgid "Left center"
+msgstr "Слева по центру"
+
+#: templates/appearance-tab-html.php:563
+msgid "Left bottom"
+msgstr "Слева снизу"
+
+#: templates/appearance-tab-html.php:575 templates/content-tab-html.php:254
+msgid "Right"
+msgstr "Справа"
+
+#: templates/appearance-tab-html.php:577
+msgid "Right top"
+msgstr "Справа сверху"
+
+#: templates/appearance-tab-html.php:578
+msgid "Right center"
+msgstr "Справа по центру"
+
+#: templates/appearance-tab-html.php:579
+msgid "Right bottom"
+msgstr "Справа снизу"
+
+#: templates/appearance-tab-html.php:607
+msgid "Width and height"
+msgstr "Ширина и высота"
+
+#: templates/appearance-tab-html.php:615
+msgid "Icon width"
+msgstr "Ширина иконки"
+
+#: templates/appearance-tab-html.php:623
+msgid "Icon height"
+msgstr "Высота иконки"
+
+#: templates/appearance-tab-html.php:633
+msgctxt "icon gap"
+msgid "Padding"
+msgstr "Отступ"
+
+#: templates/appearance-tab-html.php:641
+msgid "Icon Padding"
+msgstr "Отступ иконки"
+
+#: templates/appearance-tab-html.php:651
+msgid "Overlay"
+msgstr "Подложка"
+
+#: templates/appearance-tab-html.php:658
+msgid "Enable background overlay"
+msgstr "Включить фоновую подложку"
+
+#: templates/appearance-tab-html.php:709
+msgid "Close button"
+msgstr "Кнопка закрытия"
+
+#: templates/appearance-tab-html.php:717
+msgid "Show close button"
+msgstr "Показать кнопку закрытия"
+
+#: templates/appearance-tab-html.php:728
+msgid "through"
+msgstr "через"
+
+#: templates/appearance-tab-html.php:736 templates/general-tab-html.php:226
+#: templates/rules-tab-html.php:158
+msgid "sec."
+msgstr "сек."
+
+#: templates/appearance-tab-html.php:775
+msgid "Location"
+msgstr "Расположение"
+
+#: templates/appearance-tab-html.php:785
+msgid "Inside"
+msgstr "Внутри"
+
+#: templates/appearance-tab-html.php:786
+msgid "Outside"
+msgstr "Снаружи"
+
+#: templates/appearance-tab-html.php:794
+msgid "Gap"
+msgstr "Отступ"
+
+#: templates/appearance-tab-html.php:800 templates/appearance-tab-html.php:820
+msgid "Close Button Padding"
+msgstr "Отступ кнопки закрытия"
+
+#: templates/appearance-tab-html.php:810
+msgid "Size"
+msgstr "Размер"
+
+#: templates/appearance-tab-html.php:830
+msgid "Color"
+msgstr "Цвет"
+
+#: templates/content-tab-html.php:74
+msgid "Buttons"
+msgstr "Кнопки"
+
+#: templates/content-tab-html.php:77
+msgid "Link"
+msgstr "Ссылка"
+
+#: templates/content-tab-html.php:78
+msgid "New tab"
+msgstr "Вкладка"
+
+#: templates/content-tab-html.php:79
+msgid "Bg"
+msgstr "Фон"
+
+#: templates/content-tab-html.php:80
+msgid "Close"
+msgstr "Закрыть"
+
+#: templates/content-tab-html.php:84
+msgid "Countdown timer"
+msgstr "Таймер обратного отсчета"
+
+#: templates/content-tab-html.php:87
+msgid "timer on 10 minutes"
+msgstr "таймер на 10 минут"
+
+#: templates/content-tab-html.php:88
+msgid "timer on date"
+msgstr "таймер на дату"
+
+#: templates/content-tab-html.php:89
+msgid "background and color"
+msgstr "фон и цвет"
+
+#: templates/content-tab-html.php:90
+msgid "style 1, 2 or 3"
+msgstr "стиль 1, 2 или 3"
+
+#: templates/content-tab-html.php:99
+msgid "Inline styles"
+msgstr "Встроенные стили"
+
+#: templates/content-tab-html.php:106
+msgid "Use #{{id}} as popup id, for example:"
+msgstr "Используйте #{{id}} в качестве id попап, например:"
+
+#: templates/content-tab-html.php:121 templates/content-tab-html.php:148
+msgid "HTML Code"
+msgstr "HTML-код"
+
+#: templates/content-tab-html.php:122 templates/content-tab-html.php:149
+#: templates/content-tab-html.php:210 templates/content-tab-html.php:776
+msgid "You can use this shortcode in content"
+msgstr "Вы можете использовать данный шорткод в контенте"
+
+#: templates/content-tab-html.php:126 templates/content-tab-html.php:152
+#: templates/presets-tab-html.php:61
+msgid "Remove"
+msgstr "Удалить"
+
+#: templates/content-tab-html.php:142
+msgid "Add HTML Code Input"
+msgstr "Добавить поле для HTML-кода"
+
+#: templates/content-tab-html.php:198
+msgid "Social networks"
+msgstr "Социальные сети"
+
+#: templates/content-tab-html.php:218
+msgid "Type of buttons"
+msgstr "Тип кнопок"
+
+#: templates/content-tab-html.php:227
+msgid "Square"
+msgstr "Квадратные"
+
+#: templates/content-tab-html.php:228
+msgid "Round"
+msgstr "Круглые"
+
+#: templates/content-tab-html.php:243
+msgid "Align"
+msgstr "Выравнивание"
+
+#: templates/content-tab-html.php:269
+msgid "Button width"
+msgstr "Ширина кнопок"
+
+#: templates/content-tab-html.php:288
+msgid "Button height"
+msgstr "Высота кнопок"
+
+#: templates/content-tab-html.php:307
+msgid "Indent between buttons"
+msgstr "Расстояние между кнопками"
+
+#: templates/content-tab-html.php:326
+msgid "Hide links using JS"
+msgstr "Скрыть ссылки с помощью JS"
+
+#: templates/content-tab-html.php:346 templates/content-tab-html.php:666
+msgid "Facebook"
+msgstr "Facebook"
+
+#: templates/content-tab-html.php:363 templates/content-tab-html.php:685
+msgid "Vkontakte"
+msgstr "ВКонтакте"
+
+#: templates/content-tab-html.php:380 templates/content-tab-html.php:723
+msgid "Twitter"
+msgstr "Twitter"
+
+#: templates/content-tab-html.php:397 templates/content-tab-html.php:704
+msgid "Odnoklassniki"
+msgstr "Одноклассники"
+
+#: templates/content-tab-html.php:414
+msgid "Telegram"
+msgstr "Telegram"
+
+#: templates/content-tab-html.php:431
+msgid "Youtube"
+msgstr "Youtube"
+
+#: templates/content-tab-html.php:448
+msgid "Instagram"
+msgstr "Instagram"
+
+#: templates/content-tab-html.php:465
+msgid "Linkedin"
+msgstr "Linkedin"
+
+#: templates/content-tab-html.php:482
+msgid "Whatsapp"
+msgstr "Whatsapp"
+
+#: templates/content-tab-html.php:499
+msgid "Viber"
+msgstr "Viber"
+
+#: templates/content-tab-html.php:516 templates/content-tab-html.php:742
+msgid "Pinterest"
+msgstr "Pinterest"
+
+#: templates/content-tab-html.php:533
+msgid "Yandexzen"
+msgstr "Яндекс Дзен"
+
+#: templates/content-tab-html.php:550
+msgid "GitHub"
+msgstr "GitHub"
+
+#: templates/content-tab-html.php:567
+msgid "Discord"
+msgstr "Discord"
+
+#: templates/content-tab-html.php:584
+msgid "RuTube"
+msgstr "RuTube"
+
+#: templates/content-tab-html.php:601
+msgid "Yappy"
+msgstr "Yappy"
+
+#: templates/content-tab-html.php:618
+msgid "Pikabu"
+msgstr "Пикабу"
+
+#: templates/content-tab-html.php:635
+msgid "Yandex"
+msgstr "Яндекс"
+
+#: templates/content-tab-html.php:654
+msgid "Social widgets"
+msgstr "Социальные виджеты"
+
+#: templates/content-tab-html.php:676 templates/content-tab-html.php:733
+msgid "page address"
+msgstr "адрес страницы"
+
+#: templates/content-tab-html.php:695 templates/content-tab-html.php:714
+msgid "group id"
+msgstr "id группы"
+
+#: templates/content-tab-html.php:752
+msgid "board address"
+msgstr "адрес доски"
+
+#: templates/content-tab-html.php:764
+msgid "Output posts"
+msgstr "Вывод записей"
+
+#: templates/content-tab-html.php:784
+msgid "Title"
+msgstr "Заголовок"
+
+#: templates/content-tab-html.php:802
+msgid "Number of posts"
+msgstr "Кол-во записей"
+
+#: templates/content-tab-html.php:820
+msgid "Sorting"
+msgstr "Сортировка"
+
+#: templates/content-tab-html.php:829
+msgid "Accidentally"
+msgstr "Случайно"
+
+#: templates/content-tab-html.php:830
+msgid "By views (views)"
+msgstr "По просмотрам (views)"
+
+#: templates/content-tab-html.php:831
+msgid "By comments"
+msgstr "По комментариям"
+
+#: templates/content-tab-html.php:832
+msgid "New"
+msgstr "Новые"
+
+#: templates/content-tab-html.php:847
+msgid "ID of posts to include"
+msgstr "ID записей для вывода"
+
+#: templates/content-tab-html.php:865
+msgid "ID of posts to exclude"
+msgstr "ID записей для исключения"
+
+#: templates/content-tab-html.php:883
+msgid "ID of categories to include"
+msgstr "ID категорий для вывода"
+
+#: templates/content-tab-html.php:901
+msgid "ID of categories to exclude"
+msgstr "ID категорий для исключения"
+
+#: templates/content-tab-html.php:919
+msgid "Get posts"
+msgstr "Добрать записи"
+
+#: templates/content-tab-html.php:929
+msgid "If there weren’t enough records, get them according to the sorting"
+msgstr "Если записей не хватило — добрать согласно сортировке"
+
+#: templates/content-tab-html.php:939
+msgid "Open links in a new tab"
+msgstr "Открывать ссылки в новой вкладке"
+
+#: templates/content-tab-html.php:959
+msgid "Show thumbnail"
+msgstr "Показывать миниатюру"
+
+#: templates/content-tab-html.php:981
+msgid "Style"
+msgstr "Стиль"
+
+#: templates/content-tab-html.php:990
+msgid "Horizontal (In a row)"
+msgstr "Горизонтальные (В ряд)"
+
+#: templates/content-tab-html.php:991
+msgid "Vertical (Per Column)"
+msgstr "Вертикальные (В колонку)"
+
+#: templates/general-tab-html.php:64
+msgid "Location and sizes of popup on the page"
+msgstr "Расположение и размеры попап на странице"
+
+#: templates/general-tab-html.php:73
+msgid "top left"
+msgstr "сверху слева"
+
+#: templates/general-tab-html.php:74
+msgid "top center"
+msgstr "сверху по центру"
+
+#: templates/general-tab-html.php:75
+msgid "top right"
+msgstr "сверху справа"
+
+#: templates/general-tab-html.php:76
+msgid "center left"
+msgstr "по середине слева"
+
+#: templates/general-tab-html.php:77
+msgid "center center"
+msgstr "по середине по центру"
+
+#: templates/general-tab-html.php:78
+msgid "center right"
+msgstr "по середине справа"
+
+#: templates/general-tab-html.php:79
+msgid "bootom left"
+msgstr "снизу слева"
+
+#: templates/general-tab-html.php:80
+msgid "bottom center"
+msgstr "снизу по центру"
+
+#: templates/general-tab-html.php:81
+msgid "bottom right"
+msgstr "снизу справа"
+
+#: templates/general-tab-html.php:93
+msgid "Width"
+msgstr "Ширина"
+
+#: templates/general-tab-html.php:119
+msgid "Height"
+msgstr "Высота"
+
+#: templates/general-tab-html.php:145
+msgid ""
+"vw and vh - units of measure, relative to the width and height of the browser"
+msgstr "vw и vh — единицы измерения, относительно ширины и высоты браузера"
+
+#: templates/general-tab-html.php:147
+msgid ""
+"100vw - means 100 percent of the width of the browser, i.e. the popup will "
+"be full width"
+msgstr ""
+"100vw — обозначает 100% от ширины браузера, то есть попап будет на всю ширину"
+
+#: templates/general-tab-html.php:158
+msgid "Show Reapply through"
+msgstr "Показать повторно через"
+
+#: templates/general-tab-html.php:172
+msgid "minutes"
+msgstr "минут"
+
+#: templates/general-tab-html.php:173
+msgid "hours"
+msgstr "часов"
+
+#: templates/general-tab-html.php:174
+msgid "days"
+msgstr "дней"
+
+#: templates/general-tab-html.php:175
+msgid "months"
+msgstr "месяцев"
+
+#: templates/general-tab-html.php:190
+msgid "Prevent closing popup by clicking on the overlay"
+msgstr "Запретить закрытие попап по клику на подложку"
+
+#: templates/general-tab-html.php:199
+msgid "Prevent closing popup by ESC key"
+msgstr "Запретить закрытие попап по клавише ESC"
+
+#: templates/general-tab-html.php:208
+msgid "Disable page scrolling"
+msgstr "Отключить прокрутку страницы"
+
+#: templates/general-tab-html.php:217
+msgid "Close popup through"
+msgstr "Закрыть попап через"
+
+#: templates/general-tab-html.php:231
+msgid "Display on devices"
+msgstr "Отображение на устройствах"
+
+#: templates/general-tab-html.php:240
+msgid "On the computer"
+msgstr "На компьютере"
+
+#: templates/general-tab-html.php:247
+msgid "On tablets"
+msgstr "На планшетах"
+
+#: templates/general-tab-html.php:254
+msgid "On mobiles"
+msgstr "На мобильных"
+
+#: templates/import-export-tab-html.php:25
+msgid "Export"
+msgstr "Экспорт"
+
+#: templates/import-export-tab-html.php:30
+msgid "Export with Rules"
+msgstr "Экспортировать с правилами"
+
+#: templates/import-export-tab-html.php:41
+msgid "Export Data"
+msgstr "Экспортировать данные"
+
+#: templates/import-export-tab-html.php:42
+msgid "the data is copied to the clipboard!"
+msgstr "данные скопированы в буфер обмена!"
+
+#: templates/import-export-tab-html.php:51
+msgid "Import"
+msgstr "Импорт"
+
+#: templates/import-export-tab-html.php:55
+msgid "Import Data"
+msgstr "Импортировать данные"
+
+#: templates/info.php:23
+msgid "Documentation"
+msgstr "Документация"
+
+#: templates/info.php:25
+msgid ""
+"If you have a question about our product, perhaps the answer is already in "
+"our documentation."
+msgstr ""
+"Если у Вас возник вопрос по нашему продукту - возможно ответ уже есть в "
+"нашей документации."
+
+#: templates/info.php:33
+msgid "Questions and answers"
+msgstr "Вопросы и ответы"
+
+#: templates/info.php:35
+msgid ""
+"Section of frequently asked questions and answers to them. You can quickly "
+"find the answer to a question."
+msgstr ""
+"Раздел частозадаваемых вопросов и ответов к ним. Можно быстро найти ответ на "
+"вопрос."
+
+#: templates/info.php:43
+msgid "Video instructions"
+msgstr "Видео-инструкции"
+
+#: templates/info.php:45
+msgid ""
+"An overview of the plugin and functions in video format. Subscribe to the "
+"channel so you don't miss it."
+msgstr ""
+"Обзор плагина и функций в видео-формате. Подпишитесь на канал, чтобы не "
+"пропустить."
+
+#: templates/info.php:50
+msgid "Our pages:"
+msgstr "Наши страницы:"
+
+#: templates/info.php:54
+msgid "Affiliate program"
+msgstr "Партнерская программа"
+
+#: templates/info.php:62
+msgid "License key"
+msgstr "Лицензионный ключ"
+
+#: templates/info.php:76 templates/presets-tab-html.php:52
+msgid "Activate"
+msgstr "Активировать"
+
+#: templates/presets-tab-html.php:41
+msgid "Save Current as Preset"
+msgstr "Сохранить текущий как Пресет"
+
+#: templates/rules-tab-html.php:55
+msgid "on every page"
+msgstr "на каждой странице"
+
+#: templates/rules-tab-html.php:56
+msgid "on home"
+msgstr "на главной"
+
+#: templates/rules-tab-html.php:57
+msgid "in posts"
+msgstr "в записях"
+
+#: templates/rules-tab-html.php:58
+msgid "posts in  categories"
+msgstr "записи в категориях"
+
+#: templates/rules-tab-html.php:59
+msgid "posts in  tags"
+msgstr "записи в тегах"
+
+#: templates/rules-tab-html.php:60
+msgid "posts in taxonomies"
+msgstr "записи в таксономиях"
+
+#: templates/rules-tab-html.php:61
+msgid "on pages"
+msgstr "на страницах"
+
+#: templates/rules-tab-html.php:62
+msgid "on post types"
+msgstr "в типах постов"
+
+#: templates/rules-tab-html.php:63
+msgid "in categories"
+msgstr "в рубриках"
+
+#: templates/rules-tab-html.php:64
+msgid "in tags"
+msgstr "в тегах"
+
+#: templates/rules-tab-html.php:65
+msgid "in taxonomies"
+msgstr "в таксономиях"
+
+#: templates/rules-tab-html.php:66
+msgid "on page search"
+msgstr "на странице поиска"
+
+#: templates/rules-tab-html.php:67
+msgid "on 404"
+msgstr "на 404"
+
+#: templates/rules-tab-html.php:68
+msgid "url regular expression"
+msgstr "регулярное выражения для url"
+
+#: templates/rules-tab-html.php:82
+msgid "Enable Popup"
+msgstr "Включить попап"
+
+#: templates/rules-tab-html.php:90
+msgid "Events at which to show popup"
+msgstr "События, при которых показывать попап"
+
+#: templates/rules-tab-html.php:99
+msgid "Show through"
+msgstr "Показать через"
+
+#: templates/rules-tab-html.php:109
+msgid "sec. after loading page"
+msgstr "сек. после загрузки страницы"
+
+#: templates/rules-tab-html.php:117
+msgid "Show after scrolling"
+msgstr "Показать после прокрутки"
+
+#: templates/rules-tab-html.php:126
+msgid "% page"
+msgstr "% страницы"
+
+#: templates/rules-tab-html.php:134
+msgid "Show scroll to element"
+msgstr "Показать по скроллу до элемента"
+
+#: templates/rules-tab-html.php:149
+msgid "Show if user is not active"
+msgstr "Показать если пользователь не активен"
+
+#: templates/rules-tab-html.php:166
+msgid "Show if user leaves page"
+msgstr "Показать если пользователь уходит со страницы"
+
+#: templates/rules-tab-html.php:175
+msgid "Show by clicking on an element"
+msgstr "Показать по клику на элементе"
+
+#: templates/rules-tab-html.php:182
+msgid "selector"
+msgstr "селектор"
+
+#: templates/rules-tab-html.php:192
+msgid ""
+"You can call the popup using the myPopupShow function with passing the popup "
+"ID. For example:"
+msgstr ""
+"Вы можете вызвать всплывающее окно с помощью функции myPopupShow с передачей "
+"идентификатора ID. Например:"
+
+#: templates/rules-tab-html.php:204
+msgid "On witch pages to display popup"
+msgstr "На каких страницах выводить попап"
+
+#: templates/rules-tab-html.php:209
+msgid ""
+"By default a popup will not be displayed on all pages but you can set your "
+"conditions below for output"
+msgstr ""
+"По умолчанию попап не будет отображаться на всех страницах, но Вы можете "
+"задать ниже свои условия для вывода"
+
+#: templates/rules-tab-html.php:211
+msgid "Higher rules more important"
+msgstr "Правила, которые находятся выше, важнее"
+
+#: templates/rules-tab-html.php:234
+msgid "Add rule"
+msgstr "Добавить правило"
+
+#: templates/rules-tab-html.php:250 templates/rules-tab-html.php:302
+msgid "Show"
+msgstr "Показать"
+
+#: templates/rules-tab-html.php:251 templates/rules-tab-html.php:303
+msgid "Hide"
+msgstr "Скрыть"
+
+#: templates/rules-tab-html.php:323
+msgid "subtype"
+msgstr "подтип"

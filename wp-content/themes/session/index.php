@@ -94,12 +94,20 @@ get_header();  ?>
 			<div class="section_title"><h2><strong>РАБОТЫ,</strong> которые <span>мы выполняем</span></h2></div>
 			<div class="work_wrap">
 				<?php
-				$wp_query = new WP_Query( array(
-				  'post_type' => 'post',
-				  'posts_per_page' => -1,
-				  'cat' => 2,
-				  'orderby'=> 'title'
-				));
+				
+
+                $wp_query = new WP_Query( array(
+                'post_type' => 'post',
+                'posts_per_page' => -1,
+                'cat' => 2,
+                'orderby' => 'date',
+                'order' => 'DESC' // Убывание
+                ));
+				$dataRemove = [
+					'Сроки',
+					'Стоимость',
+					'Цена'
+				];
 				?>
 				<?php if ( have_posts() ) : ?>
 				  <?php while ( have_posts() ) : the_post(); ?>
@@ -110,7 +118,12 @@ get_header();  ?>
 									<?php
 										if( have_rows('work_price') ):
 									    while ( have_rows('work_price') ) : the_row(); ?>
-									    	<li><?php the_sub_field('work_col1'); ?> 
+									    	<li>
+												<?php
+													if (in_array(trim(strval(get_sub_field('work_col1'))),$dataRemove) === false) {
+														the_sub_field('work_col1');
+													}
+												?> 
 									    		<strong><?php the_sub_field('work_col2'); ?></strong>
 									    	</li>
 									    <?php endwhile;
@@ -118,7 +131,7 @@ get_header();  ?>
 										endif;
 									?>
 								</ul>
-								<a href="<?php the_permalink(); ?>" class="work_button">ПОДРОБНЕЕ</a>
+								<a href="<?php the_permalink(); ?>" class="work_button">ПОЛУЧИТЬ ПОМОЩЬ</a>
 							</div>		  		
 				  <?php endwhile; ?>
 				 
@@ -175,7 +188,7 @@ get_header();  ?>
 										</div> <?php the_field('univer_name'); ?>
 									</div>
 									<div class="univer_desc"><?php the_field('univer_desc'); ?></div>
-								<a href="<?php the_permalink(); ?>" class="univer_more" alt="<?php the_field('univer_name'); ?>" alt="<?php the_field('univer_name'); ?>">ПОДРОБНЕЕ</a>
+								<a href="<?php the_permalink(); ?>" class="univer_more" alt="<?php the_field('univer_name'); ?>" alt="<?php the_field('univer_name'); ?>">ПОСМОТРЕТЬ ДЕТАЛИ</a>
 							</div>
 						<?php endwhile; ?>
 					<?php endif; ?>

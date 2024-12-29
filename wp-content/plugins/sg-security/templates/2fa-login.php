@@ -13,10 +13,10 @@
 <?php endif ?>
 
 <?php if ( ! empty( $args['error'] ) ) : ?>
-	<div id="login_error"><strong><?php echo $args['error']; ?></strong><br /></div>
+	<div id="login_error"><strong><?php echo esc_html( $args['error'] ); ?></strong><br /></div>
 <?php endif ?>
 
-<form name="sgs2fa_form" id="loginform" action="<?php echo $args['action']; ?>" method="post">
+<form name="sgs2fa_form" id="loginform" action="<?php echo esc_url( $args['action'] ); ?>" method="post">
 	<h1><?php esc_html_e( '2-factor Authentication', 'sg-security' ); ?></h1>
 	<br />
 	<p class="sg-2fa-title"><?php esc_html_e( 'In order to log in, please enter the verification code from your Authenticator app:', 'sg-security' ); ?></p>
@@ -28,10 +28,10 @@
 	<?php if ( $args['interim_login'] ) : ?>
 		<input type="hidden" name="interim-login" value="1" />
 	<?php else : ?>
-		<input type="hidden" name="redirect_to" value="<?php echo $args['redirect_to']; ?>" />
+		<input type="hidden" name="redirect_to" value="<?php echo esc_url( $args['redirect_to'] ); ?>" />
 	<?php endif; ?>
 
-	<input type="hidden" name="rememberme" id="rememberme" value="<?php echo $args['rememberme']; ?>" />
+	<input type="hidden" name="rememberme" id="rememberme" value="<?php echo esc_html( $args['rememberme'] ); ?>" />
 	<input name="do_not_challenge" type="checkbox" id="do_not_challenge" />
 	<label for="do_not_challenge"><?php esc_html_e( 'Do not challenge me for the next 30 days.', 'sg-security' ); ?></label>
 	<p>

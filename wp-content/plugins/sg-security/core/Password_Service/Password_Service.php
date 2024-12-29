@@ -113,7 +113,7 @@ class Password_Service {
 	public function hidden_login_field() {
 		// Add the field only if you are on the password reset page forced by the plugin.
 		if (
-			isset( $_GET['sgsrp'] ) ||
+			isset( $_GET['sgsrp'] ) || // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			isset( $_POST['sgsrp_field'] ) // phpcs:ignore
 		) {
 			echo '<input type="hidden" value="1" id="sgsrp_field" name="sgsrp_field"/>';
@@ -163,7 +163,7 @@ class Password_Service {
 	 */
 	public function add_custom_login_message( $message ) {
 		// Bail if we don't force the password reset.
-		if ( ! isset( $_GET['sgsrp'] ) ) {
+		if ( ! isset( $_GET['sgsrp'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			return $message;
 		}
 

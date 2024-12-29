@@ -5,6 +5,7 @@ namespace Wpshop\Quizle\Admin;
 use Wpshop\Quizle\Db\Database;
 use Wpshop\Quizle\PluginContainer;
 use Wpshop\Quizle\Quizle;
+use function Wpshop\Quizle\container;
 use function Wpshop\Quizle\get_quizle_type;
 
 class QuizlePostGrid {
@@ -53,6 +54,7 @@ class QuizlePostGrid {
         return $before + [
                 'quizle_shortcode' => __( 'Shortcode', QUIZLE_TEXTDOMAIN ),
                 'quizle_stats'     => __( 'Statistic', QUIZLE_TEXTDOMAIN ),
+                'author'           => __( 'Author' ),
             ] + $after;
     }
 
@@ -63,21 +65,20 @@ class QuizlePostGrid {
      * @return void
      */
     public function _manage_custom_column( $column_key, $post_id ) {
+        $results_url = add_query_arg( [
+            'post_type' => Quizle::POST_TYPE,
+            'page'      => 'quizle-results',
+            'quizle_id' => $post_id,
+        ], admin_url( 'edit.php' ) );
+
         $post = get_post( $post_id );
         if ( $column_key === 'quizle_stats' ) {
-            $stats = PluginContainer::get( Database::class )->get_quizle_stats( $post_id );
+            $stats = container()->get( Database::class )->get_quizle_stats( $post_id );
             echo '<div class="quizle_stats__grid">';
-            printf( '<div class="quizle_stats__row"><div class="quizle_stats__title">%s:</div><div class="quizle_stats__value">%d</div></div>',
-                __( 'Results Count', QUIZLE_TEXTDOMAIN ),
+            printf( '<a href="%s">%s: %d</a>',
+                $results_url,
+                _x( 'Results', 'quizle-post-grid', QUIZLE_TEXTDOMAIN ),
                 $stats->result_count
-            );
-            printf( '<div class="quizle_stats__row"><div class="quizle_stats__title">%s:</div><div class="quizle_stats__value">%d</div></div>',
-                __( 'Registered Users Count', QUIZLE_TEXTDOMAIN ),
-                $stats->registered_users_count
-            );
-            printf( '<div class="quizle_stats__row"><div class="quizle_stats__title">%s:</div><div class="quizle_stats__value">%d</div></div>',
-                __( 'Unique Users Count', QUIZLE_TEXTDOMAIN ),
-                $stats->unique_users_count
             );
             echo '</div>';
         }

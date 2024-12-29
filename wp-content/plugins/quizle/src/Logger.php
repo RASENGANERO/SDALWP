@@ -7,7 +7,7 @@ use Exception;
 
 class Logger {
 
-    const FILE = 'quizle.log';
+    const DEFAULT_FILE = 'quizle.log';
 
     const DISABLED = 0;
 
@@ -16,17 +16,24 @@ class Logger {
     const LVL_INFO    = 4;
 
     /**
-     * @param int $level
+     * @var string
      */
-    public function __construct( $level ) {
-        $this->level = $level;
-    }
+    protected $file;
 
     /**
      * bit mask of LEVEL_* constants
      * @var int
      */
     protected $level = self::LVL_ERROR | self::LVL_WARNING;
+
+    /**
+     * @param int    $level
+     * @param string $file
+     */
+    public function __construct( $level = null, $file = self::DEFAULT_FILE ) {
+        $this->level = $level !== null ? $level : self::LVL_ERROR | self::LVL_WARNING;
+        $this->file  = $file;
+    }
 
     /**
      * @param int $level
@@ -67,7 +74,7 @@ class Logger {
      * @return void
      */
     protected function write( $level, $message, $date ) {
-        $file = WP_CONTENT_DIR . '/' . self::FILE;
+        $file = WP_CONTENT_DIR . '/' . $this->file;
         if ( ! file_exists( $file ) ) {
             touch( $file );
             chmod( $file, 0644 );

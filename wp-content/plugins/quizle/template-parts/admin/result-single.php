@@ -3,6 +3,7 @@
 defined( 'WPINC' ) || die;
 
 use Wpshop\Quizle\QuizleResult;
+use function Wpshop\Quizle\sanitize_phone;
 
 /**
  * @var array $args
@@ -69,8 +70,16 @@ if ( $result->finished_at ) {
 
         <div>
             <?php echo __( 'Name', QUIZLE_TEXTDOMAIN ) ?>: <?php esc_html_e( $result->name ) ?><br>
-            <?php echo __( 'Email', QUIZLE_TEXTDOMAIN ) ?>: <?php esc_html_e( $result->email ) ?><br>
-            <?php echo __( 'Phone', QUIZLE_TEXTDOMAIN ) ?>: <?php esc_html_e( $result->phone ) ?><br>
+            <?php echo __( 'Email', QUIZLE_TEXTDOMAIN ) ?>:
+            <?php if ( $result->email ): ?>
+                <a href="mailto:<?php echo sanitize_email( $result->email ) ?>"><?php echo $result->email ?></a>
+            <?php endif ?>
+            <br>
+            <?php echo __( 'Phone', QUIZLE_TEXTDOMAIN ) ?>:
+            <?php if ( $result->phone ): ?>
+                <a href="tel:<?php echo sanitize_phone( $result->phone ) ?>"><?php echo $result->phone ?></a>
+            <?php endif ?>
+            <br>
             <?php foreach ( $result->get_from_additional_data( 'messengers', [] ) as $messenger => $value ): ?>
                 <?php if ( $value ): ?>
                     <?php echo esc_html( $messenger ) ?>: <?php echo $value ?><br>
@@ -125,6 +134,14 @@ if ( $result->finished_at ) {
                         <?php if ( '__text__' === $answer['answer_id'] ): ?>
                             <?php esc_html_e( $answer['value'] ); ?>
                             <?php //echo $answer['_checked'] ?? false ? 'checked' : 'not checked'; ?>
+                        <?php elseif ( '__file__' === $answer['answer_id'] ): ?>
+                            <ul>
+                                <?php foreach ( $answer['value'] as $url ): ?>
+                                    <li>
+                                        <a href="<?php echo esc_attr( $url ) ?>" target="_blank" rel="noopener"><?php echo esc_html( $url ) ?></a>
+                                    </li>
+                                <?php endforeach ?>
+                            </ul>
                         <?php else: ?>
                             <?php
 
@@ -151,7 +168,7 @@ if ( $result->finished_at ) {
                             <span>
                                 <?php if ( 'custom' === $answer_type ): ?>
                                     <i><?php echo __( 'custom answer', QUIZLE_TEXTDOMAIN ) ?>:</i>
-                                    <?php echo esc_html( $answer['_custom_answer'] ) ?>
+                                    <?php echo esc_html( $answer['_custom_answer'] ?? '' ) ?>
                                 <?php else: ?>
                                     <?php esc_html_e( $answer['name'] ); ?>
                                 <?php endif ?>
@@ -167,10 +184,14 @@ if ( $result->finished_at ) {
     <div class="quizle-admin-result-text">
         <div class="quizle-admin-result-header"><?php echo __( 'Result', QUIZLE_TEXTDOMAIN ) ?>:</div>
         <?php if ( $result_arr = $result->get_result_item() ): ?>
-            <strong><?php esc_html_e( $result_arr['title'] ); ?></strong>
-            <p><?php esc_html_e( $result_arr['description'] ); ?></p>
-            <?php if ( $result_arr['image'] ): ?>
-                <img src="<?php esc_attr_e( $result_arr['image'] ); ?>" alt="">
+            <?php if ( ! empty( $result_arr['redirect_link'] ) ): ?>
+                <?php echo __( 'Redirect Link', QUIZLE_TEXTDOMAIN ) ?>:
+                <?php echo $result_arr['redirect_link'] ?>
+            <?php endif ?>
+            <strong><?php echo esc_html( $result_arr['title'] ?? '' ); ?></strong>
+            <?php echo wp_kses_post( $result_arr['description'] ?? '' ); ?>
+            <?php if ( ! empty( $result_arr['image'] ) ): ?>
+                <img src="<?php echo esc_attr( $result_arr['image'] ); ?>" alt="" width="300">
             <?php endif ?>
         <?php endif ?>
     </div>
